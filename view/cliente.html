@@ -1,51 +1,42 @@
 <div class="row">
-    <panel title="Dados Revenda" icon="fa-user" height="40" col="6">
+    <panel title="Dados Revenda" icon="fa-user" height="40" col="7">
         <panel-actions>
-            <button type="button" class="btn btn-default btn-sm" ng-click="editarDadosCliente()"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-default btn-sm" ng-click="gotoDev()"><i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
         </panel-actions>
         <div class="row">
             <div class="col-md-6">
                 <dl class="dl-flex">
                     <dt>Cliente Emissor</dt>
-                    <dd class="ng-binding">{{selectedClient.clienteEmissorId}}</dd>
+                    <dd class="ng-binding">64545656465</dd>
                     <dt>CNPJ</dt>
-                    <dd class="ng-binding">{{selectedClient.cnpj}}</dd>
+                    <dd class="ng-binding">445577688/0001-99</dd>
                     <dt>Telefone</dt>
-                    <dd class="ng-binding">{{selectedClient.contato.telefones[0].numero}}</dd>
-                    <dt class="ng-binding">Cidade</dt>
-                    <dd class="ng-binding">{{selectedClient.cidade}}</dd>
+                    <dd class="ng-binding">+55 11 54548888</dd>
+                    <dt class="ng-binding">Cidade/UF</dt>
+                    <dd class="ng-binding">São Paulo/SP</dd>
                     <dt class="ng-binding">Agrupador</dt>
-                    <dd class="ng-binding">{{selectedClient.contato.agrupador.numero}}</dd>
-                    <dt>CNPJ</dt>
-                    <dd class="ng-binding">{{selectedClient.cnpj}}</dd>
-                    <dt>Supervisor</dt>
-                    <dd class="ng-binding">{{selectedClient.contato.supervisor.numero}}</dd>
-                    <dt>Email</dt>
-                    <dd class="ng-binding">{{selectedClient.contato.emails[0].email}}</dd>
+                    <dd class="ng-binding">687454646</dd>
                 </dl>
             </div>
             <div class="col-md-6">
                 <dl class="dl-flex">
                     <dt>Razão</dt>
-                    <dd class="ng-binding">{{selectedClient.razao}}</dd>
+                    <dd class="ng-binding">CARREFOUR</dd>
                     <dt>Contato</dt>
-                    <dd class="ng-binding">{{selectedClient.contato.nome}}</dd>
+                    <dd class="ng-binding">João Cachoeira</dd>
                     <dt>Email</dt>
-                    <dd class="ng-binding">{{selectedClient.contato.emails[0].email}}</dd>
-                    <dt>UF</dt>
-                    <dd class="ng-binding">{{selectedClient.uf}}</dd>
-                    <dt>Nome</dt>
-                    <dd class="ng-binding">{{selectedClient.contato.agrupador.nome}}</dd>
-                    <dt>Telefone</dt>
-                    <dd class="ng-binding">{{selectedClient.contato.telefones[0].numero}}</dd>
-
-                    <dd class="ng-binding">{{selectedClient.contato.supervisor.nome}}</dd>
+                    <dd class="ng-binding">João@carrefour.com.br</dd>
+                    <dt class="ng-binding">Supervisor</dt>
+                    <dd class="ng-binding">654654654</dd>
+                    <dt class="ng-binding">Nome</dt>
+                    <dd class="ng-binding">Paula Hermann</dd>
                 </dl>
             </div>
         </div>
     </panel>
-    <panel title="Últimos Processos" icon="fa-bookmark" height="40" col="3">
+    <panel title="Últimos Processos" icon="fa-bookmark" height="40" col="5">
         <panel-actions>
+            <button type="button" class="btn btn-default btn-sm" ng-click="gotoDev()"><i class="fa fa-file-excel-o" aria-hidden="true"></i></button>
         </panel-actions>
         <table class="table table-hover">
             <!-- <caption>Monthly Kills</caption> -->
@@ -62,7 +53,7 @@
                 <tr>
                     <!-- <td contenteditable="true">12</td> -->
                     <td>1</td>
-                    <td>14.04.17</td>
+                    <td>14.04.17 - 17:30</td>
                     <td>Carrefour</td>
                     <td>423476</td>
                     <td>Em processamento</td>
@@ -70,7 +61,7 @@
                 <tr>
                     <!-- <td contenteditable="true">12</td> -->
                     <td>1</td>
-                    <td>20.04.17</td>
+                    <td>20.04.17 - 12:30</td>
                     <td>Carrefour</td>
                     <td>564654</td>
                     <td>Encerrado</td>
@@ -78,32 +69,11 @@
             </tbody>
         </table>
     </panel>
-    <panel title="Últimos Contatos" icon="fa-bookmark" height="40" col="3">
-        <table class="table table-hover">
-            <!-- <caption>Monthly Kills</caption> -->
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Data</th>
-                <th>Descricao</th>
-                <th>Emissor</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="contato in contatos" ng-click="editarContatos(contato)">
-                <td>{{contato.id}}</td>
-                <td>{{contato.data | date:'dd.MM.yyyy' }}</td>
-                <td>{{contato.descricao}}</td>
-                <td>{{contato.emissor}}</td>
-            </tr>
-            </tbody>
-        </table>
-    </panel>
 </div>
 <div class="row">
     <panel id="perfil" title="Perfil da Revenda" icon="fa-shopping-cart" height="60" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-warning btn-sm" ng-click="editarPerfilDeRevenda()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-warning btn-sm" ng-click="gotoDev()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
         </panel-actions>
         <div class="row">
             <div class="client-info">
@@ -111,31 +81,35 @@
             </div>
         </div>
         <div class="row">
-           <c3chart bindto-id="stacked-bar-plot1-chart" 
-           chart-data="dadosGraficos" 
-           chart-columns="dadosGraficosColunas" 
-           chart-x="datax">
-             <chart-axes values-x="x"/>
-             <chart-axis>
-             <chart-axis-x axis-position="outer-center"
-                           axis-label="Dados Mercado"
-                           axis-type="category"/>
-    </chart-axis>
-                  <chart-bar ratio="0.8"/>
-              <chart-group group-values="data 1,data 2"/>
-            </c3chart>
+            <div class="graficos">
+                <div class="graph graph1">
+                    %LB
+                </div>
+                <div class="graph graph2">
+                    %LM
+                </div>
+                <div class="graph graph3">
+                    %OUTROS
+                </div>
+                <div class="graph graph4">
+                    %TOS
+                </div>
+                <div class="graph graph5">
+                    %MARCKUP
+                </div>
+            </div>
         </div>
         <div class="row">
             <div class="client-class">
                 <span class="title">Perfil da Loja</span>
                 <ul>
-                    <input ng-disabled="true" id="classea" ng-model="perfilLoja1" ng-true-value="1" ng-false-value="0" type="checkbox" />
+                    <input id="classea" type="checkbox" />
                     <label for="classea">Classe A</label>
-                    <input ng-disabled="true" id="classeb" ng-model="perfilLoja2" ng-true-value="1" ng-false-value="0" type="checkbox"/>
+                    <input id="classeb" type="checkbox" checked />
                     <label for="classeb">Classe B</label>
-                    <input ng-disabled="true" id="classec" ng-model="perfilLoja3" ng-true-value="1" ng-false-value="0" type="checkbox"/>
+                    <input id="classec" type="checkbox" checked/>
                     <label for="classec">Classe C</label>
-                    <input ng-disabled="true" id="classed" ng-model="perfilLoja4" ng-true-value="1" ng-false-value="0" type="checkbox" />
+                    <input id="classed" type="checkbox" />
                     <label for="classed">Classe D</label>
                 </ul>
             </div>
@@ -152,10 +126,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                         <tr ng-repeat="produto in linhaBranca">
-                            <td>{{produto.id}}</td>
-                            <td>{{produto.nome}}</td>
-                            <td>{{produto.quantidade}}</td>
+                        <tr>
+                            <td>1</td>
+                            <td>ELECTROLUX</td>
+                            <td>45%</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>PANASONIC</td>
+                            <td>25%</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>SAMSUNG</td>
+                            <td>30%</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>ATLAS</td>
+                            <td>5%</td>
                         </tr>
                     </tbody>
                 </table>
@@ -171,10 +160,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                         <tr ng-repeat="produto in concorrentesRevenda">
-                            <td>{{produto.id}}</td>
-                            <td>{{produto.nome}}</td>
-                            <td>{{produto.quantidade}}</td>
+                        <tr>
+                            <td>1</td>
+                            <td>ELECTROLUX</td>
+                            <td>45%</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>PANASONIC</td>
+                            <td>25%</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>SAMSUNG</td>
+                            <td>30%</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>ATLAS</td>
+                            <td>5%</td>
                         </tr>
                     </tbody>
                 </table>
@@ -184,26 +188,43 @@
     <panel title="Notas" icon="fa-comments" height="60" col="6">
         <div class="row">
             <div class="col-md-6">
-                <h3 class="title-gray-block">Gerais
-                <button type="button" class="btn btn-success btn-sm note-plus" ng-init="mostra=true" ng-click="mostra = !mostra"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                </h3>
+                <h3 class="title-gray-block">Gerais</h3>
                 <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
-                    <div uib-slide ng-repeat="geral in gerais track by geral.id" index="geral.id" class="slide animated">
-                        <span ng-show="mostra" class="title">{{geral.titulo}}</span>
-                        <span ng-show="mostra" class="text">{{geral.texto}}</span>
-                        <textarea ng-show="!mostra" ng-model="geral.texto"  cols="30" rows="20"></textarea>
+                    <div uib-slide index="0" class="slide animated">
+                        <span class="title">Comportamento</span>
+                        <span class="text">Texto Comportamento - Feito contato com o cliente que comentou sobre promoções de outros concorrentes</span>
+                    </div>
+                    <div uib-slide index="1" class="slide animated">
+                        <span class="title">Mercado</span>
+                        <span class="text">Mercado - Feito contato com o cliente que comentou sobre promoções de outros concorrentes</span>
+                    </div>
+                    <div uib-slide index="2" class="slide animated">
+                        <span class="title">Concorrência</span>
+                        <span class="text">Feito contato com o cliente que comentou sobre promoções de outros concorrentes</span>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <h3 class="title-gray-block">Pontuais 
-                <button type="button" class="btn btn-success btn-sm note-plus" ng-click="adicionarPontual()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                <button type="button" class="btn btn-success btn-sm note-plus" ng-click="gotoDev()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
 
                 </h3>
-                <ul class="notes" ng-repeat="pontual in pontuais">
+                <ul class="notes">
                     <li>
-                        <span class="text">{{pontual.texto}}</span>
-                        <span class="date">{{pontual.data | date:'dd.MM.yyyy HH:mm:ss'}}</span>
+                        <span class="text">Feito contato com o cliente que comentou sobre promoções de outros concorrentes</span>
+                        <span class="date">03.04.2017 - 09:36:45</span>
+                    </li>
+                    <li>
+                        <span class="text">Feito contato com o cliente que comentou sobre promoções de outros concorrentes</span>
+                        <span class="date">03.04.2017 - 09:36:45</span>
+                    </li>
+                    <li>
+                        <span class="text">Feito contato com o cliente que comentou sobre promoções de outros concorrentes</span>
+                        <span class="date">03.04.2017 - 09:36:45</span>
+                    </li>
+                    <li>
+                        <span class="text">Feito contato com o cliente que comentou sobre promoções de outros concorrentes</span>
+                        <span class="date">03.04.2017 - 09:36:45</span>
                     </li>
                 </ul>
             </div>
