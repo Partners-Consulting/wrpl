@@ -1,0 +1,35 @@
+.ui-grid {
+    border: none;
+}
+
+.ui-grid-header-cell {
+    border: none;
+    background: #555;
+    color: #fff;
+}
+
+.ui-grid-render-container-body .ui-grid-header-viewport {
+    background: #555;
+}
+
+.ui-grid-row .ui-grid-cell {
+    border: none;
+}
+
+.ui-grid-render-container-body .ui-grid-viewport {
+    overflow-x: hidden !important;
+}
+
+.ui-grid-pager-panel {
+    background: #eee;
+    font-size: .8em;
+}
+
+.ui-grid-pager-control .ui-grid-pager-max-pages-number {
+
+    display: inline-block;
+}
+
+.ui-grid-pager-control input {
+    height: 13px;
+}

@@ -1,4 +1,17 @@
-angular.module('App', ["App.controllers", "App.services", "App.directives", "App.filters",  "ngRoute", "ngResource", 'ui.bootstrap', 'ngCsv', 'ngAnimate', 'ngSanitize'
+angular.module('App', ["App.controllers", 
+    "App.services", 
+    "App.directives", 
+    "App.filters",  
+    "ngRoute", 
+    "ngResource", 
+    'ui.bootstrap', 
+    'ngCsv', 
+    'ngAnimate', 
+    'ngSanitize',
+    'gridshore.c3js.chart',
+    'oitozero.ngSweetAlert',
+    'ui.grid',
+    'ui.grid.exporter'
     
 
 
@@ -35,6 +48,10 @@ angular.module('App', ["App.controllers", "App.services", "App.directives", "App
             .when('/clientes', {
                 templateUrl: 'view/clientes.html',
                 controller: 'ClientesController'
+            })
+            .when('/selecionarCliente', {
+                templateUrl: 'view/cliente.html',
+                controller: 'ClienteController'
             })
             .otherwise({ redirectTo: 'cliente' });
 
