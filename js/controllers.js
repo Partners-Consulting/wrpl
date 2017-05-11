@@ -869,9 +869,17 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalMaterialCompletoCtrl", function ($scope, $rootScope, $uibModalInstance, material) {
+    .controller("ModalMaterialCompletoCtrl", function ($scope, $rootScope, $uibModalInstance, material, CentroService, LocalExpedicaoService, IncotermsService) {
 
         $scope.material = material;
+        $scope.
+
+        function init(){
+            //todo fazer padrão promessa
+            $scope.material.centro = CentroService.consultaCentroPorMaterial(material.id);
+            $scope.material.localExpedicao = LocalExpedicaoService.consultaLocalExpedicaPorMaterial(material.id);
+            $scope.material.incoterms = IncotermsService.consultaIncotermsPorMaterial(material.id);
+        }
 
         $scope.close = function () {
             $uibModalInstance.close();
