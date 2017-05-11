@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html lang="en" ng-app='App'>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=egde"/>
+    <title>ModeloAdmin</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="lib/font/css/font-awesome.min.css">
+    <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/css/bsflat.css">
+    <link rel="stylesheet" href="lib/js/c3/c3.css">
+    <link rel="stylesheet" href="lib/css/sweetalert.css">
+    <link rel="stylesheet" href="lib/css/ui-grid.min.css">
+    <link href="view/css/reset.css" rel="stylesheet">
+    <!--     <link href="view/css/geral.css" rel="stylesheet"> -->
+    <link href="view/css/admin.css" rel="stylesheet">
+
+    <link href="view/css/ui-grid-custom.css" rel="stylesheet">
+    <!-- LIBS -->
+    <script type="text/javascript" src="lib/js/angular.min.js"></script>
+    <script type="text/javascript" src="lib/js/angular-animate.min.js"></script>
+    <script type="text/javascript" src="lib/js/angular-route.min.js"></script>
+    <script type="text/javascript" src="lib/js/angular-resource.min.js"></script>
+    <script type="text/javascript" src="lib/js/angular-touch.min.js"></script>
+    <script type="text/javascript" src="lib/js/ui-bootstrap-tpls.min.js"></script>
+    <script type="text/javascript" src="lib/js/angular-aside.min.js"></script>
+    <script type="text/javascript" src="lib/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="lib/js/ng-csv.min.js"></script>
+    <script type="text/javascript" src="lib/js/d3/d3.min.js"></script>
+    <script type="text/javascript" src="lib/js/c3/c3.min.js"></script>
+    <script type="text/javascript" src="lib/js/c3-angular-directive-1.3.0/c3-angular.min.js"></script>
+    <script type="text/javascript" src="lib/js/underscore-min.js"></script>
+    <script type="text/javascript" src="lib/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="lib/js/ngSweetAlert-master/SweetAlert.min.js"></script>
+    <script type="text/javascript" src="lib/js/FileSaver.js"></script>
+    <script type="text/javascript" src="lib/js/ui-grid.min.js"></script>
+    <!-- THIS APP. -->
+    <script src="App.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/directives.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+
+<body class="container-fluid" ng-controller="MainController">
+<!--     <div class="row-fluid alpargatas-content" ng-view></div>
+
+-->
+<div class="header">
+    <!-- <span class="logo">
+        Logo
+    </span>
+    <div class="info">
+        ModeloAdmin
+    </div>
+
+     -->
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
+                <span class="sr-only">Toggle navigation</span>
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <a class="navbar-brand" href="#">
+                <img class="whirlpool-logo" src="view/images/whirlpool.png">
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
+            <ul class="nav navbar-nav">
+                <li><a href="#">{{selectedClient.razao}}</a></li>
+                <li><a ng-click="gotoCliente()" href="">Trocar de Cliente</a></li>
+                <li><a ng-click="divLink()" href="">teste</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li uib-dropdown class="dropdown">
+                    <a href uib-dropdown-toggle>PAULA HERMANN <b class="caret"></b></a>
+                    <ul uib-dropdown-menu>
+                        <li><a href="#">Action1</a></li>
+                        <li><a href="#">Action2</a></li>
+                        <li><a href="#">Action3</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Log-out</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navbar-badges">
+                <li uib-dropdown class="dropdown">
+                    <a href uib-dropdown-toggle><span class="icon-badge green-badge" data-line="1"><i
+                            class="fa fa-bullhorn" aria-hidden="true"></i></span></a>
+                    <ul uib-dropdown-menu class="box-drop">
+                        <table class="table table-hover table-box-drop">
+                            <caption>Ações Promocionais</caption>
+                            <thead class="thead-bold">
+                            <tr>
+                                <th>#</th>
+                                <th>Região</th>
+                                <th>Modelo</th>
+                                <th>% Desconto</th>
+                                <th>VPC</th>
+                                <th>Outros</th>
+                                <th>Válido Desde</th>
+                                <th>Válido até</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>TODOS</td>
+                                <td>CWE09</td>
+                                <td>5%</td>
+                                <td>30PP</td>
+                                <td>PVL=R$ 230</td>
+                                <td>24.04.2017</td>
+                                <td>15.05.2017</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>TODOS</td>
+                                <td>CWE11</td>
+                                <td>3%</td>
+                                <td>MKT</td>
+                                <td></td>
+                                <td>25.03.2017</td>
+                                <td>15.05.2017</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>TODOS</td>
+                                <td>BMF45</td>
+                                <td>9%</td>
+                                <td>20PP</td>
+                                <td></td>
+                                <td>10.03.2017</td>
+                                <td>15.05.2017</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>TODOS</td>
+                                <td>BRM46</td>
+                                <td>6%</td>
+                                <td>15PP</td>
+                                <td>PREÇO BEM ESTAR</td>
+                                <td>10.03.2017</td>
+                                <td>15.05.2017</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>TODOS</td>
+                                <td>GOK73</td>
+                                <td>11%</td>
+                                <td>10PP</td>
+                                <td>PVL=R$ 180</td>
+                                <td>24.02.2017</td>
+                                <td>15.05.2017</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>TODOS</td>
+                                <td>BWJ11</td>
+                                <td>14%</td>
+                                <td>MKT</td>
+                                <td></td>
+                                <td>20.02.2017</td>
+                                <td>15.05.2017</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>TODOS</td>
+                                <td>BLF08</td>
+                                <td>2%</td>
+                                <td>MKT</td>
+                                <td>PREÇO BEM ESTAR</td>
+                                <td>20.02.2017</td>
+                                <td>15.05.2017</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </ul>
+                </li>
+                <!--  <li><a href="#" class="icon-badge green-badge" data-line="1"><i class="fa fa-credit-card" aria-hidden="true"></i></a></li> -->
+                <li uib-dropdown class="dropdown">
+                    <a href uib-dropdown-toggle><span class="icon-badge red-badge" data-line="2"><i
+                            class="fa fa-map-marker" aria-hidden="true"></i></span></a>
+                    <ul uib-dropdown-menu class="box-drop">
+                        <div class="row">
+                            <div class="col-md-12 box-itens foco">
+                                <span class="title"> Direcionais</span>
+                                <span class="body"></span>
+                            </div>
+                        </div>
+                    </ul>
+                </li>
+                <li uib-dropdown class="dropdown">
+                    <a href uib-dropdown-toggle><span class="icon-badge green-badge" data-line="1"><i
+                            class="fa fa-credit-card" aria-hidden="true"></i></span></a>
+                    <ul uib-dropdown-menu class="box-drop">
+                        <table class="table table-hover table-box-drop">
+                            <caption>Crédito</caption>
+                            <thead class="thead-bold">
+                            <tr>
+                                <th>#</th>
+                                <th>Emissor</th>
+                                <th>Limite Total</th>
+                                <th>Limite WHP</th>
+                                <th>Exposição WRP</th>
+                                <th>Em Aberto WRP</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>445646546</td>
+                                <td>R$ 110.000,00</td>
+                                <td>R$ 85.000,00</td>
+                                <td>R$ 25.000,00</td>
+                                <td>R$ 5.000,00</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>98794656</td>
+                                <td>R$ 60.000,00</td>
+                                <td>R$ 45.000,00</td>
+                                <td>R$ 15.000,00</td>
+                                <td>R$ 2.000,00</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>654654646</td>
+                                <td>R$ 160.000,00</td>
+                                <td>R$ 145.000,00</td>
+                                <td>R$ 115.000,00</td>
+                                <td>R$ 90.000,00</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </ul>
+                </li>
+                <li uib-dropdown class="dropdown">
+                    <a href uib-dropdown-toggle><img src="view/images/sap_logon.png" alt=""></a>
+                    <ul uib-dropdown-menu class="box-drop-links">
+                        <div class="row content-row links">
+                            <div class="col-sm-12">
+                                <div ng-repeat="categoria in categoriaLinks">
+                                    <div class="col-sm-3" ng-if="$index % 2 == 0">
+                                        <p class="titulo">{{categoria.nome}}</p>
+                                        <p>
+                                            <i class="{{categoria.icone}}"></i>
+                                        </p>
+                                        <div ng-repeat="link in categoria.links ">
+                                            <p>{{link.titulo}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row content-row links">
+                            <div class="col-sm-12">
+                                <div ng-repeat="categoria in categoriaLinks">
+                                    <div class="col-sm-3" ng-if="$index % 2 != 0">
+                                        <p class="titulo">{{categoria.nome}}</p>
+                                        <p>
+                                            <i class="{{categoria.icone}}"></i>
+                                        </p>
+                                        <div ng-repeat="link in categoria.links ">
+                                            <p>{{link.titulo}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="sidebar">
+    <ul>
+        <li ng-repeat="item in linksMenu"><a ng-class="{active: currentRoute == item.link}" href="#{{item.link}}"><i
+                class="fa {{item.icon}}"></i><span>{{item.nome}}</span></a></li>
+    </ul>
+</div>
+<div class="main" ng-view>
+    <!-- Content -->
+</div>
+</body>
+
+</html>
