@@ -84,6 +84,103 @@ angular.module("App.services", [])
                         centroExpList:["C010","C011","C012"]
                     }
                 ];
+            },
+            consultaReplicas: function () {
+                return  [
+                    {
+                        orgVendas:"1000",
+                        canal:"11",
+                        setor:"10",
+                        condPagtos:[
+                            {codigo:"0001",descricao:"Pagamento imediato s/ desconto"},
+                            {codigo:"0018",descricao:"pgto 30/60/90"},
+                            {codigo:"0019",descricao:"pgto 30/60"},
+                            {codigo:"0020",descricao:"pgto 30 dias"},
+                            {codigo:"0021",descricao:"pgto 60 Dias"},
+                            {codigo:"0090",descricao:"Pgto 90 Dias"},
+                            {codigo:"0600",descricao:"A Vista"},
+                            {codigo:"0601",descricao:"Contra apresentação (a vista)"},
+                            {codigo:"0602",descricao:"Pagamento Antecipado"}
+                        ],
+                        incoterms:"",
+                        condFrete:[
+                            {codigo:"5050", descricao:"Pgto 60/90/120 – Produto Acabado Nacional"},
+                            {codigo:"5051", descricao:"Pgto 30/60 – Produto Acabado Nacional"},
+                            {codigo:"5052", descricao:"Pgto 30/60/90 – Produto Acabado Nacional"},
+                            {codigo:"5053", descricao:"Pgto 15/30/45 – Produto Acabado Nacional"},
+                            {codigo:"5054", descricao:"Pgto 15/30/45/60 – Produto Acabado Nacional"},
+                            {codigo:"5054", descricao:"Pgto 15/30/45/75/90 – Produto Acabado Nacional"}
+                        ]
+                    },
+                    {
+                        orgVendas:"1000",
+                        canal:"16",
+                        setor:"16",
+                        condPagtos:[
+                            {codigo:"0001",descricao:"Pagamento imediato s/ desconto"},
+                            {codigo:"0018",descricao:"pgto 30/60/90"},
+                            {codigo:"0019",descricao:"pgto 30/60"},
+                            {codigo:"0020",descricao:"pgto 30 dias"},
+                            {codigo:"0021",descricao:"pgto 60 Dias"},
+                            {codigo:"0090",descricao:"Pgto 90 Dias"},
+                            {codigo:"0600",descricao:"A Vista"},
+                            {codigo:"0601",descricao:"Contra apresentação (a vista)"},
+                            {codigo:"0602",descricao:"Pagamento Antecipado"}
+                        ],
+                        incoterms:"",
+                        condFrete:[
+                            {codigo:"5050", descricao:"Pgto 60/90/120 – Produto Acabado Nacional"},
+                            {codigo:"5051", descricao:"Pgto 30/60 – Produto Acabado Nacional"},
+                            {codigo:"5052", descricao:"Pgto 30/60/90 – Produto Acabado Nacional"},
+                            {codigo:"5053", descricao:"Pgto 15/30/45 – Produto Acabado Nacional"},
+                            {codigo:"5054", descricao:"Pgto 15/30/45/60 – Produto Acabado Nacional"},
+                            {codigo:"5054", descricao:"Pgto 15/30/45/75/90 – Produto Acabado Nacional"}
+                        ]
+                    },
+                    {
+                        orgVendas:"2000",
+                        canal:"21",
+                        setor:"10",
+                        condPagtos:[
+                            {codigo:"0001",descricao:"Pagamento imediato s/ desconto"},
+                            {codigo:"0018",descricao:"pgto 30/60/90"},
+                            {codigo:"0019",descricao:"pgto 30/60"},
+                            {codigo:"0020",descricao:"pgto 30 dias"},
+                            {codigo:"0021",descricao:"pgto 60 Dias"},
+                            {codigo:"0090",descricao:"Pgto 90 Dias"},
+                            {codigo:"0600",descricao:"A Vista"},
+                            {codigo:"0601",descricao:"Contra apresentação (a vista)"},
+                            {codigo:"0602",descricao:"Pagamento Antecipado"}
+                        ],
+                        incoterms:"",
+                        condFrete:[
+                            {codigo:"5050", descricao:"Pgto 60/90/120 – Produto Acabado Nacional"},
+                            {codigo:"5051", descricao:"Pgto 30/60 – Produto Acabado Nacional"},
+                            {codigo:"5052", descricao:"Pgto 30/60/90 – Produto Acabado Nacional"},
+                            {codigo:"5053", descricao:"Pgto 15/30/45 – Produto Acabado Nacional"},
+                            {codigo:"5054", descricao:"Pgto 15/30/45/60 – Produto Acabado Nacional"},
+                            {codigo:"5054", descricao:"Pgto 15/30/45/75/90 – Produto Acabado Nacional"}
+                        ]
+                    }
+                ];
+            },
+            consultaMaterialCompleto: function (id) {
+                return {
+                    id:1,
+                    codigo:"BRM47867676",
+                    cor:"Branca",
+                    voltagem:"220V",
+                    condicaoPagamento:"5020",
+                    quatidade:"5PC",
+                    alt:"-5%",
+                    pvl:"R$ 885,00",
+                    condicaoFrente:"CIP",
+                    valorFrete:"R$ 45,34",
+                    valorNotaFiscalUnitario:"R$ 924,34",
+                    valorICMS:"R$ 13,05",
+                    valorIPI:"R$ 8,56",
+                    centroExpList:["C010","C011","C012"]
+                }
             }
         }
     });

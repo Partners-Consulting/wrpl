@@ -1,0 +1,339 @@
+<div class="modal-header bg-primary" style="background-color:#333">
+    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
+            style="margin-top: -10px;" ng-click="close()">×
+    </button>
+    <h4>Material</h4>
+
+</div>
+<uib-tabset active="active">
+    <uib-tab index="0" heading="Detalhes Item Simulação">
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Material</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Material"
+                                       ng-model="material.codigo">
+                            </div>
+                            <label class="col-sm-2">Modelo</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Modelo"
+                                       ng-model="material.modelo">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Cor</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Cor"
+                                       ng-model="material.cor">
+                            </div>
+                            <label class="col-sm-2">Voltagem</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Voltagem"
+                                       ng-model="material.voltagem">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Organiz</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Codigo"
+                                       ng-model="material.organiz">
+                            </div>
+                            <label class="col-sm-2">Canal</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Canal"
+                                       ng-model="material.canal">
+                            </div>
+                            <label class="col-sm-2">Setor</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Setor"
+                                       ng-model="material.setor">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Centro</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="false" type="text" class="form-control" placeholder="Centro"
+                                       ng-model="material.centro">
+                            </div>
+                            <label class="col-sm-2">Local Expedição</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="false" type="text" class="form-control" placeholder="Local Expedição"
+                                       ng-model="material.localExpedicao">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Quantidade</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="false" type="text" class="form-control" placeholder="Quantidade"
+                                ng-model="material.quantidade">
+                            </div>
+                            <label class="col-sm-2">Um</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Um"
+                                       ng-model="material.um">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Cond. Pagto</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="false" type="text" class="form-control" placeholder="Cond. Pagto"
+                                       ng-model="material.condPagto">
+                            </div>
+                            <label class="col-sm-2">Incoterms</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Incoterms"
+                                       ng-model="material.incoterms">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Cond. Pagto Frete</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Cond. Pagto Frete"
+                                       ng-model="material.condPagtoFrete">
+                            </div>
+                            <label class="col-sm-2">Dias Concessão</label>
+                            <div class="col-sm-1">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Dias Concessão"
+                                       ng-model="material.diasConcessao">
+                            </div>
+                            <label class="col-sm-2">Situação Carga</label>
+                            <div class="col-sm-1">
+                                <input ng-disabled="true" type="checkbox" placeholder="Situação Carga"
+                                       ng-model="material.situacaoCarga">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </uib-tab>
+    <uib-tab index="1" heading="Cálculo do item da simulação">
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Prerço Tabela</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Prerço Tabela"
+                                       ng-model="material.precoTabela">
+                            </div>
+                            <label class="col-sm-2">% Desc. Escala</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Desc. Escala"
+                                       ng-model="material.percDescEscala">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">% Desc. Parceria</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Desc. Parceria"
+                                       ng-model="material.precDescParceria">
+                            </div>
+                            <label class="col-sm-2">% Desc. Canal</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Desc. Canal"
+                                       ng-model="material.percDescCanal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">% Desc. Categoria</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Desc. Categoria"
+                                       ng-model="material.precDescCategoria">
+                            </div>
+                            <label class="col-sm-2">% Flexib. Máxima</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Flexib. Máxima"
+                                       ng-model="material.percFlexibMaxima">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">% Flexibilidade</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="false" type="text" class="form-control" placeholder="% Flexibilidade"
+                                       ng-model="material.precFlexibilidade">
+                            </div>
+                            <label class="col-sm-2">% Redutor Desconto</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="false" type="text" class="form-control" placeholder="% Redutor Desconto"
+                                       ng-model="material.percRedutorDesconto">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Valor Negociado</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="false" type="text" class="form-control" placeholder="Valor Negociado"
+                                       ng-model="material.valorNegociado">
+                            </div>
+                            <label class="col-sm-2">Pvl</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Pvl"
+                                       ng-model="material.pvl">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Pvl Mínimo</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Pvl Mínimo"
+                                       ng-model="material.pvlMinimo">
+                            </div>
+                            <label class="col-sm-2">% Pis</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Pis"
+                                       ng-model="material.percPis">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">% Cofins</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Cofins"
+                                       ng-model="material.precConfins">
+                            </div>
+                            <label class="col-sm-2">% Icms</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Icms"
+                                       ng-model="material.percIcms">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">% Ipi</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Ipi"
+                                       ng-model="material.precIpi">
+                            </div>
+                            <label class="col-sm-2">% Ipi Valor Frete</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Desc. Canal"
+                                       ng-model="material.percIpiValorFrete">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">% MVA</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% MVA"
+                                       ng-model="material.precMva">
+                            </div>
+                            <label class="col-sm-2">% Icms ST</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Icms ST"
+                                       ng-model="material.percIcmsSt">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Juros</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Juros"
+                                       ng-model="material.juros">
+                            </div>
+                            <label class="col-sm-2">Valor c/Icms</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Valor c/Icms"
+                                       ng-model="material.valorComIcms">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Valor do Icms</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Valor do Icms"
+                                       ng-model="material.valorDoIcms">
+                            </div>
+                            <label class="col-sm-2">Valor do Icms Total</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Valor do Icms Total"
+                                       ng-model="material.valorDoIcmsTotal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Valor c/Ipi</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Valor c/Ipi"
+                                       ng-model="material.valorComIpi">
+                            </div>
+                            <label class="col-sm-2">Valor de Ipi</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Valor do Ipi"
+                                       ng-model="material.valorDoIpi">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </uib-tab>
+</uib-tabset>
+<div class="modal-footer">
+    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="transferirMaterial(material)">Salvar
+    </button>
+</div>
