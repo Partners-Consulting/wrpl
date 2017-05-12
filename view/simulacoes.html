@@ -1,7 +1,9 @@
 <div class="row">
     <panel title="Dados Entrega" icon="fa-truck" height="40" col="3">
         <panel-actions>
-            <button type="button" class="btn btn-warning btn-sm" ng-click="editarDadosEntrega()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-warning btn-sm" ng-click="editarDadosEntrega()"><i class="fa fa-pencil"
+                                                                                                    aria-hidden="true"></i>
+            </button>
         </panel-actions>
         <dl class="dl-flex">
             <dt>Data Entrega</dt>
@@ -21,62 +23,65 @@
         </dl>
     </panel>
     <panel title="Histórico" icon="fa-history" height="40" col="3">
-            <h3 class="title-gray-block">Pontuais
-                <button type="button" class="btn btn-success btn-sm note-plus" ng-click="adicionarPontual()"><i
-                        class="fa fa-plus-circle" aria-hidden="true"></i></button>
+        <h3 class="title-gray-block">Pontuais
+            <button type="button" class="btn btn-success btn-sm note-plus" ng-click="adicionarPontual()"><i
+                    class="fa fa-plus-circle" aria-hidden="true"></i></button>
 
-            </h3>
-            <ul class="notes" ng-repeat="pontual in simulacaoPontuais">
-                <li>
-                    <button type="button" class="bootbox-close-button close white" data-dismiss="modal"
-                            aria-hidden="true"
-                            style="margin-top: -10px;" ng-click="removePontual(pontual)">×
-                    </button>
-                    <span class="text">{{pontual.texto}}</span>
-                    <div class="date">{{pontual.data | date:'dd.MM.yyyy'}}</div>
-                    <div class="noteuser">{{pontual.user.abreviado}}</div>
-                </li>
-            </ul>
+        </h3>
+        <ul class="notes" ng-repeat="pontual in simulacaoPontuais">
+            <li>
+                <button type="button" class="bootbox-close-button close white" data-dismiss="modal"
+                        aria-hidden="true"
+                        style="margin-top: -10px;" ng-click="removePontual(pontual)">×
+                </button>
+                <span class="text">{{pontual.texto}}</span>
+                <div class="date">{{pontual.data | date:'dd.MM.yyyy'}}</div>
+                <div class="noteuser">{{pontual.user.abreviado}}</div>
+            </li>
+        </ul>
     </panel>
     <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="40" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-default btn-sm" ng-click="gotoDev()"><i class="fa fa-search" aria-hidden="true"></i> Filtro por SKU</button>
+            <button type="button" class="btn btn-default btn-sm" ng-click="gotoDev()"><i class="fa fa-search"
+                                                                                         aria-hidden="true"></i> Filtro
+                por SKU
+            </button>
         </panel-actions>
         <table class="table table-hover">
             <!-- <caption>Monthly Kills</caption> -->
             <thead class="thead-bold">
-                <tr>
-                    <th>#</th>
-                    <th>DATA</th>
-                    <th>VALOR</th>
-                    <th>STATUS</th>
-                </tr>
+            <tr>
+                <th>#</th>
+                <th>DATA</th>
+                <th>VALOR</th>
+                <th>STATUS</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>15.04.2017</td>
-                    <td>R$ 76.000,00</td>
-                    <td>GRAVADA</td>
-                </tr>
-                <tr class="success">
-                    <td>2</td>
-                    <td>05.04.20179</td>
-                    <td>R$ 44.000,00</td>
-                    <td>EFETUADA</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>25.03.2017</td>
-                    <td>R$ 150.000,00</td>
-                    <td>GRAVADA</td>
-                </tr>
-                <tr class="danger">
-                    <td>4</td>
-                    <td>10.02.2017</td>
-                    <td>R$ 99.000,00</td>
-                    <td>CANCELADA</td>
-                </tr>
+            <tr>
+                <td>1</td>
+                <td>15.04.2017</td>
+                <td>R$ 76.000,00</td>
+                <td>GRAVADA</td>
+            </tr>
+            <tr class="success">
+                <td>2</td>
+                <td>05.04.20179</td>
+                <td>R$ 44.000,00</td>
+                <td>EFETUADA</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>25.03.2017</td>
+                <td>R$ 150.000,00</td>
+                <td>GRAVADA</td>
+            </tr>
+            <tr class="danger">
+                <td>4</td>
+                <td>10.02.2017</td>
+                <td>R$ 99.000,00</td>
+                <td>CANCELADA</td>
+            </tr>
             </tbody>
         </table>
     </panel>
@@ -84,51 +89,70 @@
 <div class="row">
     <panel title="Itens da Simulação" icon="fa-table" height="60" col="12">
         <panel-actions>
-            <button type="button" class="btn btn-default btn-sm" ng-click="replicar()"><i class="fa fa-reply" aria-hidden="true"></i> Replicar</button>
-            <button type="button" class="btn btn-success btn-sm" ng-click="gotoDev()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Salvar</button>
-            <button type="button" class="btn btn-danger btn-sm" ng-click="gotoDev()"><i class="fa fa-exchange" aria-hidden="true"></i> Efetivar O.V</button>
-           <!--  <button type="button" class="btn btn-info btn-sm" ng-click="gotoDev()"><i class="fa fa-download" aria-hidden="true"></i> Exportar</button> -->
-            <button type="button" class="btn btn-warning btn-sm" ng-click="gotoDev()"><i class="fa fa-file-o" aria-hidden="true"></i> Nova Simulação</button>
+                 <div class="row">
+                     <div class="col-sm-12">
+                         <label>Bonif.%</label>
+                         <input style="width: 40px" class="input-sm" type="text" placeholder="">
+                         <input style="width: 80px" class="input-sm" type="text" placeholder="">
+                         <button type="button" class="btn btn-default btn-sm" ng-click="replicar()"><i class="fa fa-reply"
+                                                                                                       aria-hidden="true"></i>
+                             Replicar
+                         </button>
+                         <button type="button" class="btn btn-success btn-sm" ng-click="gotoDev()"><i class="fa fa-floppy-o"
+                                                                                                      aria-hidden="true"></i>
+                             Salvar
+                         </button>
+                         <button type="button" class="btn btn-danger btn-sm" ng-click="efetivarOv()"><i class="fa fa-exchange"
+                                                                                                     aria-hidden="true"></i>
+                             Efetivar O.V
+                         </button>
+                         <!--  <button type="button" class="btn btn-info btn-sm" ng-click="gotoDev()"><i class="fa fa-download" aria-hidden="true"></i> Exportar</button> -->
+                         <button type="button" class="btn btn-warning btn-sm" ng-click="gotoDev()"><i class="fa fa-file-o"
+                                                                                                      aria-hidden="true"></i>
+                             Nova Simulação
+                         </button>
+                     </div>
+                 </div>
         </panel-actions>
         <div ui-grid="gridMateriais"></div>
-       <!-- <table class="table table-hover">
-            &lt;!&ndash; <caption>Monthly Kills</caption> &ndash;&gt;
-            <thead class="thead-bold">
-                <tr>
-                    <th>#</th>
-                    <th>Material</th>
-                    <th>Cor</th>
-                    <th>Voltagem</th>
-                    <th>Cond. Pagt</th>
-                    <th>Qnt</th>
-                    <th>%ALT</th>
-                    <th>PVL</th>
-                    <th>Cond. Frete</th>
-                    <th>VL Frete</th>
-                    <th>VL NF Unit</th>
-                    <th>VL ICMS</th>
-                    <th>VL IPI</th>
-                    <th>Centro Exp.</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="material in listaMateriais">
-                    <td>{{material.id}}</td>
-                    <td>{{material.codigo}}</td>
-                    <td>{{material.cor}}</td>
-                    <td>{{material.voltagem}}</td>
-                    <td>{{material.condicaoPagamento}}</td>
-                    <td>{{material.quatidade}}</td>
-                    <td>{{material.alt}}</td>
-                    <td>{{material.pvl}}</td>
-                    <td>{{material.condicaoFrente}}</td>
-                    <td>{{material.valorFrete}}</td>
-                    <td>{{material.valorNotaFiscalUnitario}}</td>
-                    <td>{{material.valorICMS}}</td>
-                    <td>{{material.valorIPI}}</td>
-                    <td>{{material.centroExpList}}</td>
-                </tr>
-            </tbody>
-        </table>-->
+        <!-- <table class="table table-hover">
+             &lt;!&ndash; <caption>Monthly Kills</caption> &ndash;&gt;
+             <thead class="thead-bold">
+                 <tr>
+                     <th>#</th>
+                     <th>Material</th>
+                     <th>Cor</th>
+                     <th>Voltagem</th>
+                     <th>Cond. Pagt</th>
+                     <th>Qnt</th>
+                     <th>%ALT</th>
+                     <th>PVL</th>
+                     <th>Cond. Frete</th>
+                     <th>VL Frete</th>
+                     <th>VL NF Unit</th>
+                     <th>VL ICMS</th>
+                     <th>VL IPI</th>
+                     <th>Centro Exp.</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr ng-repeat="material in listaMateriais">
+                     <td>{{material.id}}</td>
+                     <td>{{material.codigo}}</td>
+                     <td>{{material.cor}}</td>
+                     <td>{{material.voltagem}}</td>
+                     <td>{{material.condicaoPagamento}}</td>
+                     <td>{{material.quatidade}}</td>
+                     <td>{{material.alt}}</td>
+                     <td>{{material.pvl}}</td>
+                     <td>{{material.condicaoFrente}}</td>
+                     <td>{{material.valorFrete}}</td>
+                     <td>{{material.valorNotaFiscalUnitario}}</td>
+                     <td>{{material.valorICMS}}</td>
+                     <td>{{material.valorIPI}}</td>
+                     <td>{{material.centroExpList}}</td>
+                 </tr>
+             </tbody>
+         </table>-->
     </panel>
 </div>

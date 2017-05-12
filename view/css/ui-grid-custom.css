@@ -1,5 +1,6 @@
 .ui-grid {
     border: none;
+    text-align:center;
 }
 
 .ui-grid-header-cell {
@@ -17,7 +18,7 @@
 }
 
 .ui-grid-render-container-body .ui-grid-viewport {
-    overflow-x: hidden !important;
+    /*overflow-x: hidden !important;*/
 }
 
 .ui-grid-pager-panel {
