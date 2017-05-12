@@ -872,6 +872,9 @@ angular.module("App.controllers", [])
     .controller("ModalMaterialCompletoCtrl", function ($scope, $rootScope, $uibModalInstance, material, CentroService, LocalExpedicaoService, IncotermsService) {
 
         $scope.material = material;
+        $scope.listaDeCentros = [];
+        $scope.listaDeLocaisExpedicao = [];
+        $scope.listaDeIncoterms= [];
 
 
         function init(){
@@ -880,6 +883,8 @@ angular.module("App.controllers", [])
             $scope.material.localExpedicao = LocalExpedicaoService.consultaLocalExpedicaPorMaterial(material.id);
             $scope.material.incoterms = IncotermsService.consultaIncotermsPorMaterial(material.id);
         }
+
+        init();
 
         $scope.close = function () {
             $uibModalInstance.close();
@@ -894,13 +899,16 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService) {
+    .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService, CentroService, LocalExpedicaoService, IncotermsService) {
         "use strict";
         $scope.gotoDev = function () {
             $location.path("/dev");
         };
 
         $scope.listaMateriais = [];
+        $scope.listaDeCentros = [];
+        $scope.listaDeLocaisExpedicao = [];
+        $scope.listaDeIncoterms= [];
 
         function init() {
             if ($rootScope.selectedClient == null) {
@@ -920,6 +928,9 @@ angular.module("App.controllers", [])
             }
 
             $scope.listaMateriais = MaterialService.consultaMaterial();
+            $scope.listaDeCentros = CentroService.consultaCentroPorMaterial(1);
+            $scope.listaDeLocaisExpedicao = LocalExpedicaoService.consultaLocalExpedicaoPorMaterial(1);
+            $scope.listaDeIncoterms = IncotermsService.consultaIncotermsPorMaterial(1);
         }
 
         init();
@@ -966,62 +977,94 @@ angular.module("App.controllers", [])
                     ' </div>'
                 },
                 {
-                    field: 'id',
-                    displayName: '#',
-                    cellTemplate: '<a href="" ng-click="grid.appScope.consultarMaterialCompleto(COL_FIELD);">{{COL_FIELD}}</a>'
+                    field:'id',
+                    displayName:'Id'
                 },
                 {
-                    field: 'codigo',
-                    displayName: 'Material'
+                    field:'codigo',
+                    displayName:'Material'
                 },
                 {
-                    field: 'cor',
-                    displayName: 'Cor'
+                    field:'cor',
+                    displayName:'Cor'
                 },
                 {
-                    field: 'voltagem',
-                    displayName: 'Voltagem'
+                    field:'voltagem',
+                    displayName:'Voltagem'
                 },
                 {
-                    field: 'condicaoPagamento',
-                    displayName: 'Cond. Pagt'
+                    field:'condPagto',
+                    displayName:'Cond. Pagamento'
                 },
                 {
-                    field: 'quatidade',
-                    displayName: 'Qnt'
+                    field:'quantidade',
+                    displayName:'Quantidade'
                 },
                 {
-                    field: 'alt',
-                    displayName: '%ALT'
+                    field:'situacaoCarga',
+                    displayName:'Sit. Carga'
                 },
                 {
-                    field: 'pvl',
-                    displayName: 'PVL'
+                    field:'precFlexibilidade',
+                    displayName:'%Flexib'
                 },
                 {
-                    field: 'condicaoFrente',
-                    displayName: 'Cond. Frete'
+                    field:'percRedutorDesconto',
+                    displayName:'%Redut.'
                 },
                 {
-                    field: 'valorFrete',
-                    displayName: 'VL Frete'
+                    field:'pvl',
+                    displayName:'PVL'
                 },
                 {
-                    field: 'valorNotaFiscalUnitario',
-                    displayName: 'VL NF Unit'
+                    field:'condPagtoFrete',
+                    displayName:'Cond. Frete'
                 },
                 {
-                    field: 'valorICMS',
-                    displayName: 'VL ICMS'
+                    field:'valorFrete',
+                    displayName:'VL. Frete'
                 },
                 {
-                    field: 'valorIPI',
-                    displayName: 'VL IPI'
+                    field:'valorFreteMlog',
+                    displayName:'VL. Frete MLOG'
                 },
                 {
-                    field: 'centroExpList',
-                    displayName: 'Centro Exp.',
+                    field:'valorNotaFiscalUnitario',
+                    displayName:'Valor NF Unit.'
+                },
+                {
+                    field:'valorNotaFiscalTotal',
+                    displayName:'Valor NF Total'
+                },
+                {
+                    field:'valorComIcms',
+                    displayName:'VL. C/ ICMS'
+                },
+                {
+                    field:'valorComIpi',
+                    displayName:'VL. C/ IPI'
+                },
+                {
+                    field:'valorComIcmsSt',
+                    displayName:'VL. C/ ICMS ST'
+                },
+                {
+                    field:'centro',
+                    displayName:'Centro'
+                },
+                {
+                    field:'localExpedicao',
+                    displayName:'Loc. Exped.',
                     cellTemplate:'<select ng-model="te" ng-options="cond for cond in COL_FIELD"></select>'
+
+                },
+                {
+                    field:'juros',
+                    displayName:'%Juros'
+                },
+                {
+                    field:'descricao',
+                    displayName:'Descricao'
                 }
             ]
         };
