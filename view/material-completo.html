@@ -67,13 +67,11 @@
                         <div class="col-sm-12">
                             <label class="col-sm-2">Centro</label>
                             <div class="col-sm-4">
-                                <input ng-disabled="false" type="text" class="form-control" placeholder="Centro"
-                                       ng-model="material.centro">
+                                <select ng-model="material.centro" ng-options="centro.parcNeg for centro in listaDeCentros"></select>
                             </div>
                             <label class="col-sm-2">Local Expedição</label>
                             <div class="col-sm-4">
-                                <input ng-disabled="false" type="text" class="form-control" placeholder="Local Expedição"
-                                       ng-model="material.localExpedicao">
+                                <select ng-model="material.localExpedicao" ng-options="local.parcNeg for local in listaDeLocaisExpedicao"></select>
                             </div>
                         </div>
                     </div>

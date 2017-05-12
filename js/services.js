@@ -38,8 +38,21 @@ angular.module("App.services", [])
                         valorComIcms:"472.20",
                         valorComIpi:"491.09",
                         valorComIcmsSt:"0.00",
-                        centro:"",
-                        localExpedicao:['teste'],
+                        centro:[
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"
+                        ],
+                        localExpedicao:[
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros:"0.000",
                         descricao:""
                     },
@@ -62,8 +75,21 @@ angular.module("App.services", [])
                         valorComIcms:"472.20",
                         valorComIpi:"491.09",
                         valorComIcmsSt:"0.00",
-                        centro:"",
-                        localExpedicao:"",
+                        centro:[
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"
+                        ],
+                        localExpedicao:[
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros:"0.000",
                         descricao:""
                     },
@@ -86,8 +112,21 @@ angular.module("App.services", [])
                         valorComIcms:"472.20",
                         valorComIpi:"491.09",
                         valorComIcmsSt:"0.00",
-                        centro:"",
-                        localExpedicao:"",
+                        centro:[
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"
+                        ],
+                        localExpedicao:[
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros:"0.000",
                         descricao:""
                     },
@@ -110,8 +149,21 @@ angular.module("App.services", [])
                         valorComIcms:"472.20",
                         valorComIpi:"491.09",
                         valorComIcmsSt:"0.00",
-                        centro:"",
-                        localExpedicao:"",
+                        centro:[
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"
+                        ],
+                        localExpedicao:[
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros:"0.000",
                         descricao:""
                     }
