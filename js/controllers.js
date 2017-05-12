@@ -872,7 +872,7 @@ angular.module("App.controllers", [])
     .controller("ModalMaterialCompletoCtrl", function ($scope, $rootScope, $uibModalInstance, material, CentroService, LocalExpedicaoService, IncotermsService) {
 
         $scope.material = material;
-        $scope.
+
 
         function init(){
             //todo fazer padrão promessa
