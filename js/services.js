@@ -361,4 +361,19 @@ angular.module("App.services", [])
                 ]
             }
         }
+    })
+    .service("CondicaoPagamentoService", function () {
+        return {
+            consultaIncotermsPorMaterial : function (materialId) {
+                return [
+                    {copg:0001,explicacaoPropria:"pagamento imediato s/desconto",numDias:"000"},
+                    {copg:0901,explicacaoPropria:"pagamento diverso bloqueado (à vista)",numDias:"000"},
+                    {copg:5001,explicacaoPropria:"Pgto à Vista - Imediato",numDias:"000"},
+                    {copg:5002,explicacaoPropria:"Pgto 15 dias - Produto Acabado Nacional",numDias:"015"},
+                    {copg:5003,explicacaoPropria:"Pgto 20 dias - Produto Acabado Nacional",numDias:"020"},
+                    {copg:5004,explicacaoPropria:"Pgto 30 dias - Produto Acabado Nacional",numDias:"030"},
+                    {copg:5005,explicacaoPropria:"Pgto 40 dias - Produto Acabado Nacional",numDias:"040"}
+                ]
+            }
+        }
     });

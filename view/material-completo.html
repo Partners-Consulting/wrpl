@@ -67,11 +67,13 @@
                         <div class="col-sm-12">
                             <label class="col-sm-2">Centro</label>
                             <div class="col-sm-4">
-                                <select ng-model="material.centro" ng-options="centro.parcNeg for centro in listaDeCentros"></select>
+                                <select ng-model="material.centro"
+                                        ng-options="centro.parcNeg for centro in listaDeCentros"></select>
                             </div>
                             <label class="col-sm-2">Local Expedição</label>
                             <div class="col-sm-4">
-                                <select ng-model="material.localExpedicao" ng-options="local.parcNeg for local in listaDeLocaisExpedicao"></select>
+                                <select ng-model="material.localExpedicao"
+                                        ng-options="local.parcNeg for local in listaDeLocaisExpedicao"></select>
                             </div>
                         </div>
                     </div>
@@ -82,7 +84,7 @@
                             <label class="col-sm-2">Quantidade</label>
                             <div class="col-sm-4">
                                 <input ng-disabled="false" type="text" class="form-control" placeholder="Quantidade"
-                                ng-model="material.quantidade">
+                                       ng-model="material.quantidade">
                             </div>
                             <label class="col-sm-2">Um</label>
                             <div class="col-sm-4">
@@ -113,7 +115,8 @@
                         <div class="col-sm-12">
                             <label class="col-sm-2">Cond. Pagto Frete</label>
                             <div class="col-sm-4">
-                                <input ng-disabled="true" type="text" class="form-control" placeholder="Cond. Pagto Frete"
+                                <input ng-disabled="true" type="text" class="form-control"
+                                       placeholder="Cond. Pagto Frete"
                                        ng-model="material.condPagtoFrete">
                             </div>
                             <label class="col-sm-2">Dias Concessão</label>
@@ -156,7 +159,8 @@
                         <div class="col-sm-12">
                             <label class="col-sm-2">% Desc. Parceria</label>
                             <div class="col-sm-4">
-                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Desc. Parceria"
+                                <input ng-disabled="true" type="text" class="form-control"
+                                       placeholder="% Desc. Parceria"
                                        ng-model="material.precDescParceria">
                             </div>
                             <label class="col-sm-2">% Desc. Canal</label>
@@ -172,12 +176,14 @@
                         <div class="col-sm-12">
                             <label class="col-sm-2">% Desc. Categoria</label>
                             <div class="col-sm-4">
-                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Desc. Categoria"
+                                <input ng-disabled="true" type="text" class="form-control"
+                                       placeholder="% Desc. Categoria"
                                        ng-model="material.precDescCategoria">
                             </div>
                             <label class="col-sm-2">% Flexib. Máxima</label>
                             <div class="col-sm-4">
-                                <input ng-disabled="true" type="text" class="form-control" placeholder="% Flexib. Máxima"
+                                <input ng-disabled="true" type="text" class="form-control"
+                                       placeholder="% Flexib. Máxima"
                                        ng-model="material.percFlexibMaxima">
                             </div>
                         </div>
@@ -188,12 +194,14 @@
                         <div class="col-sm-12">
                             <label class="col-sm-2">% Flexibilidade</label>
                             <div class="col-sm-4">
-                                <input ng-disabled="false" type="text" class="form-control" placeholder="% Flexibilidade"
+                                <input ng-disabled="false" type="text" class="form-control"
+                                       placeholder="% Flexibilidade"
                                        ng-model="material.precFlexibilidade">
                             </div>
                             <label class="col-sm-2">% Redutor Desconto</label>
                             <div class="col-sm-4">
-                                <input ng-disabled="false" type="text" class="form-control" placeholder="% Redutor Desconto"
+                                <input ng-disabled="false" type="text" class="form-control"
+                                       placeholder="% Redutor Desconto"
                                        ng-model="material.percRedutorDesconto">
                             </div>
                         </div>
@@ -204,7 +212,8 @@
                         <div class="col-sm-12">
                             <label class="col-sm-2">Valor Negociado</label>
                             <div class="col-sm-4">
-                                <input ng-disabled="false" type="text" class="form-control" placeholder="Valor Negociado"
+                                <input ng-disabled="false" type="text" class="form-control"
+                                       placeholder="Valor Negociado"
                                        ng-model="material.valorNegociado">
                             </div>
                             <label class="col-sm-2">Pvl</label>
@@ -305,7 +314,8 @@
                             </div>
                             <label class="col-sm-2">Valor do Icms Total</label>
                             <div class="col-sm-4">
-                                <input ng-disabled="true" type="text" class="form-control" placeholder="Valor do Icms Total"
+                                <input ng-disabled="true" type="text" class="form-control"
+                                       placeholder="Valor do Icms Total"
                                        ng-model="material.valorDoIcmsTotal">
                             </div>
                         </div>
@@ -332,6 +342,7 @@
     </uib-tab>
 </uib-tabset>
 <div class="modal-footer">
-    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="transferirMaterial(material)">Salvar
+    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="transferirMaterial(material)">
+        Salvar
     </button>
 </div>

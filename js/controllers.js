@@ -846,7 +846,7 @@ angular.module("App.controllers", [])
                 {
                     field: 'condPagtos',
                     displayName: 'Cond. Pagtos',
-                    cellTemplate:'<select ng-model="MODEL_COL_FIELD" ng-options="cond.codigo for cond in COL_FIELD"></select>'
+                    cellTemplate:'<select ng-model="condPagtos" ng-options="cond.codigo for cond in COL_FIELD"></select>'
                 },
                 {
                     field: 'incoterms',
@@ -855,11 +855,161 @@ angular.module("App.controllers", [])
                 {
                     field: 'condFrete',
                     displayName: 'Cond. Frete',
-                    cellTemplate:'<select ng-model="MODEL_COL_FIELD" ng-options="cond.codigo for cond in COL_FIELD"></select>'
+                    cellTemplate:'<select ng-model="condFrete" ng-options="cond.codigo for cond in COL_FIELD"></select>'
                 }
             ]
         };
 
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+
+        $scope.replicar = function () {
+            $uibModalInstance.close();
+        }
+
+    })
+    .controller("ModalProgramarEntregaCtrl", function ($scope, $rootScope, $uibModalInstance) {
+
+
+        $scope.gridReplicas = {
+            data: 'datasProgramads',
+            columnDefs: [
+                {
+                    field: 'eliminarLinha',
+                    displayName: 'Eliminar linha',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="red" style="color: red"  ng-click="grid.appScope.removerDataProgramada(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
+                    ' </div>'
+                },
+                {
+                    field: 'agendamentoEntrega',
+                    displayName: 'Agend. Entrega'
+                },
+                {
+                    field: 'quatidadeDistribuicao',
+                    displayName: 'Qt. Distribuição'
+                }
+            ]
+        };
+        
+        $scope.removerDataProgramada = function () {
+
+        }
+
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+
+        $scope.replicar = function () {
+            $uibModalInstance.close();
+        }
+
+    })
+    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, $uibModalInstance, materiais,$uibModal, $uibModalInstance) {
+
+        $scope.showDetalhe = false;
+        $scope.listaMateriais = materiais
+
+        $scope.abriDetalhe = function (materiais) {
+            $scope.showDetalhe = !$scope.showDetalhe;
+        }
+
+        $scope.listaMateriais = materiais
+
+        $scope.gridSimulacao = {
+            data: 'listaMateriais',
+            columnDefs: [
+                {
+                    field: 'codigo',
+                    displayName: 'Material',
+                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                },
+                {
+                    field: 'modelo',
+                    displayName: 'modelo',
+                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                },
+                {
+                    field: 'cor',
+                    displayName: 'Cor',
+                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                },
+                {
+                    field: 'voltagem',
+                    displayName: 'Voltagem',
+                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                },
+                {
+                    field: 'quantidade',
+                    displayName: 'qtd',
+                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                }
+            ]
+        };
+
+        $scope.gridDetalhe = {
+            data: 'listaMateriais',
+            columnDefs: [
+                {
+                    field: 'progDeEntrega',
+                    displayName: 'Prog. De Entrega',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="blue" style="color: black"  ng-click="grid.appScope.programarEntrega(row.entity)" href=""><i class="fa fa-calendar bigger-130"></i></a>' +
+                    ' </div>'
+                },
+                {
+                    field: 'clienteEmissor',
+                    displayName: 'Cliente Emissor'
+                },
+                {
+                    field: 'nome',
+                    displayName: 'Nome'
+                },
+                {
+                    field: 'quatidadeDistribuicao',
+                    displayName: 'QTD. Distribuição'
+                },
+                {
+                    field: 'dataDesejada',
+                    displayName: 'Data Desej.'
+                },
+                {
+                    field: 'endereco',
+                    displayName: 'Endereço.'
+                },
+                {
+                    field: 'cidade',
+                    displayName: 'Cidade'
+                },
+                {
+                    field: 'estado',
+                    displayName: 'Estado'
+                },
+                {
+                    field: 'cnpj',
+                    displayName: 'CNPJ'
+                },
+                {
+                    field: 'incricaoEstadual',
+                    displayName: 'Inscr. Estadual.'
+                },
+                {
+                    field: 'status',
+                    displayName: 'Status'
+                }
+            ]
+        };
+
+        $scope.programarEntrega = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/programar-entrega.html',
+                controller: 'ModalProgramarEntregaCtrl',
+                size:'sm'
+            });
+        }
+        
         $scope.close = function () {
             $uibModalInstance.close();
         };
@@ -950,6 +1100,20 @@ angular.module("App.controllers", [])
             });
         }
 
+        $scope.efetivarOv = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/efetivar-ov.html',
+                controller: 'ModalEfetivarOvCtrl',
+                size:'lg',
+                resolve: {
+                   materiais: function () {
+                        return $scope.listaMateriais;
+                    }
+                }
+            });
+        }
+
         $scope.consultarMaterialCompleto = function (id) {
             var modalInstance = $uibModal.open({
                 animation: true,
@@ -966,10 +1130,12 @@ angular.module("App.controllers", [])
         }
 
         $scope.gridMateriais = {
+            enableHorizontalScrollbar: true,
             data: 'listaMateriais',
             columnDefs: [
                 {
                     field: 'acao',
+                    width:'150',
                     displayName: 'Status',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarMateria(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
@@ -978,94 +1144,116 @@ angular.module("App.controllers", [])
                 },
                 {
                     field:'id',
+                    width:'150',
                     displayName:'Id',
                     cellTemplate: '  <a href="" ng-click="grid.appScope.consultarMaterialCompleto(COL_FIELD)">{{COL_FIELD}}</a>'
                 },
                 {
                     field:'codigo',
+                    width:'150',
                     displayName:'Material'
                 },
                 {
                     field:'cor',
+                    width:'150',
                     displayName:'Cor'
                 },
                 {
                     field:'voltagem',
+                    width:'150',
                     displayName:'Voltagem'
                 },
                 {
                     field:'condPagto',
+                    width:'150',
                     displayName:'Cond. Pagamento'
                 },
                 {
                     field:'quantidade',
+                    width:'150',
                     displayName:'Quantidade'
                 },
                 {
                     field:'situacaoCarga',
+                    width:'150',
                     displayName:'Sit. Carga'
                 },
                 {
                     field:'precFlexibilidade',
+                    width:'150',
                     displayName:'%Flexib'
                 },
                 {
                     field:'percRedutorDesconto',
+                    width:'150',
                     displayName:'%Redut.'
                 },
                 {
                     field:'pvl',
+                    width:'150',
                     displayName:'PVL'
                 },
                 {
                     field:'condPagtoFrete',
+                    width:'150',
                     displayName:'Cond. Frete'
                 },
                 {
                     field:'valorFrete',
+                    width:'150',
                     displayName:'VL. Frete'
                 },
                 {
                     field:'valorFreteMlog',
+                    width:'150',
                     displayName:'VL. Frete MLOG'
                 },
                 {
                     field:'valorNotaFiscalUnitario',
+                    width:'150',
                     displayName:'Valor NF Unit.'
                 },
                 {
                     field:'valorNotaFiscalTotal',
+                    width:'150',
                     displayName:'Valor NF Total'
                 },
                 {
                     field:'valorComIcms',
+                    width:'150',
                     displayName:'VL. C/ ICMS'
                 },
                 {
                     field:'valorComIpi',
+                    width:'150',
                     displayName:'VL. C/ IPI'
                 },
                 {
                     field:'valorComIcmsSt',
+                    width:'150',
                     displayName:'VL. C/ ICMS ST'
                 },
                 {
                     field:'centro',
+                    width:'150',
                     displayName:'Centro',
                     cellTemplate:'<select ng-model="centro" ng-options="cond for cond in COL_FIELD"></select>'
                 },
                 {
                     field:'localExpedicao',
+                    width:'150',
                     displayName:'Loc. Exped.',
                     cellTemplate:'<select ng-model="localExpedicao" ng-options="cond for cond in COL_FIELD"></select>'
 
                 },
                 {
                     field:'juros',
+                    width:'150',
                     displayName:'%Juros'
                 },
                 {
                     field:'descricao',
+                    width:'150',
                     displayName:'Descricao'
                 }
             ]
