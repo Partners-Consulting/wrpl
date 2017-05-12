@@ -11,8 +11,10 @@ angular.module('App', ["App.controllers",
     'gridshore.c3js.chart',
     'oitozero.ngSweetAlert',
     'ui.grid',
-    'ui.grid.exporter'
-    
+    'ui.grid.exporter',
+    'ui.grid.selection',
+    'ui.grid.edit'
+
 
 
     ])
