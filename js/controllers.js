@@ -879,9 +879,9 @@ angular.module("App.controllers", [])
 
         function init(){
             //todo fazer padrão promessa
-            $scope.material.centro = CentroService.consultaCentroPorMaterial(material.id);
-            $scope.material.localExpedicao = LocalExpedicaoService.consultaLocalExpedicaPorMaterial(material.id);
-            $scope.material.incoterms = IncotermsService.consultaIncotermsPorMaterial(material.id);
+            $scope.listaDeCentros = CentroService.consultaCentroPorMaterial(material.id);
+            $scope.listaDeLocaisExpedicao = LocalExpedicaoService.consultaLocalExpedicaoPorMaterial(material.id);
+            $scope.listaDeIncoterms = IncotermsService.consultaIncotermsPorMaterial(material.id);
         }
 
         init();
@@ -926,7 +926,7 @@ angular.module("App.controllers", [])
                 });
 
             }
-
+            //todo fazer padrão promessa
             $scope.listaMateriais = MaterialService.consultaMaterial();
             $scope.listaDeCentros = CentroService.consultaCentroPorMaterial(1);
             $scope.listaDeLocaisExpedicao = LocalExpedicaoService.consultaLocalExpedicaoPorMaterial(1);
@@ -978,7 +978,8 @@ angular.module("App.controllers", [])
                 },
                 {
                     field:'id',
-                    displayName:'Id'
+                    displayName:'Id',
+                    cellTemplate: '  <a href="" ng-click="grid.appScope.consultarMaterialCompleto(COL_FIELD)">{{COL_FIELD}}</a>'
                 },
                 {
                     field:'codigo',
@@ -1050,12 +1051,13 @@ angular.module("App.controllers", [])
                 },
                 {
                     field:'centro',
-                    displayName:'Centro'
+                    displayName:'Centro',
+                    cellTemplate:'<select ng-model="centro" ng-options="cond for cond in COL_FIELD"></select>'
                 },
                 {
                     field:'localExpedicao',
                     displayName:'Loc. Exped.',
-                    cellTemplate:'<select ng-model="te" ng-options="cond for cond in COL_FIELD"></select>'
+                    cellTemplate:'<select ng-model="localExpedicao" ng-options="cond for cond in COL_FIELD"></select>'
 
                 },
                 {
