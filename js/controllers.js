@@ -816,6 +816,84 @@ angular.module("App.controllers", [])
         }
 
     })
+    .controller("ModalReplicarCtrl", function ($scope, $rootScope, $uibModalInstance, replicas) {
+
+        $scope.replicas = replicas;
+
+        $scope.gridReplicas = {
+            data: 'replicas',
+            columnDefs: [
+                {
+                    field: 'acao',
+                    displayName: 'Status',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarMateria(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
+                    ' <a class="red" style="color: red"  ng-click="grid.appScope.removerMaterial(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
+                    ' </div>'
+                },
+                {
+                    field: 'orgVendas',
+                    displayName: 'Org. Vendas'
+                },
+                {
+                    field: 'canal',
+                    displayName: 'Canal'
+                },
+                {
+                    field: 'setor',
+                    displayName: 'Setor'
+                },
+                {
+                    field: 'condPagtos',
+                    displayName: 'Cond. Pagtos',
+                    cellTemplate:'<select ng-model="MODEL_COL_FIELD" ng-options="cond.codigo for cond in COL_FIELD"></select>'
+                },
+                {
+                    field: 'incoterms',
+                    displayName: 'Incoterms'
+                },
+                {
+                    field: 'condFrete',
+                    displayName: 'Cond. Frete',
+                    cellTemplate:'<select ng-model="MODEL_COL_FIELD" ng-options="cond.codigo for cond in COL_FIELD"></select>'
+                }
+            ]
+        };
+
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+
+        $scope.replicar = function () {
+            $uibModalInstance.close();
+        }
+
+    })
+    .controller("ModalMaterialCompletoCtrl", function ($scope, $rootScope, $uibModalInstance, material, CentroService, LocalExpedicaoService, IncotermsService) {
+
+        $scope.material = material;
+        $scope.
+
+        function init(){
+            //todo fazer padrão promessa
+            $scope.material.centro = CentroService.consultaCentroPorMaterial(material.id);
+            $scope.material.localExpedicao = LocalExpedicaoService.consultaLocalExpedicaPorMaterial(material.id);
+            $scope.material.incoterms = IncotermsService.consultaIncotermsPorMaterial(material.id);
+        }
+
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+        
+        $scope.transferirMaterial = function (material) {
+            $uibModalInstance.close();
+        }
+
+        $scope.salvarMaterial = function () {
+            $uibModalInstance.close();
+        }
+
+    })
     .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService) {
         "use strict";
         $scope.gotoDev = function () {
@@ -849,13 +927,30 @@ angular.module("App.controllers", [])
         $scope.replicar = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                templateUrl: './view/editar-linhaBranca.html',
-                controller: 'ModalProdutoCtrl',
+                templateUrl: './view/replicar.html',
+                controller: 'ModalReplicarCtrl',
+                size:'lg',
                 resolve: {
-                    produto: function () {
-                        return produto;
+                    replicas: function ()
+                    {
+                        return MaterialService.consultaReplicas();
                     }
                 }
+            });
+        }
+
+        $scope.consultarMaterialCompleto = function (id) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/material-completo.html',
+                controller: 'ModalMaterialCompletoCtrl',
+                size:'lg',
+                resolve: {
+                    material: function (){
+                        return MaterialService.consultaMaterialCompleto(id);
+                    }
+                }
+
             });
         }
 
@@ -872,7 +967,8 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'id',
-                    displayName: '#'
+                    displayName: '#',
+                    cellTemplate: '<a href="" ng-click="grid.appScope.consultarMaterialCompleto(COL_FIELD);">{{COL_FIELD}}</a>'
                 },
                 {
                     field: 'codigo',
@@ -924,7 +1020,8 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'centroExpList',
-                    displayName: 'Centro Exp.'
+                    displayName: 'Centro Exp.',
+                    cellTemplate:'<select ng-model="te" ng-options="cond for cond in COL_FIELD"></select>'
                 }
             ]
         };

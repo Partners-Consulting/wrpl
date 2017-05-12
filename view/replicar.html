@@ -1,0 +1,28 @@
+<div class="modal-header bg-primary" style="background-color:#333">
+    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
+            style="margin-top: -10px;" ng-click="close()">×
+    </button>
+    <h4>Replicar</h4>
+
+</div>
+
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div ui-grid="gridReplicas"></div>
+        </div>
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-sm-offset-10 col-sm-1">
+            <button data-bb-handler="confirm" type="button" class="btn btn-primary"
+                    ng-click="close()">Replicar
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+
+</div>
