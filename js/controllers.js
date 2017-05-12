@@ -871,31 +871,47 @@ angular.module("App.controllers", [])
     })
     .controller("ModalProgramarEntregaCtrl", function ($scope, $rootScope, $uibModalInstance) {
 
+        $scope.datasProgramadas = [
+            {
+                agendaEntrega:'25.05.2017',
+                quatidadeDistribuicao:1
 
-        $scope.gridReplicas = {
-            data: 'datasProgramads',
+            }
+        ];
+
+        $scope.gridProgramaEntrega = {
+            enableRowSelection: true,
+            data: 'datasProgramadas',
+            onRegisterApi : function(gridApi) {
+                $scope.gridApi = gridApi;
+            },
             columnDefs: [
                 {
-                    field: 'eliminarLinha',
-                    displayName: 'Eliminar linha',
-                    cellTemplate: '  <div class="action-buttons"> ' +
-                    ' <a class="red" style="color: red"  ng-click="grid.appScope.removerDataProgramada(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
-                    ' </div>'
-                },
-                {
                     field: 'agendamentoEntrega',
-                    displayName: 'Agend. Entrega'
+                    displayName: 'Agend. Entrega',
+                    cellEditableCondition:true
                 },
                 {
                     field: 'quatidadeDistribuicao',
-                    displayName: 'Qt. Distribuição'
+                    displayName: 'Qt. Distribuição',
+                    cellEditableCondition:true
                 }
             ]
         };
-        
-        $scope.removerDataProgramada = function () {
 
+        $scope.excluirProgramaEntrega = function(){
+            angular.forEach($scope.gridApi.selection.getSelectedRows(), function (data, index) {
+                $scope.datasProgramadas.splice($scope.datasProgramadas.lastIndexOf(data), 1);
+            });
         }
+
+        $scope.adicionarProgramaEntrega = function () {
+            $scope.datasProgramadas.push({agendaEntrega:'Editar', quatidadeDistribuicao:0})
+        }
+
+        $scope.criarProgramaEntrega = function () {
+            $uibModalInstance.close();
+        };
 
         $scope.close = function () {
             $uibModalInstance.close();
@@ -1006,7 +1022,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/programar-entrega.html',
                 controller: 'ModalProgramarEntregaCtrl',
-                size:'sm'
+                size:'md'
             });
         }
         

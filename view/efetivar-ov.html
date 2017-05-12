@@ -33,7 +33,7 @@
                     </div>
                     <label class="col-sm-2">Hora Simulação</label>
                     <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="Voltagem"
+                        <input ng-disabled="true" type="text" class="form-control" placeholder="Hora Simulação"
                                ng-model="simulacao.hora">
                     </div>
                 </div>
@@ -101,7 +101,10 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="transferirMaterial(material)">
-        Salvar
+    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="transferirMaterial(simulacao)">
+        Salvar Divisão
+    </button>
+    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="efetivarOrdensDeVenda(simulacao)">
+        Efetivar Ordens de Venda
     </button>
 </div>
