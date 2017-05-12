@@ -466,10 +466,6 @@ p {
     display: inline-block;
 }
 
-background:-webkit-linear-gradient(top,rgba(0,0,0,0.05),rgba(0,0,0,0.25));
-background:linear-gradient(top,rgba(0,0,0,0.05),rgba(0,0,0,0.25));
-background-color: #FFFD75;
-
 .client-class label {
     font-size: 13px;
     color: #999;

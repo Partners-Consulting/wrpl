@@ -1,6 +1,7 @@
 .ui-grid {
     border: none;
     text-align:center;
+    font-size: 12px;
 }
 
 .ui-grid-header-cell {

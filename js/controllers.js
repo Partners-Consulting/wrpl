@@ -1253,7 +1253,12 @@ angular.module("App.controllers", [])
                     field:'centro',
                     width:'150',
                     displayName:'Centro',
-                    cellTemplate:'<select ng-model="centro" ng-options="cond for cond in COL_FIELD"></select>'
+                    editableCellTemplate: 'uiGridTemplates/ui-select.html',
+                    editDropdownOptionsArray: [
+                        'male',
+                        'female',
+                        'other'
+                    ]
                 },
                 {
                     field:'localExpedicao',
