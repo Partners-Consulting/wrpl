@@ -1,0 +1,15 @@
+
+/*Devido a um conflito com o ui-select e ngAnimate 1.5.8 o DropDown nao ativa com click*/
+.ui-select-choices {
+    opacity: 1 !important;
+}
+
+.ui-select-toggle {
+    height: 25px;
+    padding-top: 2px;
+}
+
+.ui-select-search {
+    height: 25px;
+    padding-top: 2px;
+}

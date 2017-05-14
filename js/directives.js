@@ -1,5 +1,5 @@
 angular.module('App.directives', [])
-    .directive('panel', function() {
+    .directive('panel', function () {
         var ddo = {}; //sempre retorna
 
         ddo.restrict = 'E'; //Atribute or element
@@ -11,7 +11,7 @@ angular.module('App.directives', [])
             icon: '@icon'
         }
 
-        ddo.controller = function($rootScope, $scope, $attrs) {
+        ddo.controller = function ($rootScope, $scope, $attrs) {
             if (!$scope.height) {
                 $scope.height = 50;
             }
@@ -21,18 +21,17 @@ angular.module('App.directives', [])
 
         }
 
-        ddo.link = function($scope, element, attrs) {
+        ddo.link = function ($scope, element, attrs) {
             element.addClass("col-panel col-md-" + $scope.col);
         }
 
         ddo.transclude = true;
 
 
-
         ddo.transclude = {
             'actions': '?panelActions'/*,
-            'body': 'paneBody',
-            'footer': '?paneFooter'*/
+             'body': 'paneBody',
+             'footer': '?paneFooter'*/
         };
 
 
@@ -41,8 +40,7 @@ angular.module('App.directives', [])
         ddo.templateUrl = 'view/directives/panel.html' + r;
         return ddo;
     })
-
-.directive('entry', function() {
+    .directive('entry', function () {
         var ddo = {};
 
 
@@ -57,9 +55,8 @@ angular.module('App.directives', [])
             model: '='
         }
 
-        ddo.controller = function($rootScope, $scope, $attrs) {
+        ddo.controller = function ($rootScope, $scope, $attrs) {
             //console.log("onlyview: " + $scope.model);
-
 
 
             if (!$scope.size) {
@@ -70,7 +67,7 @@ angular.module('App.directives', [])
             }
         }
 
-        ddo.compile = function(element, attrs) {
+        ddo.compile = function (element, attrs) {
             element.attr('class', "col-md-" + attrs.size);
         }
 
@@ -79,12 +76,24 @@ angular.module('App.directives', [])
         ddo.templateUrl = 'view/directives/entry.html' + r;
         return ddo;
     })
-    .directive('exportToCsv', function() {
+    .directive('uiSelectWrap', function ($document, uiGridEditConstants) {
+        return function link($scope, $elm, $attr) {
+            $document.on('click', docClick);
+
+            function docClick(evt) {
+                if ($(evt.target).closest('.ui-select-container').size() === 0) {
+                    $scope.$emit(uiGridEditConstants.events.END_CELL_EDIT);
+                    $document.off('click', docClick);
+                }
+            }
+        };
+    })
+    .directive('exportToCsv', function () {
         return {
             restrict: 'A',
-            link: function(scope, element, attrs) {
+            link: function (scope, element, attrs) {
                 var el = element[0];
-                element.bind('click', function(e) {
+                element.bind('click', function (e) {
                     var table = e.target.nextElementSibling;
                     var csvString = '';
                     for (var i = 0; i < table.rows.length; i++) {

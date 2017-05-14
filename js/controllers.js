@@ -1107,6 +1107,7 @@ angular.module("App.controllers", [])
                 templateUrl: './view/replicar.html',
                 controller: 'ModalReplicarCtrl',
                 size:'lg',
+                backdrop: 'static',
                 resolve: {
                     replicas: function ()
                     {
@@ -1122,6 +1123,7 @@ angular.module("App.controllers", [])
                 templateUrl: './view/efetivar-ov.html',
                 controller: 'ModalEfetivarOvCtrl',
                 size:'lg',
+                backdrop: 'static',
                 resolve: {
                    materiais: function () {
                         return $scope.listaMateriais;
@@ -1250,22 +1252,22 @@ angular.module("App.controllers", [])
                     displayName:'VL. C/ ICMS ST'
                 },
                 {
-                    field:'centro',
-                    width:'150',
                     displayName:'Centro',
-                    editableCellTemplate: 'uiGridTemplates/ui-select.html',
-                    editDropdownOptionsArray: [
-                        'male',
-                        'female',
-                        'other'
-                    ]
+                    width:'150',
+                    field:'centro.parcNeg',
+                    editModelField:'centro',
+                    editDropdownValueLabel: 'parcNeg',
+                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
+                    editDropdownOptionsArray: $scope.listaDeCentros
                 },
                 {
-                    field:'localExpedicao',
+                    displayName:'Local Expedicao',
                     width:'150',
-                    displayName:'Loc. Exped.',
-                    cellTemplate:'<select ng-model="localExpedicao" ng-options="cond for cond in COL_FIELD"></select>'
-
+                    field:'localExpedicao.parcNeg',
+                    editModelField: 'parcNeg',
+                    editDropdownValueLabel: 'parcNeg',
+                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
+                    editDropdownOptionsArray: $scope.listaDeLocaisExpedicao
                 },
                 {
                     field:'juros',
