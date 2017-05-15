@@ -352,10 +352,6 @@ p {
     font-weight: 600;
 }
 
-.table-box-drop caption.blue {
-    background: #3082ff;
-}
-
 /**/
 
 .graficos {
@@ -720,8 +716,8 @@ span.glyphicon.glyphicon-chevron-left {
     margin-left: 25%;
 }
 .box-drop-links {
-    width: 1250px;
-    height: 650px;
+    width: 1100px;
+    height: 500px;
     overflow-y: auto;
 }
 
@@ -737,3 +733,37 @@ form {
 .auto-width {
     width: auto;
 }
+
+.grid-painel {
+    height: 125px;
+}
+
+.painel-slide-left {
+    height: 125px;
+    background-color: red;
+}
+
+.painel-slide-right{
+    height: 125px;
+    background-color: blue;
+}
+
+/* CSS used here will be applied after bootstrap.css */
+.carousel-indicators li { visibility: hidden; }
+
+.carousel-inner .item {
+    font-size:10px;
+    color:#0404B4
+}
+
+.carousel-control {
+    z-index: 10;
+    top: 2%;
+    width: 30px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.carousel-control.left,
+.carousel-control.right { background: none }
+
+.carousel-control.left { left: -10px; }
+.carousel-control.right { right: -10px; }

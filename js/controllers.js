@@ -40,6 +40,12 @@ angular.module("App.controllers", [])
         $scope.isBlocked = true;
         $scope.isBlockedTos = false;
         $scope.titulo = 'Últimos Processos';
+        $scope.painelTabela = {
+            quantidadeDeTabela : 4,
+            tabelaAtual: 1,
+            tituloTabelaAtual:'Últimos Processos'
+        }
+
 
         $scope.gerais = [
             {
@@ -203,6 +209,20 @@ angular.module("App.controllers", [])
                 $scope.titulo = 'Concorrentes Revenda';
             }
         });
+
+        $scope.proximaTabela = function () {
+            if($scope.painelTabela.tabelaAtual + 1 <= $scope.painelTabela.quantidadeDeTabela){
+                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual+1;
+                $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
+            }
+        }
+
+        $scope.tabelaAnterior = function () {
+            if($scope.painelTabela.tabelaAtual - 1 < 0){
+                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual+1;
+                $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
+            }
+        }
 
         $scope.adicionarPontual = function () {
             var modalInstance = $uibModal.open({
