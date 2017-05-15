@@ -1080,41 +1080,141 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, $uibModalInstance) {
+    .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, $uibModalInstance, _) {
 
         $scope.showDetalhe = false;
+
+        $scope.listaOrdenASeremEfetivadas = [
+            {
+                status:"",
+                organizacao:"OV 1000",
+                canal:"11",
+                setor:"10",
+                situacaoCargao:"",
+                codProcEsp:"",
+                emissor:"",
+                recebedor:"0000021777",
+                tipo:"ZVPB",
+                preOrdem:"0000000001",
+                statusPreOrdem:"Não Efetivada",
+                ordem:"",
+                imprimir:""
+            },
+            {
+                status:"",
+                organizacao:"OV 1000",
+                canal:"11",
+                setor:"10",
+                situacaoCargao:"",
+                codProcEsp:"",
+                emissor:"",
+                recebedor:"0000041203",
+                tipo:"ZVPB",
+                preOrdem:"0000000002",
+                statusPreOrdem:"Não Efetivada",
+                ordem:"",
+                imprimir:""
+            }
+        ]
+
+        $scope.textoOv = [
+            {
+                id: 0,
+                data: '03.04.2017',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                user: {
+                    nome: "PAULA HERMANN",
+                    abreviado: "PHERMANN"
+                }
+            }, {
+                id: 1,
+                data: '03.04.2017',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                user: {
+                    nome: "PAULA HERMANN",
+                    abreviado: "PHERMANN"
+                }
+            }
+        ]
+
+        $scope.textoSimulacao = [
+            {
+                id: 0,
+                data: '03.04.2017',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                user: {
+                    nome: "PAULA HERMANN",
+                    abreviado: "PHERMANN"
+                }
+            }, {
+                id: 1,
+                data: '03.04.2017',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                user: {
+                    nome: "PAULA HERMANN",
+                    abreviado: "PHERMANN"
+                }
+            }
+        ]
 
         $scope.abriDetalhe = function (materiais) {
             $scope.showDetalhe = !$scope.showDetalhe;
         }
 
         $scope.gridOrdenASeremEfetivadas = {
-            data: 'listaMateriais',
+            data: 'listaOrdenASeremEfetivadas',
             columnDefs: [
                 {
-                    field: 'codigo',
-                    displayName: 'Material',
-                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                    field: 'status',
+                    displayName: 'Status'
                 },
                 {
-                    field: 'modelo',
-                    displayName: 'modelo',
-                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                    field: 'organizacao',
+                    displayName: 'Organização'
                 },
                 {
-                    field: 'cor',
-                    displayName: 'Cor',
-                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                    field: 'canal',
+                    displayName: 'Canal'
                 },
                 {
-                    field: 'voltagem',
-                    displayName: 'Voltagem',
-                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                    field: 'setor',
+                    displayName: 'Setor'
                 },
                 {
-                    field: 'quantidade',
-                    displayName: 'qtd',
-                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                    field: 'situacaoCargao',
+                    displayName: 'Sit. Carga'
+                },
+                {
+                    field: 'codProcEsp',
+                    displayName: 'CódProcEsp'
+                },
+                {
+                    field: 'emissor',
+                    displayName: 'Emissor'
+                },
+                {
+                    field: 'recebedor',
+                    displayName: 'Recebedor'
+                },
+                {
+                    field: 'tipo',
+                    displayName: 'Tipo'
+                },
+                {
+                    field: 'preOrdem',
+                    displayName: 'Pré Ordem'
+                },
+                {
+                    field: 'statusPreOrdem',
+                    displayName: 'Status Pré Ordem'
+                },
+                {
+                    field: 'ordem',
+                    displayName: 'Ordem'
+                },
+                {
+                    field: 'imprimir',
+                    displayName: 'Imprimir'
                 }
             ]
         };
@@ -1181,8 +1281,12 @@ angular.module("App.controllers", [])
             });
         }
 
-        $scope.removePontual = function (pontual) {
-            $rootScope.simulacaoPontuais = _.without($rootScope.simulacaoPontuais, _.findWhere($rootScope.simulacaoPontuais, {id: pontual.id}));
+        $scope.removeTextoOv = function (texto) {
+             $scope.textoOv = _.without( $scope.textoOv, _.findWhere( $scope.textoOv, {id: texto.id}));
+        }
+
+        $scope.removeTextoSimulacao = function (texto) {
+             $scope.textoSimulacao = _.without( $scope.textoSimulacao, _.findWhere( $scope.textoSimulacao, {id: texto.id}));
         }
 
         $scope.adicionarTextoOv = function () {
@@ -1200,7 +1304,10 @@ angular.module("App.controllers", [])
                 controller: 'ModalTextoOvCtrl'
             });
         };
-
+    
+        $scope.efetivarOrdensDeVenda = function () {
+            $scope.listaOrdenASeremEfetivadas[0].ordem = 123123213;
+        }
 
         $scope.close = function () {
             $uibModalInstance.close();

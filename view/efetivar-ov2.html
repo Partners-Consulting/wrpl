@@ -81,15 +81,15 @@
                         class="fa fa-plus-circle" aria-hidden="true"></i></button>
 
             </h3>
-            <ul class="notes" ng-repeat="pontual in simulacaoPontuais">
+            <ul class="notes" ng-repeat="texto in textoOv">
                 <li>
                     <button type="button" class="bootbox-close-button close white" data-dismiss="modal"
                             aria-hidden="true"
-                            style="margin-top: -10px;" ng-click="removePontual(pontual)">×
+                            style="margin-top: -10px;" ng-click="removeTextoOv(texto)">×
                     </button>
-                    <span class="text">{{pontual.texto}}</span>
-                    <div class="date">{{pontual.data | date:'dd.MM.yyyy'}}</div>
-                    <div class="noteuser">{{pontual.user.abreviado}}</div>
+                    <span class="text">{{texto.texto}}</span>
+                    <div class="date">{{texto.data | date:'dd.MM.yyyy'}}</div>
+                    <div class="noteuser">{{texto.user.abreviado}}</div>
                 </li>
             </ul>
         </div>
@@ -99,15 +99,15 @@
                         class="fa fa-plus-circle" aria-hidden="true"></i></button>
 
             </h3>
-            <ul class="notes" ng-repeat="pontual in simulacaoPontuais">
+            <ul class="notes" ng-repeat="textoSimulcao in textoSimulacao">
                 <li>
                     <button type="button" class="bootbox-close-button close white" data-dismiss="modal"
                             aria-hidden="true"
-                            style="margin-top: -10px;" ng-click="removePontual(pontual)">×
+                            style="margin-top: -10px;" ng-click="removeTextoSimulacao(textoSimulcao)">×
                     </button>
-                    <span class="text">{{pontual.texto}}</span>
-                    <div class="date">{{pontual.data | date:'dd.MM.yyyy'}}</div>
-                    <div class="noteuser">{{pontual.user.abreviado}}</div>
+                    <span class="text">{{textoSimulcao.texto}}</span>
+                    <div class="date">{{textoSimulcao.data | date:'dd.MM.yyyy'}}</div>
+                    <div class="noteuser">{{textoSimulcao.user.abreviado}}</div>
                 </li>
             </ul>
         </div>
@@ -115,7 +115,7 @@
     </br>
     <div class="row">
         <div class="col-sm-12">
-            <div style="height: 150px" ui-grid="gridSimulacao"></div>
+            <div style="height: 150px" ui-grid="gridOrdenASeremEfetivadas"></div>
         </div>
     </div>
     </br>
