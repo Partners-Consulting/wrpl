@@ -524,6 +524,23 @@ angular.module("App.controllers", [])
             $rootScope.pontuais.unshift(pontual);
         };
     })
+    .controller("ModalTextoOvCtrl", function ($scope, $rootScope, $uibModalInstance) {
+        "use strict";
+        $scope.texto = {
+            observacao: "",
+            corpo: "",
+            data: new Date()
+
+        };
+
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+
+        $scope.adicionarPontualNaLista = function (texto) {
+            $uibModalInstance.close();
+        };
+    })
     .controller("ModalInstanceCriarPontualSimulacoesCtrl", function ($scope, $rootScope, $uibModalInstance) {
         "use strict";
         $scope.pontual = {
@@ -1044,7 +1061,147 @@ angular.module("App.controllers", [])
                 size:'md'
             });
         }
-        
+
+        $scope.efetivarOvStep2 = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/efetivar-ov2.html',
+                controller: 'ModalEfetivarOv2Ctrl',
+                size:'lg'
+            });
+        }
+
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+
+        $scope.replicar = function () {
+            $uibModalInstance.close();
+        }
+
+    })
+    .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, $uibModalInstance) {
+
+        $scope.showDetalhe = false;
+
+        $scope.abriDetalhe = function (materiais) {
+            $scope.showDetalhe = !$scope.showDetalhe;
+        }
+
+        $scope.gridOrdenASeremEfetivadas = {
+            data: 'listaMateriais',
+            columnDefs: [
+                {
+                    field: 'codigo',
+                    displayName: 'Material',
+                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                },
+                {
+                    field: 'modelo',
+                    displayName: 'modelo',
+                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                },
+                {
+                    field: 'cor',
+                    displayName: 'Cor',
+                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                },
+                {
+                    field: 'voltagem',
+                    displayName: 'Voltagem',
+                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                },
+                {
+                    field: 'quantidade',
+                    displayName: 'qtd',
+                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                }
+            ]
+        };
+
+        $scope.gridDetalhe = {
+            data: 'listaMateriais',
+            columnDefs: [
+                {
+                    field: 'progDeEntrega',
+                    displayName: 'Prog. De Entrega',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="blue" style="color: black"  ng-click="grid.appScope.programarEntrega(row.entity)" href=""><i class="fa fa-calendar bigger-130"></i></a>' +
+                    ' </div>'
+                },
+                {
+                    field: 'clienteEmissor',
+                    displayName: 'Cliente Emissor'
+                },
+                {
+                    field: 'nome',
+                    displayName: 'Nome'
+                },
+                {
+                    field: 'quatidadeDistribuicao',
+                    displayName: 'QTD. Distribuição'
+                },
+                {
+                    field: 'dataDesejada',
+                    displayName: 'Data Desej.'
+                },
+                {
+                    field: 'endereco',
+                    displayName: 'Endereço.'
+                },
+                {
+                    field: 'cidade',
+                    displayName: 'Cidade'
+                },
+                {
+                    field: 'estado',
+                    displayName: 'Estado'
+                },
+                {
+                    field: 'cnpj',
+                    displayName: 'CNPJ'
+                },
+                {
+                    field: 'incricaoEstadual',
+                    displayName: 'Inscr. Estadual.'
+                },
+                {
+                    field: 'status',
+                    displayName: 'Status'
+                }
+            ]
+        };
+
+        $scope.programarEntrega = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/programar-entrega.html',
+                controller: 'ModalProgramarEntregaCtrl',
+                size:'md'
+            });
+        }
+
+        $scope.removePontual = function (pontual) {
+            $rootScope.simulacaoPontuais = _.without($rootScope.simulacaoPontuais, _.findWhere($rootScope.simulacaoPontuais, {id: pontual.id}));
+        }
+
+        $scope.adicionarTextoOv = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/adicionar-texto-ov.html',
+                controller: 'ModalTextoOvCtrl'
+            });
+        };
+
+        $scope.adicionarTextoSimulacao = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/adicionar-texto-simulacao.html',
+                controller: 'ModalTextoOvCtrl'
+            });
+        };
+
+
         $scope.close = function () {
             $uibModalInstance.close();
         };
