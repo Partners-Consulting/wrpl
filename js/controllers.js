@@ -816,11 +816,22 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalReplicarCtrl", function ($scope, $rootScope, $uibModalInstance, replicas) {
-
+    .controller("ModalReplicarCtrl", function ($scope, $rootScope, $uibModalInstance, replicas, FreteService, CondicaoPagamentoService) {
+        "use strict";
         $scope.replicas = replicas;
+        $scope.listaCondicaoPagamento = [];
+        $scope.listaCondicaoFrete = [];
+
+        function init(){
+            //todo fazer padrão promessa
+            $scope.listaCondicaoPagamento = CondicaoPagamentoService.consultaPagamentoReplica();
+            $scope.listaCondicaoFrete = FreteService.consultaFreteReplica();
+        }
+
+        init();
 
         $scope.gridReplicas = {
+            enableHorizontalScrollbar: true,
             data: 'replicas',
             columnDefs: [
                 {
@@ -844,18 +855,26 @@ angular.module("App.controllers", [])
                     displayName: 'Setor'
                 },
                 {
-                    field: 'condPagtos',
                     displayName: 'Cond. Pagtos',
-                    cellTemplate:'<select ng-model="condPagtos" ng-options="cond.codigo for cond in COL_FIELD"></select>'
+                    width:'150',
+                    field:'condPagtos.codigo',
+                    editModelField: 'condPagtos',
+                    editDropdownValueLabel: 'codigo',
+                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
+                    editDropdownOptionsArray: $scope.listaCondicaoPagamento
                 },
                 {
                     field: 'incoterms',
                     displayName: 'Incoterms'
                 },
                 {
-                    field: 'condFrete',
-                    displayName: 'Cond. Frete',
-                    cellTemplate:'<select ng-model="condFrete" ng-options="cond.codigo for cond in COL_FIELD"></select>'
+                    displayName:'Cond. Frete',
+                    width:'150',
+                    field:'condFrete.codigo',
+                    editModelField: 'condFrete',
+                    editDropdownValueLabel: 'codigo',
+                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
+                    editDropdownOptionsArray: $scope.listaCondicaoFrete
                 }
             ]
         };
@@ -922,7 +941,7 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, $uibModalInstance, materiais,$uibModal, $uibModalInstance) {
+    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, materiais, $uibModal, $uibModalInstance) {
 
         $scope.showDetalhe = false;
         $scope.listaMateriais = materiais
@@ -1065,6 +1084,84 @@ angular.module("App.controllers", [])
         }
 
     })
+    .controller("ModalHistoricoMaterialCtrl", function ($scope, $rootScope, $uibModalInstance, material, MaterialService) {
+
+        $scope.material = material;
+        $scope.listaHistoricoVenda = [];
+        $scope.loading = false;
+
+        function init(){
+            //todo fazer padrão promessa
+            $scope.loading = true;
+            $scope.listaHistoricoVenda = MaterialService.consultaHistoricoDeVenda(material.id);
+            //$scope.listaHistoricoVenda = [];
+            $scope.loading = false;
+        }
+
+        init();
+
+        $scope.gridHistoricoVenda = {
+            enableHorizontalScrollbar: true,
+            data: 'listaHistoricoVenda',
+            columnDefs: [
+                {
+                    field: 'sku',
+                    width:'150',
+                    displayName: 'SKU'
+                },
+                {
+                    field:'data',
+                    width:'150',
+                    displayName:'Data'
+                },
+                {
+                    field:'pvl',
+                    width:'150',
+                    displayName:'PVL'
+                },
+                {
+                    field:'percDesc',
+                    width:'150',
+                    displayName:'% Desc'
+                },
+                {
+                    field:'percAcres',
+                    width:'150',
+                    displayName:'% Acres'
+                },
+                {
+                    field:'valorTotalNf',
+                    width:'150',
+                    displayName:'Valor Total NF'
+                },
+                {
+                    field:'quantidade',
+                    width:'150',
+                    displayName:'Qtde'
+                },
+                {
+                    field:'condPagto',
+                    width:'150',
+                    displayName:'Cond. Pagto'
+                },
+                {
+                    field:'sap',
+                    width:'150',
+                    displayName:'SAP'
+                },
+                {
+                    field:'ordemDeVenda',
+                    width:'150',
+                    displayName:'Ordem de Venda'
+                }
+            ]
+        };
+
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+
+    })
     .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService, CentroService, LocalExpedicaoService, IncotermsService) {
         "use strict";
         $scope.gotoDev = function () {
@@ -1107,6 +1204,7 @@ angular.module("App.controllers", [])
                 templateUrl: './view/replicar.html',
                 controller: 'ModalReplicarCtrl',
                 size:'lg',
+                backdrop: 'static',
                 resolve: {
                     replicas: function ()
                     {
@@ -1114,7 +1212,7 @@ angular.module("App.controllers", [])
                     }
                 }
             });
-        }
+        };
 
         $scope.efetivarOv = function () {
             var modalInstance = $uibModal.open({
@@ -1122,13 +1220,14 @@ angular.module("App.controllers", [])
                 templateUrl: './view/efetivar-ov.html',
                 controller: 'ModalEfetivarOvCtrl',
                 size:'lg',
+                backdrop: 'static',
                 resolve: {
                    materiais: function () {
                         return $scope.listaMateriais;
                     }
                 }
             });
-        }
+        };
 
         $scope.consultarMaterialCompleto = function (id) {
             var modalInstance = $uibModal.open({
@@ -1143,7 +1242,24 @@ angular.module("App.controllers", [])
                 }
 
             });
-        }
+        };
+
+        $scope.abrirHitoriocoMaterial = function (material) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/historico-material.html',
+                controller: 'ModalHistoricoMaterialCtrl',
+                backdrop: 'static',
+                size:'lg',
+
+                resolve: {
+                    material: function (){
+                        return MaterialService.consultaMaterialCompleto(material.id);
+                    }
+                }
+
+            });
+        };
 
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
@@ -1155,6 +1271,7 @@ angular.module("App.controllers", [])
                     displayName: 'Status',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarMateria(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
+                    ' <a class="black" style="color: black"  ng-click="grid.appScope.abrirHitoriocoMaterial(row.entity)" href=""><i class="fa fa-book bigger-130"></i></a>' +
                     ' <a class="red" style="color: red"  ng-click="grid.appScope.removerMaterial(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
                     ' </div>'
                 },
@@ -1250,17 +1367,22 @@ angular.module("App.controllers", [])
                     displayName:'VL. C/ ICMS ST'
                 },
                 {
-                    field:'centro',
-                    width:'150',
                     displayName:'Centro',
-                    cellTemplate:'<select ng-model="centro" ng-options="cond for cond in COL_FIELD"></select>'
+                    width:'150',
+                    field:'centro.parcNeg',
+                    editModelField:'centro',
+                    editDropdownValueLabel: 'parcNeg',
+                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
+                    editDropdownOptionsArray: $scope.listaDeCentros
                 },
                 {
-                    field:'localExpedicao',
+                    displayName:'Local Expedicao',
                     width:'150',
-                    displayName:'Loc. Exped.',
-                    cellTemplate:'<select ng-model="localExpedicao" ng-options="cond for cond in COL_FIELD"></select>'
-
+                    field:'localExpedicao.parcNeg',
+                    editModelField: 'localExpedicao',
+                    editDropdownValueLabel: 'parcNeg',
+                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
+                    editDropdownOptionsArray: $scope.listaDeLocaisExpedicao
                 },
                 {
                     field:'juros',
