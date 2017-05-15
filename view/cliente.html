@@ -129,11 +129,25 @@
                                    placeholder="Nº Lojas"
                                    ng-model="selectedClient.revenda.numeroLojas">
                         </div>
+                        <label class="col-sm-2">Markup</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                                   placeholder="Markup"
+                                   ng-model="selectedClient.revenda.markup">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-2">Faturamento Mensal</label>
                         <div class="col-sm-4">
                             <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
                                    placeholder="Faturamento Mensal"
                                    ng-model="selectedClient.revenda.faturamentoMensal">
+                        </div>
+                        <label class="col-sm-2">Principal Segmento</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                                   placeholder="Pricipal Segmento"
+                                   ng-model="selectedClient.revenda.principalSegmento">
                         </div>
                     </div>
                     <div class="form-group">
@@ -141,41 +155,6 @@
                         <div class="col-sm-4">
                             <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="% LB"
                                    ng-model="selectedClient.revenda.lb">
-                        </div>
-                        <label class="col-sm-2">% TOS 3</label>
-                        <div class="col-sm-3">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
-                                   placeholder="% TOS 3"
-                                   ng-model="selectedClient.revenda.tos.total">
-                        </div>
-                        <div ng-if="!isBlocked" class="col-sm-1">
-                            <button type="button" class="btn btn-warning btn-xs" ng-click="editarTos()"><i
-                                    class="fa fa-pencil" aria-hidden="true"></i></button>
-                        </div>
-                    </div>
-                    <div ng-if="isBlockedTos" class="form-group">
-                        <label class="col-sm-2">Refrigerador</label>
-                        <div class="col-sm-2">
-                            <input ng-change="calculaTos()" type="text" class="form-control" placeholder="% TOS 3"
-                                   ng-model="selectedClient.revenda.tos.refrigerador">
-                        </div>
-                        <label class="col-sm-2">Lavadora</label>
-                        <div class="col-sm-2">
-                            <input ng-change="calculaTos()" type="text" class="form-control" placeholder="% TOS 3"
-                                   ng-model="selectedClient.revenda.tos.lavadora">
-                        </div>
-                        <label class="col-sm-2">Fogão</label>
-                        <div class="col-sm-2">
-                            <input ng-change="calculaTos()" type="text" class="form-control" placeholder="% TOS 3"
-                                   ng-model="selectedClient.revenda.tos.fogao">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Principal Segmento</label>
-                        <div class="col-sm-4">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
-                                   placeholder="Pricipal Segmento"
-                                   ng-model="selectedClient.revenda.principalSegmento">
                         </div>
                         <label class="col-sm-2">%Principal Segmento</label>
                         <div class="col-sm-4">
@@ -185,17 +164,38 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">Markup</label>
-                        <div class="col-sm-4">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
-                                   placeholder="Markup"
-                                   ng-model="selectedClient.revenda.markup">
+                        <label class="col-sm-2">% TOS T3</label>
+                        <div class="col-sm-2">
+                            <input ng-disabled="false" type="text" class="form-control input-sm"
+                                   placeholder="%TOS T3"
+                                   ng-model="selectedClient.revenda.tos.total">
+                        </div>
+                        <div ng-if="true" class="col-sm-2">
+                            <button type="button" class="btn btn-warning btn-sm" ng-click="editarTos()"><i
+                                    class="fa fa-pencil" aria-hidden="true"></i></button>
                         </div>
                         <label class="col-sm-2">Data de atualização</label>
                         <div class="col-sm-4">
                             <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
                                    placeholder="Data atualização"
                                    ng-model="selectedClient.revenda.data">
+                        </div>
+                    </div>
+                    <div ng-if="isBlockedTos" class="form-group">
+                        <label class="col-sm-2">Refrigerador</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="% TOS 3"
+                                   ng-model="selectedClient.revenda.tos.refrigerador">
+                        </div>
+                        <label class="col-sm-2">Lavadora</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="% TOS 3"
+                                   ng-model="selectedClient.revenda.tos.lavadora">
+                        </div>
+                        <label class="col-sm-2">Fogão</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="% TOS 3"
+                                   ng-model="selectedClient.revenda.tos.fogao">
                         </div>
                     </div>
                 </form>
@@ -228,14 +228,13 @@
     <panel title="Notas" icon="fa-comments" height="58" col="6">
         <div class="row">
             <div class="col-md-6">
-                <h3 class="title-gray-block">Gerais
-                    <button type="button" class="btn btn-success btn-xs note-plus" ng-init="mostra=true"
-                            ng-click="mostra = !mostra"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                </h3>
                 <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
                     <div uib-slide ng-repeat="geral in gerais track by geral.id" index="geral.id"
                          class="slide animated">
-                        <span class="title">{{geral.titulo}}</span>
+                        <h3 class="title-gray-block">{{geral.titulo}}
+                            <button type="button" class="btn btn-success btn-xs note-plus" ng-init="mostra=true"
+                                    ng-click="mostra = !mostra"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </h3>
                         <span ng-show="mostra" class="text">{{geral.texto}}</span>
                         <textarea ng-show="!mostra" ng-model="geral.texto" cols="30" rows="15"></textarea>
                     </div>

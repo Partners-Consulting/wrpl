@@ -729,3 +729,7 @@ span.glyphicon.glyphicon-chevron-left {
 form {
     font-size: 12px;
 }
+
+.auto-width {
+    width: auto;
+}
