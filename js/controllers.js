@@ -1080,6 +1080,55 @@ angular.module("App.controllers", [])
         }
 
     })
+    .controller("ModalBonificacaoCtrl", function ($scope, $rootScope, $uibModal, $uibModalInstance) {
+
+        $scope.showDetalhe = false;
+
+        $scope.abriDetalhe = function (materiais) {
+            $scope.showDetalhe = !$scope.showDetalhe;
+        }
+
+        $scope.listaMateriais = []
+
+        $scope.gridBonificacoes = {
+            data: 'listaMateriais',
+            columnDefs: [
+                {
+                    field: 'marcar',
+                    displayName: 'Marcar'
+                },
+                {
+                    field: 'organizacao',
+                    displayName: 'Organização'
+                },
+                {
+                    field: 'canal',
+                    displayName: 'Canal'
+                },
+                {
+                    field: 'setor',
+                    displayName: 'Setor'
+                },
+                {
+                    field: 'produto',
+                    displayName: 'Produto'
+                },
+                {
+                    field: 'quantidade',
+                    displayName: 'Quantidade'
+                }
+            ]
+        };
+
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+
+        $scope.replicar = function () {
+            $uibModalInstance.close();
+        }
+
+    })
     .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, $uibModalInstance, _) {
 
         $scope.showDetalhe = false;
@@ -1159,6 +1208,15 @@ angular.module("App.controllers", [])
 
         $scope.abriDetalhe = function (materiais) {
             $scope.showDetalhe = !$scope.showDetalhe;
+        }
+
+        $scope.brindesEBonificacoes = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/bonificacao.html',
+                controller: 'ModalBonificacaoCtrl',
+                size:'lg'
+            });
         }
 
         $scope.gridOrdenASeremEfetivadas = {
