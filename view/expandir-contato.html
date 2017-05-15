@@ -3,9 +3,8 @@
             style="margin-top: -10px;" ng-click="close()">×
     </button>
     <h4>Contato</h4>
-
 </div>
-<uib-tabset active="active">
+    <uib-tabset active="active">
     <uib-tab index="0" heading="Detalhe Cliente">
         <div class="modal-body">
             <form class="form-horizontal">
@@ -14,11 +13,11 @@
                     <div class="col-sm-10">
                         <div class="row">
                             <div class="col-sm-6">
-                                <input ng-disabled="true" type="text" class="form-control" placeholder="Codigo"
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Codigo"
                                        ng-model="selectedClient.contatos[0].numero">
                             </div>
                             <div class="col-sm-6">
-                                <input ng-disabled="true" type="text" class="form-control" placeholder="Nome"
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Nome"
                                        ng-model="selectedClient.contatos[0].nome">
                             </div>
                         </div>
@@ -27,111 +26,83 @@
                 <div class="form-group">
                     <label class="col-sm-2">Endereço</label>
                     <div class="col-sm-10">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="Endereço"
+                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Endereço"
                                ng-model="selectedClient.endereco">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2">Cidade</label>
                     <div class="col-sm-10">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="Cidade"
+                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Cidade"
                                ng-model="selectedClient.cidade">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2">Estado</label>
                     <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="UF"
+                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="UF"
                                ng-model="selectedClient.uf">
                     </div>
                     <label class="col-sm-2">País</label>
                     <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="Pais"
+                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Pais"
                                ng-model="selectedClient.pais">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2">Domicilio Fiscal</label>
                     <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="Domicilio Fiscal"
+                        <input ng-disabled="true" type="text" class="form-control input-sm"
+                               placeholder="Domicilio Fiscal"
                                ng-model="selectedClient.domicilioFiscal">
                     </div>
                     <label class="col-sm-2">Cep</label>
                     <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="Cep"
+                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Cep"
                                ng-model="selectedClient.cep">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2">Telefone</label>
                     <div class="col-sm-10">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="Numero"
+                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Numero"
                                ng-model="selectedClient.contatos[0].telefones[0].numero">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2">Email</label>
                     <div class="col-sm-10">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="Nome"
+                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Nome"
                                ng-model="selectedClient.contatos[0].emails[0].email">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2">CNPJ</label>
                     <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="Numero"
+                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Numero"
                                ng-model="selectedClient.cnpj">
                     </div>
                     <label class="col-sm-2">Inscrição Estadual</label>
                     <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control" placeholder="Nome"
+                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Nome"
                                ng-model="selectedClient.inscricaoEstadual">
                     </div>
                 </div>
-                <div class="form-group">
-                    <panel title="Agrupador x Cliente Emissor" height="40" col="12">
-                        <table class="table table-bordered">
-                            <!-- <caption>Monthly Kills</caption> -->
-                            <thead>
-                            <tr>
-                                <th>Cliente agrupador</th>
-                                <th>Cliente Emissor</th>
-                                <th>Nome</th>
-                                <th>CIDADE</th>
-                                <th>ESTADO</th>
-                                <th>CNPJ</th>
-                                <th>ENDEREÇO</th>
-                                <th>CEP</th>
-                                <th>TELEFONE</th>
-                                <th>EMAIL</th>
-                                <th>INSCRIÇÃO ESTADUAL</th>
-                                <th>STATUS</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="agrupadorCliente in agrupadoresClientes">
-                                <td>{{agrupadorCliente.contato.agrupador.numero}}</td>
-                                <td>{{agrupadorCliente.clienteEmissorId}}</td>
-                                <td>{{agrupadorCliente.razao}}</td>
-                                <td>{{agrupadorCliente.cidade}}</td>
-                                <td>{{agrupadorCliente.estado}}</td>
-                                <td>{{agrupadorCliente.cnpj}}</td>
-                                <td>{{agrupadorCliente.endereco}}</td>
-                                <td>{{agrupadorCliente.cep}}</td>
-                                <td>{{agrupadorCliente.contato.telefones[0].numero}}</td>
-                                <td>{{agrupadorCliente.contato.emails[0].email}}</td>
-                                <td>{{agrupadorCliente.inscricaoEstadual}}</td>
-                                <td>{{agrupadorCliente.status}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </panel>
-                </div>
-
             </form>
         </div>
     </uib-tab>
-    <uib-tab index="1" heading="Manutenção Contato">
+    <uib-tab index="1" heading="Agrupador x Cliente">
+            <div class="modal-body">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div ng-if="active == 1" ui-grid="gridAgrupadorXCliente"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </uib-tab>
+    <uib-tab index="2" heading="Manutenção Contato">
         <div class="modal-body">
             <div class="row">
                 <div class="col-sm-12">
@@ -141,11 +112,13 @@
                             <div class="col-sm-9">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input ng-disabled="true" type="text" class="form-control" placeholder="Numero"
+                                        <input ng-disabled="true" type="text" class="form-control input-sm"
+                                               placeholder="Numero"
                                                ng-model="selectedClient.contatoPrioritario.agrupador.numero">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input ng-disabled="true" type="text" class="form-control" placeholder="nome"
+                                        <input ng-disabled="true" type="text" class="form-control input-sm"
+                                               placeholder="nome"
                                                ng-model="selectedClient.contatoPrioritario.agrupador.nome">
                                     </div>
                                 </div>
@@ -156,11 +129,13 @@
                             <div class="col-sm-9">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input ng-disabled="true"  type="text" class="form-control" placeholder="Numero"
+                                        <input ng-disabled="true" type="text" class="form-control input-sm"
+                                               placeholder="Numero"
                                                ng-model="selectedClient.contatoPrioritario.numero">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input ng-disabled="true"  type="text" class="form-control" placeholder="Nome"
+                                        <input ng-disabled="true" type="text" class="form-control input-sm"
+                                               placeholder="Nome"
                                                ng-model="selectedClient.contatoPrioritario.nome">
                                     </div>
                                 </div>
@@ -171,7 +146,8 @@
                             <div class="col-sm-9">
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <input ng-disabled="true" type="text" class="form-control" placeholder="numero"
+                                        <input ng-disabled="true" type="text" class="form-control input-sm"
+                                               placeholder="numero"
                                                ng-model="selectedClient.contatoPrioritario.cargo">
                                     </div>
                                 </div>
@@ -182,14 +158,16 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <button type="button" ng-click="adicionarTelefone()" class="btn btn-default btn-circle btn-lg"><i class="fa fa-phone fa-lg"></i><i class="fa fa-plus"></i></button>
-                    <button type="button" ng-click="adicionarEmail()" class="btn btn-primary btn-circle btn-lg"><i class="fa fa-envelope-o"></i></button>
+                    <button type="button" ng-click="adicionarTelefone()" class="btn btn-default btn-circle btn-md"><i
+                            class="fa fa-phone fa-lg"></i></button>
+                    <button type="button" ng-click="adicionarEmail()" class="btn btn-primary btn-circle btn-md"><i
+                            class="fa fa-envelope-o"></i></button>
                 </div>
             </div>
             </br>
             <div class="row">
                 <div class="col-sm-12">
-                    <div ui-grid="gridTabelaDesnormalizada" class="grid-manutencao-contatos"></div>
+                    <div ng-if="active == 2" ui-grid="gridTabelaDesnormalizada" class="grid-manutencao-contatos"></div>
                 </div>
             </div>
             </br>

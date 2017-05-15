@@ -588,45 +588,109 @@ angular.module("App.controllers", [])
             {field: 'Prioritário'}
         ];
 
+        $scope.agrupadoresClientes = [
+            {
+                clienteEmissorId: 974651321318,
+                agrupador:123456789,
+                razao: "CARREFOUR",
+                cnpj: "08.675.549/0001-56",
+                cidade: "SÃO PAULO",
+                endereco: "RUA PROCOPIO LOHN",
+                uf: "SP",
+                telefone: "11 1234-4321",
+                pais: "BRASIL",
+                domicilioFiscal: "SC 0015",
+                cep: "88410-000",
+                inscricaoEstadual: "255155603",
+                status: "EM PROCESSAMENTO"
+            },
+            {
+                clienteEmissorId: 974651321318,
+                agrupador:123456789,
+                razao: "CARREFOUR",
+                cnpj: "08.675.549/0001-56",
+                cidade: "SÃO PAULO",
+                endereco: "RUA PROCOPIO LOHN",
+                uf: "SP",
+                telefone: "11 1234-4321",
+                pais: "BRASIL",
+                domicilioFiscal: "SC 0015",
+                cep: "88410-000",
+                inscricaoEstadual: "255155603",
+                status: "EM PROCESSAMENTO"
+            },
+        ];
+
+        $scope.gridAgrupadorXCliente = {
+            enableHorizontalScrollbar: false,
+            data : 'agrupadoresClientes',
+            columnDefs : [
+            { field:'agrupador',displayName:'Cliente agrupador'},
+            { field:'clienteEmissorId',displayName:'Cliente Emissor'},
+            { field:'razao',displayName:'Nome'},
+            { field:'cidade',displayName:'CIDADE'},
+            { field:'uf',displayName:'ESTADO'},
+            { field:'cnpj',displayName:'CNPJ'},
+            { field:'endereco',displayName:'ENDEREÇO'},
+            { field:'cep',displayName:'CEP'},
+            { field:'telefone',displayName:'TELEFONE'},
+            { field:'email',displayName:'EMAIL'},
+            { field:'inscricaoEstadual',displayName:'INSCRIÇÃO ESTADUAL'},
+            { field:'status',displayName:'STATUS'}
+        ]};
+
         $scope.gridTabelaDesnormalizada = {
             enableHorizontalScrollbar: 0,
             data: 'tabelaDesnormalizada',
             columnDefs: [
                 {
                     field: 'contato',
+                    width: '140',
                     displayName: 'Contato'
-                }, {
+                },
+                {
                     field: 'prioritario',
-                    displayName: 'Prioritário',
+                    width: '70',
+                    displayName: 'Priori.',
                     cellTemplate: ' <div ng-click="grid.appScope.alterarPrioridadeContato(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
                     '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="green" style="color: green" href=""><i class="fa fa-check-circle-o bigger-130"></i></a></div></div>'
-                }, {
+                },
+                {
                     field: 'telefone',
+                    width: '150',
                     displayName: 'Telefone'
-                }, {
+                },
+                {
                     field: 'telefonePrioritario',
-                    displayName: 'Prioritário',
+                    displayName: 'Priori.',
+                    width: '70',
                     cellTemplate: ' <div ng-click="grid.appScope.alterarPrioridadeTelefone(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
                     '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="green" style="color: green" href=""><i class="fa fa-check-circle-o bigger-130"></i></a></div></div>'
-                }, {
+                },
+                {
                     field: 'email',
+                    width: '300',
                     displayName: 'Email'
-                }, {
+                },
+                {
                     field: 'emailPrioritario',
-                    displayName: 'Prioritário',
+                    displayName: 'Priori.',
+                    width: '70',
                     cellTemplate: ' <div ng-click="grid.appScope.alterarPrioridadeEmail(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
                     '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="green" style="color: green" href=""><i class="fa fa-check-circle-o bigger-130"></i></a></div></div>'
-                }, {
+                },
+                {
                     field: 'acao',
+                    width: '70',
                     displayName: 'Status',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarContato(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
@@ -2073,101 +2137,6 @@ angular.module("App.controllers", [])
                 status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
             }
 
-        ];
-
-        $rootScope.agrupadoresClientes = [
-            {
-                clienteEmissorId: 974651321318,
-                razao: "CARREFOUR",
-                cnpj: "08.675.549/0001-56",
-                cidade: "SÃO PAULO",
-                endereco: "RUA PROCOPIO LOHN",
-                uf: "SP",
-                pais: "BRASIL",
-                domicilioFiscal: "SC 0015",
-                cep: "88410-000",
-                inscricaoEstadual: "255155603",
-                status: "EM PROCESSAMENTO",
-                contato: {
-                    numero: 45698744,
-                    nome: "José Cachoeira",
-                    agrupador: {
-                        numero: 45698744,
-                        nome: "José Cachoeira"
-                    },
-                    supervisor: {
-                        numero: 45648948,
-                        nome: "Paula Hermann"
-                    },
-                    cargo: "Gerente",
-                    telefones: [
-                        {
-                            numero: "+55 11 1234-5678",
-                            prioritario: true
-                        },
-                        {
-                            numero: "+55 11 7894-4563",
-                            prioritario: false
-                        }
-                    ],
-                    emails: [
-                        {
-                            email: "comercial@carrefour.com.br",
-                            prioritario: true
-                        },
-                        {
-                            email: "joao@carrefour.com.br",
-                            prioritario: false
-                        }
-                    ]
-                }
-            },
-            {
-                clienteEmissorId: 974651321318,
-                razao: "CARREFOUR",
-                cnpj: "08.675.549/0001-56",
-                cidade: "SÃO PAULO",
-                endereco: "RUA PROCOPIO LOHN",
-                uf: "SP",
-                pais: "BRASIL",
-                domicilioFiscal: "SC 0015",
-                cep: "88410-000",
-                inscricaoEstadual: "255155603",
-                status: "EM PROCESSAMENTO",
-                contato: {
-                    numero: 45698744,
-                    nome: "José Cachoeira",
-                    agrupador: {
-                        numero: 45698744,
-                        nome: "José Cachoeira"
-                    },
-                    supervisor: {
-                        numero: 45648948,
-                        nome: "Paula Hermann"
-                    },
-                    cargo: "Gerente",
-                    telefones: [
-                        {
-                            numero: "+55 11 1234-5678",
-                            prioritario: true
-                        },
-                        {
-                            numero: "+55 11 7894-4563",
-                            prioritario: false
-                        }
-                    ],
-                    emails: [
-                        {
-                            email: "comercial@carrefour.com.br",
-                            prioritario: true
-                        },
-                        {
-                            email: "joao@carrefour.com.br",
-                            prioritario: false
-                        }
-                    ]
-                }
-            }
         ];
 
         $rootScope.clientes = [
