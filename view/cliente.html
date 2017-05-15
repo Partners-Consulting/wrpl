@@ -1,7 +1,7 @@
 <div class="row">
     <panel title="Dados Revenda" icon="fa-user" height="42" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-warning btn-sm" ng-click="editarDadosCliente()"><i
+            <button type="button" class="btn btn-gray btn-xs" ng-click="editarDadosCliente()"><i
                     class="fa fa-arrows-alt" aria-hidden="true"></i></button>
         </panel-actions>
         <div class="row">
@@ -9,33 +9,54 @@
                 <dl class="dl-flex">
                     <dt>Cliente Emissor</dt>
                     <dd class="ng-binding">{{selectedClient.clienteEmissorId}}</dd>
+                    <dt>Cliente Agrupador</dt>
+                    <dd class="ng-binding">{{selectedClient.contatos[0].agrupador.numero}}</dd>
                     <dt>CNPJ</dt>
                     <dd class="ng-binding">{{selectedClient.cnpj}}</dd>
-                    <dt>Telefone</dt>
-                    <dd class="ng-binding">{{selectedClient.contatos[0].telefones[0].numero}}</dd>
-                    <dt class="ng-binding">Cidade/UF</dt>
+                    <dt>Cidade/UF</dt>
                     <dd class="ng-binding">{{selectedClient.cidade}}/{{selectedClient.uf}}</dd>
-                    <dt>Supervisor</dt>
+                    <dt>Código Supervisor</dt>
                     <dd class="ng-binding">{{selectedClient.contatos[0].supervisor.numero}}</dd>
                 </dl>
             </div>
             <div class="col-md-6">
                 <dl class="dl-flex">
-                    <dt>Razão</dt>
+                    <dt>Razão Social</dt>
                     <dd class="ng-binding">{{selectedClient.razao}}</dd>
                     <dt>Contato</dt>
                     <dd class="ng-binding">{{selectedClient.contatos[0].nome}}</dd>
+                    <dt>Telefone</dt>
+                    <dd class="ng-binding">{{selectedClient.contatos[0].telefones[0].numero}}</dd>
                     <dt>Email</dt>
                     <dd class="ng-binding">{{selectedClient.contatos[0].emails[0].email}}</dd>
-                    <dt class="ng-binding">Agrupador</dt>
-                    <dd class="ng-binding">{{selectedClient.contatos[0].agrupador.numero}}</dd>
-                    <dt>Nome</dt>
-                    <dd class="ng-binding">{{selectedClient.contatos[0].agrupador.nome}}</dd>
+                    <dt>Supervisor</dt>
+                    <dd class="ng-binding">{{selectedClient.contatos[0].supervisor.nome}}</dd>
                 </dl>
             </div>
         </div>
     </panel>
-    <panel title="Dados {{teste}}" icon="fa-bookmark" height="42" col="6">
+    <panel title="{{titulo}}" icon="fa-bookmark" height="42" col="6">
+        <panel-actions ng-if="mydata.active == 0">
+            <button type="button" class="btn btn-default btn-xs" ng-click="atualizarProcesso()"><i
+                    class="fa fa-refresh" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-default btn-xs" ng-click="excelProcessos()"><i
+                    class="fa fa-file-excel-o" aria-hidden="true"></i></button>
+        </panel-actions>
+        <panel-actions ng-if="mydata.active == 1">
+            <button type="button" class="btn btn-default btn-xs" ng-click="atualizarContatoss()"><i
+                    class="fa fa-refresh" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-default btn-xs" ng-click="excelContatos()"><i
+                    class="fa fa-file-excel-o" aria-hidden="true"></i></button>
+        </panel-actions>
+        <panel-actions ng-if="mydata.active == 2">
+            <button type="button" class="btn btn-default btn-xs" ng-click="adicionarLinhaBranca()">
+                <i class="fa fa-plus" aria-hidden="true"></i></button>
+        </panel-actions>
+        <panel-actions ng-if="mydata.active == 3">
+            <button type="button" class="btn btn-default btn-xs"
+                    ng-click="adicionarConcorrenteRevenda()"><i
+                    class="fa fa-plus" aria-hidden="true"></i></button>
+        </panel-actions>
         <div class="row">
             <div class="col-sm-12">
                 <!--     <  uib-tabset active="active" justified="false">
@@ -55,38 +76,15 @@
                 <div uib-carousel active="mydata.active" interval="myInterval" no-wrap="noWrapSlides">
                     <div uib-slide index="0"
                          class="slide animated">
-                        <div class="row titulo-tabela">
-                            <div class="col-sm-4">
-                                <h3>Últimos Processos</h3>
-                            </div>
-                            <div class="col-sm-offset-6 col-sm-2">
-                                <button type="button" class="btn btn-default btn-sm" ng-click="atualizarProcesso()"><i
-                                        class="fa fa-refresh" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-default btn-sm" ng-click="excelProcessos()"><i
-                                        class="fa fa-file-excel-o" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        </br>
                         <div class="row">
                             <div class="col-sm-12">
-                                <div ng-if="mydata.active == 0" id="exportableProcessos" ui-grid="{ data: processos,  enableHorizontalScrollbar : 0}" class=""></div>
+                                <div ng-if="mydata.active == 0" id="exportableProcessos"
+                                     ui-grid="{ data: processos,  enableHorizontalScrollbar : 0}" class=""></div>
                             </div>
                         </div>
                     </div>
                     <div uib-slide index="1"
                          class="slide animated">
-                        <div class="row titulo-tabela">
-                            <div class="col-sm-4">
-                                <h3>Últimos Contatos</h3>
-                            </div>
-                            <div class="col-sm-offset-6 col-sm-2">
-                                <button type="button" class="btn btn-default btn-sm" ng-click="atualizarContatoss()"><i
-                                        class="fa fa-refresh" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-default btn-sm" ng-click="excelContatos()"><i
-                                        class="fa fa-file-excel-o" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        </br>
                         <div class="row">
                             <div class="col-sm-12">
                                 <div ng-if="mydata.active == 1" ui-grid="gridContatos" class=""></div>
@@ -95,16 +93,6 @@
                     </div>
                     <div uib-slide index="2"
                          class="slide animated">
-                        <div class="row titulo-tabela">
-                            <div class="col-sm-4">
-                                <h3>Players Linha Branca</h3>
-                            </div>
-                            <div class="col-sm-offset-6 col-sm-2">
-                                <button type="button" class="btn btn-default btn-sm" ng-click="adicionarLinhaBranca()">
-                                    <i class="fa fa-plus" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        </br>
                         <div class="row">
                             <div class="col-sm-12">
                                 <div ng-if="mydata.active == 2" ui-grid="gridLinhaBranca" class=""></div>
@@ -113,17 +101,6 @@
                     </div>
                     <div uib-slide index="3"
                          class="slide animated">
-                        <div class="row titulo-tabela">
-                            <div class="col-sm-5">
-                                <h3>Concorrentes Revenda</h3>
-                            </div>
-                            <div class="col-sm-offset-5 col-sm-2">
-                                <button type="button" class="btn btn-default btn-sm"
-                                        ng-click="adicionarConcorrenteRevenda()"><i
-                                        class="fa fa-plus" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        </br>
                         <div class="row">
                             <div class="col-sm-12">
                                 <div ng-if="mydata.active == 3" ui-grid="gridConcorrentes" class=""></div>
@@ -135,10 +112,10 @@
         </div>
     </panel>
 </div>
-    <div class="row">
+<div class="row">
     <panel id="perfil" title="Perfil da Revenda" icon="fa-shopping-cart" height="58" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-warning btn-sm" ng-click="editarPerfilDeRevenda()"><i
+            <button type="button" class="btn btn-gray btn-xs" ng-click="editarPerfilDeRevenda()"><i
                     class="fa fa-pencil" aria-hidden="true"></i></button>
         </panel-actions>
         </br>
@@ -148,14 +125,29 @@
                     <div class="form-group">
                         <label class="col-sm-2">Nº Lojas</label>
                         <div class="col-sm-4">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="Nº Lojas"
+                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                                   placeholder="Nº Lojas"
                                    ng-model="selectedClient.revenda.numeroLojas">
                         </div>
+                        <label class="col-sm-2">Markup</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                                   placeholder="Markup"
+                                   ng-model="selectedClient.revenda.markup">
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-2">Faturamento Mensal</label>
                         <div class="col-sm-4">
                             <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
                                    placeholder="Faturamento Mensal"
                                    ng-model="selectedClient.revenda.faturamentoMensal">
+                        </div>
+                        <label class="col-sm-2">Principal Segmento</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                                   placeholder="Pricipal Segmento"
+                                   ng-model="selectedClient.revenda.principalSegmento">
                         </div>
                     </div>
                     <div class="form-group">
@@ -163,40 +155,6 @@
                         <div class="col-sm-4">
                             <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="% LB"
                                    ng-model="selectedClient.revenda.lb">
-                        </div>
-                        <label class="col-sm-2">% TOS 3</label>
-                        <div class="col-sm-3">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="% TOS 3"
-                                   ng-model="selectedClient.revenda.tos.total">
-                        </div>
-                        <div ng-if="!isBlocked" class="col-sm-1">
-                            <button type="button" class="btn btn-warning btn-sm" ng-click="editarTos()"><i
-                                    class="fa fa-pencil" aria-hidden="true"></i></button>
-                        </div>
-                    </div>
-                    <div ng-if="isBlockedTos" class="form-group">
-                        <label class="col-sm-2">Refrigerador</label>
-                        <div class="col-sm-2">
-                            <input ng-change="calculaTos()" type="text" class="form-control" placeholder="% TOS 3"
-                                   ng-model="selectedClient.revenda.tos.refrigerador">
-                        </div>
-                        <label class="col-sm-2">Lavadora</label>
-                        <div class="col-sm-2">
-                            <input ng-change="calculaTos()" type="text" class="form-control" placeholder="% TOS 3"
-                                   ng-model="selectedClient.revenda.tos.lavadora">
-                        </div>
-                        <label class="col-sm-2">Fogão</label>
-                        <div class="col-sm-2">
-                            <input ng-change="calculaTos()" type="text" class="form-control" placeholder="% TOS 3"
-                                   ng-model="selectedClient.revenda.tos.fogao">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Principal Segmento</label>
-                        <div class="col-sm-4">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
-                                   placeholder="Pricipal Segmento"
-                                   ng-model="selectedClient.revenda.principalSegmento">
                         </div>
                         <label class="col-sm-2">%Principal Segmento</label>
                         <div class="col-sm-4">
@@ -206,15 +164,38 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2">Markup</label>
-                        <div class="col-sm-4">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="Markup"
-                                   ng-model="selectedClient.revenda.markup">
+                        <label class="col-sm-2">% TOS T3</label>
+                        <div class="col-sm-2">
+                            <input ng-disabled="false" type="text" class="form-control input-sm"
+                                   placeholder="%TOS T3"
+                                   ng-model="selectedClient.revenda.tos.total">
+                        </div>
+                        <div ng-if="true" class="col-sm-2">
+                            <button type="button" class="btn btn-warning btn-sm" ng-click="editarTos()"><i
+                                    class="fa fa-pencil" aria-hidden="true"></i></button>
                         </div>
                         <label class="col-sm-2">Data de atualização</label>
                         <div class="col-sm-4">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="Numero"
+                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                                   placeholder="Data atualização"
                                    ng-model="selectedClient.revenda.data">
+                        </div>
+                    </div>
+                    <div ng-if="isBlockedTos" class="form-group">
+                        <label class="col-sm-2">Refrigerador</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="% TOS 3"
+                                   ng-model="selectedClient.revenda.tos.refrigerador">
+                        </div>
+                        <label class="col-sm-2">Lavadora</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="% TOS 3"
+                                   ng-model="selectedClient.revenda.tos.lavadora">
+                        </div>
+                        <label class="col-sm-2">Fogão</label>
+                        <div class="col-sm-2">
+                            <input type="text" class="form-control" placeholder="% TOS 3"
+                                   ng-model="selectedClient.revenda.tos.fogao">
                         </div>
                     </div>
                 </form>
@@ -247,22 +228,21 @@
     <panel title="Notas" icon="fa-comments" height="58" col="6">
         <div class="row">
             <div class="col-md-6">
-                <h3 class="title-gray-block">Gerais
-                    <button type="button" class="btn btn-success btn-sm note-plus" ng-init="mostra=true"
-                            ng-click="mostra = !mostra"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                </h3>
                 <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
                     <div uib-slide ng-repeat="geral in gerais track by geral.id" index="geral.id"
                          class="slide animated">
-                        <span class="title">{{geral.titulo}}</span>
+                        <h3 class="title-gray-block">{{geral.titulo}}
+                            <button type="button" class="btn btn-success btn-xs note-plus" ng-init="mostra=true"
+                                    ng-click="mostra = !mostra"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                        </h3>
                         <span ng-show="mostra" class="text">{{geral.texto}}</span>
-                        <textarea ng-show="!mostra" ng-model="geral.texto" cols="30" rows="20"></textarea>
+                        <textarea ng-show="!mostra" ng-model="geral.texto" cols="30" rows="15"></textarea>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <h3 class="title-gray-block">Pontuais
-                    <button type="button" class="btn btn-success btn-sm note-plus" ng-click="adicionarPontual()"><i
+                    <button type="button" class="btn btn-success btn-xs note-plus" ng-click="adicionarPontual()"><i
                             class="fa fa-plus-circle" aria-hidden="true"></i></button>
 
                 </h3>
