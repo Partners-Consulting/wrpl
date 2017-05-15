@@ -39,6 +39,7 @@ angular.module("App.controllers", [])
         $scope.lastContato = 0;
         $scope.isBlocked = true;
         $scope.isBlockedTos = false;
+        $scope.titulo = 'Últimos Processos';
 
         $scope.gerais = [
             {
@@ -192,7 +193,15 @@ angular.module("App.controllers", [])
 
         // watch active
         $scope.$watch('mydata.active', function (newVals, oldVals) {
-            //console.log("current value: ", $rootScope.mydata.active)
+            if(newVals == 0){
+                $scope.titulo = 'Últimos Processos';
+            }else if (newVals == 1){
+                $scope.titulo = 'Últimos Contatos';
+            }else if (newVals == 2){
+                $scope.titulo = 'Players Linha Branca';
+            }else if (newVals == 3){
+                $scope.titulo = 'Concorrentes Revenda';
+            }
         });
 
         $scope.adicionarPontual = function () {

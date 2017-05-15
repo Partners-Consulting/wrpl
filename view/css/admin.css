@@ -473,7 +473,7 @@ p {
 }
 
 input[type=checkbox]:checked + label {
-    color: #FF9800;
+    color: black;
     user-select: none;
 }
 
@@ -536,7 +536,7 @@ input[type=checkbox]:checked + label:before {
 .slide .title {
     display: block;
     padding: 10px 0;
-    color: orange;
+    color: darkgray;
     font-weight: 600;
     background: rgb(231, 228, 233)
 }
@@ -712,4 +712,9 @@ span.glyphicon.glyphicon-chevron-left {
     width: 1250px;
     height: 650px;
     overflow-y: auto;
+}
+
+.btn-gray{
+    background-color: darkgray;
+    color: white;
 }

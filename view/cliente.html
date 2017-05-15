@@ -1,7 +1,7 @@
 <div class="row">
     <panel title="Dados Revenda" icon="fa-user" height="42" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-warning btn-sm" ng-click="editarDadosCliente()"><i
+            <button type="button" class="btn btn-gray btn-sm" ng-click="editarDadosCliente()"><i
                     class="fa fa-arrows-alt" aria-hidden="true"></i></button>
         </panel-actions>
         <div class="row">
@@ -35,7 +35,28 @@
             </div>
         </div>
     </panel>
-    <panel title="Dados {{teste}}" icon="fa-bookmark" height="42" col="6">
+    <panel title="{{titulo}}" icon="fa-bookmark" height="42" col="6">
+        <panel-actions ng-if="mydata.active == 0">
+            <button type="button" class="btn btn-default btn-sm" ng-click="atualizarProcesso()"><i
+                    class="fa fa-refresh" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-default btn-sm" ng-click="excelProcessos()"><i
+                    class="fa fa-file-excel-o" aria-hidden="true"></i></button>
+        </panel-actions>
+        <panel-actions ng-if="mydata.active == 1">
+            <button type="button" class="btn btn-default btn-sm" ng-click="atualizarContatoss()"><i
+                    class="fa fa-refresh" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-default btn-sm" ng-click="excelContatos()"><i
+                    class="fa fa-file-excel-o" aria-hidden="true"></i></button>
+        </panel-actions>
+        <panel-actions ng-if="mydata.active == 2">
+            <button type="button" class="btn btn-default btn-sm" ng-click="adicionarLinhaBranca()">
+                <i class="fa fa-plus" aria-hidden="true"></i></button>
+        </panel-actions>
+        <panel-actions ng-if="mydata.active == 3">
+            <button type="button" class="btn btn-default btn-sm"
+                    ng-click="adicionarConcorrenteRevenda()"><i
+                    class="fa fa-plus" aria-hidden="true"></i></button>
+        </panel-actions>
         <div class="row">
             <div class="col-sm-12">
                 <!--     <  uib-tabset active="active" justified="false">
@@ -55,38 +76,15 @@
                 <div uib-carousel active="mydata.active" interval="myInterval" no-wrap="noWrapSlides">
                     <div uib-slide index="0"
                          class="slide animated">
-                        <div class="row titulo-tabela">
-                            <div class="col-sm-4">
-                                <h3>Últimos Processos</h3>
-                            </div>
-                            <div class="col-sm-offset-6 col-sm-2">
-                                <button type="button" class="btn btn-default btn-sm" ng-click="atualizarProcesso()"><i
-                                        class="fa fa-refresh" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-default btn-sm" ng-click="excelProcessos()"><i
-                                        class="fa fa-file-excel-o" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        </br>
                         <div class="row">
                             <div class="col-sm-12">
-                                <div ng-if="mydata.active == 0" id="exportableProcessos" ui-grid="{ data: processos,  enableHorizontalScrollbar : 0}" class=""></div>
+                                <div ng-if="mydata.active == 0" id="exportableProcessos"
+                                     ui-grid="{ data: processos,  enableHorizontalScrollbar : 0}" class=""></div>
                             </div>
                         </div>
                     </div>
                     <div uib-slide index="1"
                          class="slide animated">
-                        <div class="row titulo-tabela">
-                            <div class="col-sm-4">
-                                <h3>Últimos Contatos</h3>
-                            </div>
-                            <div class="col-sm-offset-6 col-sm-2">
-                                <button type="button" class="btn btn-default btn-sm" ng-click="atualizarContatoss()"><i
-                                        class="fa fa-refresh" aria-hidden="true"></i></button>
-                                <button type="button" class="btn btn-default btn-sm" ng-click="excelContatos()"><i
-                                        class="fa fa-file-excel-o" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        </br>
                         <div class="row">
                             <div class="col-sm-12">
                                 <div ng-if="mydata.active == 1" ui-grid="gridContatos" class=""></div>
@@ -95,16 +93,6 @@
                     </div>
                     <div uib-slide index="2"
                          class="slide animated">
-                        <div class="row titulo-tabela">
-                            <div class="col-sm-4">
-                                <h3>Players Linha Branca</h3>
-                            </div>
-                            <div class="col-sm-offset-6 col-sm-2">
-                                <button type="button" class="btn btn-default btn-sm" ng-click="adicionarLinhaBranca()">
-                                    <i class="fa fa-plus" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        </br>
                         <div class="row">
                             <div class="col-sm-12">
                                 <div ng-if="mydata.active == 2" ui-grid="gridLinhaBranca" class=""></div>
@@ -113,17 +101,6 @@
                     </div>
                     <div uib-slide index="3"
                          class="slide animated">
-                        <div class="row titulo-tabela">
-                            <div class="col-sm-5">
-                                <h3>Concorrentes Revenda</h3>
-                            </div>
-                            <div class="col-sm-offset-5 col-sm-2">
-                                <button type="button" class="btn btn-default btn-sm"
-                                        ng-click="adicionarConcorrenteRevenda()"><i
-                                        class="fa fa-plus" aria-hidden="true"></i></button>
-                            </div>
-                        </div>
-                        </br>
                         <div class="row">
                             <div class="col-sm-12">
                                 <div ng-if="mydata.active == 3" ui-grid="gridConcorrentes" class=""></div>
@@ -135,10 +112,10 @@
         </div>
     </panel>
 </div>
-    <div class="row">
+<div class="row">
     <panel id="perfil" title="Perfil da Revenda" icon="fa-shopping-cart" height="58" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-warning btn-sm" ng-click="editarPerfilDeRevenda()"><i
+            <button type="button" class="btn btn-gray btn-sm" ng-click="editarPerfilDeRevenda()"><i
                     class="fa fa-pencil" aria-hidden="true"></i></button>
         </panel-actions>
         </br>
@@ -148,7 +125,8 @@
                     <div class="form-group">
                         <label class="col-sm-2">Nº Lojas</label>
                         <div class="col-sm-4">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="Nº Lojas"
+                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                                   placeholder="Nº Lojas"
                                    ng-model="selectedClient.revenda.numeroLojas">
                         </div>
                         <label class="col-sm-2">Faturamento Mensal</label>
@@ -166,7 +144,8 @@
                         </div>
                         <label class="col-sm-2">% TOS 3</label>
                         <div class="col-sm-3">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="% TOS 3"
+                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                                   placeholder="% TOS 3"
                                    ng-model="selectedClient.revenda.tos.total">
                         </div>
                         <div ng-if="!isBlocked" class="col-sm-1">
@@ -208,12 +187,14 @@
                     <div class="form-group">
                         <label class="col-sm-2">Markup</label>
                         <div class="col-sm-4">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="Markup"
+                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                                   placeholder="Markup"
                                    ng-model="selectedClient.revenda.markup">
                         </div>
                         <label class="col-sm-2">Data de atualização</label>
                         <div class="col-sm-4">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="Numero"
+                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                                   placeholder="Numero"
                                    ng-model="selectedClient.revenda.data">
                         </div>
                     </div>
