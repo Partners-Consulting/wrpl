@@ -352,6 +352,10 @@ p {
     font-weight: 600;
 }
 
+.table-box-drop caption.blue {
+    background: #3082ff;
+}
+
 /**/
 
 .graficos {
