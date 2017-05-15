@@ -1,0 +1,34 @@
+<div class="modal-header bg-primary" style="background-color:#333">
+    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
+            style="margin-top: -10px;" ng-click="close()">×
+    </button>
+    <h4>Adicionar Texto Ordem de Vendas</h4>
+
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Obeservações da Negociação</label>
+                    <div class="col-sm-9">
+                        <textarea  ng-model="texto.observacao"  cols="50" rows="10"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Corpo do e-mail</label>
+                    <div class="col-sm-9">
+                        <textarea  ng-model="texto.corpo"  cols="50" rows="10"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</div>
+<div class="modal-footer">
+    <button data-bb-handler="cancel" type="button" class="btn btn-default" ng-click="gerarPdf(texto)">Arquivo PDF</button>
+</div>
