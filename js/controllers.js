@@ -218,8 +218,8 @@ angular.module("App.controllers", [])
         }
 
         $scope.tabelaAnterior = function () {
-            if($scope.painelTabela.tabelaAtual - 1 < 0){
-                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual+1;
+            if($scope.painelTabela.tabelaAtual - 1 > 0){
+                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual-1;
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
             }
         }
