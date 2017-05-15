@@ -816,11 +816,22 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalReplicarCtrl", function ($scope, $rootScope, $uibModalInstance, replicas) {
-
+    .controller("ModalReplicarCtrl", function ($scope, $rootScope, $uibModalInstance, replicas, FreteService, CondicaoPagamentoService) {
+        "use strict";
         $scope.replicas = replicas;
+        $scope.listaCondicaoPagamento = [];
+        $scope.listaCondicaoFrete = [];
+
+        function init(){
+            //todo fazer padrão promessa
+            $scope.listaCondicaoPagamento = CondicaoPagamentoService.consultaPagamentoReplica();
+            $scope.listaCondicaoFrete = FreteService.consultaFreteReplica();
+        }
+
+        init();
 
         $scope.gridReplicas = {
+            enableHorizontalScrollbar: true,
             data: 'replicas',
             columnDefs: [
                 {
@@ -844,18 +855,26 @@ angular.module("App.controllers", [])
                     displayName: 'Setor'
                 },
                 {
-                    field: 'condPagtos',
                     displayName: 'Cond. Pagtos',
-                    cellTemplate:'<select ng-model="condPagtos" ng-options="cond.codigo for cond in COL_FIELD"></select>'
+                    width:'150',
+                    field:'condPagtos.codigo',
+                    editModelField: 'condPagtos',
+                    editDropdownValueLabel: 'codigo',
+                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
+                    editDropdownOptionsArray: $scope.listaCondicaoPagamento
                 },
                 {
                     field: 'incoterms',
                     displayName: 'Incoterms'
                 },
                 {
-                    field: 'condFrete',
-                    displayName: 'Cond. Frete',
-                    cellTemplate:'<select ng-model="condFrete" ng-options="cond.codigo for cond in COL_FIELD"></select>'
+                    displayName:'Cond. Frete',
+                    width:'150',
+                    field:'condFrete.codigo',
+                    editModelField: 'condFrete',
+                    editDropdownValueLabel: 'codigo',
+                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
+                    editDropdownOptionsArray: $scope.listaCondicaoFrete
                 }
             ]
         };
@@ -1230,7 +1249,9 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/historico-material.html',
                 controller: 'ModalHistoricoMaterialCtrl',
+                backdrop: 'static',
                 size:'lg',
+
                 resolve: {
                     material: function (){
                         return MaterialService.consultaMaterialCompleto(material.id);
@@ -1358,7 +1379,7 @@ angular.module("App.controllers", [])
                     displayName:'Local Expedicao',
                     width:'150',
                     field:'localExpedicao.parcNeg',
-                    editModelField: 'parcNeg',
+                    editModelField: 'localExpedicao',
                     editDropdownValueLabel: 'parcNeg',
                     editableCellTemplate: './view/uiGridTemplates/ui-select.html',
                     editDropdownOptionsArray: $scope.listaDeLocaisExpedicao

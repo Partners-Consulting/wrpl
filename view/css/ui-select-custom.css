@@ -13,3 +13,7 @@
     height: 25px;
     padding-top: 2px;
 }
+
+.ui-select-container .ui-select-bootstrap {
+    z-index: 99999; /* greater then ui bootstrap modal, that 1050 */
+}

@@ -1,5 +1,5 @@
 <ui-select-wrap>
-    <ui-select ng-model="MODEL_COL_FIELD" theme="" ng-disabled="disabled" append-to-body="true">
+    <ui-select style="z-index: 999999" ng-model="MODEL_COL_FIELD" theme="" ng-disabled="disabled" append-to-body="true">
         <ui-select-match placeholder="Escolha">{{COL_FIELD}}</ui-select-match>
         <ui-select-choices repeat="item in col.colDef.editDropdownOptionsArray | filter: $select.search">
             <span>{{ item[col.colDef.editDropdownValueLabel] }}</span>
