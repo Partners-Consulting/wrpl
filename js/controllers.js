@@ -922,7 +922,7 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, $uibModalInstance, materiais,$uibModal, $uibModalInstance) {
+    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, materiais, $uibModal, $uibModalInstance) {
 
         $scope.showDetalhe = false;
         $scope.listaMateriais = materiais
@@ -1065,6 +1065,84 @@ angular.module("App.controllers", [])
         }
 
     })
+    .controller("ModalHistoricoMaterialCtrl", function ($scope, $rootScope, $uibModalInstance, material, MaterialService) {
+
+        $scope.material = material;
+        $scope.listaHistoricoVenda = [];
+        $scope.loading = false;
+
+        function init(){
+            //todo fazer padrão promessa
+            $scope.loading = true;
+            $scope.listaHistoricoVenda = MaterialService.consultaHistoricoDeVenda(material.id);
+            //$scope.listaHistoricoVenda = [];
+            $scope.loading = false;
+        }
+
+        init();
+
+        $scope.gridHistoricoVenda = {
+            enableHorizontalScrollbar: true,
+            data: 'listaHistoricoVenda',
+            columnDefs: [
+                {
+                    field: 'sku',
+                    width:'150',
+                    displayName: 'SKU'
+                },
+                {
+                    field:'data',
+                    width:'150',
+                    displayName:'Data'
+                },
+                {
+                    field:'pvl',
+                    width:'150',
+                    displayName:'PVL'
+                },
+                {
+                    field:'percDesc',
+                    width:'150',
+                    displayName:'% Desc'
+                },
+                {
+                    field:'percAcres',
+                    width:'150',
+                    displayName:'% Acres'
+                },
+                {
+                    field:'valorTotalNf',
+                    width:'150',
+                    displayName:'Valor Total NF'
+                },
+                {
+                    field:'quantidade',
+                    width:'150',
+                    displayName:'Qtde'
+                },
+                {
+                    field:'condPagto',
+                    width:'150',
+                    displayName:'Cond. Pagto'
+                },
+                {
+                    field:'sap',
+                    width:'150',
+                    displayName:'SAP'
+                },
+                {
+                    field:'ordemDeVenda',
+                    width:'150',
+                    displayName:'Ordem de Venda'
+                }
+            ]
+        };
+
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+
+    })
     .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService, CentroService, LocalExpedicaoService, IncotermsService) {
         "use strict";
         $scope.gotoDev = function () {
@@ -1115,7 +1193,7 @@ angular.module("App.controllers", [])
                     }
                 }
             });
-        }
+        };
 
         $scope.efetivarOv = function () {
             var modalInstance = $uibModal.open({
@@ -1130,7 +1208,7 @@ angular.module("App.controllers", [])
                     }
                 }
             });
-        }
+        };
 
         $scope.consultarMaterialCompleto = function (id) {
             var modalInstance = $uibModal.open({
@@ -1145,7 +1223,22 @@ angular.module("App.controllers", [])
                 }
 
             });
-        }
+        };
+
+        $scope.abrirHitoriocoMaterial = function (material) {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/historico-material.html',
+                controller: 'ModalHistoricoMaterialCtrl',
+                size:'lg',
+                resolve: {
+                    material: function (){
+                        return MaterialService.consultaMaterialCompleto(material.id);
+                    }
+                }
+
+            });
+        };
 
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
@@ -1157,6 +1250,7 @@ angular.module("App.controllers", [])
                     displayName: 'Status',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarMateria(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
+                    ' <a class="black" style="color: black"  ng-click="grid.appScope.abrirHitoriocoMaterial(row.entity)" href=""><i class="fa fa-book bigger-130"></i></a>' +
                     ' <a class="red" style="color: red"  ng-click="grid.appScope.removerMaterial(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
                     ' </div>'
                 },
