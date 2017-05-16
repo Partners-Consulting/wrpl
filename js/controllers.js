@@ -178,13 +178,11 @@ angular.module("App.controllers", [])
                 enableFiltering: false,
                 cellTemplate: '  <div class="action-buttons"> ' +
                 ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarLinhaBranca(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
-                ' <a class="red" style="color: red"  ng-click="grid.appScope.removerLinhaBranca(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
                 ' </div>'
             }
 
             ]
         };
-
         $scope.gridApiLinhaBranca = {};
         $scope.gridLinhaBranca.onRegisterApi = function (gridApi) {
             $scope.gridApiLinhaBranca = gridApi;
@@ -205,11 +203,14 @@ angular.module("App.controllers", [])
                 displayName: 'Ação',
                 cellTemplate: '  <div class="action-buttons"> ' +
                 ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarConcorrenteRevenda(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
-                ' <a class="red" style="color: red"  ng-click="grid.appScope.removerConcorrenteRevenda(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
                 ' </div>'
             }
 
             ]
+        };
+        $scope.gridApiConcorrentes = {};
+        $scope.gridConcorrentes.onRegisterApi = function (gridApi) {
+            $scope.gridApiConcorrentes = gridApi;
         };
 
         function init() {
@@ -847,14 +848,6 @@ angular.module("App.controllers", [])
                 $rootScope.tabelaDesnormalizada[i].prioritario = false;
             }
             item.prioritario = !item.prioritario;
-        };
-
-        $scope.removerTodosTelefones = function () {
-            $rootScope.selectedClient.contatos[0].telefones = [];
-        };
-
-        $scope.removerTodosEmails = function () {
-            $rootScope.selectedClient.contatos[0].emails = [];
         };
 
         $scope.removerEmail = function (email) {
@@ -1670,7 +1663,7 @@ angular.module("App.controllers", [])
         };
 
     })
-    .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService, CentroService, LocalExpedicaoService, IncotermsService) {
+    .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService, CentroService, LocalExpedicaoService, IncotermsService, SweetAlert) {
         "use strict";
         $scope.gotoDev = function () {
             $location.path("/dev");
@@ -1768,6 +1761,8 @@ angular.module("App.controllers", [])
             });
         };
 
+
+
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
             enableGridMenu: true,
@@ -1775,12 +1770,12 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'acao',
-                    width: '150',
+                    enableCellEdit: false,
+                    width: '70',
                     displayName: 'Ação',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarMateria(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
                     ' <a class="black" style="color: black"  ng-click="grid.appScope.abrirHitoriocoMaterial(row.entity)" href=""><i class="fa fa-book bigger-130"></i></a>' +
-                    ' <a class="red" style="color: red"  ng-click="grid.appScope.removerMaterial(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
                     ' </div>'
                 },
                 {
@@ -1812,7 +1807,12 @@ angular.module("App.controllers", [])
                 {
                     field: 'situacaoCarga',
                     width: '150',
-                    displayName: 'Sit. Carga'
+                    displayName: 'Sit. Carga',
+                    cellTemplate: ' <div ng-click="grid.appScope.alterarSituacaoCarga(row.entity)">' +
+                    '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
+                    '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="green" style="color: green" href=""><i class="fa fa-check-circle-o bigger-130"></i></a></div></div>'
                 },
                 {
                     field: 'precFlexibilidade',
@@ -1900,6 +1900,47 @@ angular.module("App.controllers", [])
             ]
         };
 
+        $scope.gridApiMateriais = {};
+        $scope.gridMateriais.onRegisterApi = function (gridApi) {
+            $scope.gridApiMateriais = gridApi;
+        };
+
+        $scope.deletarMateriaisSelecionados = function () {
+            if($scope.listaMateriais.length <= 0 || $scope.gridApiMateriais.selection.getSelectedRows().length <= 0){
+                return;
+            }
+            var alertExclusao = {
+                title: "Exclusão de materiais",
+                text: "Tem certeza que gostaria de excluir os materiais selecionados?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+
+                        angular.forEach($scope.gridApiMateriais.selection.getSelectedRows(), function (data, index) {
+                            $scope.listaMateriais.splice($scope.listaMateriais.lastIndexOf(data), 1);
+                        });
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Materiais excluídos com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        }
+        
         $scope.ultimasSimulacoes = [
             {
                 id:1,
@@ -2004,6 +2045,10 @@ angular.module("App.controllers", [])
                 }
             }
         ];
+
+        $scope.alterarSituacaoCarga = function (item) {
+            item.situacaoCarga = !item.situacaoCarga;
+        }
 
         $scope.removePontual = function (pontual) {
             $rootScope.simulacaoPontuais = _.without($rootScope.simulacaoPontuais, _.findWhere($rootScope.simulacaoPontuais, {id: pontual.id}));

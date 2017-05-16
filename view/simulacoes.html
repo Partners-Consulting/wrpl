@@ -56,7 +56,11 @@
         <panel-actions>
                  <div class="row">
                      <div class="col-sm-12">
-                         <label>Bonif.%</label>
+                         <button type="button" class="btn btn-danger btn-xs" ng-click="deletarMateriaisSelecionados()"><i class="fa fa-trash"
+                                                                                                       aria-hidden="true"></i>
+                             Deletar
+                         </button>
+                         <label style="font-size: 12px">Bonif.%</label>
                          <input style="width: 40px" class="input-xs" type="text" placeholder="">
                          <input style="width: 80px" class="input-xs" type="text" placeholder="">
                          <button type="button" class="btn btn-default btn-xs" ng-click="replicar()"><i class="fa fa-reply"
@@ -71,7 +75,7 @@
                                                                                                       aria-hidden="true"></i>
                              Salvar
                          </button>
-                         <button type="button" class="btn btn-danger btn-xs" ng-click="efetivarOv()"><i class="fa fa-exchange"
+                         <button type="button" class="btn btn-info btn-xs" ng-click="efetivarOv()"><i class="fa fa-exchange"
                                                                                                      aria-hidden="true"></i>
                              Efetivar O.V
                          </button>
@@ -83,7 +87,7 @@
                      </div>
                  </div>
         </panel-actions>
-        <div ui-grid="gridMateriais" ui-grid-edit class="grid-materias" ui-grid-resize-columns ui-grid-move-columns></div>
+        <div ui-grid="gridMateriais" ui-grid-edit class="grid-materias" ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
         <!-- <table class="table table-hover">
              &lt;!&ndash; <caption>Monthly Kills</caption> &ndash;&gt;
              <thead class="thead-bold">
