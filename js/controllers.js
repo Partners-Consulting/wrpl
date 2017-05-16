@@ -40,6 +40,12 @@ angular.module("App.controllers", [])
         $scope.isBlocked = true;
         $scope.isBlockedTos = false;
         $scope.titulo = 'Últimos Processos';
+        $scope.painelTabela = {
+            quantidadeDeTabela : 4,
+            tabelaAtual: 1,
+            tituloTabelaAtual:'Últimos Processos'
+        }
+
 
         $scope.gerais = [
             {
@@ -203,6 +209,31 @@ angular.module("App.controllers", [])
                 $scope.titulo = 'Concorrentes Revenda';
             }
         });
+
+        $scope.proximaTabela = function () {
+            if($scope.painelTabela.tabelaAtual + 1 <= $scope.painelTabela.quantidadeDeTabela){
+                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual+1;
+                $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
+            }
+        }
+
+        $scope.tabelaAnterior = function () {
+            if($scope.painelTabela.tabelaAtual - 1 > 0){
+                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual-1;
+            }
+        }
+
+        $scope.changeHeaderTitle = function () {
+            if($scope.painelTabela.tabelaAtual == 1){
+                $scope.painelTabela.tituloTabelaAtual = 'Últimos Processos';
+            }else if($scope.painelTabela.tabelaAtual == 2){
+                $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
+            }else if($scope.painelTabela.tabelaAtual == 3){
+                $scope.painelTabela.tituloTabelaAtual = 'Players Linha Branca';
+            }else if($scope.painelTabela.tabelaAtual == 4){
+                $scope.painelTabela.tituloTabelaAtual = 'Concorrentes Revenda';
+            }
+        }
 
         $scope.adicionarPontual = function () {
             var modalInstance = $uibModal.open({
@@ -625,18 +656,18 @@ angular.module("App.controllers", [])
             enableHorizontalScrollbar: false,
             data : 'agrupadoresClientes',
             columnDefs : [
-            { field:'agrupador',displayName:'Cliente agrupador'},
-            { field:'clienteEmissorId',displayName:'Cliente Emissor'},
-            { field:'razao',displayName:'Nome'},
-            { field:'cidade',displayName:'CIDADE'},
-            { field:'uf',displayName:'ESTADO'},
-            { field:'cnpj',displayName:'CNPJ'},
-            { field:'endereco',displayName:'ENDEREÇO'},
-            { field:'cep',displayName:'CEP'},
-            { field:'telefone',displayName:'TELEFONE'},
-            { field:'email',displayName:'EMAIL'},
-            { field:'inscricaoEstadual',displayName:'INSCRIÇÃO ESTADUAL'},
-            { field:'status',displayName:'STATUS'}
+            { field:'agrupador',width:'150',displayName:'Cliente agrupador'},
+            { field:'clienteEmissorId',width:'150',displayName:'Cliente Emissor'},
+            { field:'razao',width:'100',displayName:'Nome'},
+            { field:'cidade',width:'100',displayName:'CIDADE'},
+            { field:'uf',width:'70',displayName:'ESTADO'},
+            { field:'cnpj',width:'200',displayName:'CNPJ'},
+            { field:'endereco',width:'200',displayName:'ENDEREÇO'},
+            { field:'cep',width:'100',displayName:'CEP'},
+            { field:'telefone',width:'100',displayName:'TELEFONE'},
+            { field:'email',width:'200',displayName:'EMAIL'},
+            { field:'inscricaoEstadual',width:'200',displayName:'INSCRIÇÃO ESTADUAL'},
+            { field:'status',width:'150',displayName:'STATUS'}
         ]};
 
         $scope.gridTabelaDesnormalizada = {
