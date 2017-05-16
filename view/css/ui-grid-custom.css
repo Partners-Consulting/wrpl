@@ -105,3 +105,6 @@ input[type="text"].ui-grid-filter-input {
 
 .ui-grid-filter-container { display: none!important; }
 
+.ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
+    background-color: lightgrey;
+}

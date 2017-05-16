@@ -1226,6 +1226,10 @@ angular.module("App.controllers", [])
         $scope.listaMateriais = materiais
 
         $scope.gridSimulacao = {
+            enableRowSelection: true,
+            multiSelect: false,
+            enableRowHeaderSelection: false,
+            enableCellEditOnFocus: true,
             data: 'listaMateriais',
             enableGridMenu: true,
             columnDefs: [
@@ -1325,6 +1329,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/efetivar-ov2.html',
                 controller: 'ModalEfetivarOv2Ctrl',
+                backdrop:'static',
                 size: 'lg'
             });
         }
@@ -1484,54 +1489,83 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'status',
+                    width:'100',
                     displayName: 'Status'
                 },
                 {
                     field: 'organizacao',
+                    width:'100',
                     displayName: 'Organização'
                 },
                 {
                     field: 'canal',
+                    width:'100',
                     displayName: 'Canal'
                 },
                 {
                     field: 'setor',
+                    width:'100',
                     displayName: 'Setor'
                 },
                 {
                     field: 'situacaoCargao',
+                    width:'100',
                     displayName: 'Sit. Carga'
                 },
                 {
                     field: 'codProcEsp',
+                    width:'100',
                     displayName: 'CódProcEsp'
                 },
                 {
                     field: 'emissor',
+                    width:'100',
                     displayName: 'Emissor'
                 },
                 {
                     field: 'recebedor',
+                    width:'100',
                     displayName: 'Recebedor'
                 },
                 {
                     field: 'tipo',
+                    width:'100',
                     displayName: 'Tipo'
                 },
                 {
                     field: 'preOrdem',
+                    width:'100',
                     displayName: 'Pré Ordem'
                 },
                 {
                     field: 'statusPreOrdem',
+                    width:'100',
                     displayName: 'Status Pré Ordem'
                 },
                 {
                     field: 'ordem',
+                    width:'100',
                     displayName: 'Ordem'
                 },
                 {
+                    field: 'textoOv',
+                    width:'100',
+                    displayName: 'Texto O.V',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="black" style="color: black"  ng-click="grid.appScope.adicionarTextoOv(row.entity)" href=""><i class="fa fa-file-text bigger-130"></i></a>' +
+                    ' </div>'
+                },
+                {
+                    field: 'textoSimulacao',
+                    width:'100',
+                    displayName: 'Texto Simulação',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="black" style="color: black"  ng-click="grid.appScope.adicionarTextoSimulacao(row.entity)" href=""><i class="fa fa-file-text bigger-130"></i></a>' +
+                    ' </div>'
+                },
+                {
                     field: 'imprimir',
+                    width:'100',
                     displayName: 'Imprimir'
                 }
             ]
