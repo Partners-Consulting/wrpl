@@ -64,7 +64,7 @@
                 </div>
                     <div class="painel-slide painel-slide-content">
                             <div ng-if="painelTabela.tabelaAtual == 1" id="exportableProcessos"
-                                 ui-grid="{ data: processos,  enableHorizontalScrollbar : 0}" class="grid-painel"></div>
+                                 ui-grid="gridProcessos" class="grid-painel"></div>
                             <div ng-if="painelTabela.tabelaAtual == 2" ui-grid="gridContatos" class="grid-painel"></div>
                             <div ng-if="painelTabela.tabelaAtual == 3" ui-grid="gridLinhaBranca" class="grid-painel"></div>
                             <div ng-if="painelTabela.tabelaAtual == 4" ui-grid="gridConcorrentes" class="grid-painel"></div>

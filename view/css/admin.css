@@ -597,14 +597,6 @@ ul.sub_navigation li {
     width: auto;
 }
 
-span.glyphicon.glyphicon-chevron-right:before {
-    color: darkorange;
-}
-
-span.glyphicon.glyphicon-chevron-left {
-    color: darkorange;
-}
-
 .btn-circle {
     width: 30px;
     height: 30px;
@@ -791,3 +783,26 @@ form {
     margin-top: 55px;
 }
 
+span.glyphicon.glyphicon-chevron-right:before {
+    color: green;
+}
+
+span.glyphicon.glyphicon-chevron-left:before {
+    color: green;
+}
+
+span.glyphicon.glyphicon-chevron-right:hover {
+    color: white;
+}
+
+span.glyphicon.glyphicon-chevron-left:hover {
+    color: white;
+}
+
+.grid-ultimas-simulacoes {
+    height: 175px;
+}
+
+.grid-materias {
+    height: 210px;
+}

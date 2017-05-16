@@ -32,7 +32,6 @@ angular.module("App.controllers", [])
     .controller("ClienteController", function ($scope, $rootScope, $location, $uibModal) {
         "use strict";
 
-        $rootScope.mydata = {};
         $scope.filtro2 = "";
         $scope.filtro3 = "";
         $scope.lastProcesso = 0;
@@ -41,9 +40,9 @@ angular.module("App.controllers", [])
         $scope.isBlockedTos = false;
         $scope.titulo = 'Últimos Processos';
         $scope.painelTabela = {
-            quantidadeDeTabela : 4,
+            quantidadeDeTabela: 4,
             tabelaAtual: 1,
-            tituloTabelaAtual:'Últimos Processos'
+            tituloTabelaAtual: 'Últimos Processos'
         }
 
 
@@ -99,7 +98,34 @@ angular.module("App.controllers", [])
             }
         ];
 
+        $scope.gridProcessos = {
+            enableGridMenu: true,
+            enableHorizontalScrollbar: 0,
+            data: 'processos',
+            columnDefs: [
+                {
+                    field: 'data',
+                    headerCellClass: 'background-color:gray',
+                    displayName: 'Data'
+                },
+                {
+                    field: 'cliente',
+                    displayName: 'Cliente'
+                },
+                {
+                    field: 'processo',
+                    displayName: 'Processo'
+                },
+                {
+                    field: 'status',
+                    displayName: 'Status'
+                }
+
+            ]
+        };
+
         $scope.gridContatos = {
+            enableGridMenu: true,
             enableHorizontalScrollbar: 0,
             data: 'contatos',
             columnDefs: [{
@@ -126,6 +152,7 @@ angular.module("App.controllers", [])
 
         $scope.gridLinhaBranca = {
             enableHorizontalScrollbar: 0,
+            enableGridMenu: true,
             enableFiltering: true,
             data: 'linhaBranca',
             columnDefs: [{
@@ -157,6 +184,7 @@ angular.module("App.controllers", [])
 
         $scope.gridConcorrentes = {
             enableHorizontalScrollbar: 0,
+            enableGridMenu: true,
             data: 'concorrentesRevenda',
             columnDefs: [{
                 field: 'id',
@@ -177,7 +205,7 @@ angular.module("App.controllers", [])
         };
 
         function init() {
-            $rootScope.mydata.active = 0;
+
             if ($rootScope.selectedClient == null) {
 
                 var modalInstance = $uibModal.open({
@@ -197,40 +225,29 @@ angular.module("App.controllers", [])
 
         init();
 
-        // watch active
-        $scope.$watch('mydata.active', function (newVals, oldVals) {
-            if(newVals == 0){
-                $scope.titulo = 'Últimos Processos';
-            }else if (newVals == 1){
-                $scope.titulo = 'Últimos Contatos';
-            }else if (newVals == 2){
-                $scope.titulo = 'Players Linha Branca';
-            }else if (newVals == 3){
-                $scope.titulo = 'Concorrentes Revenda';
-            }
-        });
-
         $scope.proximaTabela = function () {
-            if($scope.painelTabela.tabelaAtual + 1 <= $scope.painelTabela.quantidadeDeTabela){
-                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual+1;
+            if ($scope.painelTabela.tabelaAtual + 1 <= $scope.painelTabela.quantidadeDeTabela) {
+                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual + 1;
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
             }
+            $scope.changeHeaderTitle();
         }
 
         $scope.tabelaAnterior = function () {
-            if($scope.painelTabela.tabelaAtual - 1 > 0){
-                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual-1;
+            if ($scope.painelTabela.tabelaAtual - 1 > 0) {
+                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual - 1;
             }
+            $scope.changeHeaderTitle();
         }
 
         $scope.changeHeaderTitle = function () {
-            if($scope.painelTabela.tabelaAtual == 1){
+            if ($scope.painelTabela.tabelaAtual == 1) {
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Processos';
-            }else if($scope.painelTabela.tabelaAtual == 2){
+            } else if ($scope.painelTabela.tabelaAtual == 2) {
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
-            }else if($scope.painelTabela.tabelaAtual == 3){
+            } else if ($scope.painelTabela.tabelaAtual == 3) {
                 $scope.painelTabela.tituloTabelaAtual = 'Players Linha Branca';
-            }else if($scope.painelTabela.tabelaAtual == 4){
+            } else if ($scope.painelTabela.tabelaAtual == 4) {
                 $scope.painelTabela.tituloTabelaAtual = 'Concorrentes Revenda';
             }
         }
@@ -622,7 +639,7 @@ angular.module("App.controllers", [])
         $scope.agrupadoresClientes = [
             {
                 clienteEmissorId: 974651321318,
-                agrupador:123456789,
+                agrupador: 123456789,
                 razao: "CARREFOUR",
                 cnpj: "08.675.549/0001-56",
                 cidade: "SÃO PAULO",
@@ -637,7 +654,7 @@ angular.module("App.controllers", [])
             },
             {
                 clienteEmissorId: 974651321318,
-                agrupador:123456789,
+                agrupador: 123456789,
                 razao: "CARREFOUR",
                 cnpj: "08.675.549/0001-56",
                 cidade: "SÃO PAULO",
@@ -653,25 +670,28 @@ angular.module("App.controllers", [])
         ];
 
         $scope.gridAgrupadorXCliente = {
+            enableGridMenu: true,
             enableHorizontalScrollbar: false,
-            data : 'agrupadoresClientes',
-            columnDefs : [
-            { field:'agrupador',width:'150',displayName:'Cliente agrupador'},
-            { field:'clienteEmissorId',width:'150',displayName:'Cliente Emissor'},
-            { field:'razao',width:'100',displayName:'Nome'},
-            { field:'cidade',width:'100',displayName:'CIDADE'},
-            { field:'uf',width:'70',displayName:'ESTADO'},
-            { field:'cnpj',width:'200',displayName:'CNPJ'},
-            { field:'endereco',width:'200',displayName:'ENDEREÇO'},
-            { field:'cep',width:'100',displayName:'CEP'},
-            { field:'telefone',width:'100',displayName:'TELEFONE'},
-            { field:'email',width:'200',displayName:'EMAIL'},
-            { field:'inscricaoEstadual',width:'200',displayName:'INSCRIÇÃO ESTADUAL'},
-            { field:'status',width:'150',displayName:'STATUS'}
-        ]};
+            data: 'agrupadoresClientes',
+            columnDefs: [
+                {field: 'agrupador', width: '150', displayName: 'Cliente agrupador'},
+                {field: 'clienteEmissorId', width: '150', displayName: 'Cliente Emissor'},
+                {field: 'razao', width: '100', displayName: 'Nome'},
+                {field: 'cidade', width: '100', displayName: 'CIDADE'},
+                {field: 'uf', width: '70', displayName: 'ESTADO'},
+                {field: 'cnpj', width: '200', displayName: 'CNPJ'},
+                {field: 'endereco', width: '200', displayName: 'ENDEREÇO'},
+                {field: 'cep', width: '100', displayName: 'CEP'},
+                {field: 'telefone', width: '100', displayName: 'TELEFONE'},
+                {field: 'email', width: '200', displayName: 'EMAIL'},
+                {field: 'inscricaoEstadual', width: '200', displayName: 'INSCRIÇÃO ESTADUAL'},
+                {field: 'status', width: '150', displayName: 'STATUS'}
+            ]
+        };
 
         $scope.gridTabelaDesnormalizada = {
             enableHorizontalScrollbar: 0,
+            enableGridMenu: true,
             data: 'tabelaDesnormalizada',
             columnDefs: [
                 {
@@ -943,7 +963,7 @@ angular.module("App.controllers", [])
         $scope.listaCondicaoPagamento = [];
         $scope.listaCondicaoFrete = [];
 
-        function init(){
+        function init() {
             //todo fazer padrão promessa
             $scope.listaCondicaoPagamento = CondicaoPagamentoService.consultaPagamentoReplica();
             $scope.listaCondicaoFrete = FreteService.consultaFreteReplica();
@@ -953,6 +973,7 @@ angular.module("App.controllers", [])
 
         $scope.gridReplicas = {
             enableHorizontalScrollbar: true,
+            enableGridMenu: true,
             data: 'replicas',
             columnDefs: [
                 {
@@ -977,8 +998,8 @@ angular.module("App.controllers", [])
                 },
                 {
                     displayName: 'Cond. Pagtos',
-                    width:'150',
-                    field:'condPagtos.codigo',
+                    width: '150',
+                    field: 'condPagtos.codigo',
                     editModelField: 'condPagtos',
                     editDropdownValueLabel: 'codigo',
                     editableCellTemplate: './view/uiGridTemplates/ui-select.html',
@@ -989,9 +1010,9 @@ angular.module("App.controllers", [])
                     displayName: 'Incoterms'
                 },
                 {
-                    displayName:'Cond. Frete',
-                    width:'150',
-                    field:'condFrete.codigo',
+                    displayName: 'Cond. Frete',
+                    width: '150',
+                    field: 'condFrete.codigo',
                     editModelField: 'condFrete',
                     editDropdownValueLabel: 'codigo',
                     editableCellTemplate: './view/uiGridTemplates/ui-select.html',
@@ -1013,40 +1034,41 @@ angular.module("App.controllers", [])
 
         $scope.datasProgramadas = [
             {
-                agendaEntrega:'25.05.2017',
-                quatidadeDistribuicao:1
+                agendaEntrega: '25.05.2017',
+                quatidadeDistribuicao: 1
 
             }
         ];
 
         $scope.gridProgramaEntrega = {
             enableRowSelection: true,
+            enableGridMenu: true,
             data: 'datasProgramadas',
-            onRegisterApi : function(gridApi) {
+            onRegisterApi: function (gridApi) {
                 $scope.gridApi = gridApi;
             },
             columnDefs: [
                 {
                     field: 'agendamentoEntrega',
                     displayName: 'Agend. Entrega',
-                    cellEditableCondition:true
+                    cellEditableCondition: true
                 },
                 {
                     field: 'quatidadeDistribuicao',
                     displayName: 'Qt. Distribuição',
-                    cellEditableCondition:true
+                    cellEditableCondition: true
                 }
             ]
         };
 
-        $scope.excluirProgramaEntrega = function(){
+        $scope.excluirProgramaEntrega = function () {
             angular.forEach($scope.gridApi.selection.getSelectedRows(), function (data, index) {
                 $scope.datasProgramadas.splice($scope.datasProgramadas.lastIndexOf(data), 1);
             });
         }
 
         $scope.adicionarProgramaEntrega = function () {
-            $scope.datasProgramadas.push({agendaEntrega:'Editar', quatidadeDistribuicao:0})
+            $scope.datasProgramadas.push({agendaEntrega: 'Editar', quatidadeDistribuicao: 0})
         }
 
         $scope.criarProgramaEntrega = function () {
@@ -1075,6 +1097,7 @@ angular.module("App.controllers", [])
 
         $scope.gridSimulacao = {
             data: 'listaMateriais',
+            enableGridMenu: true,
             columnDefs: [
                 {
                     field: 'codigo',
@@ -1105,6 +1128,7 @@ angular.module("App.controllers", [])
         };
 
         $scope.gridDetalhe = {
+            enableGridMenu: true,
             data: 'listaMateriais',
             columnDefs: [
                 {
@@ -1162,7 +1186,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/programar-entrega.html',
                 controller: 'ModalProgramarEntregaCtrl',
-                size:'md'
+                size: 'md'
             });
         }
 
@@ -1171,7 +1195,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/efetivar-ov2.html',
                 controller: 'ModalEfetivarOv2Ctrl',
-                size:'lg'
+                size: 'lg'
             });
         }
 
@@ -1196,6 +1220,7 @@ angular.module("App.controllers", [])
 
         $scope.gridBonificacoes = {
             data: 'listaMateriais',
+            enableGridMenu: true,
             columnDefs: [
                 {
                     field: 'marcar',
@@ -1239,34 +1264,34 @@ angular.module("App.controllers", [])
 
         $scope.listaOrdenASeremEfetivadas = [
             {
-                status:"",
-                organizacao:"OV 1000",
-                canal:"11",
-                setor:"10",
-                situacaoCargao:"",
-                codProcEsp:"",
-                emissor:"",
-                recebedor:"0000021777",
-                tipo:"ZVPB",
-                preOrdem:"0000000001",
-                statusPreOrdem:"Não Efetivada",
-                ordem:"",
-                imprimir:""
+                status: "",
+                organizacao: "OV 1000",
+                canal: "11",
+                setor: "10",
+                situacaoCargao: "",
+                codProcEsp: "",
+                emissor: "",
+                recebedor: "0000021777",
+                tipo: "ZVPB",
+                preOrdem: "0000000001",
+                statusPreOrdem: "Não Efetivada",
+                ordem: "",
+                imprimir: ""
             },
             {
-                status:"",
-                organizacao:"OV 1000",
-                canal:"11",
-                setor:"10",
-                situacaoCargao:"",
-                codProcEsp:"",
-                emissor:"",
-                recebedor:"0000041203",
-                tipo:"ZVPB",
-                preOrdem:"0000000002",
-                statusPreOrdem:"Não Efetivada",
-                ordem:"",
-                imprimir:""
+                status: "",
+                organizacao: "OV 1000",
+                canal: "11",
+                setor: "10",
+                situacaoCargao: "",
+                codProcEsp: "",
+                emissor: "",
+                recebedor: "0000041203",
+                tipo: "ZVPB",
+                preOrdem: "0000000002",
+                statusPreOrdem: "Não Efetivada",
+                ordem: "",
+                imprimir: ""
             }
         ]
 
@@ -1319,12 +1344,13 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/bonificacao.html',
                 controller: 'ModalBonificacaoCtrl',
-                size:'lg'
+                size: 'lg'
             });
         }
 
         $scope.gridOrdenASeremEfetivadas = {
             data: 'listaOrdenASeremEfetivadas',
+            enableGridMenu: true,
             columnDefs: [
                 {
                     field: 'status',
@@ -1383,6 +1409,7 @@ angular.module("App.controllers", [])
 
         $scope.gridDetalhe = {
             data: 'listaMateriais',
+            enableGridMenu: true,
             columnDefs: [
                 {
                     field: 'progDeEntrega',
@@ -1439,16 +1466,16 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/programar-entrega.html',
                 controller: 'ModalProgramarEntregaCtrl',
-                size:'md'
+                size: 'md'
             });
         }
 
         $scope.removeTextoOv = function (texto) {
-             $scope.textoOv = _.without( $scope.textoOv, _.findWhere( $scope.textoOv, {id: texto.id}));
+            $scope.textoOv = _.without($scope.textoOv, _.findWhere($scope.textoOv, {id: texto.id}));
         }
 
         $scope.removeTextoSimulacao = function (texto) {
-             $scope.textoSimulacao = _.without( $scope.textoSimulacao, _.findWhere( $scope.textoSimulacao, {id: texto.id}));
+            $scope.textoSimulacao = _.without($scope.textoSimulacao, _.findWhere($scope.textoSimulacao, {id: texto.id}));
         }
 
         $scope.adicionarTextoOv = function () {
@@ -1466,7 +1493,7 @@ angular.module("App.controllers", [])
                 controller: 'ModalTextoOvCtrl'
             });
         };
-    
+
         $scope.efetivarOrdensDeVenda = function () {
             $scope.listaOrdenASeremEfetivadas[0].ordem = 123123213;
         }
@@ -1485,10 +1512,10 @@ angular.module("App.controllers", [])
         $scope.material = material;
         $scope.listaDeCentros = [];
         $scope.listaDeLocaisExpedicao = [];
-        $scope.listaDeIncoterms= [];
+        $scope.listaDeIncoterms = [];
 
 
-        function init(){
+        function init() {
             //todo fazer padrão promessa
             $scope.listaDeCentros = CentroService.consultaCentroPorMaterial(material.id);
             $scope.listaDeLocaisExpedicao = LocalExpedicaoService.consultaLocalExpedicaoPorMaterial(material.id);
@@ -1500,7 +1527,7 @@ angular.module("App.controllers", [])
         $scope.close = function () {
             $uibModalInstance.close();
         };
-        
+
         $scope.transferirMaterial = function (material) {
             $uibModalInstance.close();
         }
@@ -1516,7 +1543,7 @@ angular.module("App.controllers", [])
         $scope.listaHistoricoVenda = [];
         $scope.loading = false;
 
-        function init(){
+        function init() {
             //todo fazer padrão promessa
             $scope.loading = true;
             $scope.listaHistoricoVenda = MaterialService.consultaHistoricoDeVenda(material.id);
@@ -1528,57 +1555,58 @@ angular.module("App.controllers", [])
 
         $scope.gridHistoricoVenda = {
             enableHorizontalScrollbar: true,
+            enableGridMenu: true,
             data: 'listaHistoricoVenda',
             columnDefs: [
                 {
                     field: 'sku',
-                    width:'150',
+                    width: '150',
                     displayName: 'SKU'
                 },
                 {
-                    field:'data',
-                    width:'150',
-                    displayName:'Data'
+                    field: 'data',
+                    width: '150',
+                    displayName: 'Data'
                 },
                 {
-                    field:'pvl',
-                    width:'150',
-                    displayName:'PVL'
+                    field: 'pvl',
+                    width: '150',
+                    displayName: 'PVL'
                 },
                 {
-                    field:'percDesc',
-                    width:'150',
-                    displayName:'% Desc'
+                    field: 'percDesc',
+                    width: '150',
+                    displayName: '% Desc'
                 },
                 {
-                    field:'percAcres',
-                    width:'150',
-                    displayName:'% Acres'
+                    field: 'percAcres',
+                    width: '150',
+                    displayName: '% Acres'
                 },
                 {
-                    field:'valorTotalNf',
-                    width:'150',
-                    displayName:'Valor Total NF'
+                    field: 'valorTotalNf',
+                    width: '150',
+                    displayName: 'Valor Total NF'
                 },
                 {
-                    field:'quantidade',
-                    width:'150',
-                    displayName:'Qtde'
+                    field: 'quantidade',
+                    width: '150',
+                    displayName: 'Qtde'
                 },
                 {
-                    field:'condPagto',
-                    width:'150',
-                    displayName:'Cond. Pagto'
+                    field: 'condPagto',
+                    width: '150',
+                    displayName: 'Cond. Pagto'
                 },
                 {
-                    field:'sap',
-                    width:'150',
-                    displayName:'SAP'
+                    field: 'sap',
+                    width: '150',
+                    displayName: 'SAP'
                 },
                 {
-                    field:'ordemDeVenda',
-                    width:'150',
-                    displayName:'Ordem de Venda'
+                    field: 'ordemDeVenda',
+                    width: '150',
+                    displayName: 'Ordem de Venda'
                 }
             ]
         };
@@ -1597,7 +1625,7 @@ angular.module("App.controllers", [])
         $scope.listaMateriais = [];
         $scope.listaDeCentros = [];
         $scope.listaDeLocaisExpedicao = [];
-        $scope.listaDeIncoterms= [];
+        $scope.listaDeIncoterms = [];
 
         function init() {
             if ($rootScope.selectedClient == null) {
@@ -1629,11 +1657,10 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/replicar.html',
                 controller: 'ModalReplicarCtrl',
-                size:'lg',
+                size: 'lg',
                 backdrop: 'static',
                 resolve: {
-                    replicas: function ()
-                    {
+                    replicas: function () {
                         return MaterialService.consultaReplicas();
                     }
                 }
@@ -1645,10 +1672,10 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/efetivar-ov.html',
                 controller: 'ModalEfetivarOvCtrl',
-                size:'lg',
+                size: 'lg',
                 backdrop: 'static',
                 resolve: {
-                   materiais: function () {
+                    materiais: function () {
                         return $scope.listaMateriais;
                     }
                 }
@@ -1660,9 +1687,9 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/material-completo.html',
                 controller: 'ModalMaterialCompletoCtrl',
-                size:'lg',
+                size: 'lg',
                 resolve: {
-                    material: function (){
+                    material: function () {
                         return MaterialService.consultaMaterialCompleto(id);
                     }
                 }
@@ -1676,10 +1703,10 @@ angular.module("App.controllers", [])
                 templateUrl: './view/historico-material.html',
                 controller: 'ModalHistoricoMaterialCtrl',
                 backdrop: 'static',
-                size:'lg',
+                size: 'lg',
 
                 resolve: {
-                    material: function (){
+                    material: function () {
                         return MaterialService.consultaMaterialCompleto(material.id);
                     }
                 }
@@ -1689,12 +1716,13 @@ angular.module("App.controllers", [])
 
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
+            enableGridMenu: true,
             data: 'listaMateriais',
             columnDefs: [
                 {
                     field: 'acao',
-                    width:'150',
-                    displayName: 'Status',
+                    width: '150',
+                    displayName: 'Ação',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarMateria(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
                     ' <a class="black" style="color: black"  ng-click="grid.appScope.abrirHitoriocoMaterial(row.entity)" href=""><i class="fa fa-book bigger-130"></i></a>' +
@@ -1702,123 +1730,191 @@ angular.module("App.controllers", [])
                     ' </div>'
                 },
                 {
-                    field:'id',
-                    width:'150',
-                    displayName:'Id',
+                    field: 'id',
+                    width: '150',
+                    displayName: 'Id',
                     cellTemplate: '  <a href="" ng-click="grid.appScope.consultarMaterialCompleto(COL_FIELD)">{{COL_FIELD}}</a>'
                 },
                 {
-                    field:'codigo',
-                    width:'150',
-                    displayName:'Material'
+                    field: 'codigo',
+                    width: '150',
+                    displayName: 'Material'
                 },
                 {
-                    field:'cor',
-                    width:'150',
-                    displayName:'Cor'
+                    field: 'cor',
+                    width: '150',
+                    displayName: 'Cor'
                 },
                 {
-                    field:'voltagem',
-                    width:'150',
-                    displayName:'Voltagem'
+                    field: 'voltagem',
+                    width: '150',
+                    displayName: 'Voltagem'
                 },
                 {
-                    field:'condPagto',
-                    width:'150',
-                    displayName:'Cond. Pagamento'
+                    field: 'condPagto',
+                    width: '150',
+                    displayName: 'Cond. Pagamento'
                 },
                 {
-                    field:'quantidade',
-                    width:'150',
-                    displayName:'Quantidade'
+                    field: 'quantidade',
+                    width: '150',
+                    displayName: 'Quantidade'
                 },
                 {
-                    field:'situacaoCarga',
-                    width:'150',
-                    displayName:'Sit. Carga'
+                    field: 'situacaoCarga',
+                    width: '150',
+                    displayName: 'Sit. Carga'
                 },
                 {
-                    field:'precFlexibilidade',
-                    width:'150',
-                    displayName:'%Flexib'
+                    field: 'precFlexibilidade',
+                    width: '150',
+                    displayName: '%Flexib'
                 },
                 {
-                    field:'percRedutorDesconto',
-                    width:'150',
-                    displayName:'%Redut.'
+                    field: 'percRedutorDesconto',
+                    width: '150',
+                    displayName: '%Redut.'
                 },
                 {
-                    field:'pvl',
-                    width:'150',
-                    displayName:'PVL'
+                    field: 'pvl',
+                    width: '150',
+                    displayName: 'PVL'
                 },
                 {
-                    field:'condPagtoFrete',
-                    width:'150',
-                    displayName:'Cond. Frete'
+                    field: 'condPagtoFrete',
+                    width: '150',
+                    displayName: 'Cond. Frete'
                 },
                 {
-                    field:'valorFrete',
-                    width:'150',
-                    displayName:'VL. Frete'
+                    field: 'valorFrete',
+                    width: '150',
+                    displayName: 'VL. Frete'
                 },
                 {
-                    field:'valorFreteMlog',
-                    width:'150',
-                    displayName:'VL. Frete MLOG'
+                    field: 'valorFreteMlog',
+                    width: '150',
+                    displayName: 'VL. Frete MLOG'
                 },
                 {
-                    field:'valorNotaFiscalUnitario',
-                    width:'150',
-                    displayName:'Valor NF Unit.'
+                    field: 'valorNotaFiscalUnitario',
+                    width: '150',
+                    displayName: 'Valor NF Unit.'
                 },
                 {
-                    field:'valorNotaFiscalTotal',
-                    width:'150',
-                    displayName:'Valor NF Total'
+                    field: 'valorNotaFiscalTotal',
+                    width: '150',
+                    displayName: 'Valor NF Total'
                 },
                 {
-                    field:'valorComIcms',
-                    width:'150',
-                    displayName:'VL. C/ ICMS'
+                    field: 'valorComIcms',
+                    width: '150',
+                    displayName: 'VL. C/ ICMS'
                 },
                 {
-                    field:'valorComIpi',
-                    width:'150',
-                    displayName:'VL. C/ IPI'
+                    field: 'valorComIpi',
+                    width: '150',
+                    displayName: 'VL. C/ IPI'
                 },
                 {
-                    field:'valorComIcmsSt',
-                    width:'150',
-                    displayName:'VL. C/ ICMS ST'
+                    field: 'valorComIcmsSt',
+                    width: '150',
+                    displayName: 'VL. C/ ICMS ST'
                 },
                 {
-                    displayName:'Centro',
-                    width:'150',
-                    field:'centro.parcNeg',
-                    editModelField:'centro',
+                    displayName: 'Centro',
+                    width: '150',
+                    field: 'centro.parcNeg',
+                    editModelField: 'centro',
                     editDropdownValueLabel: 'parcNeg',
                     editableCellTemplate: './view/uiGridTemplates/ui-select.html',
                     editDropdownOptionsArray: $scope.listaDeCentros
                 },
                 {
-                    displayName:'Local Expedicao',
-                    width:'150',
-                    field:'localExpedicao.parcNeg',
+                    displayName: 'Local Expedicao',
+                    width: '150',
+                    field: 'localExpedicao.parcNeg',
                     editModelField: 'localExpedicao',
                     editDropdownValueLabel: 'parcNeg',
                     editableCellTemplate: './view/uiGridTemplates/ui-select.html',
                     editDropdownOptionsArray: $scope.listaDeLocaisExpedicao
                 },
                 {
-                    field:'juros',
-                    width:'150',
-                    displayName:'%Juros'
+                    field: 'juros',
+                    width: '150',
+                    displayName: '%Juros'
                 },
                 {
-                    field:'descricao',
-                    width:'150',
-                    displayName:'Descricao'
+                    field: 'descricao',
+                    width: '150',
+                    displayName: 'Descricao'
+                }
+            ]
+        };
+
+        $scope.ultimasSimulacoes = [
+            {
+                id:1,
+                data:'15.04.2017',
+                descricao:'',
+                emissor:'',
+                valor:'R$ 76.000,00',
+                status:'GRAVADA'
+            },
+            {
+                id:2,
+                data:'05.04.2017',
+                descricao:'',
+                emissor:'',
+                valor:'R$ 44.000,00',
+                status:'EFETUADA'
+            },
+            {
+                id:3,
+                data:'25.03.2017',
+                descricao:'',
+                emissor:'',
+                valor:'R$ 150.000,00',
+                status:'GRAVADA'
+            },
+            {
+                id:4,
+                data:'10.02.2017',
+                descricao:'',
+                emissor:'',
+                valor:'R$ 99.000,00',
+                status:'CANCELADA'
+            }
+        ];
+
+        $scope.gridUltimasSimulacoes = {
+            enableHorizontalScrollbar: 0,
+            enableGridMenu: true,
+            data: 'ultimasSimulacoes',
+            columnDefs: [
+                {
+                    field: 'id',
+                    width: '50',
+                    displayName: 'Id'
+                },
+                {
+                    field: 'data',
+                    width: '100',
+                    displayName: 'Data'
+                },
+                {
+                    field: 'descricao',
+                    width: '150',
+                    displayName: 'Descrição'
+                },
+                {
+                    field: 'emissor',
+                    width: '100',
+                    displayName: 'Emissor'
+                },
+                {
+                    field: 'status',
+                    width: '150',
+                    displayName: 'Status'
                 }
             ]
         };
@@ -2072,6 +2168,64 @@ angular.module("App.controllers", [])
         $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
             $rootScope.currentRoute = $location.path();
         });
+
+        $rootScope.credito = [
+            {
+                id: 1,
+                emissor:445646546 ,
+                limiteTotal: 'R$ 110.000,00',
+                limiteWhp: 'R$ 85.000,00',
+                exposicaoWRP: 'R$ 25.000,00',
+                emAbertoWRP: 'R$ 5.000,00'
+            },
+            {
+                id: 2 ,
+                emissor:98794656 ,
+                limiteTotal: 'R$ 60.000,00',
+                limiteWhp: 'R$ 45.000, 00',
+                exposicaoWRP: 'R$ 15.000, 00',
+                emAbertoWRP: 'R$ 2.000, 00'
+            },
+            {
+                id: 3 ,
+                emissor:654654646 ,
+                limiteTotal: 'R$ 160.000, 00',
+                limiteWhp: 'R$ 145.000, 00',
+                exposicaoWRP: 'R$ 115.000, 00',
+                emAbertoWRP: 'R$ 90.000, 00'
+            }
+        ];
+
+        $rootScope.gridCredito = {
+            data: 'credito',
+            enableGridMenu: true,
+            columnDefs: [
+                {
+                    field: 'id',
+                    displayName: '#'
+                },
+                {
+                    field: 'emissor',
+                    displayName: 'Emissor'
+                },
+                {
+                    field: 'limiteTotal',
+                    displayName: 'Limite Total'
+                },
+                {
+                    field: 'limiteWhp',
+                    displayName: 'Limite WHP'
+                },
+                {
+                    field: 'exposicaoWRP',
+                    displayName: 'Exposição WRP'
+                },
+                {
+                    field: 'emAbertoWRP',
+                    displayName: 'Em Aberto WRP.'
+                }
+            ]
+        };
 
         $rootScope.currentRoute = "/home";
 
