@@ -2035,6 +2035,58 @@ angular.module("App.controllers", [])
 
 
     })
+
+    .controller("GraficosController", function ($scope, $rootScope) {
+
+        $rootScope.dadosGraficos = [
+        {
+            "x": "Fogão",
+            "voltyd16": 1,
+            "voltyd17": 0
+        },{
+            "x": "Forno Microondas",
+            "voltyd16": 0,
+            "voltyd17": 6
+        },{
+            "x": "Freezer Horizontal",
+            "voltyd16": 0,
+            "voltyd17": 3
+        },{
+            "x": "Freezer Vertical",
+            "voltyd16": 0,
+            "voltyd17": 2
+        },{
+            "x": "Lavadora Roupas",
+            "voltyd16": 1,
+            "voltyd17": 8
+        },{
+            "x": "Refrigerador Elétrico",
+            "voltyd16": 12,
+            "voltyd17": 11
+        }]; 
+
+
+
+
+        $rootScope.dadosGraficosColunas = [
+        {
+            "id": "voltyd16",
+            "type": "bar",
+            "name": "voltyd16"
+        },
+        {
+            "id": "voltyd17",
+            "type": "bar",
+            "name": "voltyd17"
+        }];
+
+        $rootScope.datax = {
+            "id": "x"
+        };
+
+    })
+
+
     .controller("ClientesController", function ($scope, $rootScope) {
 
 
@@ -2061,6 +2113,11 @@ angular.module("App.controllers", [])
                 nome: 'Simulações',
                 link: '/simulacoes',
                 icon: 'fa-usd'
+
+            }, {
+                nome: 'Gráficos',
+                link: '/graficos',
+                icon: 'fa-bar-chart'
 
             }];
 

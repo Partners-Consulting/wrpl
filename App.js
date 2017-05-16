@@ -38,6 +38,11 @@ angular.module('App', ["App.controllers",
                 templateUrl: 'view/cliente.html',
                 controller: 'ClienteController'
             })
+            .when('/graficos', {
+                templateUrl: 'view/graficos.html',
+                controller: 'GraficosController'
+            })
+
             .when('/tela3', {
                 templateUrl: 'view/tela3.html',
                 controller: 'Tela3Controller'
