@@ -1,7 +1,7 @@
 <div class="row">
     <panel title="Dados Entrega" icon="fa-truck" height="46" col="3">
         <panel-actions>
-            <button type="button" class="btn btn-warning btn-xs" ng-click="editarDadosEntrega()"><i class="fa fa-pencil"
+            <button type="button" class="btn btn-blue btn-xs" ng-click="editarDadosEntrega()"><i class="fa fa-pencil"
                                                                                                     aria-hidden="true"></i>
             </button>
         </panel-actions>
@@ -47,7 +47,7 @@
                 por SKU
             </button>
         </panel-actions>
-       <div ui-grid="gridUltimasSimulacoes" class="grid-ultimas-simulacoes"></div>
+       <div ui-grid="gridUltimasSimulacoes" class="grid-ultimas-simulacoes" ui-grid-resize-columns ui-grid-move-columns></div>
     </panel>
 </div>
 <div class="row">
@@ -82,7 +82,7 @@
                      </div>
                  </div>
         </panel-actions>
-        <div ui-grid="gridMateriais" ui-grid-edit class="grid-materias"></div>
+        <div ui-grid="gridMateriais" ui-grid-edit class="grid-materias" ui-grid-resize-columns ui-grid-move-columns></div>
         <!-- <table class="table table-hover">
              &lt;!&ndash; <caption>Monthly Kills</caption> &ndash;&gt;
              <thead class="thead-bold">

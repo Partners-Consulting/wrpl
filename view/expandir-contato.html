@@ -89,18 +89,14 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </uib-tab>
-    <uib-tab index="1" heading="Agrupador x Cliente">
-        <div class="modal-body">
             <div class="row">
                 <div class="col-sm-12">
-                    <div ng-if="active == 1" ui-grid="gridAgrupadorXCliente"></div>
+                    <div ng-if="active == 0" ui-grid="gridAgrupadorXCliente"  ui-grid-resize-columns ui-grid-move-columns></div>
                 </div>
             </div>
         </div>
     </uib-tab>
-    <uib-tab index="2" heading="Manutenção Contato">
+    <uib-tab index="1" heading="Manutenção Contato">
         <div class="modal-body">
             <div class="row">
                 <div class="col-sm-12">
@@ -165,7 +161,7 @@
             </br>
             <div class="row">
                 <div class="col-sm-12">
-                    <div ng-if="active == 2" ui-grid="gridTabelaDesnormalizada" class="grid-manutencao-contatos"></div>
+                    <div ng-if="active == 1" ui-grid="gridTabelaDesnormalizada" class="grid-manutencao-contatos"  ui-grid-resize-columns></div>
                 </div>
             </div>
             </br>

@@ -474,7 +474,7 @@ p {
 }
 
 input[type=checkbox]:checked + label {
-    color: black;
+    color: #1b6d85;
     user-select: none;
 }
 
@@ -712,8 +712,8 @@ ul.sub_navigation li {
     overflow-y: auto;
 }
 
-.btn-gray{
-    background-color: darkgray;
+.btn-blue{
+    background-color: #1b6d85;
     color: white;
 }
 
@@ -760,6 +760,7 @@ form {
 
 .painel-slide-left i{
     margin-top: 55px;
+    color: #1b6d85;
 }
 
 .painel-slide-right{
@@ -781,14 +782,15 @@ form {
 .painel-slide-right i{
     float: right;
     margin-top: 55px;
+    color: #1b6d85;
 }
 
 span.glyphicon.glyphicon-chevron-right:before {
-    color: green;
+    color: #1b6d85;
 }
 
 span.glyphicon.glyphicon-chevron-left:before {
-    color: green;
+    color: #1b6d85;
 }
 
 span.glyphicon.glyphicon-chevron-right:hover {

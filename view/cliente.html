@@ -1,7 +1,7 @@
 <div class="row">
     <panel title="Dados Revenda" icon="fa-user" height="42" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-gray btn-xs" ng-click="editarDadosCliente()"><i
+            <button type="button" class="btn btn-blue btn-xs" ng-click="editarDadosCliente()"><i
                     class="fa fa-arrows-alt" aria-hidden="true"></i></button>
         </panel-actions>
         <div class="row">
@@ -64,10 +64,10 @@
                 </div>
                     <div class="painel-slide painel-slide-content">
                             <div ng-if="painelTabela.tabelaAtual == 1" id="exportableProcessos"
-                                 ui-grid="gridProcessos" class="grid-painel"></div>
-                            <div ng-if="painelTabela.tabelaAtual == 2" ui-grid="gridContatos" class="grid-painel"></div>
-                            <div ng-if="painelTabela.tabelaAtual == 3" ui-grid="gridLinhaBranca" class="grid-painel"></div>
-                            <div ng-if="painelTabela.tabelaAtual == 4" ui-grid="gridConcorrentes" class="grid-painel"></div>
+                                 ui-grid="gridProcessos" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
+                            <div ng-if="painelTabela.tabelaAtual == 2" ui-grid="gridContatos" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
+                            <div ng-if="painelTabela.tabelaAtual == 3" ui-grid="gridLinhaBranca" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
+                            <div ng-if="painelTabela.tabelaAtual == 4" ui-grid="gridConcorrentes" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
                     </div>
                    <!-- <div uib-carousel active="mydata.active" interval="myInterval" no-wrap="noWrapSlides">
                     <div uib-slide index="0"
@@ -75,7 +75,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div ng-if="mydata.active == 0" id="exportableProcessos"
-                                     ui-grid="{ data: processos,  enableHorizontalScrollbar : 0}" class="grid-painel"></div>
+                                     ui-grid="{ data: processos,  enableHorizontalScrollbar : 0}" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
                          class="slide animated">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div ng-if="mydata.active == 1" ui-grid="gridContatos" class="grid-painel"></div>
+                                <div ng-if="mydata.active == 1" ui-grid="gridContatos" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
                             </div>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                          class="slide animated">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div ng-if="mydata.active == 2" ui-grid="gridLinhaBranca" class="grid-painel"></div>
+                                <div ng-if="mydata.active == 2" ui-grid="gridLinhaBranca" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                          class="slide animated">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div ng-if="mydata.active == 3" ui-grid="gridConcorrentes" class="grid-painel"></div>
+                                <div ng-if="mydata.active == 3" ui-grid="gridConcorrentes" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
                             </div>
                         </div>
                     </div>
@@ -114,7 +114,7 @@
 <div class="row">
     <panel id="perfil" title="Perfil da Revenda" icon="fa-shopping-cart" height="58" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-gray btn-xs" ng-click="editarPerfilDeRevenda()"><i
+            <button type="button" class="btn btn-blue btn-xs" ng-click="editarPerfilDeRevenda()"><i
                     class="fa fa-pencil" aria-hidden="true"></i></button>
         </panel-actions>
         </br>
@@ -165,17 +165,17 @@
                     <div class="form-group">
                         <label class="col-sm-2">% TOS T3</label>
                         <div class="col-sm-2">
-                            <input ng-disabled="false" type="text" class="form-control input-sm"
+                            <input ng-disabled="!isBlockedTos" type="text" class="form-control input-sm"
                                    placeholder="%TOS T3"
                                    ng-model="selectedClient.revenda.tos.total">
                         </div>
                         <div ng-if="true" class="col-sm-2">
-                            <button type="button" class="btn btn-gray btn-sm" ng-click="editarTos()"><i
+                            <button type="button" class="btn btn-blue btn-sm" ng-click="editarTos()"><i
                                     class="fa fa-pencil" aria-hidden="true"></i></button>
                         </div>
                         <label class="col-sm-2">Data de atualização</label>
                         <div class="col-sm-4">
-                            <input ng-disabled="isBlocked" type="text" class="form-control input-sm"
+                            <input ng-disabled="true" type="text" class="form-control input-sm"
                                    placeholder="Data atualização"
                                    ng-model="selectedClient.revenda.data">
                         </div>
@@ -231,7 +231,7 @@
                     <div uib-slide ng-repeat="geral in gerais track by geral.id" index="geral.id"
                          class="slide animated">
                         <h3 class="title-gray-block">{{geral.titulo}}
-                            <button type="button" class="btn btn-success btn-xs note-plus" ng-init="mostra=true"
+                            <button type="button" class="btn btn-blue btn-xs note-plus" ng-init="mostra=true"
                                     ng-click="mostra = !mostra"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                         </h3>
                         <span ng-show="mostra" class="text">{{geral.texto}}</span>

@@ -79,3 +79,26 @@
     display: table-cell;
     vertical-align: middle;
 }
+
+.ui-grid-cell-focus {
+    outline: 0;
+    background-color: #b3c4c7;
+}
+
+.ui-grid-menu-button {
+    z-index: 2;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none;
+    border: 0px solid #d4d4d4;
+
+}
+
+.ui-grid-menu-button i{
+    color:white;
+}
+
+input[type="text"].ui-grid-filter-input {
+    color:black;
+}
