@@ -234,6 +234,19 @@ angular.module("App.controllers", [])
 
         init();
 
+        $scope.adicionarContatos = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/editar-contato.html',
+                controller: 'ModalInstanceUltimosContatosCtrl',
+                resolve: {
+                    contato: function () {
+                        return {};
+                    }
+                }
+            });
+        }
+        
         $scope.proximaTabela = function () {
             if ($scope.painelTabela.tabelaAtual + 1 <= $scope.painelTabela.quantidadeDeTabela) {
                 $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual + 1;
@@ -862,7 +875,7 @@ angular.module("App.controllers", [])
             }
             var alertExclusao = {
                 title: "Exclusão de contatos",
-                text: "Tem certeza que gostaria de excluir todos os contatos?",
+                text: "Confirma a exclusão dos contatos selecionados?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -1031,7 +1044,7 @@ angular.module("App.controllers", [])
             if (!!contato.id) {
                 $uibModalInstance.close();
             } else {
-                contato.data = new Date();
+                contato.data = "17.05.2017"
                 contato.id = $rootScope.contatos.length + 1;
                 $rootScope.contatos.push(contato);
                 $uibModalInstance.close();
@@ -2565,35 +2578,37 @@ angular.module("App.controllers", [])
             $rootScope.currentRoute = $location.path();
         });
 
-        $rootScope.credito = [
+        $rootScope.creditos = [
             {
                 id: 1,
                 emissor:445646546 ,
-                limiteTotal: 'R$ 110.000,00',
-                limiteWhp: 'R$ 85.000,00',
-                exposicaoWRP: 'R$ 25.000,00',
-                emAbertoWRP: 'R$ 5.000,00'
+                limiteTotal: 110000.00,
+                limiteWhp: 85000.00,
+                exposicaoWRP: 25000.00,
+                emAbertoWRP: 50000.00
             },
             {
                 id: 2 ,
                 emissor:98794656 ,
-                limiteTotal: 'R$ 60.000,00',
-                limiteWhp: 'R$ 45.000, 00',
-                exposicaoWRP: 'R$ 15.000, 00',
-                emAbertoWRP: 'R$ 2.000, 00'
+                limiteTotal: 60000.00,
+                limiteWhp: 45000.00,
+                exposicaoWRP: 150000.00,
+                emAbertoWRP: 20000.00
             },
             {
                 id: 3 ,
                 emissor:654654646 ,
-                limiteTotal: 'R$ 160.000, 00',
-                limiteWhp: 'R$ 145.000, 00',
-                exposicaoWRP: 'R$ 115.000, 00',
-                emAbertoWRP: 'R$ 90.000, 00'
+                limiteTotal: 160000.00,
+                limiteWhp: 145000.00,
+                exposicaoWRP: 115000.00,
+                emAbertoWRP: 90000.00
             }
         ];
 
+        $rootScope.somaLimiteTotal
+
         $rootScope.gridCredito = {
-            data: 'credito',
+            data: 'creditos',
             enableGridMenu: true,
             columnDefs: [
                 {
