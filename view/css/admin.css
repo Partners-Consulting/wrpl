@@ -13,6 +13,8 @@
 html {
     background: #f5f5f5;
     font-family: 'Ubuntu', sans-serif;
+    overflow: hidden;
+
 }
 
 body {
@@ -474,7 +476,7 @@ p {
 }
 
 input[type=checkbox]:checked + label {
-    color: black;
+    color: #1b6d85;
     user-select: none;
 }
 
@@ -616,6 +618,40 @@ ul.sub_navigation li {
     border-radius: 25px;
 }
 
+i.plus-phone{
+    left: 19px;
+    top: -4px;
+    background: #2eab31;
+    border-radius: 15px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+}
+
+i.plus-mail{
+    left: 19px;
+    top: -4px;
+    background: #2eab31;
+    border-radius: 15px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+}
+
+i.minus-all{
+    left: 19px;
+    top: -4px;
+    background: #d9534f;
+    border-radius: 15px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+}
+
+.btn-danger:hover i.minus-all{
+    background: #c9302c;
+}
+
 .btn-circle.btn-xl {
     width: 70px;
     height: 70px;
@@ -712,8 +748,8 @@ ul.sub_navigation li {
     overflow-y: auto;
 }
 
-.btn-gray{
-    background-color: darkgray;
+.btn-blue{
+    background-color: #1b6d85;
     color: white;
 }
 
@@ -760,6 +796,7 @@ form {
 
 .painel-slide-left i{
     margin-top: 55px;
+    color: #1b6d85;
 }
 
 .painel-slide-right{
@@ -781,14 +818,15 @@ form {
 .painel-slide-right i{
     float: right;
     margin-top: 55px;
+    color: #1b6d85;
 }
 
 span.glyphicon.glyphicon-chevron-right:before {
-    color: green;
+    color: #1b6d85;
 }
 
 span.glyphicon.glyphicon-chevron-left:before {
-    color: green;
+    color: #1b6d85;
 }
 
 span.glyphicon.glyphicon-chevron-right:hover {
@@ -804,5 +842,5 @@ span.glyphicon.glyphicon-chevron-left:hover {
 }
 
 .grid-materias {
-    height: 210px;
+    height: 235px;
 }

@@ -1,7 +1,7 @@
 <div class="row">
-    <panel title="Dados Entrega" icon="fa-truck" height="46" col="3">
+    <panel title="Dados Entrega" icon="fa-truck" height="47" col="3">
         <panel-actions>
-            <button type="button" class="btn btn-warning btn-xs" ng-click="editarDadosEntrega()"><i class="fa fa-pencil"
+            <button type="button" class="btn btn-blue btn-xs" ng-click="editarDadosEntrega()"><i class="fa fa-pencil"
                                                                                                     aria-hidden="true"></i>
             </button>
         </panel-actions>
@@ -22,7 +22,7 @@
             <dd>220V</dd>
         </dl>
     </panel>
-    <panel title="Histórico" icon="fa-history" height="46" col="3">
+    <panel title="Histórico" icon="fa-history" height="47" col="3">
         <h3 class="title-gray-block">Pontuais
             <button type="button" class="btn btn-success btn-xs note-plus" ng-click="adicionarPontual()"><i
                     class="fa fa-plus-circle" aria-hidden="true"></i></button>
@@ -40,18 +40,18 @@
             </li>
         </ul>
     </panel>
-    <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="48" col="6">
+    <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="47" col="6">
         <panel-actions>
             <button type="button" class="btn btn-default btn-xs" ng-click="gotoDev()"><i class="fa fa-search"
                                                                                          aria-hidden="true"></i> Filtro
                 por SKU
             </button>
         </panel-actions>
-       <div ui-grid="gridUltimasSimulacoes" class="grid-ultimas-simulacoes"></div>
+       <div ui-grid="gridUltimasSimulacoes" class="grid-ultimas-simulacoes" ui-grid-resize-columns ui-grid-move-columns></div>
     </panel>
 </div>
 <div class="row">
-    <panel title="Itens da Simulação" icon="fa-table" height="54" col="12">
+    <panel title="Itens da Simulação" icon="fa-table" height="56" col="12">
         <panel-actions>
                  <div class="row">
                      <div class="col-sm-12">
@@ -82,7 +82,7 @@
                      </div>
                  </div>
         </panel-actions>
-        <div ui-grid="gridMateriais" ui-grid-edit class="grid-materias"></div>
+        <div ui-grid="gridMateriais" ui-grid-edit class="grid-materias" ui-grid-resize-columns ui-grid-move-columns></div>
         <!-- <table class="table table-hover">
              &lt;!&ndash; <caption>Monthly Kills</caption> &ndash;&gt;
              <thead class="thead-bold">
