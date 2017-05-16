@@ -35,51 +35,47 @@
             </div>
         </div>
     </panel>
-    <panel title="{{titulo}}" icon="fa-bookmark" height="42" col="6">
-        <panel-actions ng-if="mydata.active == 0">
+    <panel title="{{painelTabela.tituloTabelaAtual}}" icon="fa-bookmark" height="42" col="6">
+        <panel-actions ng-if="painelTabela.tabelaAtual == 1">
             <button type="button" class="btn btn-default btn-xs" ng-click="atualizarProcesso()"><i
                     class="fa fa-refresh" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-default btn-xs" ng-click="excelProcessos()"><i
                     class="fa fa-file-excel-o" aria-hidden="true"></i></button>
         </panel-actions>
-        <panel-actions ng-if="mydata.active == 1">
+        <panel-actions ng-if="painelTabela.tabelaAtual == 2">
             <button type="button" class="btn btn-default btn-xs" ng-click="atualizarContatoss()"><i
                     class="fa fa-refresh" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-default btn-xs" ng-click="excelContatos()"><i
                     class="fa fa-file-excel-o" aria-hidden="true"></i></button>
         </panel-actions>
-        <panel-actions ng-if="mydata.active == 2">
+        <panel-actions ng-if="painelTabela.tabelaAtual == 3">
             <button type="button" class="btn btn-default btn-xs" ng-click="adicionarLinhaBranca()">
                 <i class="fa fa-plus" aria-hidden="true"></i></button>
         </panel-actions>
-        <panel-actions ng-if="mydata.active == 3">
+        <panel-actions ng-if="painelTabela.tabelaAtual == 4">
             <button type="button" class="btn btn-default btn-xs"
                     ng-click="adicionarConcorrenteRevenda()"><i
                     class="fa fa-plus" aria-hidden="true"></i></button>
         </panel-actions>
         <div class="row">
             <div class="col-sm-12">
-                <!--     <  uib-tabset active="active" justified="false">
-                         <uib-tab index="0" heading="Últ. Processos">
-                             <div ui-grid="{ data: processos }"></div>
-                         </uib-tab>
-                         <uib-tab index="1" heading="Últ. Contatos">
-                             <div ui-grid="{ data: contatos }"></div>
-                         </uib-tab>
-                         <uib-tab index="2" heading="Players Linha Branca">
-                             <div ui-grid="{ data: linhaBranca }"></div>
-                         </uib-tab>
-                         <uib-tab index="3" heading="Concorrentes Revenda">
-                             <div ui-grid="{ data: concorrentesRevenda }"></div>
-                         </uib-tab>
-                     </uib-tabset>-->
-                <div uib-carousel active="mydata.active" interval="myInterval" no-wrap="noWrapSlides">
+                <div class="painel-slide-left" ng-click="tabelaAnterior()">
+                    <i class="fa fa-chevron-left fa-1x" aria-hidden="true"></i>
+                </div>
+                    <div class="painel-slide painel-slide-content">
+                            <div ng-if="painelTabela.tabelaAtual == 1" id="exportableProcessos"
+                                 ui-grid="gridProcessos" class="grid-painel"></div>
+                            <div ng-if="painelTabela.tabelaAtual == 2" ui-grid="gridContatos" class="grid-painel"></div>
+                            <div ng-if="painelTabela.tabelaAtual == 3" ui-grid="gridLinhaBranca" class="grid-painel"></div>
+                            <div ng-if="painelTabela.tabelaAtual == 4" ui-grid="gridConcorrentes" class="grid-painel"></div>
+                    </div>
+                   <!-- <div uib-carousel active="mydata.active" interval="myInterval" no-wrap="noWrapSlides">
                     <div uib-slide index="0"
                          class="slide animated">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div ng-if="mydata.active == 0" id="exportableProcessos"
-                                     ui-grid="{ data: processos,  enableHorizontalScrollbar : 0}" class=""></div>
+                                     ui-grid="{ data: processos,  enableHorizontalScrollbar : 0}" class="grid-painel"></div>
                             </div>
                         </div>
                     </div>
@@ -87,7 +83,7 @@
                          class="slide animated">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div ng-if="mydata.active == 1" ui-grid="gridContatos" class=""></div>
+                                <div ng-if="mydata.active == 1" ui-grid="gridContatos" class="grid-painel"></div>
                             </div>
                         </div>
                     </div>
@@ -95,7 +91,7 @@
                          class="slide animated">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div ng-if="mydata.active == 2" ui-grid="gridLinhaBranca" class=""></div>
+                                <div ng-if="mydata.active == 2" ui-grid="gridLinhaBranca" class="grid-painel"></div>
                             </div>
                         </div>
                     </div>
@@ -103,10 +99,13 @@
                          class="slide animated">
                         <div class="row">
                             <div class="col-sm-12">
-                                <div ng-if="mydata.active == 3" ui-grid="gridConcorrentes" class=""></div>
+                                <div ng-if="mydata.active == 3" ui-grid="gridConcorrentes" class="grid-painel"></div>
                             </div>
                         </div>
                     </div>
+                </div>-->
+                <div class="painel-slide-right" ng-click="proximaTabela()">
+                    <i class="fa fa-chevron-right fa-1x" aria-hidden="true"></i>
                 </div>
             </div>
         </div>
@@ -184,17 +183,17 @@
                     <div ng-if="isBlockedTos" class="form-group">
                         <label class="col-sm-2">Refrigerador</label>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control" placeholder="% TOS 3"
+                            <input type="text" class="form-control input-sm" placeholder="% TOS 3"
                                    ng-model="selectedClient.revenda.tos.refrigerador">
                         </div>
                         <label class="col-sm-2">Lavadora</label>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control" placeholder="% TOS 3"
+                            <input type="text" class="form-control input-sm" placeholder="% TOS 3"
                                    ng-model="selectedClient.revenda.tos.lavadora">
                         </div>
                         <label class="col-sm-2">Fogão</label>
                         <div class="col-sm-2">
-                            <input type="text" class="form-control" placeholder="% TOS 3"
+                            <input type="text" class="form-control input-sm" placeholder="% TOS 3"
                                    ng-model="selectedClient.revenda.tos.fogao">
                         </div>
                     </div>

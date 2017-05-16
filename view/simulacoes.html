@@ -1,5 +1,5 @@
 <div class="row">
-    <panel title="Dados Entrega" icon="fa-truck" height="40" col="3">
+    <panel title="Dados Entrega" icon="fa-truck" height="46" col="3">
         <panel-actions>
             <button type="button" class="btn btn-warning btn-xs" ng-click="editarDadosEntrega()"><i class="fa fa-pencil"
                                                                                                     aria-hidden="true"></i>
@@ -15,14 +15,14 @@
             <dt># Pedido</dt>
             <dd>{{selectedClient.simulacao.dadosEntrega.pedido}}</dd>
             <dt>Úsuario</dt>
-            <dd>user.nome</dd>
+            <dd>{{user.nome}}</dd>
             <dt>Volumetria</dt>
             <dd>0.4 M³</dd>
             <dt>Voltagem</dt>
             <dd>220V</dd>
         </dl>
     </panel>
-    <panel title="Histórico" icon="fa-history" height="40" col="3">
+    <panel title="Histórico" icon="fa-history" height="46" col="3">
         <h3 class="title-gray-block">Pontuais
             <button type="button" class="btn btn-success btn-xs note-plus" ng-click="adicionarPontual()"><i
                     class="fa fa-plus-circle" aria-hidden="true"></i></button>
@@ -40,54 +40,18 @@
             </li>
         </ul>
     </panel>
-    <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="40" col="6">
+    <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="48" col="6">
         <panel-actions>
             <button type="button" class="btn btn-default btn-xs" ng-click="gotoDev()"><i class="fa fa-search"
                                                                                          aria-hidden="true"></i> Filtro
                 por SKU
             </button>
         </panel-actions>
-        <table class="table table-hover">
-            <!-- <caption>Monthly Kills</caption> -->
-            <thead class="thead-bold">
-            <tr>
-                <th>#</th>
-                <th>DATA</th>
-                <th>VALOR</th>
-                <th>STATUS</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>15.04.2017</td>
-                <td>R$ 76.000,00</td>
-                <td>GRAVADA</td>
-            </tr>
-            <tr class="success">
-                <td>2</td>
-                <td>05.04.20179</td>
-                <td>R$ 44.000,00</td>
-                <td>EFETUADA</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>25.03.2017</td>
-                <td>R$ 150.000,00</td>
-                <td>GRAVADA</td>
-            </tr>
-            <tr class="danger">
-                <td>4</td>
-                <td>10.02.2017</td>
-                <td>R$ 99.000,00</td>
-                <td>CANCELADA</td>
-            </tr>
-            </tbody>
-        </table>
+       <div ui-grid="gridUltimasSimulacoes" class="grid-ultimas-simulacoes"></div>
     </panel>
 </div>
 <div class="row">
-    <panel title="Itens da Simulação" icon="fa-table" height="60" col="12">
+    <panel title="Itens da Simulação" icon="fa-table" height="54" col="12">
         <panel-actions>
                  <div class="row">
                      <div class="col-sm-12">
@@ -118,7 +82,7 @@
                      </div>
                  </div>
         </panel-actions>
-        <div ui-grid="gridMateriais" ui-grid-edit></div>
+        <div ui-grid="gridMateriais" ui-grid-edit class="grid-materias"></div>
         <!-- <table class="table table-hover">
              &lt;!&ndash; <caption>Monthly Kills</caption> &ndash;&gt;
              <thead class="thead-bold">
