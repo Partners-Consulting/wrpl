@@ -42,10 +42,11 @@
     </panel>
     <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="47" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-default btn-xs" ng-click="gotoDev()"><i class="fa fa-search"
-                                                                                         aria-hidden="true"></i> Filtro
-                por SKU
-            </button>
+            <input class="input-xs" type="text" ng-model="gridApiUltimasSimulacoes.grid.columns[3].filters[0].term" placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome" >
+            <button type="button" class="btn btn-default btn-xs" ng-click="atualizarUltimasSimulacoes()"><i
+                    class="fa fa-refresh" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-default btn-xs" ng-click="excelUltimasSimulacoes()"><i
+                    class="fa fa-file-excel-o" aria-hidden="true"></i></button>
         </panel-actions>
        <div ui-grid="gridUltimasSimulacoes" class="grid-ultimas-simulacoes" ui-grid-resize-columns ui-grid-move-columns></div>
     </panel>

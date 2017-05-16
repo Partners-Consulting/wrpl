@@ -21,7 +21,7 @@
     <link href="view/css/ui-select-custom.css" rel="stylesheet">
     <link href="view/css/sweetalert-custom.css" rel="stylesheet">
     <!-- LIBS -->
-    <script data-require="jquery@2.1.3" data-semver="2.1.3" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="lib/js/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="lib/js/angular.min.js"></script>
     <script type="text/javascript" src="lib/js/angular-animate.min.js"></script>
     <script type="text/javascript" src="lib/js/angular-route.min.js"></script>
@@ -205,39 +205,7 @@
                     </ul>
                 </li>
                 <li uib-dropdown class="dropdown">
-                    <a href uib-dropdown-toggle><img src="view/images/sap_logon.png" alt=""></a>
-                    <ul uib-dropdown-menu class="box-drop-links">
-                        <div class="row content-row links">
-                            <div class="col-sm-12">
-                                <div ng-repeat="categoria in categoriaLinks">
-                                    <div class="col-sm-3" ng-if="$index % 2 == 0">
-                                        <p class="titulo">{{categoria.nome}}</p>
-                                        <p>
-                                            <i class="{{categoria.icone}}"></i>
-                                        </p>
-                                        <div ng-repeat="link in categoria.links ">
-                                            <p>{{link.titulo}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row content-row links">
-                            <div class="col-sm-12">
-                                <div ng-repeat="categoria in categoriaLinks">
-                                    <div class="col-sm-3" ng-if="$index % 2 != 0">
-                                        <p class="titulo">{{categoria.nome}}</p>
-                                        <p>
-                                            <i class="{{categoria.icone}}"></i>
-                                        </p>
-                                        <div ng-repeat="link in categoria.links ">
-                                            <p>{{link.titulo}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </ul>
+                    <a ng-click="sapLink()" href="" uib-dropdown-toggle><img src="view/images/sap_logon.png" alt=""></a>
                 </li>
             </ul>
         </div>

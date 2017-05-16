@@ -213,13 +213,13 @@ angular.module("App.controllers", [])
         };
 
         function init() {
-
             if ($rootScope.selectedClient == null) {
 
                 var modalInstance = $uibModal.open({
                     animation: true,
                     templateUrl: './view/selecionar-cliente.html',
                     controller: 'ModalSelecionarClienteCtrl',
+                    backdrop:'static',
                     size: "lg",
                     resolve: {
                         url: function () {
@@ -1784,15 +1784,10 @@ angular.module("App.controllers", [])
                     ' </div>'
                 },
                 {
-                    field: 'id',
-                    width: '150',
-                    displayName: 'Id',
-                    cellTemplate: '  <a href="" ng-click="grid.appScope.consultarMaterialCompleto(COL_FIELD)">{{COL_FIELD}}</a>'
-                },
-                {
                     field: 'codigo',
                     width: '150',
-                    displayName: 'Material'
+                    displayName: 'Material',
+                    cellTemplate: '  <a href="" ng-click="grid.appScope.consultarMaterialCompleto(COL_FIELD)">{{COL_FIELD}}</a>'
                 },
                 {
                     field: 'cor',
@@ -1943,13 +1938,9 @@ angular.module("App.controllers", [])
         $scope.gridUltimasSimulacoes = {
             enableHorizontalScrollbar: 0,
             enableGridMenu: true,
+            enableFiltering: true,
             data: 'ultimasSimulacoes',
             columnDefs: [
-                {
-                    field: 'id',
-                    width: '50',
-                    displayName: 'Id'
-                },
                 {
                     field: 'data',
                     width: '100',
@@ -1962,7 +1953,7 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'emissor',
-                    width: '100',
+                    width: '200',
                     displayName: 'Emissor'
                 },
                 {
@@ -1971,6 +1962,11 @@ angular.module("App.controllers", [])
                     displayName: 'Status'
                 }
             ]
+        };
+
+        $scope.gridApiUltimasSimulacoes = {};
+        $scope.gridUltimasSimulacoes.onRegisterApi = function (gridApi) {
+            $scope.gridApiUltimasSimulacoes = gridApi;
         };
 
         $rootScope.simulacaoPontuais = [
@@ -2100,6 +2096,10 @@ angular.module("App.controllers", [])
         $rootScope.gotoCliente = function () {
             $rootScope.selectedClient = null;
             $location.path("/selecionarCliente");
+        };
+
+        $rootScope.sapLink = function () {
+            $location.path("/sapLink");
         };
 
         $rootScope.user = {
@@ -2261,6 +2261,11 @@ angular.module("App.controllers", [])
                 }, {titulo: "ZFE15 - Rel. Fretes Contas RE", url: ""}]
             },
             {
+                nome: "Preço",
+                icone: "fa fa-money",
+                links: [{titulo: "ZTLV21 – Solicitações de Lista de Preços", url: ""}]
+            },
+            {
                 nome: "Verbas",
                 icone: "fa fa-usd",
                 links: [{titulo: "CJ37 - Empenho da verbas", url: ""}, {
@@ -2273,11 +2278,6 @@ angular.module("App.controllers", [])
                     titulo: "ZTLV10G - Consulta Bonificação",
                     url: ""
                 }]
-            },
-            {
-                nome: "Preço",
-                icone: "fa fa-money",
-                links: [{titulo: "ZTLV21 – Solicitações de Lista de Preços", url: ""}]
             }
         ];
 

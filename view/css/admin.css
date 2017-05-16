@@ -716,7 +716,9 @@ i.minus-all{
     margin-left: 800%;
     height: 27px;
 }
-
+.box-drop-links {
+    overflow: hidden;
+}
 .links {
     color: black;
 }
@@ -725,33 +727,28 @@ i.minus-all{
     margin-top: 10px;
     margin-left: 5%;
     margin-bottom: 2px;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 .links p:last-child {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .links p > i{
     font-size: 40px;
     padding-left: 25%;
 }
-
 .links p.titulo {
     font-size: 15px;
     margin-top: 10px;
     margin-left: 25%;
-}
-.box-drop-links {
-    width: 1100px;
-    height: 500px;
-    overflow-y: auto;
 }
 
 .btn-blue{
     background-color: #1b6d85;
     color: white;
 }
+
 
 .btn-green{
     background-color: #093;
@@ -763,7 +760,6 @@ i.minus-all{
     background-color: #c30;
     color: white;
 }
-
 
 form {
     font-size: 12px;

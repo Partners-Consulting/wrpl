@@ -63,6 +63,10 @@ angular.module('App', ["App.controllers",
                 templateUrl: 'view/cliente.html',
                 controller: 'ClienteController'
             })
+            .when('/sapLink', {
+                templateUrl: 'view/sap-links.html',
+                controller: ''
+            })
             .otherwise({ redirectTo: 'cliente' });
 
     });
