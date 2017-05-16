@@ -1,8 +1,8 @@
 <div class="row">
     <panel title="Dados Revenda" icon="fa-user" height="42" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-blue btn-xs" ng-click="editarDadosCliente()"><i
-                    class="fa fa-arrows-alt" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-blue btn-xs" ng-click="editarDadosCliente()">
+                <i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
         </panel-actions>
         <div class="row">
             <div class="col-md-6">
@@ -37,6 +37,7 @@
     </panel>
     <panel title="{{painelTabela.tituloTabelaAtual}}" icon="fa-bookmark" height="42" col="6">
         <panel-actions ng-if="painelTabela.tabelaAtual == 1">
+            <input class="input-xs" type="text" ng-model="gridApiProcessos.grid.columns[3].filters[0].term" placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome" >
             <button type="button" class="btn btn-default btn-xs" ng-click="atualizarProcesso()"><i
                     class="fa fa-refresh" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-default btn-xs" ng-click="excelProcessos()"><i
@@ -49,6 +50,7 @@
                     class="fa fa-file-excel-o" aria-hidden="true"></i></button>
         </panel-actions>
         <panel-actions ng-if="painelTabela.tabelaAtual == 3">
+            <input class="input-xs" type="text" ng-model="gridApiLinhaBranca.grid.columns[1].filters[0].term" placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome" >
             <button type="button" class="btn btn-default btn-xs" ng-click="adicionarLinhaBranca()">
                 <i class="fa fa-plus" aria-hidden="true"></i></button>
         </panel-actions>

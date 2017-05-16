@@ -102,3 +102,5 @@
 input[type="text"].ui-grid-filter-input {
     color:black;
 }
+
+.ui-grid-filter-container { display: none!important; }

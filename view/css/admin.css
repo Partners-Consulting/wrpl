@@ -13,6 +13,8 @@
 html {
     background: #f5f5f5;
     font-family: 'Ubuntu', sans-serif;
+    overflow: hidden;
+
 }
 
 body {
@@ -616,6 +618,40 @@ ul.sub_navigation li {
     border-radius: 25px;
 }
 
+i.plus-phone{
+    left: 19px;
+    top: -4px;
+    background: #2eab31;
+    border-radius: 15px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+}
+
+i.plus-mail{
+    left: 19px;
+    top: -4px;
+    background: #2eab31;
+    border-radius: 15px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+}
+
+i.minus-all{
+    left: 19px;
+    top: -4px;
+    background: #d9534f;
+    border-radius: 15px;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+}
+
+.btn-danger:hover i.minus-all{
+    background: #c9302c;
+}
+
 .btn-circle.btn-xl {
     width: 70px;
     height: 70px;
@@ -806,5 +842,5 @@ span.glyphicon.glyphicon-chevron-left:hover {
 }
 
 .grid-materias {
-    height: 210px;
+    height: 235px;
 }

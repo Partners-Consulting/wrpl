@@ -100,6 +100,7 @@ angular.module("App.controllers", [])
 
         $scope.gridProcessos = {
             enableGridMenu: true,
+            enableFiltering: true,
             enableHorizontalScrollbar: 0,
             data: 'processos',
             columnDefs: [
@@ -122,6 +123,11 @@ angular.module("App.controllers", [])
                 }
 
             ]
+        };
+
+        $scope.gridApiProcessos = {};
+        $scope.gridProcessos.onRegisterApi = function (gridApi) {
+            $scope.gridApiProcessos = gridApi;
         };
 
         $scope.gridContatos = {
@@ -157,7 +163,8 @@ angular.module("App.controllers", [])
             data: 'linhaBranca',
             columnDefs: [{
                 field: 'id',
-                displayName: 'Id'
+                displayName: 'Id',
+                enableFiltering: false
             }, {
                 field: 'nome',
                 displayName: 'Nome'
@@ -178,8 +185,9 @@ angular.module("App.controllers", [])
             ]
         };
 
+        $scope.gridApiLinhaBranca = {};
         $scope.gridLinhaBranca.onRegisterApi = function (gridApi) {
-            $scope.gridApi = gridApi;
+            $scope.gridApiLinhaBranca = gridApi;
         };
 
         $scope.gridConcorrentes = {
@@ -693,6 +701,9 @@ angular.module("App.controllers", [])
         $scope.gridTabelaDesnormalizada = {
             enableHorizontalScrollbar: 0,
             enableGridMenu: true,
+            onRegisterApi: function (gridApi) {
+                $scope.gridApiTabelaDesnormalizada = gridApi;
+            },
             data: 'tabelaDesnormalizada',
             columnDefs: [
                 {
@@ -717,7 +728,7 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'telefone',
-                    width: '150',
+                    width: '100',
                     displayName: 'Telefone'
                 },
                 {
@@ -732,13 +743,13 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'email',
-                    width: '300',
+                    width: '250',
                     displayName: 'Email'
                 },
                 {
                     field: 'emailPrioritario',
                     displayName: 'Priori.',
-                    width: '60',
+                    width: '58',
                     cellTemplate: ' <div ng-click="grid.appScope.alterarPrioridadeEmail(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
@@ -747,16 +758,51 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'acao',
-                    width: '70',
+                    width: '100',
                     displayName: 'Ação',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarContato(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
-                    ' <a class="red" style="color: red"  ng-click="grid.appScope.removerContato(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
                     ' </div>'
                 }
 
             ]
         };
+
+        $scope.excluirContatos = function () {
+            if($scope.tabelaDesnormalizada.length <= 0 || $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows().length <= 0){
+                return;
+            }
+            var alertExclusao = {
+                title: "Exclusão de contatos",
+                text: "Tem certeza que gostaria de excluir todos os contatos?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+
+                        angular.forEach($scope.gridApiTabelaDesnormalizada.selection.getSelectedRows(), function (data, index) {
+                            $scope.tabelaDesnormalizada.splice($scope.tabelaDesnormalizada.lastIndexOf(data), 1);
+                        });
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Contatos excluídos com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        }
 
         $scope.removerContato = function (contato) {
             $rootScope.tabelaDesnormalizada = _.without($rootScope.tabelaDesnormalizada, _.findWhere($rootScope.tabelaDesnormalizada, {id: contato.id}));
@@ -831,8 +877,6 @@ angular.module("App.controllers", [])
 
                 }
             );
-
-
         };
 
         $scope.removerTelefone = function (telefone) {

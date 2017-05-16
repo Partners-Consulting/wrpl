@@ -4,7 +4,7 @@
     </button>
     <h4>Contato</h4>
 </div>
-<uib-tabset active="active">
+    <uib-tabset active="active">
     <uib-tab index="0" heading="Detalhe Cliente">
         <div class="modal-body">
             <form class="form-horizontal">
@@ -152,16 +152,30 @@
             </div>
             <div class="row">
                 <div class="col-sm-12">
-                    <button type="button" ng-click="adicionarTelefone()" class="btn btn-default btn-circle btn-md"><i
-                            class="fa fa-phone fa-lg"></i></button>
-                    <button type="button" ng-click="adicionarEmail()" class="btn btn-primary btn-circle btn-md"><i
-                            class="fa fa-envelope-o"></i></button>
+                    <button type="button" ng-click="adicionarTelefone()" class="btn btn-primary btn-sm">
+                        <span class="fa-stack fa-lg">
+                             <i class="fa fa-phone fa-stack-2x"></i>
+                             <i class="fa fa-plus fa-stack-1x plus-phone"></i>
+                        </span>
+                    </button>
+                    <button type="button" ng-click="adicionarEmail()" class="btn btn-primary btn-sm">
+                        <span class="fa-stack fa-lg">
+                             <i class="fa fa-envelope fa-stack-2x"></i>
+                             <i class="fa fa-plus fa-stack-1x plus-mail"></i>
+                        </span>
+                    </button>
+                    <button type="button" ng-click="excluirContatos()" class="btn btn-danger btn-sm">
+                        <span class="fa-stack fa-lg">
+                             <i class="fa fa-trash fa-stack-2x"></i>
+                             <i class="fa fa-minus fa-stack-1x minus-all"></i>
+                        </span>
+                    </button>
                 </div>
             </div>
             </br>
             <div class="row">
                 <div class="col-sm-12">
-                    <div ng-if="active == 1" ui-grid="gridTabelaDesnormalizada" class="grid-manutencao-contatos"  ui-grid-resize-columns></div>
+                    <div ng-if="active == 1" ui-grid="gridTabelaDesnormalizada" class="grid-manutencao-contatos" ui-grid-selection ui-grid-resize-columns></div>
                 </div>
             </div>
             </br>
