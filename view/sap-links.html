@@ -1,14 +1,32 @@
-<style>
-
-</style>
-<div class="row content-row">
-    <div class="col-sm-3">
-        <h2>Teste</h2>
-        <p>
-            <span class="fa-stack fa-lg">
-                <i class="fa fa-phone fa-stack-2x"></i>
-                 <i class="fa fa-plux fa-stack-1x"></i>
-            </span>
-        </p>
+<div class="row box-drop-links">
+    <div class="row links">
+        <div class="col-sm-12">
+            <div ng-repeat="categoria in categoriaLinks">
+                <div class="col-sm-2" ng-if="$index % 2 == 0">
+                    <p class="titulo">{{categoria.nome}}</p>
+                    <p>
+                        <i class="{{categoria.icone}}"></i>
+                    </p>
+                    <div ng-repeat="link in categoria.links ">
+                        <p>{{link.titulo}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row links">
+        <div class="col-sm-12">
+            <div ng-repeat="categoria in categoriaLinks">
+                <div class="col-sm-2" ng-if="$index % 2 != 0">
+                    <p class="titulo">{{categoria.nome}}</p>
+                    <p>
+                        <i class="{{categoria.icone}}"></i>
+                    </p>
+                    <div ng-repeat="link in categoria.links ">
+                        <p>{{link.titulo}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
