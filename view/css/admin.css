@@ -753,6 +753,18 @@ i.minus-all{
     color: white;
 }
 
+.btn-green{
+    background-color: #093;
+    color: white;
+}
+
+
+.btn-red{
+    background-color: #c30;
+    color: white;
+}
+
+
 form {
     font-size: 12px;
 }

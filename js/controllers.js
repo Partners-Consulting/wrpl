@@ -281,6 +281,10 @@ angular.module("App.controllers", [])
             });
         };
 
+        $scope.finalizarEdicao = function () {
+            $scope.isBlocked = !$scope.isBlocked
+        };
+
         $scope.editarPerfilDeRevenda = function () {
             $scope.isBlocked = !$scope.isBlocked
         };
