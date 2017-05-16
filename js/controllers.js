@@ -29,7 +29,7 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("ClienteController", function ($scope, $rootScope, $location, $uibModal) {
+    .controller("ClienteController", function ($scope, $rootScope, $location, $uibModal, SweetAlert) {
         "use strict";
 
         $scope.filtro2 = "";
@@ -339,7 +339,33 @@ angular.module("App.controllers", [])
         };
 
         $scope.removePontual = function (pontual) {
-            $rootScope.pontuais = _.without($rootScope.pontuais, _.findWhere($rootScope.pontuais, {id: pontual.id}));
+            var alertExclusao = {
+                title: "Exclusão de nota",
+                text: "Tem certeza que gostaria de excluir essa nota?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+                        $rootScope.pontuais = _.without($rootScope.pontuais, _.findWhere($rootScope.pontuais, {id: pontual.id}));
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Nota excluída com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
         }
 
         $scope.gotoDev = function () {
@@ -368,7 +394,36 @@ angular.module("App.controllers", [])
         };
 
         $scope.removerLinhaBranca = function (produto) {
-            $rootScope.linhaBranca = _.without($rootScope.linhaBranca, _.findWhere($rootScope.linhaBranca, {id: produto.id}));
+            var alertExclusao = {
+                title: "Exclusão de Player",
+                text: "Tem certeza que gostaria de excluir esse player?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+                        angular.forEach($scope.gridApiLinhaBranca.selection.getSelectedRows(), function (data, index) {
+                            $scope.linhaBranca.splice($scope.linhaBranca.lastIndexOf(data), 1);
+                        });
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Nota excluída com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+
         };
 
         $scope.adicionarLinhaBranca = function () {
@@ -398,7 +453,35 @@ angular.module("App.controllers", [])
         };
 
         $scope.removerConcorrenteRevenda = function (produto) {
-            $rootScope.concorrentesRevenda = _.without($rootScope.concorrentesRevenda, _.findWhere($rootScope.concorrentesRevenda, {id: produto.id}));
+            var alertExclusao = {
+                title: "Exclusão de Concorrente",
+                text: "Tem certeza que gostaria de excluir esse concorrente?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+                        angular.forEach($scope.gridApiConcorrentes.selection.getSelectedRows(), function (data, index) {
+                            $scope.concorrentesRevenda.splice($scope.concorrentesRevenda.lastIndexOf(data), 1);
+                        });
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Nota excluída com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
         };
 
         $scope.adicionarConcorrenteRevenda = function () {
@@ -1774,7 +1857,6 @@ angular.module("App.controllers", [])
                     width: '70',
                     displayName: 'Ação',
                     cellTemplate: '  <div class="action-buttons"> ' +
-                    ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarMateria(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
                     ' <a class="black" style="color: black"  ng-click="grid.appScope.abrirHitoriocoMaterial(row.entity)" href=""><i class="fa fa-book bigger-130"></i></a>' +
                     ' </div>'
                 },
@@ -2051,7 +2133,33 @@ angular.module("App.controllers", [])
         }
 
         $scope.removePontual = function (pontual) {
-            $rootScope.simulacaoPontuais = _.without($rootScope.simulacaoPontuais, _.findWhere($rootScope.simulacaoPontuais, {id: pontual.id}));
+            var alertExclusao = {
+                title: "Exclusão de nota",
+                text: "Tem certeza que gostaria de excluir essa nota?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+                        $rootScope.simulacaoPontuais = _.without($rootScope.simulacaoPontuais, _.findWhere($rootScope.simulacaoPontuais, {id: pontual.id}));
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Nota excluída com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
         }
 
         $scope.adicionarPontual = function () {
