@@ -1226,6 +1226,10 @@ angular.module("App.controllers", [])
         $scope.listaMateriais = materiais
 
         $scope.gridSimulacao = {
+            enableRowSelection: true,
+            multiSelect: false,
+            enableRowHeaderSelection: false,
+            enableCellEditOnFocus: true,
             data: 'listaMateriais',
             enableGridMenu: true,
             columnDefs: [
@@ -1325,6 +1329,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/efetivar-ov2.html',
                 controller: 'ModalEfetivarOv2Ctrl',
+                backdrop:'static',
                 size: 'lg'
             });
         }
@@ -1388,6 +1393,72 @@ angular.module("App.controllers", [])
         }
 
     })
+    .controller("ModalBuscarMaterialCtrl", function ($scope, $rootScope, $uibModal, $uibModalInstance, MaterialService) {
+
+        $scope.showDetalhe = false;
+
+        $scope.abriDetalhe = function (materiais) {
+            $scope.showDetalhe = !$scope.showDetalhe;
+        }
+
+        $scope.materiaisAchados = [];
+
+
+        function init() {
+           $scope.materiaisAchados = MaterialService.consultaMaterial();
+        }
+
+        init();
+
+        $scope.listaMateriais = [];
+
+        $scope.gridBuscaMaterial = {
+            enableFiltering: true,
+            data: 'materiaisAchados',
+            enableGridMenu: true,
+            columnDefs: [
+                {
+                    field: 'codigo',
+                    width: '150',
+                    displayName: 'Código do Material'
+                },
+                {
+                    field: 'cor',
+                    width: '50',
+                    displayName: 'Cor'
+                },
+                {
+                    field: 'voltagem',
+                    width: '150',
+                    displayName: 'Voltagem'
+                },
+                {
+                    field: 'valorNotaFiscalUnitario',
+                    width: '200',
+                    displayName: 'Valor NF Unit.'
+                }
+            ]
+        };
+
+        $scope.gridApiBuscaMaterial = {};
+        $scope.gridBuscaMaterial.onRegisterApi = function (gridApi) {
+            $scope.gridApiBuscaMaterial = gridApi;
+        };
+
+        $scope.adicionarMateriaisSelecionados = function () {
+            angular.forEach($scope.gridApiBuscaMaterial.selection.getSelectedRows(), function (data, index) {
+                $scope.listaMateriais.push(data);
+            });
+
+            $uibModalInstance.close($scope.listaMateriais);
+        }
+
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+
+
+    })
     .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, $uibModalInstance, _) {
 
         $scope.showDetalhe = false;
@@ -1398,7 +1469,7 @@ angular.module("App.controllers", [])
                 organizacao: "OV 1000",
                 canal: "11",
                 setor: "10",
-                situacaoCargao: "",
+                situacaoCarga: false,
                 codProcEsp: "",
                 emissor: "",
                 recebedor: "0000021777",
@@ -1413,7 +1484,7 @@ angular.module("App.controllers", [])
                 organizacao: "OV 1000",
                 canal: "11",
                 setor: "10",
-                situacaoCargao: "",
+                situacaoCarga: false,
                 codProcEsp: "",
                 emissor: "",
                 recebedor: "0000041203",
@@ -1484,58 +1555,96 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'status',
+                    width:'100',
                     displayName: 'Status'
                 },
                 {
                     field: 'organizacao',
+                    width:'100',
                     displayName: 'Organização'
                 },
                 {
                     field: 'canal',
+                    width:'100',
                     displayName: 'Canal'
                 },
                 {
                     field: 'setor',
+                    width:'100',
                     displayName: 'Setor'
                 },
                 {
-                    field: 'situacaoCargao',
-                    displayName: 'Sit. Carga'
+                    field: 'situacaoCarga',
+                    width:'100',
+                    displayName: 'Sit. Carga',
+                    cellTemplate: ' <div ng-click="grid.appScope.alterarSituacaoCarga(row.entity)">' +
+                    '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
+                    '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="green" style="color: green" href=""><i class="fa fa-check-circle-o bigger-130"></i></a></div></div>'
                 },
                 {
                     field: 'codProcEsp',
+                    width:'100',
                     displayName: 'CódProcEsp'
                 },
                 {
                     field: 'emissor',
+                    width:'100',
                     displayName: 'Emissor'
                 },
                 {
                     field: 'recebedor',
+                    width:'100',
                     displayName: 'Recebedor'
                 },
                 {
                     field: 'tipo',
+                    width:'100',
                     displayName: 'Tipo'
                 },
                 {
                     field: 'preOrdem',
+                    width:'100',
                     displayName: 'Pré Ordem'
                 },
                 {
                     field: 'statusPreOrdem',
+                    width:'100',
                     displayName: 'Status Pré Ordem'
                 },
                 {
                     field: 'ordem',
+                    width:'100',
                     displayName: 'Ordem'
                 },
                 {
+                    field: 'textoOv',
+                    width:'100',
+                    displayName: 'Texto O.V',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="black" style="color: black"  ng-click="grid.appScope.adicionarTextoOv(row.entity)" href=""><i class="fa fa-file-text bigger-130"></i></a>' +
+                    ' </div>'
+                },
+                {
+                    field: 'textoSimulacao',
+                    width:'100',
+                    displayName: 'Texto Simulação',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="black" style="color: black"  ng-click="grid.appScope.adicionarTextoSimulacao(row.entity)" href=""><i class="fa fa-file-text bigger-130"></i></a>' +
+                    ' </div>'
+                },
+                {
                     field: 'imprimir',
+                    width:'100',
                     displayName: 'Imprimir'
                 }
             ]
         };
+
+        $scope.alterarSituacaoCarga = function (item) {
+            item.situacaoCarga = !item.situacaoCarga;
+        }
 
         $scope.gridDetalhe = {
             data: 'listaMateriais',
@@ -1848,6 +1957,7 @@ angular.module("App.controllers", [])
 
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
+            enableCellEditOnFocus:true,
             enableGridMenu: true,
             data: 'listaMateriais',
             columnDefs: [
@@ -2130,6 +2240,23 @@ angular.module("App.controllers", [])
 
         $scope.alterarSituacaoCarga = function (item) {
             item.situacaoCarga = !item.situacaoCarga;
+        }
+
+        $scope.buscarMaterial = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/buscar-material.html',
+                controller: 'ModalBuscarMaterialCtrl',
+                size: 'md',
+                backdrop: 'static'
+            });
+
+            modalInstance.result.then(function (listaMateriais) {
+                angular.forEach(listaMateriais, function (data, index) {
+                    $scope.listaMateriais.push(data);
+                });
+
+            });
         }
 
         $scope.removePontual = function (pontual) {

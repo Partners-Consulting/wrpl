@@ -1,0 +1,31 @@
+<div class="modal-header bg-primary" style="background-color:#333">
+    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
+            style="margin-top: -10px;" ng-click="close()">×
+    </button>
+    <h4>Buscar Material</h4>
+
+</div>
+<uib-tabset active="active">
+    <uib-tab index="0" heading="Buscar material por código">
+        <div class="modal-body">
+            <div class="input-group input-group-lg">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-search"
+                                                                              aria-hidden="true"></i></span>
+                <input type="text" class="form-control" placeholder="busca material" aria-describedby="sizing-addon1"
+                       ng-model="gridApiBuscaMaterial.grid.columns[1].filters[0].term">
+            </div>
+            <div ui-grid="gridBuscaMaterial" ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
+        </div>
+    </uib-tab>
+
+    <uib-tab index="1" heading="Buscar material específica">
+        <div class="modal-body">
+        </div>
+    </uib-tab>
+
+</uib-tabset>
+<div class="modal-footer">
+    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="adicionarMateriaisSelecionados()">
+        Adicionar Selecionados
+    </button>
+</div>

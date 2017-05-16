@@ -21,7 +21,7 @@ angular.module("App.services", [])
                 return [
                     {
                         id: 1,
-                        codigo: "BRM47867676",
+                        codigo: "ABC1111111",
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
@@ -45,7 +45,7 @@ angular.module("App.services", [])
                     },
                     {
                         id: 2,
-                        codigo: "BRM47867676",
+                        codigo: "DEF2222222",
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
@@ -69,7 +69,7 @@ angular.module("App.services", [])
                     },
                     {
                         id: 3,
-                        codigo: "BRM47867676",
+                        codigo: "GHI3333333",
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
@@ -93,7 +93,7 @@ angular.module("App.services", [])
                     },
                     {
                         id: 4,
-                        codigo: "BRM47867676",
+                        codigo: "JKL4444444",
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
@@ -117,7 +117,7 @@ angular.module("App.services", [])
                     },
                     {
                         id: 5,
-                        codigo: "BRM47867676",
+                        codigo: "MNO5555555",
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
@@ -141,7 +141,7 @@ angular.module("App.services", [])
                     },
                     {
                         id: 6,
-                        codigo: "BRM47867676",
+                        codigo: "PQR6666666",
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
@@ -165,7 +165,7 @@ angular.module("App.services", [])
                     },
                     {
                         id: 7,
-                        codigo: "BRM47867676",
+                        codigo: "STU7777777",
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
@@ -189,7 +189,7 @@ angular.module("App.services", [])
                     },
                     {
                         id: 8,
-                        codigo: "BRM47867676",
+                        codigo: "VXY8888888",
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
@@ -213,7 +213,7 @@ angular.module("App.services", [])
                     },
                     {
                         id: 9,
-                        codigo: "BRM47867676",
+                        codigo: "ZZZ9999999",
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
@@ -237,7 +237,7 @@ angular.module("App.services", [])
                     },
                     {
                         id: 10,
-                        codigo: "BRM47867676",
+                        codigo: "WWW0000000",
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",

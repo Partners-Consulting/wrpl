@@ -16,7 +16,8 @@ angular.module('App', ["App.controllers",
     'ui.grid.selection',
     'ui.grid.edit',
     'ui.grid.resizeColumns',
-    'ui.grid.moveColumns'
+    'ui.grid.moveColumns',
+    'ui.grid.cellNav'
 
 
 

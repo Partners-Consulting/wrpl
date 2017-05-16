@@ -7,7 +7,7 @@
 </div>
 <div class="modal-body">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
             <form class="form-horizontal">
                 <div class="form-group">
                     <div class="row">
@@ -62,7 +62,7 @@
                         <div class="col-sm-12">
                             <label class="col-sm-2">Atividade</label>
                             <div class="col-sm-6">
-                                <input ng-disabled="false" type="text" class="form-control" placeholder="Atividade"
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Atividade"
                                        ng-model="material.quantidade">
                             </div>
                             <label class="col-sm-2">Licitação</label>
@@ -74,42 +74,6 @@
                     </div>
                 </div>
             </form>
-        </div>
-        <div class="col-sm-3">
-            <h3 class="title-gray-block">Texto O.V
-                <button type="button" class="btn btn-success btn-sm note-plus" ng-click="adicionarTextoOv()"><i
-                        class="fa fa-plus-circle" aria-hidden="true"></i></button>
-
-            </h3>
-            <ul class="notes" ng-repeat="texto in textoOv">
-                <li>
-                    <button type="button" class="bootbox-close-button close white" data-dismiss="modal"
-                            aria-hidden="true"
-                            style="margin-top: -10px;" ng-click="removeTextoOv(texto)">×
-                    </button>
-                    <span class="text">{{texto.texto}}</span>
-                    <div class="date">{{texto.data | date:'dd.MM.yyyy'}}</div>
-                    <div class="noteuser">{{texto.user.abreviado}}</div>
-                </li>
-            </ul>
-        </div>
-        <div class="col-sm-3">
-            <h3 class="title-gray-block">Texto da simulação
-                <button type="button" class="btn btn-success btn-sm note-plus" ng-click="adicionarTextoSimulacao()"><i
-                        class="fa fa-plus-circle" aria-hidden="true"></i></button>
-
-            </h3>
-            <ul class="notes" ng-repeat="textoSimulcao in textoSimulacao">
-                <li>
-                    <button type="button" class="bootbox-close-button close white" data-dismiss="modal"
-                            aria-hidden="true"
-                            style="margin-top: -10px;" ng-click="removeTextoSimulacao(textoSimulcao)">×
-                    </button>
-                    <span class="text">{{textoSimulcao.texto}}</span>
-                    <div class="date">{{textoSimulcao.data | date:'dd.MM.yyyy'}}</div>
-                    <div class="noteuser">{{textoSimulcao.user.abreviado}}</div>
-                </li>
-            </ul>
         </div>
     </div>
     </br>
