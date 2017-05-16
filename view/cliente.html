@@ -242,8 +242,10 @@
                     <div uib-slide ng-repeat="geral in gerais track by geral.id" index="geral.id"
                          class="slide animated">
                         <h3 class="title-gray-block">{{geral.titulo}}
-                            <button type="button" class="btn btn-blue btn-xs note-plus" ng-init="mostra=true"
-                                    ng-click="mostra = !mostra"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button style="float: right" type="button" class="btn btn-blue btn-xs note-plus" ng-init="mostra=true"
+                                    ng-click="mostra = !mostra" ng-show="mostra"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button style="float: right" type="button" class="btn btn-green btn-xs note-plus" ng-hide="mostra" ng-click="mostra = !mostra"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                            <button style="float: right"type="button" class="btn btn-red btn-xs note-plus" ng-hide="mostra" ng-click="mostra = !mostra"><i class="fa fa-times" aria-hidden="true"></i></button>
                         </h3>
                         <span ng-show="mostra" class="text">{{geral.texto}}</span>
                         <textarea ng-show="!mostra" ng-model="geral.texto" cols="30" rows="15"></textarea>
