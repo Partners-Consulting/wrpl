@@ -18,14 +18,33 @@
         </div>
     </uib-tab>
 
-    <uib-tab index="1" heading="Buscar material específica">
+    <uib-tab index="1" heading="Buscar material específico">
         <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-3">Código do material</label>
+                    <div class="col-sm-9">
+                        <input ng-disabled="false" type="text" class="form-control input-sm" placeholder="Codigo"
+                               ng-model="material.codigo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3">Descrição do material</label>
+                    <div class="col-sm-9">
+                        <input ng-disabled="false" type="text" class="form-control input-sm" placeholder="Descrição"
+                               ng-model="material.codigo">
+                    </div>
+                </div>
+            </form>
         </div>
     </uib-tab>
 
 </uib-tabset>
 <div class="modal-footer">
-    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="adicionarMateriaisSelecionados()">
+    <button ng-if="active == 0" data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="adicionarMateriaisSelecionados()">
         Adicionar Selecionados
+    </button>
+    <button ng-if="active == 1" data-bb-handler="confirm" type="button" class="btn btn-default" ng-click="buscarMaterial()">
+        Buscar
     </button>
 </div>

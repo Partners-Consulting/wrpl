@@ -58,7 +58,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 2,
                 titulo: 'Concorrência',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes'
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes'
             }
         ];
 
@@ -148,7 +148,7 @@ angular.module("App.controllers", [])
                 displayName: 'Emissor',
                 cellTemplate: '<div ng-click="grid.appScope.editarContatos(row.entity);">{{COL_FIELD}}</div>'
             }, {
-                field: 'status',
+                field: 'statusTitulo',
                 displayName: 'Status',
                 cellTemplate: '<div ng-click="grid.appScope.editarContatos(row.entity);">{{COL_FIELD}}</div>'
             }
@@ -245,7 +245,7 @@ angular.module("App.controllers", [])
                     }
                 }
             });
-        }
+        };
         
         $scope.proximaTabela = function () {
             if ($scope.painelTabela.tabelaAtual + 1 <= $scope.painelTabela.quantidadeDeTabela) {
@@ -253,14 +253,14 @@ angular.module("App.controllers", [])
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
             }
             $scope.changeHeaderTitle();
-        }
+        };
 
         $scope.tabelaAnterior = function () {
             if ($scope.painelTabela.tabelaAtual - 1 > 0) {
                 $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual - 1;
             }
             $scope.changeHeaderTitle();
-        }
+        };
 
         $scope.changeHeaderTitle = function () {
             if ($scope.painelTabela.tabelaAtual == 1) {
@@ -272,7 +272,7 @@ angular.module("App.controllers", [])
             } else if ($scope.painelTabela.tabelaAtual == 4) {
                 $scope.painelTabela.tituloTabelaAtual = 'Concorrentes Revenda';
             }
-        }
+        };
 
         $scope.adicionarPontual = function () {
             var modalInstance = $uibModal.open({
@@ -379,7 +379,7 @@ angular.module("App.controllers", [])
 
                 }
             );
-        }
+        };
 
         $scope.gotoDev = function () {
             $location.path("/dev");
@@ -409,7 +409,7 @@ angular.module("App.controllers", [])
         $scope.removerLinhaBranca = function (produto) {
             var alertExclusao = {
                 title: "Exclusão de Player",
-                text: "Tem certeza que gostaria de excluir esse player?",
+                text: "Confirma a exclusão do(s) player(s) selecionado(s)?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -426,7 +426,7 @@ angular.module("App.controllers", [])
                         });
                         SweetAlert.swal({
                             title: "Sucesso",
-                            text: "Nota excluída com sucesso",
+                            text: "Player(s) excluído(s) com sucesso",
                             customClass: 'sweetalert-sm'
                         });
 
@@ -468,7 +468,7 @@ angular.module("App.controllers", [])
         $scope.removerConcorrenteRevenda = function (produto) {
             var alertExclusao = {
                 title: "Exclusão de Concorrente",
-                text: "Tem certeza que gostaria de excluir esse concorrente?",
+                text: "Confirma a exclusão do(s) concorrente(s) selecionado(s)?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -485,7 +485,7 @@ angular.module("App.controllers", [])
                         });
                         SweetAlert.swal({
                             title: "Sucesso",
-                            text: "Nota excluída com sucesso",
+                            text: "Concorrente(s) excluído(s) com sucesso",
                             customClass: 'sweetalert-sm'
                         });
 
@@ -990,6 +990,37 @@ angular.module("App.controllers", [])
             });
         };
 
+        $scope.salvarAlteracaoContato = function () {
+            var alertExclusao = {
+                title: "Alteração de dados de contato",
+                text: "Tem certeza que gostaria de alterar os dados?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+
+
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Dados alterados com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+                        $uibModalInstance.close();
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        }
+
         $scope.editarContato = function (contato) {
             var modalInstance = $uibModal.open({
                 animation: true,
@@ -1100,7 +1131,7 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalReplicarCtrl", function ($scope, $rootScope, $uibModalInstance, replicas, FreteService, CondicaoPagamentoService) {
+    .controller("ModalReplicarCtrl", function ($scope, $rootScope, $uibModalInstance, replicas, FreteService, CondicaoPagamentoService, SweetAlert) {
         "use strict";
         $scope.replicas = replicas;
         $scope.listaCondicaoPagamento = [];
@@ -1119,14 +1150,6 @@ angular.module("App.controllers", [])
             enableGridMenu: true,
             data: 'replicas',
             columnDefs: [
-                {
-                    field: 'acao',
-                    displayName: 'Ação',
-                    cellTemplate: '  <div class="action-buttons"> ' +
-                    ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarMateria(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
-                    ' <a class="red" style="color: red"  ng-click="grid.appScope.removerMaterial(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
-                    ' </div>'
-                },
                 {
                     field: 'orgVendas',
                     displayName: 'Org. Vendas'
@@ -1164,6 +1187,47 @@ angular.module("App.controllers", [])
             ]
         };
 
+        $scope.gridApiReplicas= {};
+        $scope.gridReplicas.onRegisterApi = function (gridApi) {
+            $scope.gridApiReplicas = gridApi;
+        };
+
+        $scope.excluirReplicasSelecionadas = function () {
+            if($scope.replicas.length <= 0 || $scope.gridApiReplicas.selection.getSelectedRows().length <= 0){
+                return;
+            }
+            var alertExclusao = {
+                title: "Exclusão de replicas",
+                text: "Tem certeza que gostaria de excluir as replicas selecionadas?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+
+                        angular.forEach($scope.gridApiReplicas.selection.getSelectedRows(), function (data, index) {
+                            $scope.replicas.splice($scope.replicas.lastIndexOf(data), 1);
+                        });
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Replicas excluídas com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        }
+        
         $scope.close = function () {
             $uibModalInstance.close();
         };
@@ -1966,7 +2030,12 @@ angular.module("App.controllers", [])
             });
         };
 
-
+        $scope.codProcEsp = [
+            {sppi:16,denominacao:"TRUCK ABERTO"},
+            {sppi:17,denominacao:"TRUCK BAU"},
+            {sppi:18,denominacao:"TOCO ABERTO"},
+            {sppi:19,denominacao:"TOCO BAU"}
+        ]
 
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
@@ -2115,8 +2184,8 @@ angular.module("App.controllers", [])
                 return;
             }
             var alertExclusao = {
-                title: "Exclusão de materiais",
-                text: "Tem certeza que gostaria de excluir os materiais selecionados?",
+                title: "Exclusão de itens de simulação",
+                text: "Tem certeza que gostaria de excluir os itens selecionados?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -2134,7 +2203,7 @@ angular.module("App.controllers", [])
                         });
                         SweetAlert.swal({
                             title: "Sucesso",
-                            text: "Materiais excluídos com sucesso",
+                            text: "Itens de simulação excluídos com sucesso",
                             customClass: 'sweetalert-sm'
                         });
 
@@ -2323,6 +2392,36 @@ angular.module("App.controllers", [])
             });
         }
 
+        $scope.salvarSimulacao = function () {
+            var alertExclusao = {
+                title: "Salvar simulação",
+                text: "Tem certeza que gostaria de salvar essa simulação?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+                        $rootScope.numeroSimulacao = "00000010";
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Simulação: "+ $rootScope.numeroSimulacao +" salva com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        }
+
     })
     .controller("TermometroController", function ($scope, $rootScope) {
 
@@ -2390,7 +2489,7 @@ angular.module("App.controllers", [])
             $rootScope.selectedClient = null;
             $location.path("/selecionarCliente");
         };
-
+        $rootScope.numeroSimulacao = "";
         $rootScope.sapLink = function () {
             $location.path("/sapLink");
         };
@@ -2474,22 +2573,27 @@ angular.module("App.controllers", [])
                         url: ""
                     },
                     {
-                        titulo: "ZTLV14 - Cod. De marca e Categoria Mix",
+                        titulo: "ZTLV14 - Código de Marca e Categoria Mix",
                         url: ""
                     },
                     {
-                        titulo: "ZTLV19 - Cadastro Ação Promo. E Mapa da Mina",
+                        titulo: "ZTLV19 - Cadastro Ação Promocional e Mapa da Mina",
                         url: ""
-                    }, {
+                    },
+                    {
                         titulo: "ZTLV15 - Texos Fixos - Simulação e OV",
                         url: ""
-                    }, {titulo: "ZTLV20 - TAB PRE Atribuir Marca e Categ", url: ""}, {
+                    },
+                    {titulo: "ZTLV20 - TAB PRE Atribuir Marca e Categoria", url: ""},
+                    {
                         titulo: "ZTLV11 - ZROUTE",
                         url: ""
-                    }, {
+                    },
+                    {
                         titulo: "ZTABP - Gerar de tabela de Preço",
                         url: ""
-                    }, {titulo: "ZEXEC - Exceção de materiais - TAB preço", url: ""}]
+                    },
+                    {titulo: "ZEXEC - Exceção de materiais - TAB preço", url: ""}]
             },
             {
                 nome: "Cliente",
@@ -2500,7 +2604,7 @@ angular.module("App.controllers", [])
                         url: ""
                     },
                     {
-                        titulo: "ZTLV09 -Relação de telefones",
+                        titulo: "ZTLV09 - Relação de Telefones",
                         url: ""
                     }]
             },
@@ -2666,21 +2770,24 @@ angular.module("App.controllers", [])
                 data: "14.04.17",
                 descricao: "0000456456",
                 emissor: 423476,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
+                statusTitulo: "Aguardando retorno",
+                statusCorpo:"Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
             },
             {
 
                 data: "14.04.17",
                 descricao: "0000456457",
                 emissor: 423476,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
+                statusTitulo: "Aguardando retorno",
+                statusCorpo:"Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
             },
             {
 
                 data: "20.04.17",
                 descricao: "0000456458",
                 emissor: 564654,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
+                statusTitulo: "Aguardando retorno",
+                statusCorpo:"Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
             }
 
         ];

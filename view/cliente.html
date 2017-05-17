@@ -181,8 +181,9 @@
                                    ng-model="selectedClient.revenda.tos.total">
                         </div>
                         <div ng-if="true" class="col-sm-2">
-                            <button type="button" class="btn btn-blue btn-sm" ng-click="editarTos()"><i
-                                    class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-blue btn-sm" ng-show="!isBlockedTos" ng-click="editarTos()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-green btn-sm" ng-hide="!isBlockedTos" ng-click="editarTos()"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-red btn-sm" ng-hide="!isBlockedTos" ng-click="editarTos()"><i class="fa fa-times" aria-hidden="true"></i></button>
                         </div>
                         <label class="col-sm-2">Data de atualização</label>
                         <div class="col-sm-4">
