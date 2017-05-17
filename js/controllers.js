@@ -66,7 +66,7 @@ angular.module("App.controllers", [])
             {
                 id: 0,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -74,7 +74,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 1,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -82,7 +82,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 2,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -90,7 +90,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 3,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -704,6 +704,10 @@ angular.module("App.controllers", [])
             $uibModalInstance.close();
         };
 
+        $scope.salvar = function () {
+            $uibModalInstance.close();
+        };
+
         $scope.adicionarPontualNaLista = function (texto) {
             $uibModalInstance.close();
         };
@@ -1312,27 +1316,32 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'codigo',
+                    width:'250',
                     displayName: 'Material',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'modelo',
-                    displayName: 'modelo',
+                    width:'260',
+                    displayName: 'Modelo',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'cor',
+                    width:'200',
                     displayName: 'Cor',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'voltagem',
+                    width:'70',
                     displayName: 'Voltagem',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'quantidade',
-                    displayName: 'qtd',
+                    width:'70',
+                    displayName: 'Qtd',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 }
             ]
@@ -1470,9 +1479,18 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalBuscarMaterialCtrl", function ($scope, $rootScope, $uibModal, $uibModalInstance, MaterialService) {
+    .controller("ModalBuscarMaterialCtrl", function ($scope, $rootScope, $uibModal, $uibModalInstance, MaterialService, $timeout) {
 
         $scope.showDetalhe = false;
+
+        $scope.busca = {
+            codigo:"",
+            descricao:""
+        };
+
+        $scope.materiais = {
+            codigos:""
+        }
 
         $scope.abriDetalhe = function (materiais) {
             $scope.showDetalhe = !$scope.showDetalhe;
@@ -1521,6 +1539,22 @@ angular.module("App.controllers", [])
         $scope.gridBuscaMaterial.onRegisterApi = function (gridApi) {
             $scope.gridApiBuscaMaterial = gridApi;
         };
+
+        $scope.filtraMaterialCodigo = function () {
+            $timeout(function(){
+                if($scope.busca.codigo != "" && $scope.busca.codigo != null && $scope.busca.codigo.length > 3){
+                    $scope.gridApiBuscaMaterial.grid.columns[1].filters[0].term = $scope.busca.codigo;
+                }
+            },0);
+        }
+
+        $scope.filtraMaterialDescricao = function () {
+            $timeout(function(){
+                if($scope.busca.codigo != "" && $scope.busca.codigo != null && $scope.busca.codigo.length > 3){
+                    $scope.gridApiBuscaMaterial.grid.columns[1].filters[0].term = $scope.busca.codigo;
+                }
+            },0);
+        }
 
         $scope.adicionarMateriaisSelecionados = function () {
             angular.forEach($scope.gridApiBuscaMaterial.selection.getSelectedRows(), function (data, index) {
@@ -1577,7 +1611,7 @@ angular.module("App.controllers", [])
             {
                 id: 0,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1585,7 +1619,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 1,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1597,7 +1631,7 @@ angular.module("App.controllers", [])
             {
                 id: 0,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1605,7 +1639,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 1,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1622,6 +1656,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/bonificacao.html',
                 controller: 'ModalBonificacaoCtrl',
+                backdrop:'static',
                 size: 'lg'
             });
         }
@@ -1714,7 +1749,10 @@ angular.module("App.controllers", [])
                 {
                     field: 'imprimir',
                     width:'100',
-                    displayName: 'Imprimir'
+                    displayName: 'Imprimir',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="black" style="color: black"  ng-click="grid.appScope.imprimir(row.entity)" href=""><i class="fa fa-print bigger-130"></i></a>' +
+                    ' </div>'
                 }
             ]
         };
@@ -2288,7 +2326,7 @@ angular.module("App.controllers", [])
             {
                 id: 0,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -2296,7 +2334,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 1,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -2304,7 +2342,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 2,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -2312,7 +2350,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 3,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -2392,6 +2430,16 @@ angular.module("App.controllers", [])
             });
         }
 
+        $scope.bonificacao = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/bonificacao.html',
+                controller: 'ModalBonificacaoCtrl',
+                backdrop:'static',
+                size: 'lg'
+            });
+        }
+
         $scope.salvarSimulacao = function () {
             var alertExclusao = {
                 title: "Salvar simulação",
@@ -2427,7 +2475,6 @@ angular.module("App.controllers", [])
 
 
     })
-
     .controller("GraficosController", function ($scope, $rootScope) {
 
         $rootScope.dadosGraficos = [
@@ -2477,8 +2524,6 @@ angular.module("App.controllers", [])
         };
 
     })
-
-
     .controller("ClientesController", function ($scope, $rootScope) {
 
 
