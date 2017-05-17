@@ -1291,14 +1291,12 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, materiais, $uibModal, $uibModalInstance) {
+    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, materiais, $uibModal, $uibModalInstance, $timeout) {
 
         $scope.showDetalhe = false;
         $scope.listaMateriais = materiais
 
-        $scope.abriDetalhe = function (materiais) {
-            $scope.showDetalhe = !$scope.showDetalhe;
-        }
+
 
         $scope.listaMateriais = materiais
 
@@ -1337,10 +1335,14 @@ angular.module("App.controllers", [])
                 {
                     field: 'quantidade',
                     width:'70',
-                    displayName: 'Qtd',
-                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                    displayName: 'Qtd'
                 }
             ]
+        };
+
+        $scope.gridApiSimulacao = {};
+        $scope.gridSimulacao.onRegisterApi = function (gridApi) {
+            $scope.gridApiSimulacao = gridApi;
         };
 
         $scope.gridDetalhe = {
@@ -1364,6 +1366,7 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'quatidadeDistribuicao',
+                    enableCellEdit: true,
                     displayName: 'QTD. Distribuição'
                 },
                 {
@@ -1396,6 +1399,16 @@ angular.module("App.controllers", [])
                 }
             ]
         };
+
+        $scope.abriDetalhe = function (materiais) {
+            $timeout(function(){
+                if($scope.gridApiSimulacao.selection.getSelectedRows().length <= 0){
+                    $scope.showDetalhe = false;
+                }else{
+                    $scope.showDetalhe = true;
+                }
+            },0)
+        }
 
         $scope.programarEntrega = function () {
             var modalInstance = $uibModal.open({
