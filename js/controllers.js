@@ -1143,8 +1143,6 @@ angular.module("App.controllers", [])
 
         function init() {
             //todo fazer padrão promessa
-            $scope.listaCondicaoPagamento = CondicaoPagamentoService.consultaPagamentoReplica();
-            $scope.listaCondicaoFrete = FreteService.consultaFreteReplica();
         }
 
         init();
@@ -1169,24 +1167,22 @@ angular.module("App.controllers", [])
                 {
                     displayName: 'Cond. Pagtos',
                     width: '150',
-                    field: 'condPagtos.codigo',
-                    editModelField: 'condPagtos',
-                    editDropdownValueLabel: 'codigo',
-                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
-                    editDropdownOptionsArray: $scope.listaCondicaoPagamento
+                    field: 'condPagtos',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="condPagtos" ng-options="pgto for pgto in COL_FIELD"></select>'
                 },
                 {
                     field: 'incoterms',
-                    displayName: 'Incoterms'
+                    displayName: 'Incoterms',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     displayName: 'Cond. Frete',
                     width: '150',
-                    field: 'condFrete.codigo',
-                    editModelField: 'condFrete',
-                    editDropdownValueLabel: 'codigo',
-                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
-                    editDropdownOptionsArray: $scope.listaCondicaoFrete
+                    field: 'condFrete',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 }
             ]
         };
@@ -1574,6 +1570,13 @@ angular.module("App.controllers", [])
 
         $scope.showDetalhe = false;
 
+        $scope.codProcEsp = [
+            "TRUCK ABERTO",
+            "TRUCK BAU",
+            "TOCO ABERTO",
+            "TOCO BAU"
+        ]
+
         $scope.listaOrdenASeremEfetivadas = [
             {
                 status: "",
@@ -1581,7 +1584,12 @@ angular.module("App.controllers", [])
                 canal: "11",
                 setor: "10",
                 situacaoCarga: false,
-                codProcEsp: "",
+                codProcEsp: [
+                    "TRUCK ABERTO",
+                    "TRUCK BAU",
+                    "TOCO ABERTO",
+                    "TOCO BAU"
+                ],
                 emissor: "",
                 recebedor: "0000021777",
                 tipo: "ZVPB",
@@ -1596,7 +1604,12 @@ angular.module("App.controllers", [])
                 canal: "11",
                 setor: "10",
                 situacaoCarga: false,
-                codProcEsp: "",
+                codProcEsp: [
+                    "TRUCK ABERTO",
+                    "TRUCK BAU",
+                    "TOCO ABERTO",
+                    "TOCO BAU"
+                ],
                 emissor: "",
                 recebedor: "0000041203",
                 tipo: "ZVPB",
@@ -1697,8 +1710,10 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'codProcEsp',
-                    width:'100',
-                    displayName: 'CódProcEsp'
+                    width:'150',
+                    displayName: 'CódProcEsp',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="codProcEsp" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     field: 'emissor',
@@ -2077,7 +2092,6 @@ angular.module("App.controllers", [])
 
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
-            enableCellEditOnFocus:true,
             enableGridMenu: true,
             data: 'listaMateriais',
             columnDefs: [
@@ -2144,7 +2158,9 @@ angular.module("App.controllers", [])
                 {
                     field: 'condPagtoFrete',
                     width: '150',
-                    displayName: 'Cond. Frete'
+                    displayName: 'Cond. Frete',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="condPagtoFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     field: 'valorFrete',
@@ -2184,20 +2200,16 @@ angular.module("App.controllers", [])
                 {
                     displayName: 'Centro',
                     width: '150',
-                    field: 'centro.parcNeg',
-                    editModelField: 'centro',
-                    editDropdownValueLabel: 'parcNeg',
-                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
-                    editDropdownOptionsArray: $scope.listaDeCentros
+                    enableCellEdit: false,
+                    field: 'centro',
+                    cellTemplate:'<select ng-model="centro" ng-options="centro for centro in COL_FIELD"></select>'
                 },
                 {
                     displayName: 'Local Expedicao',
                     width: '150',
-                    field: 'localExpedicao.parcNeg',
-                    editModelField: 'localExpedicao',
-                    editDropdownValueLabel: 'parcNeg',
-                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
-                    editDropdownOptionsArray: $scope.listaDeLocaisExpedicao
+                    field: 'localExpedicao',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="localExpedicao" ng-options="local for local in COL_FIELD"></select>'
                 },
                 {
                     field: 'juros',

@@ -30,7 +30,15 @@ angular.module("App.services", [])
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
                         pvl: "395.47",
-                        condPagtoFrete: "",
+                        condPagtoFrete: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
                         valorFrete: "",
                         valorFreteMlog: "",
                         valorNotaFiscalUnitario: "521.33",
@@ -38,8 +46,20 @@ angular.module("App.services", [])
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
-                        centro: "",
-                        localExpedicao: "",
+                        centro: [
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"],
+                        localExpedicao: [
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros: "0.000",
                         descricao: ""
                     },
@@ -54,7 +74,15 @@ angular.module("App.services", [])
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
                         pvl: "395.47",
-                        condPagtoFrete: "",
+                        condPagtoFrete: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
                         valorFrete: "",
                         valorFreteMlog: "",
                         valorNotaFiscalUnitario: "521.33",
@@ -62,8 +90,20 @@ angular.module("App.services", [])
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
-                        centro: "",
-                        localExpedicao: "",
+                        centro: [
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"],
+                        localExpedicao: [
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros: "0.000",
                         descricao: ""
                     },
@@ -78,7 +118,15 @@ angular.module("App.services", [])
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
                         pvl: "395.47",
-                        condPagtoFrete: "",
+                        condPagtoFrete: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
                         valorFrete: "",
                         valorFreteMlog: "",
                         valorNotaFiscalUnitario: "521.33",
@@ -86,8 +134,20 @@ angular.module("App.services", [])
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
-                        centro: "",
-                        localExpedicao: "",
+                        centro: [
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"],
+                        localExpedicao: [
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros: "0.000",
                         descricao: ""
                     },
@@ -102,7 +162,15 @@ angular.module("App.services", [])
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
                         pvl: "395.47",
-                        condPagtoFrete: "",
+                        condPagtoFrete: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
                         valorFrete: "",
                         valorFreteMlog: "",
                         valorNotaFiscalUnitario: "521.33",
@@ -110,8 +178,20 @@ angular.module("App.services", [])
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
-                        centro: "",
-                        localExpedicao: "",
+                        centro: [
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"],
+                        localExpedicao: [
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros: "0.000",
                         descricao: ""
                     },
@@ -126,7 +206,15 @@ angular.module("App.services", [])
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
                         pvl: "395.47",
-                        condPagtoFrete: "",
+                        condPagtoFrete: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
                         valorFrete: "",
                         valorFreteMlog: "",
                         valorNotaFiscalUnitario: "521.33",
@@ -134,8 +222,20 @@ angular.module("App.services", [])
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
-                        centro: "",
-                        localExpedicao: "",
+                        centro: [
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"],
+                        localExpedicao: [
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros: "0.000",
                         descricao: ""
                     },
@@ -150,7 +250,15 @@ angular.module("App.services", [])
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
                         pvl: "395.47",
-                        condPagtoFrete: "",
+                        condPagtoFrete: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
                         valorFrete: "",
                         valorFreteMlog: "",
                         valorNotaFiscalUnitario: "521.33",
@@ -158,8 +266,20 @@ angular.module("App.services", [])
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
-                        centro: "",
-                        localExpedicao: "",
+                        centro: [
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"],
+                        localExpedicao: [
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros: "0.000",
                         descricao: ""
                     },
@@ -174,7 +294,15 @@ angular.module("App.services", [])
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
                         pvl: "395.47",
-                        condPagtoFrete: "",
+                        condPagtoFrete: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
                         valorFrete: "",
                         valorFreteMlog: "",
                         valorNotaFiscalUnitario: "521.33",
@@ -182,8 +310,20 @@ angular.module("App.services", [])
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
-                        centro: "",
-                        localExpedicao: "",
+                        centro: [
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"],
+                        localExpedicao: [
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros: "0.000",
                         descricao: ""
                     },
@@ -198,7 +338,15 @@ angular.module("App.services", [])
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
                         pvl: "395.47",
-                        condPagtoFrete: "",
+                        condPagtoFrete: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
                         valorFrete: "",
                         valorFreteMlog: "",
                         valorNotaFiscalUnitario: "521.33",
@@ -206,8 +354,20 @@ angular.module("App.services", [])
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
-                        centro: "",
-                        localExpedicao: "",
+                        centro: [
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"],
+                        localExpedicao: [
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros: "0.000",
                         descricao: ""
                     },
@@ -222,7 +382,15 @@ angular.module("App.services", [])
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
                         pvl: "395.47",
-                        condPagtoFrete: "",
+                        condPagtoFrete: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
                         valorFrete: "",
                         valorFreteMlog: "",
                         valorNotaFiscalUnitario: "521.33",
@@ -230,8 +398,20 @@ angular.module("App.services", [])
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
-                        centro: "",
-                        localExpedicao: "",
+                        centro: [
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"],
+                        localExpedicao: [
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros: "0.000",
                         descricao: ""
                     },
@@ -246,7 +426,15 @@ angular.module("App.services", [])
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
                         pvl: "395.47",
-                        condPagtoFrete: "",
+                        condPagtoFrete: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
                         valorFrete: "",
                         valorFreteMlog: "",
                         valorNotaFiscalUnitario: "521.33",
@@ -254,8 +442,20 @@ angular.module("App.services", [])
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
-                        centro: "",
-                        localExpedicao: "",
+                        centro: [
+                            "BS-240",
+                            "MT-110",
+                            "MT-120",
+                            "MT-130",
+                            "MT-135",
+                            "MT-170",
+                            "MT-190",
+                            "MT-195"],
+                        localExpedicao: [
+                            "MT-1200",
+                            "MT-1201",
+                            "MT-1202"
+                        ],
                         juros: "0.000",
                         descricao: ""
                     }
@@ -267,25 +467,139 @@ angular.module("App.services", [])
                         orgVendas: "1000",
                         canal: "11",
                         setor: "10",
-                        condPagtos: "",
-                        incoterms: "",
-                        condFrete: ""
+                        condPagtos: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
+                        incoterms: [
+                            "CF",
+                            "CFR",
+                            "CI",
+                            "CIF",
+                            "CIP",
+                            "CIR",
+                            "CPT",
+                            "DAF",
+                            "DAP",
+                            "DAT",
+                            "DDP",
+                            "DDU",
+                            "DEQ",
+                            "DES",
+                            "EXW",
+                            "FAS",
+                            "FCA",
+                            "FH",
+                            "FOB",
+                            "TEX",
+                            "UN",
+                            "ZSF"
+                        ],
+                        condFrete: [
+                            "5050",
+                            "5051",
+                            "5052",
+                            "5053",
+                            "5054",
+                            "5054"
+                        ]
                     },
                     {
                         orgVendas: "1000",
                         canal: "16",
                         setor: "16",
-                        condPagtos: "",
-                        incoterms: "",
-                        condFrete: ""
+                        condPagtos: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
+                        incoterms: [
+                            "CF",
+                            "CFR",
+                            "CI",
+                            "CIF",
+                            "CIP",
+                            "CIR",
+                            "CPT",
+                            "DAF",
+                            "DAP",
+                            "DAT",
+                            "DDP",
+                            "DDU",
+                            "DEQ",
+                            "DES",
+                            "EXW",
+                            "FAS",
+                            "FCA",
+                            "FH",
+                            "FOB",
+                            "TEX",
+                            "UN",
+                            "ZSF"
+                        ],
+                        condFrete: [
+                            "5050",
+                            "5051",
+                            "5052",
+                            "5053",
+                            "5054",
+                            "5054"
+                        ]
                     },
                     {
                         orgVendas: "2000",
                         canal: "21",
                         setor: "10",
-                        condPagtos: "",
-                        incoterms: "",
-                        condFrete: ""
+                       condPagtos: [
+                            "0001",
+                            "0901",
+                            "5001",
+                            "5002",
+                            "5003",
+                            "5004",
+                            "5005"
+                        ],
+                        incoterms: [
+                            "CF",
+                            "CFR",
+                            "CI",
+                            "CIF",
+                            "CIP",
+                            "CIR",
+                            "CPT",
+                            "DAF",
+                            "DAP",
+                            "DAT",
+                            "DDP",
+                            "DDU",
+                            "DEQ",
+                            "DES",
+                            "EXW",
+                            "FAS",
+                            "FCA",
+                            "FH",
+                            "FOB",
+                            "TEX",
+                            "UN",
+                            "ZSF"
+                        ],
+                        condFrete: [
+                            "5050",
+                            "5051",
+                            "5052",
+                            "5053",
+                            "5054",
+                            "5054"
+                        ]
                     }
                 ];
             },
@@ -456,6 +770,32 @@ angular.module("App.services", [])
                     {incP1: "UN", denominacao: "Porte/Frete a pagar", loc: false},
                     {incP1: "ZSF", denominacao: "Sem Frete", loc: false}
                 ]
+            },
+            consultaIncotermsCruPorMaterial: function (materialId) {
+                return [
+                    "CF",
+                    "CFR",
+                    "CI",
+                    "CIF",
+                    "CIP",
+                    "CIR",
+                    "CPT",
+                    "DAF",
+                    "DAP",
+                    "DAT",
+                    "DDP",
+                    "DDU",
+                    "DEQ",
+                    "DES",
+                    "EXW",
+                    "FAS",
+                    "FCA",
+                    "FH",
+                    "FOB",
+                    "TEX",
+                    "UN",
+                    "ZSF"
+                ]
             }
         }
     })
@@ -463,12 +803,22 @@ angular.module("App.services", [])
         return {
             consultaFreteReplica: function () {
                 return [
-                    {codigo:"5050",descricao:"Pgto 60/90/120 – Produto Acabado Nacional"},
-                    {codigo:"5051",descricao:"Pgto 30/60 – Produto Acabado Nacional"},
-                    {codigo:"5052",descricao:"Pgto 30/60/90 – Produto Acabado Nacional"},
-                    {codigo:"5053",descricao:"Pgto 15/30/45 – Produto Acabado Nacional"},
-                    {codigo:"5054",descricao:"Pgto 15/30/45/60 – Produto Acabado Nacional"},
-                    {codigo:"5054",descricao:"Pgto 15/30/45/75/90 – Produto Acabado Nacional"}
+                    {codigo: "5050", descricao: "Pgto 60/90/120 – Produto Acabado Nacional"},
+                    {codigo: "5051", descricao: "Pgto 30/60 – Produto Acabado Nacional"},
+                    {codigo: "5052", descricao: "Pgto 30/60/90 – Produto Acabado Nacional"},
+                    {codigo: "5053", descricao: "Pgto 15/30/45 – Produto Acabado Nacional"},
+                    {codigo: "5054", descricao: "Pgto 15/30/45/60 – Produto Acabado Nacional"},
+                    {codigo: "5054", descricao: "Pgto 15/30/45/75/90 – Produto Acabado Nacional"}
+                ]
+            },
+            consultaFreteReplicaCru: function () {
+                return [
+                    "5050",
+                    "5051",
+                    "5052",
+                    "5053",
+                    "5054",
+                    "5054"
                 ]
             }
         }
@@ -486,6 +836,17 @@ angular.module("App.services", [])
                     {copg: 5005, explicacaoPropria: "Pgto 40 dias - Produto Acabado Nacional", numDias: "040"}
                 ]
             },
+            consultaPagamentoCruPorMaterial: function (materialId) {
+                return [
+                    0001,
+                    0901,
+                    5001,
+                    5002,
+                    5003,
+                    5004,
+                    5005
+                ]
+            },
             consultaPagamentoReplica: function () {
                 return [
                     {codigo: "0001", descricao: "Pagamento imediato s/ desconto"},
@@ -499,5 +860,5 @@ angular.module("App.services", [])
                     {codigo: "0602", descricao: "Pagamento Antecipado"}
                 ]
             }
-            }
-        });
+        }
+    });
