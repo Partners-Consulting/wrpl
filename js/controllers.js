@@ -1519,7 +1519,6 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'codigo',
-                    width: '150',
                     displayName: 'Código do Material'
                 }
             ]
