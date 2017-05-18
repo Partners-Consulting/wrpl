@@ -1,0 +1,70 @@
+<div class="modal-header bg-primary" style="background-color:#333">
+    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
+            style="margin-top: -10px;" ng-click="close()">×
+    </button>
+    <h4>Buscar Material</h4>
+
+</div>
+<uib-tabset active="active">
+    <uib-tab index="0" heading="Buscar material por código">
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-3">Códigos de materiais</label>
+                    <div class="col-sm-9">
+                        <textarea ng-disabled="false" type="text" class="form-control input-sm" placeholder="Códigos"
+                                  ng-model="materiais.codigos" ols="30" rows="15"></textarea>
+                    </div>
+                </div>
+              y
+            </form>
+        </div>
+    </uib-tab>
+
+    <uib-tab index="1" heading="Buscar material específico">
+        <div class="modal-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label class="col-sm-3">Código do material</label>
+                    <div class="col-sm-9">
+                        <div class="input-group input-group-lg">
+                        <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-search"
+                                                                              aria-hidden="true"></i></span>
+                            <input type="text" ng-change="filtraMaterialCodigo()" class="form-control"
+                                   placeholder="Código do material" aria-describedby="sizing-addon1"
+                                   ng-model="busca.codigo">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3">Descrição do material</label>
+                    <div class="col-sm-9">
+                        <div class="input-group input-group-lg">
+                        <span class="input-group-addon" id="sizing-addon2"><i class="fa fa-search"
+                                                                              aria-hidden="true"></i></span>
+                            <input type="text" ng-change="filtraMaterialDescricao()" class="form-control" placeholder="Descrição"
+                                   aria-describedby="sizing-addon1"
+                                   ng-model="busca.descricao">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
+            </br>
+            <div ui-grid="gridBuscaMaterial" ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
+        </div>
+
+    </uib-tab>
+
+</uib-tabset>
+<div class="modal-footer">
+    <button ng-if="active == 0" data-bb-handler="confirm" type="button" class="btn btn-default"
+            ng-click="buscarMaterial()">
+        Buscar
+    </button>
+    <button ng-if="active == 1" data-bb-handler="confirm" type="button" class="btn btn-primary"
+            ng-click="adicionarMateriaisSelecionados()">
+        Adicionar Selecionados
+    </button>
+</div>

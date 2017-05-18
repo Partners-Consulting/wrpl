@@ -29,7 +29,7 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("ClienteController", function ($scope, $rootScope, $location, $uibModal) {
+    .controller("ClienteController", function ($scope, $rootScope, $location, $uibModal, SweetAlert) {
         "use strict";
 
         $scope.filtro2 = "";
@@ -58,7 +58,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 2,
                 titulo: 'Concorrência',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes'
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes'
             }
         ];
 
@@ -66,7 +66,7 @@ angular.module("App.controllers", [])
             {
                 id: 0,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -74,7 +74,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 1,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -82,7 +82,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 2,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -90,7 +90,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 3,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -147,10 +147,6 @@ angular.module("App.controllers", [])
                 field: 'emissor',
                 displayName: 'Emissor',
                 cellTemplate: '<div ng-click="grid.appScope.editarContatos(row.entity);">{{COL_FIELD}}</div>'
-            }, {
-                field: 'status',
-                displayName: 'Status',
-                cellTemplate: '<div ng-click="grid.appScope.editarContatos(row.entity);">{{COL_FIELD}}</div>'
             }
 
             ]
@@ -178,13 +174,11 @@ angular.module("App.controllers", [])
                 enableFiltering: false,
                 cellTemplate: '  <div class="action-buttons"> ' +
                 ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarLinhaBranca(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
-                ' <a class="red" style="color: red"  ng-click="grid.appScope.removerLinhaBranca(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
                 ' </div>'
             }
 
             ]
         };
-
         $scope.gridApiLinhaBranca = {};
         $scope.gridLinhaBranca.onRegisterApi = function (gridApi) {
             $scope.gridApiLinhaBranca = gridApi;
@@ -205,11 +199,14 @@ angular.module("App.controllers", [])
                 displayName: 'Ação',
                 cellTemplate: '  <div class="action-buttons"> ' +
                 ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarConcorrenteRevenda(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
-                ' <a class="red" style="color: red"  ng-click="grid.appScope.removerConcorrenteRevenda(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
                 ' </div>'
             }
 
             ]
+        };
+        $scope.gridApiConcorrentes = {};
+        $scope.gridConcorrentes.onRegisterApi = function (gridApi) {
+            $scope.gridApiConcorrentes = gridApi;
         };
 
         function init() {
@@ -233,20 +230,33 @@ angular.module("App.controllers", [])
 
         init();
 
+        $scope.adicionarContatos = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/editar-contato.html',
+                controller: 'ModalInstanceUltimosContatosCtrl',
+                resolve: {
+                    contato: function () {
+                        return {};
+                    }
+                }
+            });
+        };
+        
         $scope.proximaTabela = function () {
             if ($scope.painelTabela.tabelaAtual + 1 <= $scope.painelTabela.quantidadeDeTabela) {
                 $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual + 1;
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
             }
             $scope.changeHeaderTitle();
-        }
+        };
 
         $scope.tabelaAnterior = function () {
             if ($scope.painelTabela.tabelaAtual - 1 > 0) {
                 $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual - 1;
             }
             $scope.changeHeaderTitle();
-        }
+        };
 
         $scope.changeHeaderTitle = function () {
             if ($scope.painelTabela.tabelaAtual == 1) {
@@ -258,7 +268,7 @@ angular.module("App.controllers", [])
             } else if ($scope.painelTabela.tabelaAtual == 4) {
                 $scope.painelTabela.tituloTabelaAtual = 'Concorrentes Revenda';
             }
-        }
+        };
 
         $scope.adicionarPontual = function () {
             var modalInstance = $uibModal.open({
@@ -279,6 +289,10 @@ angular.module("App.controllers", [])
                     }
                 }
             });
+        };
+
+        $scope.finalizarEdicao = function () {
+            $scope.isBlocked = !$scope.isBlocked
         };
 
         $scope.editarPerfilDeRevenda = function () {
@@ -334,8 +348,34 @@ angular.module("App.controllers", [])
         };
 
         $scope.removePontual = function (pontual) {
-            $rootScope.pontuais = _.without($rootScope.pontuais, _.findWhere($rootScope.pontuais, {id: pontual.id}));
-        }
+            var alertExclusao = {
+                title: "Exclusão de nota",
+                text: "Tem certeza que gostaria de excluir essa nota?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+                        $rootScope.pontuais = _.without($rootScope.pontuais, _.findWhere($rootScope.pontuais, {id: pontual.id}));
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Nota excluída com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        };
 
         $scope.gotoDev = function () {
             $location.path("/dev");
@@ -363,7 +403,36 @@ angular.module("App.controllers", [])
         };
 
         $scope.removerLinhaBranca = function (produto) {
-            $rootScope.linhaBranca = _.without($rootScope.linhaBranca, _.findWhere($rootScope.linhaBranca, {id: produto.id}));
+            var alertExclusao = {
+                title: "Exclusão de Player",
+                text: "Confirma a exclusão do(s) player(s) selecionado(s)?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+                        angular.forEach($scope.gridApiLinhaBranca.selection.getSelectedRows(), function (data, index) {
+                            $scope.linhaBranca.splice($scope.linhaBranca.lastIndexOf(data), 1);
+                        });
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Player(s) excluído(s) com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+
         };
 
         $scope.adicionarLinhaBranca = function () {
@@ -393,7 +462,35 @@ angular.module("App.controllers", [])
         };
 
         $scope.removerConcorrenteRevenda = function (produto) {
-            $rootScope.concorrentesRevenda = _.without($rootScope.concorrentesRevenda, _.findWhere($rootScope.concorrentesRevenda, {id: produto.id}));
+            var alertExclusao = {
+                title: "Exclusão de Concorrente",
+                text: "Confirma a exclusão do(s) concorrente(s) selecionado(s)?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+                        angular.forEach($scope.gridApiConcorrentes.selection.getSelectedRows(), function (data, index) {
+                            $scope.concorrentesRevenda.splice($scope.concorrentesRevenda.lastIndexOf(data), 1);
+                        });
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Concorrente(s) excluído(s) com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
         };
 
         $scope.adicionarConcorrenteRevenda = function () {
@@ -603,6 +700,10 @@ angular.module("App.controllers", [])
             $uibModalInstance.close();
         };
 
+        $scope.salvar = function () {
+            $uibModalInstance.close();
+        };
+
         $scope.adicionarPontualNaLista = function (texto) {
             $uibModalInstance.close();
         };
@@ -774,7 +875,7 @@ angular.module("App.controllers", [])
             }
             var alertExclusao = {
                 title: "Exclusão de contatos",
-                text: "Tem certeza que gostaria de excluir todos os contatos?",
+                text: "Confirma a exclusão dos contatos selecionados?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -845,14 +946,6 @@ angular.module("App.controllers", [])
             item.prioritario = !item.prioritario;
         };
 
-        $scope.removerTodosTelefones = function () {
-            $rootScope.selectedClient.contatos[0].telefones = [];
-        };
-
-        $scope.removerTodosEmails = function () {
-            $rootScope.selectedClient.contatos[0].emails = [];
-        };
-
         $scope.removerEmail = function (email) {
             var alertExclusao = {
                 title: "Exclusão de email",
@@ -896,6 +989,37 @@ angular.module("App.controllers", [])
 
             });
         };
+
+        $scope.salvarAlteracaoContato = function () {
+            var alertExclusao = {
+                title: "Alteração de dados de contato",
+                text: "Tem certeza que gostaria de alterar os dados?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+
+
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Dados alterados com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+                        $uibModalInstance.close();
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        }
 
         $scope.editarContato = function (contato) {
             var modalInstance = $uibModal.open({
@@ -951,7 +1075,7 @@ angular.module("App.controllers", [])
             if (!!contato.id) {
                 $uibModalInstance.close();
             } else {
-                contato.data = new Date();
+                contato.data = "17.05.2017"
                 contato.id = $rootScope.contatos.length + 1;
                 $rootScope.contatos.push(contato);
                 $uibModalInstance.close();
@@ -1007,7 +1131,7 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalReplicarCtrl", function ($scope, $rootScope, $uibModalInstance, replicas, FreteService, CondicaoPagamentoService) {
+    .controller("ModalReplicarCtrl", function ($scope, $rootScope, $uibModalInstance, replicas, FreteService, CondicaoPagamentoService, SweetAlert) {
         "use strict";
         $scope.replicas = replicas;
         $scope.listaCondicaoPagamento = [];
@@ -1015,8 +1139,6 @@ angular.module("App.controllers", [])
 
         function init() {
             //todo fazer padrão promessa
-            $scope.listaCondicaoPagamento = CondicaoPagamentoService.consultaPagamentoReplica();
-            $scope.listaCondicaoFrete = FreteService.consultaFreteReplica();
         }
 
         init();
@@ -1026,14 +1148,6 @@ angular.module("App.controllers", [])
             enableGridMenu: true,
             data: 'replicas',
             columnDefs: [
-                {
-                    field: 'acao',
-                    displayName: 'Ação',
-                    cellTemplate: '  <div class="action-buttons"> ' +
-                    ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarMateria(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
-                    ' <a class="red" style="color: red"  ng-click="grid.appScope.removerMaterial(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
-                    ' </div>'
-                },
                 {
                     field: 'orgVendas',
                     displayName: 'Org. Vendas'
@@ -1049,28 +1163,67 @@ angular.module("App.controllers", [])
                 {
                     displayName: 'Cond. Pagtos',
                     width: '150',
-                    field: 'condPagtos.codigo',
-                    editModelField: 'condPagtos',
-                    editDropdownValueLabel: 'codigo',
-                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
-                    editDropdownOptionsArray: $scope.listaCondicaoPagamento
+                    field: 'condPagtos',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="condPagtos" ng-options="pgto for pgto in COL_FIELD"></select>'
                 },
                 {
                     field: 'incoterms',
-                    displayName: 'Incoterms'
+                    displayName: 'Incoterms',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     displayName: 'Cond. Frete',
                     width: '150',
-                    field: 'condFrete.codigo',
-                    editModelField: 'condFrete',
-                    editDropdownValueLabel: 'codigo',
-                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
-                    editDropdownOptionsArray: $scope.listaCondicaoFrete
+                    field: 'condFrete',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 }
             ]
         };
 
+        $scope.gridApiReplicas= {};
+        $scope.gridReplicas.onRegisterApi = function (gridApi) {
+            $scope.gridApiReplicas = gridApi;
+        };
+
+        $scope.excluirReplicasSelecionadas = function () {
+            if($scope.replicas.length <= 0 || $scope.gridApiReplicas.selection.getSelectedRows().length <= 0){
+                return;
+            }
+            var alertExclusao = {
+                title: "Exclusão de replicas",
+                text: "Tem certeza que gostaria de excluir as replicas selecionadas?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+
+                        angular.forEach($scope.gridApiReplicas.selection.getSelectedRows(), function (data, index) {
+                            $scope.replicas.splice($scope.replicas.lastIndexOf(data), 1);
+                        });
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Replicas excluídas com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        }
+        
         $scope.close = function () {
             $uibModalInstance.close();
         };
@@ -1134,47 +1287,58 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, materiais, $uibModal, $uibModalInstance) {
+    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, materiais, $uibModal, $uibModalInstance, $timeout) {
 
         $scope.showDetalhe = false;
         $scope.listaMateriais = materiais
 
-        $scope.abriDetalhe = function (materiais) {
-            $scope.showDetalhe = !$scope.showDetalhe;
-        }
+
 
         $scope.listaMateriais = materiais
 
         $scope.gridSimulacao = {
+            enableRowSelection: true,
+            multiSelect: false,
+            enableRowHeaderSelection: false,
+            enableCellEditOnFocus: true,
             data: 'listaMateriais',
             enableGridMenu: true,
             columnDefs: [
                 {
                     field: 'codigo',
+                    width:'250',
                     displayName: 'Material',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'modelo',
-                    displayName: 'modelo',
+                    width:'260',
+                    displayName: 'Modelo',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'cor',
+                    width:'200',
                     displayName: 'Cor',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'voltagem',
+                    width:'70',
                     displayName: 'Voltagem',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'quantidade',
-                    displayName: 'qtd',
-                    cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
+                    width:'70',
+                    displayName: 'Qtd'
                 }
             ]
+        };
+
+        $scope.gridApiSimulacao = {};
+        $scope.gridSimulacao.onRegisterApi = function (gridApi) {
+            $scope.gridApiSimulacao = gridApi;
         };
 
         $scope.gridDetalhe = {
@@ -1198,6 +1362,7 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'quatidadeDistribuicao',
+                    enableCellEdit: true,
                     displayName: 'QTD. Distribuição'
                 },
                 {
@@ -1231,6 +1396,16 @@ angular.module("App.controllers", [])
             ]
         };
 
+        $scope.abriDetalhe = function (materiais) {
+            $timeout(function(){
+                if($scope.gridApiSimulacao.selection.getSelectedRows().length <= 0){
+                    $scope.showDetalhe = false;
+                }else{
+                    $scope.showDetalhe = true;
+                }
+            },0)
+        }
+
         $scope.programarEntrega = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
@@ -1245,6 +1420,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/efetivar-ov2.html',
                 controller: 'ModalEfetivarOv2Ctrl',
+                backdrop:'static',
                 size: 'lg'
             });
         }
@@ -1308,9 +1484,91 @@ angular.module("App.controllers", [])
         }
 
     })
+    .controller("ModalBuscarMaterialCtrl", function ($scope, $rootScope, $uibModal, $uibModalInstance, MaterialService, $timeout) {
+
+        $scope.showDetalhe = false;
+
+        $scope.busca = {
+            codigo:"",
+            descricao:""
+        };
+
+        $scope.materiais = {
+            codigos:""
+        }
+
+        $scope.abriDetalhe = function (materiais) {
+            $scope.showDetalhe = !$scope.showDetalhe;
+        }
+
+        $scope.materiaisAchados = [];
+
+
+        function init() {
+           $scope.materiaisAchados = MaterialService.consultaMaterial();
+        }
+
+        init();
+
+        $scope.listaMateriais = [];
+
+        $scope.gridBuscaMaterial = {
+            enableFiltering: true,
+            data: 'materiaisAchados',
+            enableGridMenu: true,
+            columnDefs: [
+                {
+                    field: 'codigo',
+                    displayName: 'Código do Material'
+                }
+            ]
+        };
+
+        $scope.gridApiBuscaMaterial = {};
+        $scope.gridBuscaMaterial.onRegisterApi = function (gridApi) {
+            $scope.gridApiBuscaMaterial = gridApi;
+        };
+
+        $scope.filtraMaterialCodigo = function () {
+            $timeout(function(){
+                if($scope.busca.codigo != "" && $scope.busca.codigo != null && $scope.busca.codigo.length > 3){
+                    $scope.gridApiBuscaMaterial.grid.columns[1].filters[0].term = $scope.busca.codigo;
+                }
+            },0);
+        }
+
+        $scope.filtraMaterialDescricao = function () {
+            $timeout(function(){
+                if($scope.busca.codigo != "" && $scope.busca.codigo != null && $scope.busca.codigo.length > 3){
+                    $scope.gridApiBuscaMaterial.grid.columns[1].filters[0].term = $scope.busca.codigo;
+                }
+            },0);
+        }
+
+        $scope.adicionarMateriaisSelecionados = function () {
+            angular.forEach($scope.gridApiBuscaMaterial.selection.getSelectedRows(), function (data, index) {
+                $scope.listaMateriais.push(data);
+            });
+
+            $uibModalInstance.close($scope.listaMateriais);
+        }
+
+        $scope.close = function () {
+            $uibModalInstance.close();
+        };
+
+
+    })
     .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, $uibModalInstance, _) {
 
         $scope.showDetalhe = false;
+
+        $scope.codProcEsp = [
+            "TRUCK ABERTO",
+            "TRUCK BAU",
+            "TOCO ABERTO",
+            "TOCO BAU"
+        ]
 
         $scope.listaOrdenASeremEfetivadas = [
             {
@@ -1318,8 +1576,13 @@ angular.module("App.controllers", [])
                 organizacao: "OV 1000",
                 canal: "11",
                 setor: "10",
-                situacaoCargao: "",
-                codProcEsp: "",
+                situacaoCarga: false,
+                codProcEsp: [
+                    "TRUCK ABERTO",
+                    "TRUCK BAU",
+                    "TOCO ABERTO",
+                    "TOCO BAU"
+                ],
                 emissor: "",
                 recebedor: "0000021777",
                 tipo: "ZVPB",
@@ -1333,8 +1596,13 @@ angular.module("App.controllers", [])
                 organizacao: "OV 1000",
                 canal: "11",
                 setor: "10",
-                situacaoCargao: "",
-                codProcEsp: "",
+                situacaoCarga: false,
+                codProcEsp: [
+                    "TRUCK ABERTO",
+                    "TRUCK BAU",
+                    "TOCO ABERTO",
+                    "TOCO BAU"
+                ],
                 emissor: "",
                 recebedor: "0000041203",
                 tipo: "ZVPB",
@@ -1349,7 +1617,7 @@ angular.module("App.controllers", [])
             {
                 id: 0,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1357,7 +1625,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 1,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1369,7 +1637,7 @@ angular.module("App.controllers", [])
             {
                 id: 0,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1377,7 +1645,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 1,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1394,6 +1662,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/bonificacao.html',
                 controller: 'ModalBonificacaoCtrl',
+                backdrop:'static',
                 size: 'lg'
             });
         }
@@ -1404,58 +1673,101 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'status',
+                    width:'100',
                     displayName: 'Status'
                 },
                 {
                     field: 'organizacao',
+                    width:'100',
                     displayName: 'Organização'
                 },
                 {
                     field: 'canal',
+                    width:'100',
                     displayName: 'Canal'
                 },
                 {
                     field: 'setor',
+                    width:'100',
                     displayName: 'Setor'
                 },
                 {
-                    field: 'situacaoCargao',
-                    displayName: 'Sit. Carga'
+                    field: 'situacaoCarga',
+                    width:'100',
+                    displayName: 'Sit. Carga',
+                    cellTemplate: ' <div ng-click="grid.appScope.alterarSituacaoCarga(row.entity)">' +
+                    '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
+                    '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="green" style="color: green" href=""><i class="fa fa-check-circle-o bigger-130"></i></a></div></div>'
                 },
                 {
                     field: 'codProcEsp',
-                    displayName: 'CódProcEsp'
+                    width:'150',
+                    displayName: 'CódProcEsp',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="codProcEsp" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     field: 'emissor',
+                    width:'100',
                     displayName: 'Emissor'
                 },
                 {
                     field: 'recebedor',
+                    width:'100',
                     displayName: 'Recebedor'
                 },
                 {
                     field: 'tipo',
+                    width:'100',
                     displayName: 'Tipo'
                 },
                 {
                     field: 'preOrdem',
+                    width:'100',
                     displayName: 'Pré Ordem'
                 },
                 {
                     field: 'statusPreOrdem',
+                    width:'100',
                     displayName: 'Status Pré Ordem'
                 },
                 {
                     field: 'ordem',
+                    width:'100',
                     displayName: 'Ordem'
                 },
                 {
+                    field: 'textoOv',
+                    width:'100',
+                    displayName: 'Texto O.V',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="black" style="color: black"  ng-click="grid.appScope.adicionarTextoOv(row.entity)" href=""><i class="fa fa-file-text bigger-130"></i></a>' +
+                    ' </div>'
+                },
+                {
+                    field: 'textoSimulacao',
+                    width:'100',
+                    displayName: 'Texto Simulação',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="black" style="color: black"  ng-click="grid.appScope.adicionarTextoSimulacao(row.entity)" href=""><i class="fa fa-file-text bigger-130"></i></a>' +
+                    ' </div>'
+                },
+                {
                     field: 'imprimir',
-                    displayName: 'Imprimir'
+                    width:'100',
+                    displayName: 'Imprimir',
+                    cellTemplate: '  <div class="action-buttons"> ' +
+                    ' <a class="black" style="color: black"  ng-click="grid.appScope.imprimir(row.entity)" href=""><i class="fa fa-print bigger-130"></i></a>' +
+                    ' </div>'
                 }
             ]
         };
+
+        $scope.alterarSituacaoCarga = function (item) {
+            item.situacaoCarga = !item.situacaoCarga;
+        }
 
         $scope.gridDetalhe = {
             data: 'listaMateriais',
@@ -1666,7 +1978,7 @@ angular.module("App.controllers", [])
         };
 
     })
-    .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService, CentroService, LocalExpedicaoService, IncotermsService) {
+    .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService, CentroService, LocalExpedicaoService, IncotermsService, SweetAlert) {
         "use strict";
         $scope.gotoDev = function () {
             $location.path("/dev");
@@ -1764,6 +2076,13 @@ angular.module("App.controllers", [])
             });
         };
 
+        $scope.codProcEsp = [
+            {sppi:16,denominacao:"TRUCK ABERTO"},
+            {sppi:17,denominacao:"TRUCK BAU"},
+            {sppi:18,denominacao:"TOCO ABERTO"},
+            {sppi:19,denominacao:"TOCO BAU"}
+        ]
+
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
             enableGridMenu: true,
@@ -1771,12 +2090,11 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'acao',
-                    width: '150',
+                    enableCellEdit: false,
+                    width: '70',
                     displayName: 'Ação',
                     cellTemplate: '  <div class="action-buttons"> ' +
-                    ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarMateria(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
                     ' <a class="black" style="color: black"  ng-click="grid.appScope.abrirHitoriocoMaterial(row.entity)" href=""><i class="fa fa-book bigger-130"></i></a>' +
-                    ' <a class="red" style="color: red"  ng-click="grid.appScope.removerMaterial(row.entity)" href=""><i class="fa fa-minus bigger-130"></i></a>' +
                     ' </div>'
                 },
                 {
@@ -1808,7 +2126,12 @@ angular.module("App.controllers", [])
                 {
                     field: 'situacaoCarga',
                     width: '150',
-                    displayName: 'Sit. Carga'
+                    displayName: 'Sit. Carga',
+                    cellTemplate: ' <div ng-click="grid.appScope.alterarSituacaoCarga(row.entity)">' +
+                    '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
+                    '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
+                    '<a class="green" style="color: green" href=""><i class="fa fa-check-circle-o bigger-130"></i></a></div></div>'
                 },
                 {
                     field: 'precFlexibilidade',
@@ -1828,7 +2151,9 @@ angular.module("App.controllers", [])
                 {
                     field: 'condPagtoFrete',
                     width: '150',
-                    displayName: 'Cond. Frete'
+                    displayName: 'Cond. Frete',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="condPagtoFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     field: 'valorFrete',
@@ -1868,20 +2193,16 @@ angular.module("App.controllers", [])
                 {
                     displayName: 'Centro',
                     width: '150',
-                    field: 'centro.parcNeg',
-                    editModelField: 'centro',
-                    editDropdownValueLabel: 'parcNeg',
-                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
-                    editDropdownOptionsArray: $scope.listaDeCentros
+                    enableCellEdit: false,
+                    field: 'centro',
+                    cellTemplate:'<select ng-model="centro" ng-options="centro for centro in COL_FIELD"></select>'
                 },
                 {
                     displayName: 'Local Expedicao',
                     width: '150',
-                    field: 'localExpedicao.parcNeg',
-                    editModelField: 'localExpedicao',
-                    editDropdownValueLabel: 'parcNeg',
-                    editableCellTemplate: './view/uiGridTemplates/ui-select.html',
-                    editDropdownOptionsArray: $scope.listaDeLocaisExpedicao
+                    field: 'localExpedicao',
+                    enableCellEdit: false,
+                    cellTemplate:'<select ng-model="localExpedicao" ng-options="local for local in COL_FIELD"></select>'
                 },
                 {
                     field: 'juros',
@@ -1896,6 +2217,47 @@ angular.module("App.controllers", [])
             ]
         };
 
+        $scope.gridApiMateriais = {};
+        $scope.gridMateriais.onRegisterApi = function (gridApi) {
+            $scope.gridApiMateriais = gridApi;
+        };
+
+        $scope.deletarMateriaisSelecionados = function () {
+            if($scope.listaMateriais.length <= 0 || $scope.gridApiMateriais.selection.getSelectedRows().length <= 0){
+                return;
+            }
+            var alertExclusao = {
+                title: "Exclusão de itens de simulação",
+                text: "Tem certeza que gostaria de excluir os itens selecionados?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+
+                        angular.forEach($scope.gridApiMateriais.selection.getSelectedRows(), function (data, index) {
+                            $scope.listaMateriais.splice($scope.listaMateriais.lastIndexOf(data), 1);
+                        });
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Itens de simulação excluídos com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        }
+        
         $scope.ultimasSimulacoes = [
             {
                 id:1,
@@ -1969,7 +2331,7 @@ angular.module("App.controllers", [])
             {
                 id: 0,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1977,7 +2339,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 1,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1985,7 +2347,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 2,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -1993,7 +2355,7 @@ angular.module("App.controllers", [])
             }, {
                 id: 3,
                 data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorremtes',
+                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
@@ -2001,8 +2363,55 @@ angular.module("App.controllers", [])
             }
         ];
 
+        $scope.alterarSituacaoCarga = function (item) {
+            item.situacaoCarga = !item.situacaoCarga;
+        }
+
+        $scope.buscarMaterial = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/buscar-material.html',
+                controller: 'ModalBuscarMaterialCtrl',
+                size: 'md',
+                backdrop: 'static'
+            });
+
+            modalInstance.result.then(function (listaMateriais) {
+                angular.forEach(listaMateriais, function (data, index) {
+                    $scope.listaMateriais.push(data);
+                });
+
+            });
+        }
+
         $scope.removePontual = function (pontual) {
-            $rootScope.simulacaoPontuais = _.without($rootScope.simulacaoPontuais, _.findWhere($rootScope.simulacaoPontuais, {id: pontual.id}));
+            var alertExclusao = {
+                title: "Exclusão de nota",
+                text: "Tem certeza que gostaria de excluir essa nota?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+                        $rootScope.simulacaoPontuais = _.without($rootScope.simulacaoPontuais, _.findWhere($rootScope.simulacaoPontuais, {id: pontual.id}));
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Nota excluída com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
         }
 
         $scope.adicionarPontual = function () {
@@ -2026,12 +2435,51 @@ angular.module("App.controllers", [])
             });
         }
 
+        $scope.bonificacao = function () {
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/bonificacao.html',
+                controller: 'ModalBonificacaoCtrl',
+                backdrop:'static',
+                size: 'lg'
+            });
+        }
+
+        $scope.salvarSimulacao = function () {
+            var alertExclusao = {
+                title: "Salvar simulação",
+                text: "Tem certeza que gostaria de salvar essa simulação?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+                        $rootScope.numeroSimulacao = "00000010";
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Simulação: "+ $rootScope.numeroSimulacao +" salva com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        }
+
     })
     .controller("TermometroController", function ($scope, $rootScope) {
 
 
     })
-
     .controller("GraficosController", function ($scope, $rootScope) {
 
         $rootScope.dadosGraficos = [
@@ -2081,8 +2529,6 @@ angular.module("App.controllers", [])
         };
 
     })
-
-
     .controller("ClientesController", function ($scope, $rootScope) {
 
 
@@ -2093,7 +2539,7 @@ angular.module("App.controllers", [])
             $rootScope.selectedClient = null;
             $location.path("/selecionarCliente");
         };
-
+        $rootScope.numeroSimulacao = "";
         $rootScope.sapLink = function () {
             $location.path("/sapLink");
         };
@@ -2177,22 +2623,27 @@ angular.module("App.controllers", [])
                         url: ""
                     },
                     {
-                        titulo: "ZTLV14 - Cod. De marca e Categoria Mix",
+                        titulo: "ZTLV14 - Código de Marca e Categoria Mix",
                         url: ""
                     },
                     {
-                        titulo: "ZTLV19 - Cadastro Ação Promo. E Mapa da Mina",
+                        titulo: "ZTLV19 - Cadastro Ação Promocional e Mapa da Mina",
                         url: ""
-                    }, {
+                    },
+                    {
                         titulo: "ZTLV15 - Texos Fixos - Simulação e OV",
                         url: ""
-                    }, {titulo: "ZTLV20 - TAB PRE Atribuir Marca e Categ", url: ""}, {
+                    },
+                    {titulo: "ZTLV20 - TAB PRE Atribuir Marca e Categoria", url: ""},
+                    {
                         titulo: "ZTLV11 - ZROUTE",
                         url: ""
-                    }, {
+                    },
+                    {
                         titulo: "ZTABP - Gerar de tabela de Preço",
                         url: ""
-                    }, {titulo: "ZEXEC - Exceção de materiais - TAB preço", url: ""}]
+                    },
+                    {titulo: "ZEXEC - Exceção de materiais - TAB preço", url: ""}]
             },
             {
                 nome: "Cliente",
@@ -2203,7 +2654,7 @@ angular.module("App.controllers", [])
                         url: ""
                     },
                     {
-                        titulo: "ZTLV09 -Relação de telefones",
+                        titulo: "ZTLV09 - Relação de Telefones",
                         url: ""
                     }]
             },
@@ -2281,35 +2732,37 @@ angular.module("App.controllers", [])
             $rootScope.currentRoute = $location.path();
         });
 
-        $rootScope.credito = [
+        $rootScope.creditos = [
             {
                 id: 1,
                 emissor:445646546 ,
-                limiteTotal: 'R$ 110.000,00',
-                limiteWhp: 'R$ 85.000,00',
-                exposicaoWRP: 'R$ 25.000,00',
-                emAbertoWRP: 'R$ 5.000,00'
+                limiteTotal: 110000.00,
+                limiteWhp: 85000.00,
+                exposicaoWRP: 25000.00,
+                emAbertoWRP: 50000.00
             },
             {
                 id: 2 ,
                 emissor:98794656 ,
-                limiteTotal: 'R$ 60.000,00',
-                limiteWhp: 'R$ 45.000, 00',
-                exposicaoWRP: 'R$ 15.000, 00',
-                emAbertoWRP: 'R$ 2.000, 00'
+                limiteTotal: 60000.00,
+                limiteWhp: 45000.00,
+                exposicaoWRP: 150000.00,
+                emAbertoWRP: 20000.00
             },
             {
                 id: 3 ,
                 emissor:654654646 ,
-                limiteTotal: 'R$ 160.000, 00',
-                limiteWhp: 'R$ 145.000, 00',
-                exposicaoWRP: 'R$ 115.000, 00',
-                emAbertoWRP: 'R$ 90.000, 00'
+                limiteTotal: 160000.00,
+                limiteWhp: 145000.00,
+                exposicaoWRP: 115000.00,
+                emAbertoWRP: 90000.00
             }
         ];
 
+        $rootScope.somaLimiteTotal
+
         $rootScope.gridCredito = {
-            data: 'credito',
+            data: 'creditos',
             enableGridMenu: true,
             columnDefs: [
                 {
@@ -2367,21 +2820,24 @@ angular.module("App.controllers", [])
                 data: "14.04.17",
                 descricao: "0000456456",
                 emissor: 423476,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
+                statusTitulo: "Aguardando retorno",
+                statusCorpo:"Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
             },
             {
 
                 data: "14.04.17",
                 descricao: "0000456457",
                 emissor: 423476,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
+                statusTitulo: "Aguardando retorno",
+                statusCorpo:"Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
             },
             {
 
                 data: "20.04.17",
                 descricao: "0000456458",
                 emissor: 564654,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
+                statusTitulo: "Aguardando retorno",
+                statusCorpo:"Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
             }
 
         ];

@@ -56,34 +56,51 @@
         <panel-actions>
                  <div class="row">
                      <div class="col-sm-12">
-                         <label>Bonif.%</label>
+                         <label style="font-size: 12px">Bonif.%</label>
                          <input style="width: 40px" class="input-xs" type="text" placeholder="">
                          <input style="width: 80px" class="input-xs" type="text" placeholder="">
+                         <button type="button" class="btn btn-primary btn-xs" ng-click="buscarMaterial()">
+                             <i class="fa fa-search"
+                                                                                                       aria-hidden="true"></i>
+                             Buscar
+                         </button>
                          <button type="button" class="btn btn-default btn-xs" ng-click="replicar()"><i class="fa fa-reply"
                                                                                                        aria-hidden="true"></i>
                              Replicar
+                         </button>
+                         <button type="button" style="background-color: #d1de5b" class="btn btn-default btn-xs" ng-click="bonificacao()"><i class="fa fa-gift"
+                                                                                                       aria-hidden="true"></i>
+                             Brindes
                          </button>
                          <button type="button" class="btn btn btn-xs" ng-click="imprimir()"><i class="fa fa-print"
                                                                                                        aria-hidden="true"></i>
                              Imprimir
                          </button>
-                         <button type="button" class="btn btn-success btn-xs" ng-click="gotoDev()"><i class="fa fa-floppy-o"
+                         <button type="button" class="btn btn-success btn-xs" ng-click="salvarSimulacao()"><i class="fa fa-floppy-o"
                                                                                                       aria-hidden="true"></i>
                              Salvar
                          </button>
-                         <button type="button" class="btn btn-danger btn-xs" ng-click="efetivarOv()"><i class="fa fa-exchange"
+                         <button type="button" class="btn btn-info btn-xs" ng-click="efetivarOv()"><i class="fa fa-exchange"
                                                                                                      aria-hidden="true"></i>
                              Efetivar O.V
                          </button>
                          <!--  <button type="button" class="btn btn-info btn-xs" ng-click="gotoDev()"><i class="fa fa-download" aria-hidden="true"></i> Exportar</button> -->
-                         <button type="button" class="btn btn-warning btn-xs" ng-click="gotoDev()"><i class="fa fa-file-o"
+                         <button type="button" class="btn btn-warning btn-xs" ng-click="geraNovaSimulacao()"><i class="fa fa-file-o"
                                                                                                       aria-hidden="true"></i>
                              Nova Simulação
+                         </button>
+                         <button type="button" class="btn btn-danger btn-xs" ng-click="deletarMateriaisSelecionados()"><i class="fa fa-trash"
+                                                                                                                          aria-hidden="true"></i>
+                             Excluir
+                         </button>
+                         <button type="button" class="btn btn-primary btn-xs" ng-click="exportarMateriaisSelecionados()"><i class="fa fa-file-excel-o"
+                                                                                                                          aria-hidden="true"></i>
+                             Excel
                          </button>
                      </div>
                  </div>
         </panel-actions>
-        <div ui-grid="gridMateriais" ui-grid-edit class="grid-materias" ui-grid-resize-columns ui-grid-move-columns></div>
+        <div ui-grid="gridMateriais" class="grid-materias" ui-grid-edit ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
         <!-- <table class="table table-hover">
              &lt;!&ndash; <caption>Monthly Kills</caption> &ndash;&gt;
              <thead class="thead-bold">
