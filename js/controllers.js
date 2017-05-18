@@ -147,10 +147,6 @@ angular.module("App.controllers", [])
                 field: 'emissor',
                 displayName: 'Emissor',
                 cellTemplate: '<div ng-click="grid.appScope.editarContatos(row.entity);">{{COL_FIELD}}</div>'
-            }, {
-                field: 'statusTitulo',
-                displayName: 'Status',
-                cellTemplate: '<div ng-click="grid.appScope.editarContatos(row.entity);">{{COL_FIELD}}</div>'
             }
 
             ]
@@ -1525,21 +1521,6 @@ angular.module("App.controllers", [])
                     field: 'codigo',
                     width: '150',
                     displayName: 'Código do Material'
-                },
-                {
-                    field: 'cor',
-                    width: '50',
-                    displayName: 'Cor'
-                },
-                {
-                    field: 'voltagem',
-                    width: '150',
-                    displayName: 'Voltagem'
-                },
-                {
-                    field: 'valorNotaFiscalUnitario',
-                    width: '200',
-                    displayName: 'Valor NF Unit.'
                 }
             ]
         };
