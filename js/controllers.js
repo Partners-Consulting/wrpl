@@ -2256,7 +2256,7 @@ angular.module("App.controllers", [])
 
                 }
             );
-        }
+        };
         
         $scope.ultimasSimulacoes = [
             {
@@ -2365,7 +2365,7 @@ angular.module("App.controllers", [])
 
         $scope.alterarSituacaoCarga = function (item) {
             item.situacaoCarga = !item.situacaoCarga;
-        }
+        };
 
         $scope.buscarMaterial = function () {
             var modalInstance = $uibModal.open({
@@ -2382,7 +2382,7 @@ angular.module("App.controllers", [])
                 });
 
             });
-        }
+        };
 
         $scope.removePontual = function (pontual) {
             var alertExclusao = {
@@ -2412,7 +2412,7 @@ angular.module("App.controllers", [])
 
                 }
             );
-        }
+        };
 
         $scope.adicionarPontual = function () {
             var modalInstance = $uibModal.open({
@@ -2433,7 +2433,7 @@ angular.module("App.controllers", [])
                     }
                 }
             });
-        }
+        };
 
         $scope.bonificacao = function () {
             var modalInstance = $uibModal.open({
@@ -2443,7 +2443,7 @@ angular.module("App.controllers", [])
                 backdrop:'static',
                 size: 'lg'
             });
-        }
+        };
 
         $scope.salvarSimulacao = function () {
             var alertExclusao = {

@@ -4,6 +4,34 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify'),
     concat = require('gulp-concat'),
     clean = require('gulp-clean');
+    minify = require('gulp-minify');
+    runSequence = require('run-sequence');
+
+gulp.task('minify', function() {
+   return gulp.src('lib/js/*.js')
+        .pipe(minify({
+            ext:{
+                src:'.js',
+                min:'.min.js'
+            },
+            exclude: ['tasks'],
+            ignoreFiles: ['.combo.js', '-min.js','*.min.js']
+        }))
+        .pipe(gulp.dest('pre'))
+});
+
+gulp.task('move',['minify'], function() {
+    return gulp.src('pre/*.min.js')
+        .pipe(gulp.dest('dist'))
+});
+
+gulp.task('deletingFolders',['minify', 'move'], function () {
+    gulp.src('pre', {read: false})
+        .pipe(clean());
+});
+
+
+gulp.task('build', ['minify', 'move', 'deletingFolders']);
 
 var embedlr = require('gulp-embedlr'),
     refresh = require('gulp-livereload'),
