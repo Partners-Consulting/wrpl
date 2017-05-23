@@ -1,5 +1,6 @@
 angular.module("App.controllers", [])
     .constant('_', _)
+    .constant('moment',moment)
     .controller("HomeController", function ($scope, $rootScope, $location, $uibModal) {
         "use strict";
 
@@ -29,9 +30,10 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("ClienteController", function ($scope, $rootScope, $location, $uibModal, SweetAlert) {
+    .controller("ClienteController", function ($scope, $rootScope, $location, $uibModal, SweetAlert, moment) {
         "use strict";
 
+        $scope.selectedClientB = {};
         $scope.filtro2 = "";
         $scope.filtro3 = "";
         $scope.lastProcesso = 0;
@@ -255,6 +257,9 @@ angular.module("App.controllers", [])
                 });
 
             }
+            else{
+                $scope.selectedClientB = angular.copy($rootScope.selectedClient);
+            }
         }
 
         init();
@@ -318,14 +323,6 @@ angular.module("App.controllers", [])
                     }
                 }
             });
-        };
-
-        $scope.finalizarEdicao = function () {
-            $scope.isBlocked = !$scope.isBlocked
-        };
-
-        $scope.editarPerfilDeRevenda = function () {
-            $scope.isBlocked = !$scope.isBlocked
         };
 
         $scope.editarDadosCliente = function (cliente) {
@@ -535,6 +532,31 @@ angular.module("App.controllers", [])
             });
         };
 
+        $scope.finalizarEdicao = function () {
+            $scope.isBlocked = !$scope.isBlocked
+        };
+
+        $scope.editarPerfilDeRevenda = function () {
+            $scope.isBlocked = !$scope.isBlocked
+        };
+
+        $scope.salvarEdicaoRevenda = function () {
+            if(angular.equals($scope.selectedClientB.revenda, $rootScope.selectedClient.revenda)){
+                $scope.isBlocked = !$scope.isBlocked
+            }else{
+                $rootScope.selectedClient.revenda.data = moment().format("DD.MM.YYYY")
+                $scope.isBlocked = !$scope.isBlocked
+            }
+        }
+
+        $scope.cancelarEdicaoRevenda = function(){
+            if(angular.equals($scope.selectedClientB.revenda, $rootScope.selectedClient.revenda)){
+                $scope.isBlocked = !$scope.isBlocked
+            }else{
+                $rootScope.selectedClient.revenda = angular.copy($scope.selectedClientB.revenda);
+                $scope.isBlocked = !$scope.isBlocked
+            }
+        }
 
     })
     .controller("ModalSelecionarClienteCtrl", function ($scope, $rootScope, $location, $uibModalInstance, _, url) {

@@ -28,5 +28,8 @@
     "jshint": "^2.9.4",
     "run-sequence": "^1.2.2",
     "tiny-lr": "^1.0.3"
+  },
+  "dependencies": {
+    "moment": "^2.18.1"
   }
 }
