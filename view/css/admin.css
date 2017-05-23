@@ -533,7 +533,7 @@ input[type=checkbox]:checked + label:before {
 }
 
 .slide {
-    height: 440px;
+    height: 200px;
 }
 
 .slide .title {
@@ -770,25 +770,25 @@ form {
 }
 
 .grid-painel {
-    height: 125px;
+    height: 110px;
     width: auto;
 }
 
 .painel-slide{
-    height: 130px;
+    height: 110px;
     width: 500px;
 }
 
 .painel-slide-content {
     float: left;
-    height:130px;
+    height:110px;
     width: 89%;
 }
 
 .painel-slide-left {
     float: left;
     left: 10px;
-    height: 130px;
+    height: 110px;
     width: 30px;
     background-repeat: repeat-x;
 }
@@ -810,7 +810,7 @@ form {
 .painel-slide-right{
     float: right;
     right:10px;
-    height: 130px;
+    height: 110px;
     width: 30px;
     background-repeat: repeat-x;
 }

@@ -124,14 +124,6 @@ angular.module("App.controllers", [])
                     nome: "PAULA HERMANN",
                     abreviado: "PHERMANN"
                 }
-            }, {
-                id: 3,
-                data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
-                user: {
-                    nome: "PAULA HERMANN",
-                    abreviado: "PHERMANN"
-                }
             }
         ];
 
@@ -2360,14 +2352,6 @@ angular.module("App.controllers", [])
                 }
             }, {
                 id: 2,
-                data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
-                user: {
-                    nome: "PAULA HERMANN",
-                    abreviado: "PHERMANN"
-                }
-            }, {
-                id: 3,
                 data: '03.04.2017',
                 texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
