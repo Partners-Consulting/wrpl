@@ -861,4 +861,93 @@ angular.module("App.services", [])
                 ]
             }
         }
+    })
+    .service('UsuarioService', function () {
+        return {
+            getUsuario: function () {
+                return  {
+                    nome: "PAULA HERMANN",
+                    abreviado: "PHERMANN"
+                }
+            }
+        }
+    })
+    .service('AcaoPromocionalService', function () {
+        return {
+            getAcoesPromocionais : function () {
+                return [
+                    {
+                        id: "1",
+                        regiao: "TODOS",
+                        modelo: "CWE09",
+                        desconto: "5 %",
+                        vpc: "30PP",
+                        outros: "PVL = R$ 230",
+                        validoDesde: "24.04.2017",
+                        validoAte: "15.05.2017"
+                    },
+                    {
+                        id: "2",
+                        regiao: "TODOS",
+                        modelo: "CWE11",
+                        desconto: "3%",
+                        vpc: "MKT",
+                        outros: "",
+                        validoDesde: "25.03.2017",
+                        validoAte: "15.05.2017"
+                    },
+                    {
+                        id: "3",
+                        regiao: "TODOS",
+                        modelo: "BMF45",
+                        desconto: "9%",
+                        vpc: "20PP",
+                        outros: "",
+                        validoDesde: "10.03.2017",
+                        validoAte: "15.05.2017"
+                    },
+                    {
+                        id: "4",
+                        regiao: "TODOS",
+                        modelo: "BRM46",
+                        desconto: "6%",
+                        vpc: "15PP",
+                        outros: "PREÇO BEM ESTAR",
+                        validoDesde: "10.03.2017",
+                        validoAte: "15.05.2017"
+                    },
+                    {
+                        id: "5",
+                        regiao: "TODOS",
+                        modelo: "GOK73",
+                        desconto: "11%",
+                        vpc: "10PP",
+                        outros: "PVL=R$ 180",
+                        validoDesde: "24.02.2017",
+                        validoAte: "15.05.2017"
+                    },
+                    {
+                        id: "6",
+                        regiao: "TODOS",
+                        modelo: "BWJ11",
+                        desconto: "14%",
+                        vpc: "MKT",
+                        outros: "",
+                        validoDesde: "20.02.2017",
+                        validoAte: "15.05.2017"
+                    },
+                    {
+                        id: "7",
+                        regiao: "TODOS",
+                        modelo: "BLF08",
+                        desconto: "2%",
+                        vpc: "MKT",
+                        outros: "PREÇO BEM ESTAR",
+                        validoDesde: "20.02.2017",
+                        validoAte: "15.05.2017"
+                    }
+                ];
+            }
+        }
     });
+
