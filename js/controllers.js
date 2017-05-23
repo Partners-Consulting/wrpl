@@ -2462,6 +2462,36 @@ angular.module("App.controllers", [])
             });
         };
 
+        //caso insistam na edição dos dados de entrega na tela
+        /*
+        $scope.editarDadosEntrega = function () {
+           $scope.dadosEntregaEditavel = !$scope.dadosEntregaEditavel
+        };
+
+        $scope.formato = 'dd-MM-yyyy';
+
+        $scope.popupDataEntrega = {
+            opened: false
+        };
+
+        $scope.openDataEntrega = function () {
+            $scope.popupDataEntrega.opened = true;
+        };
+
+        $scope.popupDataRemessa = {
+            opened: false
+        };
+
+        $scope.openDataRemessa = function () {
+            $scope.popupDataRemessa.opened = true;
+        };
+
+        $scope.salvarDadosEntrega = function () {
+            $rootScope.selectedClient.simulacao.dadosEntrega = $scope.dadosEntrega;
+            $uibModalInstance.close()
+        }
+        */
+
         $scope.bonificacao = function () {
             var modalInstance = $uibModal.open({
                 animation: true,

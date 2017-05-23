@@ -2,41 +2,70 @@
     <panel title="Dados Entrega" icon="fa-truck" height="46" col="3">
         <panel-actions>
             <button type="button" class="btn btn-blue btn-xs" ng-click="editarDadosEntrega()"><i class="fa fa-pencil"
-                                                                                                 aria-hidden="true"></i>
+                                                                                                    aria-hidden="true"></i>
             </button>
         </panel-actions>
         <dl class="dl-flex">
             <dt>Data Entrega</dt>
-            <dd>
-                <p class="input-group">
-                    <input type="text" class="form-control input-sm" uib-datepicker-popup="{{formato}}"
-                           ng-model="dadosEntrega.dataEntrega" is-open="popup.opened"/>
-                    <span class="input-group-btn">
-                                <button type="button" class="btn btn-default btn-sm" ng-click="open()"><i
-                                        class="glyphicon glyphicon-calendar"></i></button>
-                             </span>
-                </p>
-            </dd>
+            <dd>{{selectedClient.simulacao.dadosEntrega.dataEntrega | date : 'dd/MM/yyyy'}}</dd>
             <dt>Data Remessa</dt>
-            <dd>
-                <p class="input-group">
-                    <input type="text" class="form-control input-sm" uib-datepicker-popup="{{formato}}"
-                           ng-model="dadosEntrega.dataEntrega" is-open="popup.opened"/>
-                    <span class="input-group-btn">
-                                <button type="button" class="btn btn-default btn-sm" ng-click="open()"><i
-                                        class="glyphicon glyphicon-calendar"></i></button>
-                             </span>
-                </p>
-            </dd>
+            <dd>{{selectedClient.simulacao.dadosEntrega.dataRemessa | date : 'dd/MM/yyyy'}}</dd>
             <dt>Dias Conc.</dt>
             <dd>{{selectedClient.simulacao.dadosEntrega.diasCont}}</dd>
             <dt># Pedido</dt>
             <dd>{{selectedClient.simulacao.dadosEntrega.pedido}}</dd>
-            <dt>Volumetria</dt>
+            <dt>Volume(m³)/dt>
             <dd>0.4 M³</dd>
             <dt>Voltagem</dt>
             <dd>220V</dd>
         </dl>
+
+       <!-- <dl class="dl-flex">
+            <dt>Data Entrega</dt>
+            <dd ng-if="dadosEntregaEditavel">
+                <p class="input-group my-datepicker">
+                    <input type="text" class="form-control input-sm"
+                           uib-datepicker-popup="{{formato}}"
+                           show-button-bar="false"
+                           ng-model="selectedClient.simulacao.dadosEntrega.dataEntrega" is-open="popupDataEntrega.opened"/>
+                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-sm" ng-click="openDataEntrega()"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                             </span>
+                </p>
+            </dd>
+            <dd ng-if="!dadosEntregaEditavel">{{selectedClient.simulacao.dadosEntrega.dataEntrega | date : 'dd/MM/yyyy'}}</dd>
+            <dt>Data Remessa</dt>
+            <dd ng-if="dadosEntregaEditavel">
+                <p class="input-group">
+                    <input type="text" class="form-control input-sm" uib-datepicker-popup="{{formato}}"
+                           ng-model="selectedClient.simulacao.dadosEntrega.dataRemessa" is-open="popupDataRemessa.opened"/>
+                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-sm" ng-click="openDataRemessa()"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                             </span>
+                </p>
+            </dd>
+            <dd ng-if="!dadosEntregaEditavel">{{selectedClient.simulacao.dadosEntrega.dataRemessa | date : 'dd/MM/yyyy'}}</dd>
+            <dt>Dias Conc.</dt>
+            <dd ng-if="dadosEntregaEditavel">
+                <p class="input-group">
+                    <input type="text" class="form-control input-sm" ng-model="selectedClient.simulacao.dadosEntrega.diasCont"/>
+                </p>
+            </dd>
+            <dd ng-if="!dadosEntregaEditavel">{{selectedClient.simulacao.dadosEntrega.diasCont}}</dd>
+            <dt># Pedido</dt>
+            <dd ng-if="dadosEntregaEditavel">
+                <p class="input-group">
+                    <input type="text" class="form-control input-sm" ng-model="selectedClient.simulacao.dadosEntrega.pedido"/>
+                </p>
+            </dd>
+            <dd ng-if="!dadosEntregaEditavel">{{selectedClient.simulacao.dadosEntrega.pedido}}</dd>
+            <dt>Volume(m³)</dt>
+            <dd>0.4 M³</dd>
+            <dt>Voltagem</dt>
+            <dd>220V</dd>
+        </dl>-->
     </panel>
     <panel title="Histórico" icon="fa-history" height="46" col="3">
         <h3 class="title-gray-block">Pontuais
@@ -58,73 +87,65 @@
     </panel>
     <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="46" col="6">
         <panel-actions>
-            <input class="input-xs" type="text" ng-model="gridApiUltimasSimulacoes.grid.columns[3].filters[0].term"
-                   placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome">
+            <input class="input-xs" type="text" ng-model="gridApiUltimasSimulacoes.grid.columns[3].filters[0].term" placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome" >
             <button type="button" class="btn btn-default btn-xs" ng-click="atualizarUltimasSimulacoes()"><i
                     class="fa fa-refresh" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-default btn-xs" ng-click="excelUltimasSimulacoes()"><i
                     class="fa fa-file-excel-o" aria-hidden="true"></i></button>
         </panel-actions>
-        <div ui-grid="gridUltimasSimulacoes" class="grid-ultimas-simulacoes" ui-grid-resize-columns
-             ui-grid-move-columns></div>
+       <div ui-grid="gridUltimasSimulacoes" class="grid-ultimas-simulacoes" ui-grid-resize-columns ui-grid-move-columns></div>
     </panel>
 </div>
 <div class="row">
     <panel title="Itens da Simulação" icon="fa-table" height="59" col="12">
         <panel-actions>
-            <div class="row">
-                <div class="col-sm-12">
-                    <label style="font-size: 12px">Bonif.%</label>
-                    <input style="width: 40px" class="input-xs" type="text" placeholder="">
-                    <input style="width: 80px" class="input-xs" type="text" placeholder="">
-                    <button type="button" class="btn btn-primary btn-xs" ng-click="buscarMaterial()">
-                        <i class="fa fa-search"
-                           aria-hidden="true"></i>
-                        Buscar
-                    </button>
-                    <button type="button" class="btn btn-default btn-xs" ng-click="replicar()"><i class="fa fa-reply"
-                                                                                                  aria-hidden="true"></i>
-                        Replicar
-                    </button>
-                    <button type="button" style="background-color: #d1de5b" class="btn btn-default btn-xs"
-                            ng-click="bonificacao()"><i class="fa fa-gift"
-                                                        aria-hidden="true"></i>
-                        Brindes
-                    </button>
-                    <button type="button" class="btn btn btn-xs" ng-click="imprimir()"><i class="fa fa-print"
-                                                                                          aria-hidden="true"></i>
-                        Imprimir
-                    </button>
-                    <button type="button" class="btn btn-success btn-xs" ng-click="salvarSimulacao()"><i
-                            class="fa fa-floppy-o"
-                            aria-hidden="true"></i>
-                        Salvar
-                    </button>
-                    <button type="button" class="btn btn-info btn-xs" ng-click="efetivarOv()"><i class="fa fa-exchange"
-                                                                                                 aria-hidden="true"></i>
-                        Efetivar O.V
-                    </button>
-                    <!--  <button type="button" class="btn btn-info btn-xs" ng-click="gotoDev()"><i class="fa fa-download" aria-hidden="true"></i> Exportar</button> -->
-                    <button type="button" class="btn btn-warning btn-xs" ng-click="geraNovaSimulacao()"><i
-                            class="fa fa-file-o"
-                            aria-hidden="true"></i>
-                        Nova Simulação
-                    </button>
-                    <button type="button" class="btn btn-danger btn-xs" ng-click="deletarMateriaisSelecionados()"><i
-                            class="fa fa-trash"
-                            aria-hidden="true"></i>
-                        Excluir
-                    </button>
-                    <button type="button" class="btn btn-primary btn-xs" ng-click="exportarMateriaisSelecionados()"><i
-                            class="fa fa-file-excel-o"
-                            aria-hidden="true"></i>
-                        Excel
-                    </button>
-                </div>
-            </div>
+                 <div class="row">
+                     <div class="col-sm-12">
+                         <label style="font-size: 12px">Bonif.%</label>
+                         <input style="width: 40px" class="input-xs" type="text" placeholder="">
+                         <input style="width: 80px" class="input-xs" type="text" placeholder="">
+                         <button type="button" class="btn btn-primary btn-xs" ng-click="buscarMaterial()">
+                             <i class="fa fa-search"
+                                                                                                       aria-hidden="true"></i>
+                             Buscar
+                         </button>
+                         <button type="button" class="btn btn-default btn-xs" ng-click="replicar()"><i class="fa fa-reply"
+                                                                                                       aria-hidden="true"></i>
+                             Replicar
+                         </button>
+                         <button type="button" style="background-color: #d1de5b" class="btn btn-default btn-xs" ng-click="bonificacao()"><i class="fa fa-gift"
+                                                                                                       aria-hidden="true"></i>
+                             Brindes
+                         </button>
+                         <button type="button" class="btn btn btn-xs" ng-click="imprimir()"><i class="fa fa-print"
+                                                                                                       aria-hidden="true"></i>
+                             Imprimir
+                         </button>
+                         <button type="button" class="btn btn-success btn-xs" ng-click="salvarSimulacao()"><i class="fa fa-floppy-o"
+                                                                                                      aria-hidden="true"></i>
+                             Salvar
+                         </button>
+                         <button type="button" class="btn btn-info btn-xs" ng-click="efetivarOv()"><i class="fa fa-exchange"
+                                                                                                     aria-hidden="true"></i>
+                             Efetivar O.V
+                         </button>
+                         <!--  <button type="button" class="btn btn-info btn-xs" ng-click="gotoDev()"><i class="fa fa-download" aria-hidden="true"></i> Exportar</button> -->
+                         <button type="button" class="btn btn-warning btn-xs" ng-click="geraNovaSimulacao()"><i class="fa fa-file-o"
+                                                                                                      aria-hidden="true"></i>
+                             Nova Simulação
+                         </button>
+                         <button type="button" class="btn btn-danger btn-xs" ng-click="deletarMateriaisSelecionados()"><i class="fa fa-trash"
+                                                                                                                          aria-hidden="true"></i>
+                             Excluir
+                         </button>
+                         <button type="button" class="btn btn-primary btn-xs" ng-click="exportarMateriaisSelecionados()"><i class="fa fa-file-excel-o"
+                                                                                                                          aria-hidden="true"></i>
+                             Excel
+                         </button>
+                     </div>
+                 </div>
         </panel-actions>
-        <div ui-grid="gridMateriais" class="grid-materias" ui-grid-edit ui-grid-selection ui-grid-resize-columns
-             ui-grid-move-columns></div>
+        <div ui-grid="gridMateriais" class="grid-materias" ui-grid-edit ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
 
     </panel>
 </div>

@@ -266,11 +266,21 @@ p {
     margin-top: 1px;
 }
 
-dd input {
-    height: 20px;
-    width: 150px;
+dd p.input-group input {
+    height: 23px;
+    width: 130px;
 }
 
+
+dd p.input-group button{
+    height: 23px;
+}
+
+
+dd p.input-group button i{
+    position: inherit;
+    top: 0px;
+}
 /**/
 
 .table {
@@ -864,4 +874,12 @@ span.glyphicon.glyphicon-chevron-left:hover {
 
 .grid-materias {
     height: 250px;
+}
+.my-datepicker .form-control {
+    height: 10px;
+    padding: 11px;
+}
+
+.my-datepicker .btn {
+    padding: 1px 2px;
 }
