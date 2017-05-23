@@ -38,7 +38,8 @@
 
     <panel title="{{painelTabela.tituloTabelaAtual}}" icon="fa-bookmark" height="37" col="6">
         <panel-actions ng-if="painelTabela.tabelaAtual == 1">
-            <input class="input-xs" type="text" ng-model="gridApiProcessos.grid.columns[3].filters[0].term" placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome" >
+            <input class="input-xs" type="text" ng-model="gridApiProcessos.grid.columns[3].filters[0].term"
+                   placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome">
             <button type="button" class="btn btn-default btn-xs" ng-click="atualizarProcesso()"><i
                     class="fa fa-refresh" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-default btn-xs" ng-click="excelProcessos()"><i
@@ -53,7 +54,8 @@
                     class="fa fa-file-excel-o" aria-hidden="true"></i></button>
         </panel-actions>
         <panel-actions ng-if="painelTabela.tabelaAtual == 3">
-            <input class="input-xs" type="text" ng-model="gridApiLinhaBranca.grid.columns[1].filters[0].term" placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome" >
+            <input class="input-xs" type="text" ng-model="gridApiLinhaBranca.grid.columns[1].filters[0].term"
+                   placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome">
             <button type="button" class="btn btn-default btn-xs" ng-click="adicionarLinhaBranca()">
                 <i class="fa fa-plus" aria-hidden="true"></i></button>
             <button type="button" class="btn btn-danger btn-xs" ng-click="removerLinhaBranca()">
@@ -72,47 +74,16 @@
                 <div class="painel-slide-left" ng-click="tabelaAnterior()">
                     <i class="fa fa-chevron-left fa-1x" aria-hidden="true"></i>
                 </div>
-                    <div class="painel-slide painel-slide-content">
-                            <div ng-if="painelTabela.tabelaAtual == 1" ui-grid="gridProcessos" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
-                            <div ng-if="painelTabela.tabelaAtual == 2" ui-grid="gridContatos" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
-                            <div ng-if="painelTabela.tabelaAtual == 3" ui-grid="gridLinhaBranca" class="grid-painel"  ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
-                            <div ng-if="painelTabela.tabelaAtual == 4" ui-grid="gridConcorrentes" class="grid-painel"  ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
-                    </div>
-                   <!-- <div uib-carousel active="mydata.active" interval="myInterval" no-wrap="noWrapSlides">
-                    <div uib-slide index="0"
-                         class="slide animated">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div ng-if="mydata.active == 0" id="exportableProcessos"
-                                     ui-grid="{ data: processos,  enableHorizontalScrollbar : 0}" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div uib-slide index="1"
-                         class="slide animated">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div ng-if="mydata.active == 1" ui-grid="gridContatos" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div uib-slide index="2"
-                         class="slide animated">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div ng-if="mydata.active == 2" ui-grid="gridLinhaBranca" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div uib-slide index="3"
-                         class="slide animated">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div ng-if="mydata.active == 3" ui-grid="gridConcorrentes" class="grid-painel" ui-grid-resize-columns ui-grid-move-columns></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
+                <div class="painel-slide painel-slide-content">
+                    <div ng-if="painelTabela.tabelaAtual == 1" ui-grid="gridProcessos" class="grid-painel"
+                         ui-grid-resize-columns ui-grid-move-columns></div>
+                    <div ng-if="painelTabela.tabelaAtual == 2" ui-grid="gridContatos" class="grid-painel"
+                         ui-grid-resize-columns ui-grid-move-columns></div>
+                    <div ng-if="painelTabela.tabelaAtual == 3" ui-grid="gridLinhaBranca" class="grid-painel"
+                         ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
+                    <div ng-if="painelTabela.tabelaAtual == 4" ui-grid="gridConcorrentes" class="grid-painel"
+                         ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
+                </div>
                 <div class="painel-slide-right" ng-click="proximaTabela()">
                     <i class="fa fa-chevron-right fa-1x" aria-hidden="true"></i>
                 </div>
@@ -123,9 +94,12 @@
 <div class="row">
     <panel id="perfil" title="Perfil da Revenda" icon="fa-shopping-cart" height="63" col="6">
         <panel-actions>
-            <button type="button" class="btn btn-blue btn-xs" ng-show="isBlocked" ng-click="editarPerfilDeRevenda()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-green btn-xs" ng-hide="isBlocked" ng-click="salvarEdicaoRevenda()"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-            <button type="button" class="btn btn-red btn-xs" ng-hide="isBlocked" ng-click="cancelarEdicaoRevenda()"><i class="fa fa-times" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-blue btn-xs" ng-show="isBlocked" ng-click="editarPerfilDeRevenda()"><i
+                    class="fa fa-pencil" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-green btn-xs" ng-hide="isBlocked" ng-click="salvarEdicaoRevenda()"><i
+                    class="fa fa-floppy-o" aria-hidden="true"></i></button>
+            <button type="button" class="btn btn-red btn-xs" ng-hide="isBlocked" ng-click="cancelarEdicaoRevenda()"><i
+                    class="fa fa-times" aria-hidden="true"></i></button>
         </panel-actions>
         </br>
         <div class="row revenda">
@@ -180,9 +154,12 @@
                                    ng-model="selectedClient.revenda.tos.total">
                         </div>
                         <div ng-if="true" class="col-sm-2">
-                            <button type="button" class="btn btn-blue btn-sm" ng-show="!isBlockedTos" ng-click="editarTos()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                            <button type="button" class="btn btn-green btn-sm" ng-hide="!isBlockedTos" ng-click="editarTos()"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-                            <button type="button" class="btn btn-red btn-sm" ng-hide="!isBlockedTos" ng-click="editarTos()"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-blue btn-sm" ng-show="!isBlockedTos"
+                                    ng-click="editarTos()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-green btn-sm" ng-hide="!isBlockedTos"
+                                    ng-click="editarTos()"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+                            <button type="button" class="btn btn-red btn-sm" ng-hide="!isBlockedTos"
+                                    ng-click="editarTos()"><i class="fa fa-times" aria-hidden="true"></i></button>
                         </div>
                         <label class="col-sm-2">Data de atualização</label>
                         <div class="col-sm-4">
@@ -242,10 +219,16 @@
                     <div uib-slide ng-repeat="geral in gerais track by geral.id" index="geral.id"
                          class="slide animated">
                         <h3 class="title-gray-block">{{geral.titulo}}
-                            <button style="float: right" type="button" class="btn btn-blue btn-xs note-plus" ng-init="mostra=true"
-                                    ng-click="mostra = !mostra" ng-show="mostra"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                            <button style="float: right" type="button" class="btn btn-green btn-xs note-plus" ng-hide="mostra" ng-click="mostra = !mostra"><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
-                            <button style="float: right"type="button" class="btn btn-red btn-xs note-plus" ng-hide="mostra" ng-click="mostra = !mostra"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            <button style="float: right" type="button" class="btn btn-blue btn-xs note-plus"
+                                    ng-init="mostra=true"
+                                    ng-click="mostra = !mostra" ng-show="mostra"><i class="fa fa-pencil"
+                                                                                    aria-hidden="true"></i></button>
+                            <button style="float: right" type="button" class="btn btn-green btn-xs note-plus"
+                                    ng-hide="mostra" ng-click="mostra = !mostra"><i class="fa fa-floppy-o"
+                                                                                    aria-hidden="true"></i></button>
+                            <button style="float: right" type="button" class="btn btn-red btn-xs note-plus"
+                                    ng-hide="mostra" ng-click="mostra = !mostra"><i class="fa fa-times"
+                                                                                    aria-hidden="true"></i></button>
                         </h3>
                         <span ng-show="mostra" class="text">{{geral.texto}}</span>
                         <textarea ng-show="!mostra" ng-model="geral.texto" cols="30" rows="15"></textarea>

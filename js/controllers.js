@@ -1,6 +1,6 @@
 angular.module("App.controllers", [])
     .constant('_', _)
-    .constant('moment',moment)
+    .constant('moment', moment)
     .controller("HomeController", function ($scope, $rootScope, $location, $uibModal) {
         "use strict";
 
@@ -81,8 +81,6 @@ angular.module("App.controllers", [])
             }
 
         ];
-
-
 
 
         $scope.gerais = [
@@ -189,10 +187,6 @@ angular.module("App.controllers", [])
             enableFiltering: true,
             data: 'linhaBranca',
             columnDefs: [{
-                field: 'id',
-                displayName: 'Id',
-                enableFiltering: false
-            }, {
                 field: 'nome',
                 displayName: 'Nome'
             }, {
@@ -220,9 +214,6 @@ angular.module("App.controllers", [])
             enableGridMenu: true,
             data: 'concorrentesRevenda',
             columnDefs: [{
-                field: 'id',
-                displayName: 'Id'
-            }, {
                 field: 'nome',
                 displayName: 'Nome'
             }, {
@@ -257,7 +248,7 @@ angular.module("App.controllers", [])
                 });
 
             }
-            else{
+            else {
                 $scope.selectedClientB = angular.copy($rootScope.selectedClient);
             }
         }
@@ -298,7 +289,7 @@ angular.module("App.controllers", [])
             } else if ($scope.painelTabela.tabelaAtual == 2) {
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
             } else if ($scope.painelTabela.tabelaAtual == 3) {
-                $scope.painelTabela.tituloTabelaAtual = 'Players Linha Branca';
+                $scope.painelTabela.tituloTabelaAtual = 'Concorrentes Linha Branca';
             } else if ($scope.painelTabela.tabelaAtual == 4) {
                 $scope.painelTabela.tituloTabelaAtual = 'Concorrentes Revenda';
             }
@@ -429,36 +420,37 @@ angular.module("App.controllers", [])
         };
 
         $scope.removerLinhaBranca = function (produto) {
-            var alertExclusao = {
-                title: "Exclusão de Player",
-                text: "Confirma a exclusão do(s) player(s) selecionado(s)?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sim, excluir!",
-                closeOnConfirm: false,
-                closeOnCancel: true,
-                showLoaderOnConfirm: true
-            };
-            SweetAlert.swal(
-                alertExclusao, function (isConfirm) {
-                    if (isConfirm) {
-                        angular.forEach($scope.gridApiLinhaBranca.selection.getSelectedRows(), function (data, index) {
-                            $scope.linhaBranca.splice($scope.linhaBranca.lastIndexOf(data), 1);
-                        });
-                        SweetAlert.swal({
-                            title: "Sucesso",
-                            text: "Player(s) excluído(s) com sucesso",
-                            customClass: 'sweetalert-sm'
-                        });
+            if ($scope.gridApiLinhaBranca.selection.getSelectedRows().length > 0) {
+                var alertExclusao = {
+                    title: "Exclusão de Player",
+                    text: "Confirma a exclusão do(s) player(s) selecionado(s)?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Sim, excluir!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true,
+                    showLoaderOnConfirm: true
+                };
+                SweetAlert.swal(
+                    alertExclusao, function (isConfirm) {
+                        if (isConfirm) {
+                            angular.forEach($scope.gridApiLinhaBranca.selection.getSelectedRows(), function (data, index) {
+                                $scope.linhaBranca.splice($scope.linhaBranca.lastIndexOf(data), 1);
+                            });
+                            SweetAlert.swal({
+                                title: "Sucesso",
+                                text: "Player(s) excluído(s) com sucesso",
+                                customClass: 'sweetalert-sm'
+                            });
 
-                    } else {
-                        return;
+                        } else {
+                            return;
+                        }
+
                     }
-
-                }
-            );
-
+                );
+            }
         };
 
         $scope.adicionarLinhaBranca = function () {
@@ -488,35 +480,37 @@ angular.module("App.controllers", [])
         };
 
         $scope.removerConcorrenteRevenda = function (produto) {
-            var alertExclusao = {
-                title: "Exclusão de Concorrente",
-                text: "Confirma a exclusão do(s) concorrente(s) selecionado(s)?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sim, excluir!",
-                closeOnConfirm: false,
-                closeOnCancel: true,
-                showLoaderOnConfirm: true
-            };
-            SweetAlert.swal(
-                alertExclusao, function (isConfirm) {
-                    if (isConfirm) {
-                        angular.forEach($scope.gridApiConcorrentes.selection.getSelectedRows(), function (data, index) {
-                            $scope.concorrentesRevenda.splice($scope.concorrentesRevenda.lastIndexOf(data), 1);
-                        });
-                        SweetAlert.swal({
-                            title: "Sucesso",
-                            text: "Concorrente(s) excluído(s) com sucesso",
-                            customClass: 'sweetalert-sm'
-                        });
+            if ($scope.gridApiConcorrentes.selection.getSelectedRows().length > 0) {
+                var alertExclusao = {
+                    title: "Exclusão de Concorrente",
+                    text: "Confirma a exclusão do(s) concorrente(s) selecionado(s)?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Sim, excluir!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true,
+                    showLoaderOnConfirm: true
+                };
+                SweetAlert.swal(
+                    alertExclusao, function (isConfirm) {
+                        if (isConfirm) {
+                            angular.forEach($scope.gridApiConcorrentes.selection.getSelectedRows(), function (data, index) {
+                                $scope.concorrentesRevenda.splice($scope.concorrentesRevenda.lastIndexOf(data), 1);
+                            });
+                            SweetAlert.swal({
+                                title: "Sucesso",
+                                text: "Concorrente(s) excluído(s) com sucesso",
+                                customClass: 'sweetalert-sm'
+                            });
 
-                    } else {
-                        return;
+                        } else {
+                            return;
+                        }
+
                     }
-
-                }
-            );
+                );
+            }
         };
 
         $scope.adicionarConcorrenteRevenda = function () {
@@ -541,18 +535,18 @@ angular.module("App.controllers", [])
         };
 
         $scope.salvarEdicaoRevenda = function () {
-            if(angular.equals($scope.selectedClientB.revenda, $rootScope.selectedClient.revenda)){
+            if (angular.equals($scope.selectedClientB.revenda, $rootScope.selectedClient.revenda)) {
                 $scope.isBlocked = !$scope.isBlocked
-            }else{
+            } else {
                 $rootScope.selectedClient.revenda.data = moment().format("DD.MM.YYYY")
                 $scope.isBlocked = !$scope.isBlocked
             }
         }
 
-        $scope.cancelarEdicaoRevenda = function(){
-            if(angular.equals($scope.selectedClientB.revenda, $rootScope.selectedClient.revenda)){
+        $scope.cancelarEdicaoRevenda = function () {
+            if (angular.equals($scope.selectedClientB.revenda, $rootScope.selectedClient.revenda)) {
                 $scope.isBlocked = !$scope.isBlocked
-            }else{
+            } else {
                 $rootScope.selectedClient.revenda = angular.copy($scope.selectedClientB.revenda);
                 $scope.isBlocked = !$scope.isBlocked
             }
@@ -5050,7 +5044,7 @@ angular.module("App.controllers", [])
             isOpen: false
         };
 
-        $rootScope.gridAcoesPromocionais =  {
+        $rootScope.gridAcoesPromocionais = {
             enableHorizontalScrollbar: 0,
             data: 'acoesPromocionais',
             columnDefs: [
@@ -5096,5 +5090,5 @@ angular.module("App.controllers", [])
                 }
             ]
         };
-        
+
     });

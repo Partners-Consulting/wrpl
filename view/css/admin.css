@@ -773,6 +773,12 @@ form {
     height: 110px;
     width: auto;
 }
+.grid-painel-ladoalado {
+    height: 110px;
+    width: 49%;
+    float: left;
+    margin-right: 3px;
+}
 
 .painel-slide{
     height: 110px;
