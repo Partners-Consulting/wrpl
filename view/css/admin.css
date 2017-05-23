@@ -875,6 +875,7 @@ span.glyphicon.glyphicon-chevron-left:hover {
 .grid-materias {
     height: 250px;
 }
+
 .my-datepicker .form-control {
     height: 10px;
     padding: 11px;
@@ -882,4 +883,8 @@ span.glyphicon.glyphicon-chevron-left:hover {
 
 .my-datepicker .btn {
     padding: 1px 2px;
+}
+
+.grid-busca-material {
+    height: 300px;
 }
