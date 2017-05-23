@@ -2120,6 +2120,7 @@ angular.module("App.controllers", [])
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
             enableGridMenu: true,
+            rowHeight:20,
             data: 'listaMateriais',
             columnDefs: [
                 {

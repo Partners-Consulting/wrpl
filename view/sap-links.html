@@ -2,7 +2,7 @@
     <div class="row links">
         <div class="col-sm-12">
             <div ng-repeat="categoria in categoriaLinks">
-                <div class="col-sm-2" ng-if="$index % 2 == 0">
+                <div class="col-sm-3" ng-if="$index % 2 == 0">
                     <p class="titulo">{{categoria.nome}}</p>
                     <p>
                         <i class="{{categoria.icone}}"></i>
@@ -17,7 +17,7 @@
     <div class="row links">
         <div class="col-sm-12">
             <div ng-repeat="categoria in categoriaLinks">
-                <div class="col-sm-2" ng-if="$index % 2 != 0">
+                <div class="col-sm-3" ng-if="$index % 2 != 0">
                     <p class="titulo">{{categoria.nome}}</p>
                     <p>
                         <i class="{{categoria.icone}}"></i>
