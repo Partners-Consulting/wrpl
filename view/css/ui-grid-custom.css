@@ -108,3 +108,18 @@ input[type="text"].ui-grid-filter-input {
 .ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
     background-color: lightblue;
 }
+
+.box-drop .ui-grid-cell-contents {
+    padding: 0px;
+    line-height: 100%;
+    color: black;
+}
+
+.box-drop .ui-grid-header-cell span {
+    padding: 5px;
+    border: none;
+    background: #555;
+    color: #fff;!important;
+    height: 30px;
+    /*top:3px;*/
+}

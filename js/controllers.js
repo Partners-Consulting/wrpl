@@ -38,12 +38,49 @@ angular.module("App.controllers", [])
         $scope.lastContato = 0;
         $scope.isBlocked = true;
         $scope.isBlockedTos = false;
+        $scope.perfilLoja1 = 0;
+        $scope.perfilLoja2 = 1;
+        $scope.perfilLoja3 = 1;
+        $scope.perfilLoja4 = 0;
         $scope.titulo = 'Últimos Processos';
         $scope.painelTabela = {
             quantidadeDeTabela: 4,
             tabelaAtual: 1,
             tituloTabelaAtual: 'Últimos Processos'
         }
+        $scope.processos = [
+            {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
+            {data: "20.04.17", cliente: "Carrefour", processo: 564654, status: "Pendente"}
+        ];
+        $scope.contatos = [
+            {
+
+                data: "14.04.17",
+                descricao: "0000456456",
+                emissor: 423476,
+                statusTitulo: "Aguardando retorno",
+                statusCorpo: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
+            },
+            {
+
+                data: "14.04.17",
+                descricao: "0000456457",
+                emissor: 423476,
+                statusTitulo: "Aguardando retorno",
+                statusCorpo: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
+            },
+            {
+
+                data: "20.04.17",
+                descricao: "0000456458",
+                emissor: 564654,
+                statusTitulo: "Aguardando retorno",
+                statusCorpo: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
+            }
+
+        ];
+
+
 
 
         $scope.gerais = [
@@ -216,7 +253,7 @@ angular.module("App.controllers", [])
                     animation: true,
                     templateUrl: './view/selecionar-cliente.html',
                     controller: 'ModalSelecionarClienteCtrl',
-                    backdrop:'static',
+                    backdrop: 'static',
                     size: "lg",
                     resolve: {
                         url: function () {
@@ -234,7 +271,7 @@ angular.module("App.controllers", [])
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: './view/editar-contato.html',
-                controller: 'ModalInstanceUltimosContatosCtrl',
+                controller: 'ModalUltimosContatosCtrl',
                 resolve: {
                     contato: function () {
                         return {};
@@ -242,7 +279,7 @@ angular.module("App.controllers", [])
                 }
             });
         };
-        
+
         $scope.proximaTabela = function () {
             if ($scope.painelTabela.tabelaAtual + 1 <= $scope.painelTabela.quantidadeDeTabela) {
                 $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual + 1;
@@ -274,7 +311,7 @@ angular.module("App.controllers", [])
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: './view/adicionar-pontual.html',
-                controller: 'ModalInstanceCriarPontualCtrl'
+                controller: 'ModalCriarPontualCtrl'
             });
         };
 
@@ -282,7 +319,7 @@ angular.module("App.controllers", [])
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: './view/editar-contato.html',
-                controller: 'ModalInstanceUltimosContatosCtrl',
+                controller: 'ModalUltimosContatosCtrl',
                 resolve: {
                     contato: function () {
                         return contato;
@@ -303,8 +340,8 @@ angular.module("App.controllers", [])
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: './view/expandir-contato.html',
-                controller: 'ModalInstanceCtrl',
-                backdrop:'static',
+                controller: 'ModalManutencaoContatoCtrl',
+                backdrop: 'static',
                 size: "lg",
             });
         };
@@ -383,11 +420,11 @@ angular.module("App.controllers", [])
 
         $scope.editarTos = function () {
             $scope.isBlockedTos = !$scope.isBlockedTos;
-        }
+        };
 
         $scope.calculaTos = function () {
             $rootScope.selectedClient.revenda.tos.total = parseInt($rootScope.selectedClient.revenda.tos.refrigerador) + parseInt($rootScope.selectedClient.revenda.tos.lavadora) + parseInt($rootScope.selectedClient.revenda.tos.fogao);
-        }
+        };
 
         $scope.editarLinhaBranca = function (produto) {
             var modalInstance = $uibModal.open({
@@ -508,10 +545,6 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("CaminhoCtrl", function ($scope, $rootScope, $uibModal) {
-
-
-    })
     .controller("ModalSelecionarClienteCtrl", function ($scope, $rootScope, $location, $uibModalInstance, _, url) {
         "use strict";
 
@@ -573,20 +606,6 @@ angular.module("App.controllers", [])
 
         }
 
-    })
-    .controller("ModalInstancePerfilDeRevendaCtrl", function ($scope, $rootScope, $uibModalInstance, $uibModal, _) {
-        "use strict";
-
-
-        $scope.close = function () {
-            $uibModalInstance.close();
-        };
-
-
-        $scope.adicionarPontualNaLista = function (pontual) {
-            $uibModalInstance.close();
-            $rootScope.pontuais.unshift(pontual);
-        };
     })
     .controller("ModalProdutoCtrl", function ($scope, $rootScope, $uibModalInstance, produto) {
         "use strict";
@@ -669,7 +688,7 @@ angular.module("App.controllers", [])
         };
 
     })
-    .controller("ModalInstanceCriarPontualCtrl", function ($scope, $rootScope, $uibModalInstance) {
+    .controller("ModalCriarPontualCtrl", function ($scope, $rootScope, $uibModalInstance) {
         "use strict";
         $scope.pontual = {
             texto: "",
@@ -708,7 +727,7 @@ angular.module("App.controllers", [])
             $uibModalInstance.close();
         };
     })
-    .controller("ModalInstanceCriarPontualSimulacoesCtrl", function ($scope, $rootScope, $uibModalInstance) {
+    .controller("ModalCriarPontualSimulacoesCtrl", function ($scope, $rootScope, $uibModalInstance) {
         "use strict";
         $scope.pontual = {
             texto: "",
@@ -726,7 +745,7 @@ angular.module("App.controllers", [])
             $rootScope.simulacaoPontuais.unshift(pontual);
         };
     })
-    .controller("ModalInstanceCtrl", function ($scope, $rootScope, $uibModalInstance, $uibModal, SweetAlert, _) {
+    .controller("ModalManutencaoContatoCtrl", function ($scope, $rootScope, $uibModalInstance, $uibModal, SweetAlert, _) {
         "use strict";
         $scope.close = function () {
             $uibModalInstance.close();
@@ -870,7 +889,7 @@ angular.module("App.controllers", [])
         };
 
         $scope.excluirContatos = function () {
-            if($scope.tabelaDesnormalizada.length <= 0 || $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows().length <= 0){
+            if ($scope.tabelaDesnormalizada.length <= 0 || $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows().length <= 0) {
                 return;
             }
             var alertExclusao = {
@@ -1061,7 +1080,7 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("ModalInstanceUltimosContatosCtrl", function ($scope, $rootScope, $uibModalInstance, contato) {
+    .controller("ModalUltimosContatosCtrl", function ($scope, $rootScope, $uibModalInstance, contato) {
         "use strict";
         $scope.contato = contato;
 
@@ -1087,10 +1106,6 @@ angular.module("App.controllers", [])
             $scope.isAntigo = false;
             $scope.contato = {};
         };
-
-    })
-    .controller("Tela3Controller", function ($scope, $rootScope) {
-
 
     })
     .controller("ModalDadosEntregaCtrl", function ($scope, $rootScope, dadosEntrega, $uibModalInstance) {
@@ -1165,31 +1180,31 @@ angular.module("App.controllers", [])
                     width: '150',
                     field: 'condPagtos',
                     enableCellEdit: false,
-                    cellTemplate:'<select ng-model="condPagtos" ng-options="pgto for pgto in COL_FIELD"></select>'
+                    cellTemplate: '<select ng-model="condPagtos" ng-options="pgto for pgto in COL_FIELD"></select>'
                 },
                 {
                     field: 'incoterms',
                     displayName: 'Incoterms',
                     enableCellEdit: false,
-                    cellTemplate:'<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
+                    cellTemplate: '<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     displayName: 'Cond. Frete',
                     width: '150',
                     field: 'condFrete',
                     enableCellEdit: false,
-                    cellTemplate:'<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
+                    cellTemplate: '<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 }
             ]
         };
 
-        $scope.gridApiReplicas= {};
+        $scope.gridApiReplicas = {};
         $scope.gridReplicas.onRegisterApi = function (gridApi) {
             $scope.gridApiReplicas = gridApi;
         };
 
         $scope.excluirReplicasSelecionadas = function () {
-            if($scope.replicas.length <= 0 || $scope.gridApiReplicas.selection.getSelectedRows().length <= 0){
+            if ($scope.replicas.length <= 0 || $scope.gridApiReplicas.selection.getSelectedRows().length <= 0) {
                 return;
             }
             var alertExclusao = {
@@ -1223,7 +1238,7 @@ angular.module("App.controllers", [])
                 }
             );
         }
-        
+
         $scope.close = function () {
             $uibModalInstance.close();
         };
@@ -1293,7 +1308,6 @@ angular.module("App.controllers", [])
         $scope.listaMateriais = materiais
 
 
-
         $scope.listaMateriais = materiais
 
         $scope.gridSimulacao = {
@@ -1306,31 +1320,31 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'codigo',
-                    width:'250',
+                    width: '250',
                     displayName: 'Material',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'modelo',
-                    width:'260',
+                    width: '260',
                     displayName: 'Modelo',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'cor',
-                    width:'200',
+                    width: '200',
                     displayName: 'Cor',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'voltagem',
-                    width:'70',
+                    width: '70',
                     displayName: 'Voltagem',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'quantidade',
-                    width:'70',
+                    width: '70',
                     displayName: 'Qtd'
                 }
             ]
@@ -1397,13 +1411,13 @@ angular.module("App.controllers", [])
         };
 
         $scope.abriDetalhe = function (materiais) {
-            $timeout(function(){
-                if($scope.gridApiSimulacao.selection.getSelectedRows().length <= 0){
+            $timeout(function () {
+                if ($scope.gridApiSimulacao.selection.getSelectedRows().length <= 0) {
                     $scope.showDetalhe = false;
-                }else{
+                } else {
                     $scope.showDetalhe = true;
                 }
-            },0)
+            }, 0)
         }
 
         $scope.programarEntrega = function () {
@@ -1420,7 +1434,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/efetivar-ov2.html',
                 controller: 'ModalEfetivarOv2Ctrl',
-                backdrop:'static',
+                backdrop: 'static',
                 size: 'lg'
             });
         }
@@ -1489,12 +1503,12 @@ angular.module("App.controllers", [])
         $scope.showDetalhe = false;
 
         $scope.busca = {
-            codigo:"",
-            descricao:""
+            codigo: "",
+            descricao: ""
         };
 
         $scope.materiais = {
-            codigos:""
+            codigos: ""
         }
 
         $scope.abriDetalhe = function (materiais) {
@@ -1505,7 +1519,7 @@ angular.module("App.controllers", [])
 
 
         function init() {
-           $scope.materiaisAchados = MaterialService.consultaMaterial();
+            $scope.materiaisAchados = MaterialService.consultaMaterial();
         }
 
         init();
@@ -1530,19 +1544,19 @@ angular.module("App.controllers", [])
         };
 
         $scope.filtraMaterialCodigo = function () {
-            $timeout(function(){
-                if($scope.busca.codigo != "" && $scope.busca.codigo != null && $scope.busca.codigo.length > 3){
+            $timeout(function () {
+                if ($scope.busca.codigo != "" && $scope.busca.codigo != null && $scope.busca.codigo.length > 3) {
                     $scope.gridApiBuscaMaterial.grid.columns[1].filters[0].term = $scope.busca.codigo;
                 }
-            },0);
+            }, 0);
         }
 
         $scope.filtraMaterialDescricao = function () {
-            $timeout(function(){
-                if($scope.busca.codigo != "" && $scope.busca.codigo != null && $scope.busca.codigo.length > 3){
+            $timeout(function () {
+                if ($scope.busca.codigo != "" && $scope.busca.codigo != null && $scope.busca.codigo.length > 3) {
                     $scope.gridApiBuscaMaterial.grid.columns[1].filters[0].term = $scope.busca.codigo;
                 }
-            },0);
+            }, 0);
         }
 
         $scope.adicionarMateriaisSelecionados = function () {
@@ -1662,7 +1676,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/bonificacao.html',
                 controller: 'ModalBonificacaoCtrl',
-                backdrop:'static',
+                backdrop: 'static',
                 size: 'lg'
             });
         }
@@ -1673,27 +1687,27 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'status',
-                    width:'100',
+                    width: '100',
                     displayName: 'Status'
                 },
                 {
                     field: 'organizacao',
-                    width:'100',
+                    width: '100',
                     displayName: 'Organização'
                 },
                 {
                     field: 'canal',
-                    width:'100',
+                    width: '100',
                     displayName: 'Canal'
                 },
                 {
                     field: 'setor',
-                    width:'100',
+                    width: '100',
                     displayName: 'Setor'
                 },
                 {
                     field: 'situacaoCarga',
-                    width:'100',
+                    width: '100',
                     displayName: 'Sit. Carga',
                     cellTemplate: ' <div ng-click="grid.appScope.alterarSituacaoCarga(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
@@ -1703,44 +1717,44 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'codProcEsp',
-                    width:'150',
+                    width: '150',
                     displayName: 'CódProcEsp',
                     enableCellEdit: false,
-                    cellTemplate:'<select ng-model="codProcEsp" ng-options="frete for frete in COL_FIELD"></select>'
+                    cellTemplate: '<select ng-model="codProcEsp" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     field: 'emissor',
-                    width:'100',
+                    width: '100',
                     displayName: 'Emissor'
                 },
                 {
                     field: 'recebedor',
-                    width:'100',
+                    width: '100',
                     displayName: 'Recebedor'
                 },
                 {
                     field: 'tipo',
-                    width:'100',
+                    width: '100',
                     displayName: 'Tipo'
                 },
                 {
                     field: 'preOrdem',
-                    width:'100',
+                    width: '100',
                     displayName: 'Pré Ordem'
                 },
                 {
                     field: 'statusPreOrdem',
-                    width:'100',
+                    width: '100',
                     displayName: 'Status Pré Ordem'
                 },
                 {
                     field: 'ordem',
-                    width:'100',
+                    width: '100',
                     displayName: 'Ordem'
                 },
                 {
                     field: 'textoOv',
-                    width:'100',
+                    width: '100',
                     displayName: 'Texto O.V',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="black" style="color: black"  ng-click="grid.appScope.adicionarTextoOv(row.entity)" href=""><i class="fa fa-file-text bigger-130"></i></a>' +
@@ -1748,7 +1762,7 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'textoSimulacao',
-                    width:'100',
+                    width: '100',
                     displayName: 'Texto Simulação',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="black" style="color: black"  ng-click="grid.appScope.adicionarTextoSimulacao(row.entity)" href=""><i class="fa fa-file-text bigger-130"></i></a>' +
@@ -1756,7 +1770,7 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'imprimir',
-                    width:'100',
+                    width: '100',
                     displayName: 'Imprimir',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="black" style="color: black"  ng-click="grid.appScope.imprimir(row.entity)" href=""><i class="fa fa-print bigger-130"></i></a>' +
@@ -2077,10 +2091,10 @@ angular.module("App.controllers", [])
         };
 
         $scope.codProcEsp = [
-            {sppi:16,denominacao:"TRUCK ABERTO"},
-            {sppi:17,denominacao:"TRUCK BAU"},
-            {sppi:18,denominacao:"TOCO ABERTO"},
-            {sppi:19,denominacao:"TOCO BAU"}
+            {sppi: 16, denominacao: "TRUCK ABERTO"},
+            {sppi: 17, denominacao: "TRUCK BAU"},
+            {sppi: 18, denominacao: "TOCO ABERTO"},
+            {sppi: 19, denominacao: "TOCO BAU"}
         ]
 
         $scope.gridMateriais = {
@@ -2153,7 +2167,7 @@ angular.module("App.controllers", [])
                     width: '150',
                     displayName: 'Cond. Frete',
                     enableCellEdit: false,
-                    cellTemplate:'<select ng-model="condPagtoFrete" ng-options="frete for frete in COL_FIELD"></select>'
+                    cellTemplate: '<select ng-model="condPagtoFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     field: 'valorFrete',
@@ -2195,14 +2209,14 @@ angular.module("App.controllers", [])
                     width: '150',
                     enableCellEdit: false,
                     field: 'centro',
-                    cellTemplate:'<select ng-model="centro" ng-options="centro for centro in COL_FIELD"></select>'
+                    cellTemplate: '<select ng-model="centro" ng-options="centro for centro in COL_FIELD"></select>'
                 },
                 {
                     displayName: 'Local Expedicao',
                     width: '150',
                     field: 'localExpedicao',
                     enableCellEdit: false,
-                    cellTemplate:'<select ng-model="localExpedicao" ng-options="local for local in COL_FIELD"></select>'
+                    cellTemplate: '<select ng-model="localExpedicao" ng-options="local for local in COL_FIELD"></select>'
                 },
                 {
                     field: 'juros',
@@ -2223,7 +2237,7 @@ angular.module("App.controllers", [])
         };
 
         $scope.deletarMateriaisSelecionados = function () {
-            if($scope.listaMateriais.length <= 0 || $scope.gridApiMateriais.selection.getSelectedRows().length <= 0){
+            if ($scope.listaMateriais.length <= 0 || $scope.gridApiMateriais.selection.getSelectedRows().length <= 0) {
                 return;
             }
             var alertExclusao = {
@@ -2257,39 +2271,39 @@ angular.module("App.controllers", [])
                 }
             );
         };
-        
+
         $scope.ultimasSimulacoes = [
             {
-                id:1,
-                data:'15.04.2017',
-                descricao:'',
-                emissor:'',
-                valor:'R$ 76.000,00',
-                status:'GRAVADA'
+                id: 1,
+                data: '15.04.2017',
+                descricao: '',
+                emissor: '',
+                valor: 'R$ 76.000,00',
+                status: 'GRAVADA'
             },
             {
-                id:2,
-                data:'05.04.2017',
-                descricao:'',
-                emissor:'',
-                valor:'R$ 44.000,00',
-                status:'EFETUADA'
+                id: 2,
+                data: '05.04.2017',
+                descricao: '',
+                emissor: '',
+                valor: 'R$ 44.000,00',
+                status: 'EFETUADA'
             },
             {
-                id:3,
-                data:'25.03.2017',
-                descricao:'',
-                emissor:'',
-                valor:'R$ 150.000,00',
-                status:'GRAVADA'
+                id: 3,
+                data: '25.03.2017',
+                descricao: '',
+                emissor: '',
+                valor: 'R$ 150.000,00',
+                status: 'GRAVADA'
             },
             {
-                id:4,
-                data:'10.02.2017',
-                descricao:'',
-                emissor:'',
-                valor:'R$ 99.000,00',
-                status:'CANCELADA'
+                id: 4,
+                data: '10.02.2017',
+                descricao: '',
+                emissor: '',
+                valor: 'R$ 99.000,00',
+                status: 'CANCELADA'
             }
         ];
 
@@ -2418,7 +2432,7 @@ angular.module("App.controllers", [])
             var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: './view/adicionar-pontual.html',
-                controller: 'ModalInstanceCriarPontualSimulacoesCtrl'
+                controller: 'ModalCriarPontualSimulacoesCtrl'
             });
         };
 
@@ -2440,7 +2454,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/bonificacao.html',
                 controller: 'ModalBonificacaoCtrl',
-                backdrop:'static',
+                backdrop: 'static',
                 size: 'lg'
             });
         };
@@ -2463,7 +2477,7 @@ angular.module("App.controllers", [])
                         $rootScope.numeroSimulacao = "00000010";
                         SweetAlert.swal({
                             title: "Sucesso",
-                            text: "Simulação: "+ $rootScope.numeroSimulacao +" salva com sucesso",
+                            text: "Simulação: " + $rootScope.numeroSimulacao + " salva com sucesso",
                             customClass: 'sweetalert-sm'
                         });
 
@@ -2476,53 +2490,47 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("TermometroController", function ($scope, $rootScope) {
-
-
-    })
     .controller("GraficosController", function ($scope, $rootScope) {
 
         $rootScope.dadosGraficos = [
-        {
-            "x": "Fogão",
-            "voltyd16": 1,
-            "voltyd17": 0
-        },{
-            "x": "Forno Microondas",
-            "voltyd16": 0,
-            "voltyd17": 6
-        },{
-            "x": "Freezer Horizontal",
-            "voltyd16": 0,
-            "voltyd17": 3
-        },{
-            "x": "Freezer Vertical",
-            "voltyd16": 0,
-            "voltyd17": 2
-        },{
-            "x": "Lavadora Roupas",
-            "voltyd16": 1,
-            "voltyd17": 8
-        },{
-            "x": "Refrigerador Elétrico",
-            "voltyd16": 12,
-            "voltyd17": 11
-        }]; 
-
-
+            {
+                "x": "Fogão",
+                "voltyd16": 1,
+                "voltyd17": 0
+            }, {
+                "x": "Forno Microondas",
+                "voltyd16": 0,
+                "voltyd17": 6
+            }, {
+                "x": "Freezer Horizontal",
+                "voltyd16": 0,
+                "voltyd17": 3
+            }, {
+                "x": "Freezer Vertical",
+                "voltyd16": 0,
+                "voltyd17": 2
+            }, {
+                "x": "Lavadora Roupas",
+                "voltyd16": 1,
+                "voltyd17": 8
+            }, {
+                "x": "Refrigerador Elétrico",
+                "voltyd16": 12,
+                "voltyd17": 11
+            }];
 
 
         $rootScope.dadosGraficosColunas = [
-        {
-            "id": "voltyd16",
-            "type": "bar",
-            "name": "voltyd16"
-        },
-        {
-            "id": "voltyd17",
-            "type": "bar",
-            "name": "voltyd17"
-        }];
+            {
+                "id": "voltyd16",
+                "type": "bar",
+                "name": "voltyd16"
+            },
+            {
+                "id": "voltyd17",
+                "type": "bar",
+                "name": "voltyd17"
+            }];
 
         $rootScope.datax = {
             "id": "x"
@@ -2533,7 +2541,7 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("MainController", function ($scope, $rootScope, $filter, $uibModal, $document, $location) {
+    .controller("MainController", function ($scope, $rootScope, $filter, $uibModal, $document, $location, UsuarioService, AcaoPromocionalService) {
         "use strict";
         $rootScope.gotoCliente = function () {
             $rootScope.selectedClient = null;
@@ -2544,10 +2552,8 @@ angular.module("App.controllers", [])
             $location.path("/sapLink");
         };
 
-        $rootScope.user = {
-            nome: "PAULA HERMANN",
-            abreviado: "PHERMANN"
-        }
+        //oninit
+        $rootScope.user = UsuarioService.getUsuario();
 
         $rootScope.linksMenu = [
             {
@@ -2574,28 +2580,6 @@ angular.module("App.controllers", [])
                 controller: ''
             });
         }
-
-        $rootScope.dadosGraficos = [
-            {"x": "VALORES", "LB": 47, "LM": 36, "OUTROS": 25, "TOS": 37, "MARKUP": 23}
-        ];
-
-        $rootScope.dadosGraficosColunas = [
-            {"id": "LB", "type": "bar", "name": "LB"},
-            {"id": "LM", "type": "bar", "name": "LM"},
-            {"id": "OUTROS", "type": "bar", "name": "OUTROS"},
-            {"id": "TOS", "type": "bar", "name": "TOS"},
-            {"id": "MARKUP", "type": "bar", "name": "MARKUP"}
-        ];
-
-        $rootScope.datax = {"id": "x"};
-
-        $rootScope.perfilLoja1 = 0;
-
-        $rootScope.perfilLoja2 = 1;
-
-        $rootScope.perfilLoja3 = 1;
-
-        $rootScope.perfilLoja4 = 0;
 
         $rootScope.linhaBranca = [
             {id: 0, nome: "ELECTROLUX", quantidade: "45%"},
@@ -2735,31 +2719,29 @@ angular.module("App.controllers", [])
         $rootScope.creditos = [
             {
                 id: 1,
-                emissor:445646546 ,
+                emissor: 445646546,
                 limiteTotal: 110000.00,
                 limiteWhp: 85000.00,
                 exposicaoWRP: 25000.00,
                 emAbertoWRP: 50000.00
             },
             {
-                id: 2 ,
-                emissor:98794656 ,
+                id: 2,
+                emissor: 98794656,
                 limiteTotal: 60000.00,
                 limiteWhp: 45000.00,
                 exposicaoWRP: 150000.00,
                 emAbertoWRP: 20000.00
             },
             {
-                id: 3 ,
-                emissor:654654646 ,
+                id: 3,
+                emissor: 654654646,
                 limiteTotal: 160000.00,
                 limiteWhp: 145000.00,
                 exposicaoWRP: 115000.00,
                 emAbertoWRP: 90000.00
             }
         ];
-
-        $rootScope.somaLimiteTotal
 
         $rootScope.gridCredito = {
             data: 'creditos',
@@ -2793,104 +2775,6 @@ angular.module("App.controllers", [])
         };
 
         $rootScope.currentRoute = "/home";
-
-        $rootScope.processos = [
-            {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
-            {data: "20.04.17", cliente: "Carrefour", processo: 564654, status: "Pendente"}
-        ];
-
-        $rootScope.processos1 = [
-            {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Em processamento"},
-            {data: "20.04.17", cliente: "Carrefour", processo: 564654, status: "Cancelado"}
-        ];
-
-        $rootScope.processos2 = [
-            {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Finalizado"},
-            {data: "20.04.17", cliente: "Carrefour", processo: 564654, status: "Encerrado"}
-        ];
-
-        $rootScope.processos3 = [
-            {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
-            {data: "20.04.17", cliente: "Carrefour", processo: 564654, status: "Pendente"}
-        ];
-
-        $rootScope.contatos = [
-            {
-
-                data: "14.04.17",
-                descricao: "0000456456",
-                emissor: 423476,
-                statusTitulo: "Aguardando retorno",
-                statusCorpo:"Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
-            },
-            {
-
-                data: "14.04.17",
-                descricao: "0000456457",
-                emissor: 423476,
-                statusTitulo: "Aguardando retorno",
-                statusCorpo:"Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
-            },
-            {
-
-                data: "20.04.17",
-                descricao: "0000456458",
-                emissor: 564654,
-                statusTitulo: "Aguardando retorno",
-                statusCorpo:"Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
-            }
-
-        ];
-
-        $rootScope.contatos2 = [
-            {
-
-                data: "14.04.17",
-                descricao: "11111456456",
-                emissor: 423476,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
-            },
-            {
-
-                data: "14.04.17",
-                descricao: "1111456457",
-                emissor: 423476,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
-            },
-            {
-
-                data: "20.04.17",
-                descricao: "1111456458",
-                emissor: 564654,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
-            }
-
-        ];
-
-        $rootScope.contatos1 = [
-            {
-
-                data: "14.04.17",
-                descricao: "0000456456",
-                emissor: 423476,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
-            },
-            {
-
-                data: "14.04.17",
-                descricao: "0000456457",
-                emissor: 423476,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
-            },
-            {
-
-                data: "20.04.17",
-                descricao: "0000456458",
-                emissor: 564654,
-                status: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
-            }
-
-        ];
 
         $rootScope.clientes = [
             {
@@ -5154,5 +5038,57 @@ angular.module("App.controllers", [])
             valor_negociado: ''
         }];
 
+        $scope.acoesPromocionais = AcaoPromocionalService.getAcoesPromocionais();
 
+        $rootScope.status = {
+            isOpen: false
+        };
+
+        $rootScope.gridAcoesPromocionais =  {
+            enableHorizontalScrollbar: 0,
+            data: 'acoesPromocionais',
+            columnDefs: [
+                {
+                    field: 'id',
+                    width: '50',
+                    displayName: 'Id'
+                },
+                {
+                    field: 'regiao',
+                    width: '100',
+                    displayName: 'Região'
+                },
+                {
+                    field: 'modulo',
+                    width: '100',
+                    displayName: 'Modelo'
+                },
+                {
+                    field: 'desconto',
+                    width: '100',
+                    displayName: 'Desconto'
+                },
+                {
+                    field: 'vpc',
+                    width: '100',
+                    displayName: 'VPC'
+                },
+                {
+                    field: 'outros',
+                    width: '130',
+                    displayName: 'Outros'
+                },
+                {
+                    field: 'validoDesde',
+                    width: '100',
+                    displayName: 'Válido Desde'
+                },
+                {
+                    field: 'validoAte',
+                    width: '100',
+                    displayName: 'Válido Até'
+                }
+            ]
+        };
+        
     });

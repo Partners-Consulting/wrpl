@@ -308,7 +308,7 @@ p {
     display: inline;
     float: left;
     width: 50%;
-    background-color: #1b6d85;
+    background-color: #5bc0de;
     padding: 2px 5px;
     font-size: 12px;
     color: #fff;
@@ -319,7 +319,7 @@ p {
     display: inline;
     width: 50%;
     float: left;
-    background-color: #078573;
+    background-color: #5cb85c;
     padding: 2px 5px;
     font-size: 12px;
     color: #fff;
@@ -338,14 +338,14 @@ p {
 }
 
 .box-drop {
-    width: 650px;
+    width: 800px;
 }
 
 .table-box-drop {
     color: #000;
 }
 
-.table-box-drop caption {
+.box-drop h3 {
     font-size: 21px;
     text-align: center;
     background: #3c763d;
@@ -476,7 +476,7 @@ p {
 }
 
 input[type=checkbox]:checked + label {
-    color: #1b6d85;
+    color: #5bc0de;
     user-select: none;
 }
 
@@ -745,7 +745,7 @@ i.minus-all{
 }
 
 .btn-blue{
-    background-color: #1b6d85;
+    background-color: #5bc0de;
     color: white;
 }
 
@@ -804,7 +804,7 @@ form {
 
 .painel-slide-left i{
     margin-top: 55px;
-    color: #1b6d85;
+    color: #5bc0de;
 }
 
 .painel-slide-right{
@@ -826,15 +826,15 @@ form {
 .painel-slide-right i{
     float: right;
     margin-top: 55px;
-    color: #1b6d85;
+    color: #5bc0de;
 }
 
 span.glyphicon.glyphicon-chevron-right:before {
-    color: #1b6d85;
+    color: #5bc0de;
 }
 
 span.glyphicon.glyphicon-chevron-left:before {
-    color: #1b6d85;
+    color: #5bc0de;
 }
 
 span.glyphicon.glyphicon-chevron-right:hover {

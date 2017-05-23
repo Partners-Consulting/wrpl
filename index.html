@@ -91,97 +91,12 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-badges">
-                <li uib-dropdown class="dropdown">
+                <li uib-dropdown auto-close="outsideClick" is-open="status.isOpen" class="dropdown">
                     <a href uib-dropdown-toggle><span class="icon-badge green-badge" data-line="1"><i
                             class="fa fa-bullhorn" aria-hidden="true"></i></span></a>
                     <ul uib-dropdown-menu class="box-drop">
-                        <table class="table table-hover table-box-drop">
-                            <caption>Ações Promocionais</caption>
-                            <thead class="thead-bold">
-                                <tr>
-                                <th>#</th>
-                                <th>Região</th>
-                                <th>Modelo</th>
-                                <th>% Desconto</th>
-                                <th>VPC</th>
-                                <th>Outros</th>
-                                <th>Válido Desde</th>
-                                <th>Válido até</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>TODOS</td>
-                                    <td>CWE09</td>
-                                    <td>5%</td>
-                                    <td>30PP</td>
-                                    <td>PVL=R$ 230</td>
-                                    <td>24.04.2017</td>
-                                    <td>15.05.2017</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>TODOS</td>
-                                    <td>CWE11</td>
-                                    <td>3%</td>
-                                    <td>MKT</td>
-                                    <td></td>
-                                    <td>25.03.2017</td>
-                                    <td>15.05.2017</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>TODOS</td>
-                                    <td>BMF45</td>
-                                    <td>9%</td>
-                                    <td>20PP</td>
-                                    <td></td>
-                                    <td>10.03.2017</td>
-                                    <td>15.05.2017</td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>TODOS</td>
-                                    <td>BRM46</td>
-                                    <td>6%</td>
-                                    <td>15PP</td>
-                                    <td>PREÇO BEM ESTAR</td>
-                                    <td>10.03.2017</td>
-                                    <td>15.05.2017</td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>TODOS</td>
-                                    <td>GOK73</td>
-                                    <td>11%</td>
-                                    <td>10PP</td>
-                                    <td>PVL=R$ 180</td>
-                                    <td>24.02.2017</td>
-                                    <td>15.05.2017</td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>TODOS</td>
-                                    <td>BWJ11</td>
-                                    <td>14%</td>
-                                    <td>MKT</td>
-                                    <td></td>
-                                    <td>20.02.2017</td>
-                                    <td>15.05.2017</td>
-                                </tr>
-                                <tr>
-                                <td>7</td>
-                                <td>TODOS</td>
-                                <td>BLF08</td>
-                                <td>2%</td>
-                                <td>MKT</td>
-                                <td>PREÇO BEM ESTAR</td>
-                                <td>20.02.2017</td>
-                                <td>15.05.2017</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <h3>Ações Promocionais</h3>
+                        <div ng-if="status.isOpen" ui-grid="gridAcoesPromocionais" ui-grid-resize-columns ui-grid-move-columns></div>
                     </ul>
                 </li>
                 <!--  <li><a href="#" class="icon-badge green-badge" data-line="1"><i class="fa fa-credit-card" aria-hidden="true"></i></a></li> -->
