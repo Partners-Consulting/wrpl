@@ -39,6 +39,7 @@ angular.module("App.controllers", [])
         $scope.lastProcesso = 0;
         $scope.lastContato = 0;
         $scope.isBlocked = true;
+        $scope.mostra = true;
         $scope.isBlockedTos = false;
         $scope.perfilLoja1 = 0;
         $scope.perfilLoja2 = 1;
@@ -98,6 +99,7 @@ angular.module("App.controllers", [])
                 texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes'
             }
         ];
+        $scope.geraisB = [];
 
         $rootScope.pontuais = [
             {
@@ -248,9 +250,9 @@ angular.module("App.controllers", [])
                 });
 
             }
-            else {
-                $scope.selectedClientB = angular.copy($rootScope.selectedClient);
-            }
+
+            $scope.selectedClientB = angular.copy($rootScope.selectedClient);
+            $scope.geraisB = angular.copy($scope.gerais);
         }
 
         init();
@@ -526,10 +528,6 @@ angular.module("App.controllers", [])
             });
         };
 
-        $scope.finalizarEdicao = function () {
-            $scope.isBlocked = !$scope.isBlocked
-        };
-
         $scope.editarPerfilDeRevenda = function () {
             $scope.isBlocked = !$scope.isBlocked
         };
@@ -541,7 +539,7 @@ angular.module("App.controllers", [])
                 $rootScope.selectedClient.revenda.data = moment().format("DD.MM.YYYY")
                 $scope.isBlocked = !$scope.isBlocked
             }
-        }
+        };
 
         $scope.cancelarEdicaoRevenda = function () {
             if (angular.equals($scope.selectedClientB.revenda, $rootScope.selectedClient.revenda)) {
@@ -550,6 +548,20 @@ angular.module("App.controllers", [])
                 $rootScope.selectedClient.revenda = angular.copy($scope.selectedClientB.revenda);
                 $scope.isBlocked = !$scope.isBlocked
             }
+        };
+
+        $scope.editarNotas = function () {
+            $scope.mostra = !$scope.mostra;
+        };
+
+        $scope.salvarNotas = function() {
+            $scope.geraisB = angular.copy($scope.gerais);
+            $scope.mostra = !$scope.mostra;
+        };
+
+        $scope.cancelarNotas = function(){
+            $scope.gerais = angular.copy($scope.geraisB);
+            $scope.mostra = !$scope.mostra;
         }
 
     })

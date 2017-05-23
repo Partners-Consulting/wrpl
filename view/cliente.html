@@ -220,14 +220,13 @@
                          class="slide animated">
                         <h3 class="title-gray-block">{{geral.titulo}}
                             <button style="float: right" type="button" class="btn btn-blue btn-xs note-plus"
-                                    ng-init="mostra=true"
-                                    ng-click="mostra = !mostra" ng-show="mostra"><i class="fa fa-pencil"
+                                    ng-show="mostra" ng-click="editarNotas(geral)"><i class="fa fa-pencil"
                                                                                     aria-hidden="true"></i></button>
                             <button style="float: right" type="button" class="btn btn-green btn-xs note-plus"
-                                    ng-hide="mostra" ng-click="mostra = !mostra"><i class="fa fa-floppy-o"
+                                    ng-hide="mostra" ng-click="salvarNotas(geral)"><i class="fa fa-floppy-o"
                                                                                     aria-hidden="true"></i></button>
                             <button style="float: right" type="button" class="btn btn-red btn-xs note-plus"
-                                    ng-hide="mostra" ng-click="mostra = !mostra"><i class="fa fa-times"
+                                    ng-hide="mostra" ng-click="cancelarNotas(geral)"><i class="fa fa-times"
                                                                                     aria-hidden="true"></i></button>
                         </h3>
                         <span ng-show="mostra" class="text">{{geral.texto}}</span>
