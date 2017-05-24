@@ -2514,7 +2514,7 @@ angular.module("App.controllers", [])
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sim, excluir!",
+                confirmButtonText: "Sim, salvar!",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
