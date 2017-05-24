@@ -13,14 +13,14 @@
 html {
     background: #f5f5f5;
     font-family: 'Ubuntu', sans-serif;
-    overflow: hidden;
-
 }
 
 body {
     background: none;
     padding: 0;
     margin: 0;
+    height: auto;
+    wight: auto;
 }
 
 p {
@@ -171,6 +171,7 @@ p {
     padding-left: 85px;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
+    height: 500px;
 }
 
 .panel-project {
@@ -265,6 +266,21 @@ p {
     margin-top: 1px;
 }
 
+dd p.input-group input {
+    height: 23px;
+    width: 130px;
+}
+
+
+dd p.input-group button{
+    height: 23px;
+}
+
+
+dd p.input-group button i{
+    position: inherit;
+    top: 0px;
+}
 /**/
 
 .table {
@@ -852,9 +868,23 @@ span.glyphicon.glyphicon-chevron-left:hover {
 }
 
 .grid-ultimas-simulacoes {
-    height: 175px;
+    height: 155px;
+    width: auto;
 }
 
 .grid-materias {
-    height: 235px;
+    height: 250px;
+}
+
+.my-datepicker .form-control {
+    height: 10px;
+    padding: 11px;
+}
+
+.my-datepicker .btn {
+    padding: 1px 2px;
+}
+
+.grid-busca-material {
+    height: 300px;
 }

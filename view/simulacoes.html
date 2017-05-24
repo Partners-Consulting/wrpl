@@ -1,5 +1,5 @@
 <div class="row">
-    <panel title="Dados Entrega" icon="fa-truck" height="47" col="3">
+    <panel title="Dados Entrega" icon="fa-truck" height="46" col="3">
         <panel-actions>
             <button type="button" class="btn btn-blue btn-xs" ng-click="editarDadosEntrega()"><i class="fa fa-pencil"
                                                                                                     aria-hidden="true"></i>
@@ -14,15 +14,60 @@
             <dd>{{selectedClient.simulacao.dadosEntrega.diasCont}}</dd>
             <dt># Pedido</dt>
             <dd>{{selectedClient.simulacao.dadosEntrega.pedido}}</dd>
-            <dt>Úsuario</dt>
-            <dd>{{user.nome}}</dd>
-            <dt>Volumetria</dt>
+            <dt>Volume(m³)/dt>
             <dd>0.4 M³</dd>
             <dt>Voltagem</dt>
             <dd>220V</dd>
         </dl>
+
+       <!-- <dl class="dl-flex">
+            <dt>Data Entrega</dt>
+            <dd ng-if="dadosEntregaEditavel">
+                <p class="input-group my-datepicker">
+                    <input type="text" class="form-control input-sm"
+                           uib-datepicker-popup="{{formato}}"
+                           show-button-bar="false"
+                           ng-model="selectedClient.simulacao.dadosEntrega.dataEntrega" is-open="popupDataEntrega.opened"/>
+                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-sm" ng-click="openDataEntrega()"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                             </span>
+                </p>
+            </dd>
+            <dd ng-if="!dadosEntregaEditavel">{{selectedClient.simulacao.dadosEntrega.dataEntrega | date : 'dd/MM/yyyy'}}</dd>
+            <dt>Data Remessa</dt>
+            <dd ng-if="dadosEntregaEditavel">
+                <p class="input-group">
+                    <input type="text" class="form-control input-sm" uib-datepicker-popup="{{formato}}"
+                           ng-model="selectedClient.simulacao.dadosEntrega.dataRemessa" is-open="popupDataRemessa.opened"/>
+                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default btn-sm" ng-click="openDataRemessa()"><i
+                                        class="glyphicon glyphicon-calendar"></i></button>
+                             </span>
+                </p>
+            </dd>
+            <dd ng-if="!dadosEntregaEditavel">{{selectedClient.simulacao.dadosEntrega.dataRemessa | date : 'dd/MM/yyyy'}}</dd>
+            <dt>Dias Conc.</dt>
+            <dd ng-if="dadosEntregaEditavel">
+                <p class="input-group">
+                    <input type="text" class="form-control input-sm" ng-model="selectedClient.simulacao.dadosEntrega.diasCont"/>
+                </p>
+            </dd>
+            <dd ng-if="!dadosEntregaEditavel">{{selectedClient.simulacao.dadosEntrega.diasCont}}</dd>
+            <dt># Pedido</dt>
+            <dd ng-if="dadosEntregaEditavel">
+                <p class="input-group">
+                    <input type="text" class="form-control input-sm" ng-model="selectedClient.simulacao.dadosEntrega.pedido"/>
+                </p>
+            </dd>
+            <dd ng-if="!dadosEntregaEditavel">{{selectedClient.simulacao.dadosEntrega.pedido}}</dd>
+            <dt>Volume(m³)</dt>
+            <dd>0.4 M³</dd>
+            <dt>Voltagem</dt>
+            <dd>220V</dd>
+        </dl>-->
     </panel>
-    <panel title="Histórico" icon="fa-history" height="47" col="3">
+    <panel title="Histórico" icon="fa-history" height="46" col="3">
         <h3 class="title-gray-block">Pontuais
             <button type="button" class="btn btn-success btn-xs note-plus" ng-click="adicionarPontual()"><i
                     class="fa fa-plus-circle" aria-hidden="true"></i></button>
@@ -40,7 +85,7 @@
             </li>
         </ul>
     </panel>
-    <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="47" col="6">
+    <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="46" col="6">
         <panel-actions>
             <input class="input-xs" type="text" ng-model="gridApiUltimasSimulacoes.grid.columns[3].filters[0].term" placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome" >
             <button type="button" class="btn btn-default btn-xs" ng-click="atualizarUltimasSimulacoes()"><i
@@ -52,7 +97,7 @@
     </panel>
 </div>
 <div class="row">
-    <panel title="Itens da Simulação" icon="fa-table" height="56" col="12">
+    <panel title="Itens da Simulação" icon="fa-table" height="59" col="12">
         <panel-actions>
                  <div class="row">
                      <div class="col-sm-12">
