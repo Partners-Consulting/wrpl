@@ -554,18 +554,18 @@ angular.module("App.controllers", [])
             $scope.mostra = !$scope.mostra;
         };
 
-        $scope.salvarNotas = function() {
+        $scope.salvarNotas = function () {
             $scope.geraisB = angular.copy($scope.gerais);
             $scope.mostra = !$scope.mostra;
         };
 
-        $scope.cancelarNotas = function(){
+        $scope.cancelarNotas = function () {
             $scope.gerais = angular.copy($scope.geraisB);
             $scope.mostra = !$scope.mostra;
         }
 
     })
-    .controller("ModalSelecionarClienteCtrl", function ($scope, $rootScope, $location, $uibModalInstance, _, url) {
+    .controller("ModalSelecionarClienteCtrl", function ($scope, $rootScope, $location, $uibModalInstance, _, url, ClienteService) {
         "use strict";
 
         $scope.url = url;
@@ -579,8 +579,23 @@ angular.module("App.controllers", [])
             email: ""
         };
 
+        function init() {
+            $scope.listaClientes = ClienteService.buscaClientesPorIdDoVendedor(1);
+        }
+
+        init();
+
         $scope.close = function () {
-            $uibModalInstance.close();
+            if ($rootScope.selectedClient == null) {
+                return
+            } else {
+                $uibModalInstance.close();
+
+            }
+        };
+
+        $scope.todosClientes = function (){
+            $scope.listaClientes = ClienteService.buscaTodosClientes();
         };
 
         $scope.selectClient = function (client) {
@@ -2065,19 +2080,19 @@ angular.module("App.controllers", [])
 
         $scope.efetivarOv = function () {
             /*var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: './view/efetivar-ov.html',
-                controller: 'ModalEfetivarOvCtrl',
-                size: 'lg',
-                backdrop: 'static',
-                resolve: {
-                    materiais: function () {
-                        return $scope.listaMateriais;
-                    }
-                }
-            });*/
+             animation: true,
+             templateUrl: './view/efetivar-ov.html',
+             controller: 'ModalEfetivarOvCtrl',
+             size: 'lg',
+             backdrop: 'static',
+             resolve: {
+             materiais: function () {
+             return $scope.listaMateriais;
+             }
+             }
+             });*/
 
-            $location.path("/efetivarOv").search({params:$scope.listaMateriais})
+            $location.path("/efetivarOv").search({params: $scope.listaMateriais})
         };
 
         $scope.consultarMaterialCompleto = function (id) {
@@ -2096,21 +2111,21 @@ angular.module("App.controllers", [])
         };
 
         $scope.abrirHitoriocoMaterial = function (material) {
-           /* var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: './view/historico-material.html',
-                controller: 'ModalHistoricoMaterialCtrl',
-                backdrop: 'static',
-                size: 'lg',
+            /* var modalInstance = $uibModal.open({
+             animation: true,
+             templateUrl: './view/historico-material.html',
+             controller: 'ModalHistoricoMaterialCtrl',
+             backdrop: 'static',
+             size: 'lg',
 
-                resolve: {
-                    material: function () {
-                        return MaterialService.consultaMaterialCompleto(material.id);
-                    }
-                }
+             resolve: {
+             material: function () {
+             return MaterialService.consultaMaterialCompleto(material.id);
+             }
+             }
 
-            });*/
-            $location.path("/historico/"+material.id);
+             });*/
+            $location.path("/historico/" + material.id);
 
         };
 
@@ -2124,7 +2139,7 @@ angular.module("App.controllers", [])
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
             enableGridMenu: true,
-            rowHeight:20,
+            rowHeight: 20,
             data: 'listaMateriais',
             columnDefs: [
                 {
@@ -2463,33 +2478,33 @@ angular.module("App.controllers", [])
 
         //caso insistam na edição dos dados de entrega na tela
         /*
-        $scope.editarDadosEntrega = function () {
-           $scope.dadosEntregaEditavel = !$scope.dadosEntregaEditavel
-        };
+         $scope.editarDadosEntrega = function () {
+         $scope.dadosEntregaEditavel = !$scope.dadosEntregaEditavel
+         };
 
-        $scope.formato = 'dd-MM-yyyy';
+         $scope.formato = 'dd-MM-yyyy';
 
-        $scope.popupDataEntrega = {
-            opened: false
-        };
+         $scope.popupDataEntrega = {
+         opened: false
+         };
 
-        $scope.openDataEntrega = function () {
-            $scope.popupDataEntrega.opened = true;
-        };
+         $scope.openDataEntrega = function () {
+         $scope.popupDataEntrega.opened = true;
+         };
 
-        $scope.popupDataRemessa = {
-            opened: false
-        };
+         $scope.popupDataRemessa = {
+         opened: false
+         };
 
-        $scope.openDataRemessa = function () {
-            $scope.popupDataRemessa.opened = true;
-        };
+         $scope.openDataRemessa = function () {
+         $scope.popupDataRemessa.opened = true;
+         };
 
-        $scope.salvarDadosEntrega = function () {
-            $rootScope.selectedClient.simulacao.dadosEntrega = $scope.dadosEntrega;
-            $uibModalInstance.close()
-        }
-        */
+         $scope.salvarDadosEntrega = function () {
+         $rootScope.selectedClient.simulacao.dadosEntrega = $scope.dadosEntrega;
+         $uibModalInstance.close()
+         }
+         */
 
         $scope.bonificacao = function () {
             var modalInstance = $uibModal.open({
