@@ -68,6 +68,15 @@ angular.module('App', ["App.controllers",
                 templateUrl: 'view/sap-links.html',
                 controller: ''
             })
+            .when('/historico/:idItem', {
+                templateUrl: 'view/historico.html',
+                controller: 'HistoricoController',
+                resolve: {
+                    historico: function (MaterialService, $route) {
+                        return MaterialService.consultaHistoricoDeVenda($route.current.params.idItem);
+                    }
+                },
+            })
             .otherwise({ redirectTo: 'cliente' });
 
     });

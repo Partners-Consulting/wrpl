@@ -61,7 +61,7 @@ angular.module("App.services", [])
                             "MT-1202"
                         ],
                         juros: "0.000",
-                        descricao: ""
+                        descricao: "Descrição do material"
                     },
                     {
                         id: 2,
@@ -105,7 +105,7 @@ angular.module("App.services", [])
                             "MT-1202"
                         ],
                         juros: "0.000",
-                        descricao: ""
+                        descricao: "Descrição do material"
                     },
                     {
                         id: 3,
@@ -149,7 +149,7 @@ angular.module("App.services", [])
                             "MT-1202"
                         ],
                         juros: "0.000",
-                        descricao: ""
+                        descricao: "Descrição do material"
                     },
                     {
                         id: 4,
@@ -193,7 +193,7 @@ angular.module("App.services", [])
                             "MT-1202"
                         ],
                         juros: "0.000",
-                        descricao: ""
+                        descricao: "Descrição do material"
                     },
                     {
                         id: 5,
@@ -237,7 +237,7 @@ angular.module("App.services", [])
                             "MT-1202"
                         ],
                         juros: "0.000",
-                        descricao: ""
+                        descricao: "Descrição do material"
                     },
                     {
                         id: 6,
@@ -281,7 +281,7 @@ angular.module("App.services", [])
                             "MT-1202"
                         ],
                         juros: "0.000",
-                        descricao: ""
+                        descricao: "Descrição do material"
                     },
                     {
                         id: 7,
@@ -325,7 +325,7 @@ angular.module("App.services", [])
                             "MT-1202"
                         ],
                         juros: "0.000",
-                        descricao: ""
+                        descricao: "Descrição do material"
                     },
                     {
                         id: 8,
@@ -369,7 +369,7 @@ angular.module("App.services", [])
                             "MT-1202"
                         ],
                         juros: "0.000",
-                        descricao: ""
+                        descricao: "Descrição do material"
                     },
                     {
                         id: 9,
@@ -413,7 +413,7 @@ angular.module("App.services", [])
                             "MT-1202"
                         ],
                         juros: "0.000",
-                        descricao: ""
+                        descricao: "Descrição do material"
                     },
                     {
                         id: 10,
@@ -457,7 +457,7 @@ angular.module("App.services", [])
                             "MT-1202"
                         ],
                         juros: "0.000",
-                        descricao: ""
+                        descricao: "Descrição do material"
                     }
                 ];
             },
@@ -947,6 +947,2171 @@ angular.module("App.services", [])
                         validoAte: "15.05.2017"
                     }
                 ];
+            }
+        }
+    })
+    .service('ClienteService', function () {
+        return{
+            buscaClientesPorIdDoVendedor : function(id){
+                return [
+
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "CARREFOUR",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            revenda: {
+                                numeroLojas: 12,
+                                faturamentoMensal: 1234567,
+                                lb: 12,
+                                tos: {
+                                    refrigerador: 12,
+                                    fogao: 12,
+                                    lavadora: 15,
+                                    total: 39
+                                },
+                                principalSegmento: 123,
+                                principalSegmentoValor: 12,
+                                markup: 12,
+                                data: "12.12.2012"
+                            },
+                            email: "carrefour@carrefour.com",
+                            inscricaoEstadual: "255155603",
+                            contatoPrioritario: {
+                                numero: 45698744,
+                                nome: "José Cachoeira",
+                                prioritario: true,
+                                agrupador: {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira"
+                                },
+                                supervisor: {
+                                    numero: 45648948,
+                                    nome: "Paula Hermann"
+                                },
+                                cargo: "Gerente",
+                                telefones: [
+                                    {
+                                        id: 0,
+                                        numero: "+55 11 1234-5678",
+                                        prioritario: true
+                                    },
+                                    {
+                                        id: 1,
+                                        numero: "+55 11 7894-4563",
+                                        prioritario: false
+                                    }
+                                ],
+                                emails: [
+                                    {
+                                        id: 0,
+                                        email: "joao@carrefour.com.br",
+                                        prioritario: true
+                                    },
+                                    {
+                                        id: 1,
+                                        email: "comercial@carrefour.com.br",
+                                        prioritario: false
+                                    }
+                                ]
+
+                            },
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ],
+                            simulacao: {
+                                dadosEntrega: {
+                                    dataEntrega: "",
+                                    dataRemessa: "",
+                                    diasCont: "",
+                                    pedido: "",
+                                }
+                            }
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente1",
+                            email: "cliente1@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente2",
+                            email: "cliente2@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente3",
+                            email: "cliente3@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente4",
+                            email: "cliente4@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente5",
+                            email: "cliente5@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente6",
+                            email: "cliente6@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente7",
+                            email: "cliente7@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente8",
+                            email: "cliente8@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente9",
+                            email: "cliente9@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente10",
+                            email: "cliente10@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente11",
+                            email: "cliente11@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente12",
+                            email: "cliente12@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente13",
+                            email: "cliente13@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente14",
+                            email: "cliente14@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente15",
+                            email: "cliente15@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente16",
+                            email: "cliente16@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente17",
+                            email: "cliente17@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente18",
+                            email: "cliente18@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente19",
+                            email: "cliente19@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente20",
+                            email: "cliente20@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente21",
+                            email: "cliente21@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            clienteEmissorId: 974651321318,
+                            razao: "Cliente22",
+                            email: "cliente22@carrefour.com",
+                            cnpj: "08.675.549/0001-56",
+                            cidade: "SÃO PAULO",
+                            endereco: "RUA PROCOPIO LOHN",
+                            uf: "SP",
+                            pais: "BRASIL",
+                            domicilioFiscal: "SC 0015",
+                            cep: "88410-000",
+                            inscricaoEstadual: "255155603",
+                            contatos: [
+                                {
+                                    numero: 45698744,
+                                    nome: "José Cachoeira",
+                                    prioritario: true,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "José Cachoeira"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Gerente",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "joao@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                },
+                                {
+                                    numero: 45698744,
+                                    nome: "Comercial",
+                                    prioritario: false,
+                                    agrupador: {
+                                        numero: 45698744,
+                                        nome: "Comercial"
+                                    },
+                                    supervisor: {
+                                        numero: 45648948,
+                                        nome: "Paula Hermann"
+                                    },
+                                    cargo: "Comercial",
+                                    telefones: [
+                                        {
+                                            id: 0,
+                                            numero: "+55 11 1234-5678",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            numero: "+55 11 7894-4563",
+                                            prioritario: false
+                                        }
+                                    ],
+                                    emails: [
+                                        {
+                                            id: 0,
+                                            email: "comercial@carrefour.com.br",
+                                            prioritario: true
+                                        },
+                                        {
+                                            id: 1,
+                                            email: "Comercial@carrefour.com.br",
+                                            prioritario: false
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+
+                ]
             }
         }
     });

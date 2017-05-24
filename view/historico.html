@@ -1,0 +1,25 @@
+<div class="row">
+    <panel title="Histórico de Venda" icon="fa-book" height="95" col="12">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div ui-grid="gridHistoricoVenda" ui-grid-resize-columns ui-grid-move-columns>
+                    <div class="grid-msg-overlay" ng-hide="!loading">
+                        <div class="msg">
+            <span>
+              Carregando Lista...
+              <i class="fa fa-spinner fa-spin"></i>
+            </span>
+                        </div>
+                    </div>
+                    <div class="grid-msg-overlay" ng-show="listaHistoricoVenda.length == 0">
+                        <div class="msg">
+                            <span>Lista não contém dados</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </panel>
+
+</div>

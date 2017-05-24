@@ -1554,6 +1554,10 @@ angular.module("App.controllers", [])
                 {
                     field: 'codigo',
                     displayName: 'Código do Material'
+                },
+                {
+                    field: 'descricao',
+                    displayName: 'Descrição'
                 }
             ]
         };
@@ -1569,15 +1573,15 @@ angular.module("App.controllers", [])
                     $scope.gridApiBuscaMaterial.grid.columns[1].filters[0].term = $scope.busca.codigo;
                 }
             }, 0);
-        }
+        };
 
         $scope.filtraMaterialDescricao = function () {
             $timeout(function () {
                 if ($scope.busca.codigo != "" && $scope.busca.codigo != null && $scope.busca.codigo.length > 3) {
-                    $scope.gridApiBuscaMaterial.grid.columns[1].filters[0].term = $scope.busca.codigo;
+                    $scope.gridApiBuscaMaterial.grid.columns[2].filters[0].term = $scope.busca.codigo;
                 }
             }, 0);
-        }
+        };
 
         $scope.adicionarMateriaisSelecionados = function () {
             angular.forEach($scope.gridApiBuscaMaterial.selection.getSelectedRows(), function (data, index) {
@@ -1585,7 +1589,7 @@ angular.module("App.controllers", [])
             });
 
             $uibModalInstance.close($scope.listaMateriais);
-        }
+        };
 
         $scope.close = function () {
             $uibModalInstance.close();
@@ -1933,16 +1937,15 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalHistoricoMaterialCtrl", function ($scope, $rootScope, $uibModalInstance, material, MaterialService) {
+    .controller("HistoricoController", function ($scope, $rootScope, historico, MaterialService) {
 
-        $scope.material = material;
         $scope.listaHistoricoVenda = [];
         $scope.loading = false;
 
         function init() {
             //todo fazer padrão promessa
             $scope.loading = true;
-            $scope.listaHistoricoVenda = MaterialService.consultaHistoricoDeVenda(material.id);
+            $scope.listaHistoricoVenda = historico;
             //$scope.listaHistoricoVenda = [];
             $scope.loading = false;
         }
@@ -1950,7 +1953,7 @@ angular.module("App.controllers", [])
         init();
 
         $scope.gridHistoricoVenda = {
-            enableHorizontalScrollbar: true,
+            enableHorizontalScrollbar: 0,
             enableGridMenu: true,
             data: 'listaHistoricoVenda',
             columnDefs: [
@@ -1966,17 +1969,17 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'pvl',
-                    width: '150',
+                    width: '70',
                     displayName: 'PVL'
                 },
                 {
                     field: 'percDesc',
-                    width: '150',
+                    width: '100',
                     displayName: '% Desc'
                 },
                 {
                     field: 'percAcres',
-                    width: '150',
+                    width: '100',
                     displayName: '% Acres'
                 },
                 {
@@ -1986,7 +1989,7 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'quantidade',
-                    width: '150',
+                    width: '50',
                     displayName: 'Qtde'
                 },
                 {
@@ -1996,7 +1999,7 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'sap',
-                    width: '150',
+                    width: '100',
                     displayName: 'SAP'
                 },
                 {
@@ -2094,7 +2097,7 @@ angular.module("App.controllers", [])
         };
 
         $scope.abrirHitoriocoMaterial = function (material) {
-            var modalInstance = $uibModal.open({
+           /* var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: './view/historico-material.html',
                 controller: 'ModalHistoricoMaterialCtrl',
@@ -2107,7 +2110,9 @@ angular.module("App.controllers", [])
                     }
                 }
 
-            });
+            });*/
+            $location.path("/historico/"+material.id);
+
         };
 
         $scope.codProcEsp = [
@@ -2268,7 +2273,7 @@ angular.module("App.controllers", [])
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
-                closeOnConfirm: false,
+                closeOnConfirm: true,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
             };
@@ -2278,11 +2283,6 @@ angular.module("App.controllers", [])
 
                         angular.forEach($scope.gridApiMateriais.selection.getSelectedRows(), function (data, index) {
                             $scope.listaMateriais.splice($scope.listaMateriais.lastIndexOf(data), 1);
-                        });
-                        SweetAlert.swal({
-                            title: "Sucesso",
-                            text: "Itens de simulação excluídos com sucesso",
-                            customClass: 'sweetalert-sm'
                         });
 
                     } else {
@@ -2509,7 +2509,7 @@ angular.module("App.controllers", [])
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sim, excluir!",
+                confirmButtonText: "Sim, salvar!",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
