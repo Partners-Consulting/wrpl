@@ -75,7 +75,16 @@ angular.module('App', ["App.controllers",
                     historico: function (MaterialService, $route) {
                         return MaterialService.consultaHistoricoDeVenda($route.current.params.idItem);
                     }
-                },
+                }
+            })
+            .when('/efetivarOv/', {
+                templateUrl: 'view/efetivar-ov.html',
+                controller: 'ModalEfetivarOvCtrl',
+                resolve: {
+                    lista: function ($route) {
+                        return $route.current.params;
+                    }
+                }
             })
             .otherwise({ redirectTo: 'cliente' });
 
