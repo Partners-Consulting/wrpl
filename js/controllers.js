@@ -554,18 +554,18 @@ angular.module("App.controllers", [])
             $scope.mostra = !$scope.mostra;
         };
 
-        $scope.salvarNotas = function() {
+        $scope.salvarNotas = function () {
             $scope.geraisB = angular.copy($scope.gerais);
             $scope.mostra = !$scope.mostra;
         };
 
-        $scope.cancelarNotas = function(){
+        $scope.cancelarNotas = function () {
             $scope.gerais = angular.copy($scope.geraisB);
             $scope.mostra = !$scope.mostra;
         }
 
     })
-    .controller("ModalSelecionarClienteCtrl", function ($scope, $rootScope, $location, $uibModalInstance, _, url) {
+    .controller("ModalSelecionarClienteCtrl", function ($scope, $rootScope, $location, $uibModalInstance, _, url, ClienteService) {
         "use strict";
 
         $scope.url = url;
@@ -579,8 +579,23 @@ angular.module("App.controllers", [])
             email: ""
         };
 
+        function init() {
+            $scope.listaClientes = ClienteService.buscaClientesPorIdDoVendedor(1);
+        }
+
+        init();
+
         $scope.close = function () {
-            $uibModalInstance.close();
+            if ($rootScope.selectedClient == null) {
+                return
+            } else {
+                $uibModalInstance.close();
+
+            }
+        };
+
+        $scope.todosClientes = function (){
+            $scope.listaClientes = ClienteService.buscaTodosClientes();
         };
 
         $scope.selectClient = function (client) {
@@ -1322,13 +1337,10 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, materiais, $uibModal, $uibModalInstance, $timeout) {
+    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, lista, $uibModal, $timeout) {
 
         $scope.showDetalhe = false;
-        $scope.listaMateriais = materiais
-
-
-        $scope.listaMateriais = materiais
+        $scope.listaMateriais = lista;
 
         $scope.gridSimulacao = {
             enableRowSelection: true,
@@ -2067,18 +2079,20 @@ angular.module("App.controllers", [])
         };
 
         $scope.efetivarOv = function () {
-            var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: './view/efetivar-ov.html',
-                controller: 'ModalEfetivarOvCtrl',
-                size: 'lg',
-                backdrop: 'static',
-                resolve: {
-                    materiais: function () {
-                        return $scope.listaMateriais;
-                    }
-                }
-            });
+            /*var modalInstance = $uibModal.open({
+             animation: true,
+             templateUrl: './view/efetivar-ov.html',
+             controller: 'ModalEfetivarOvCtrl',
+             size: 'lg',
+             backdrop: 'static',
+             resolve: {
+             materiais: function () {
+             return $scope.listaMateriais;
+             }
+             }
+             });*/
+
+            $location.path("/efetivarOv").search({params: $scope.listaMateriais})
         };
 
         $scope.consultarMaterialCompleto = function (id) {
@@ -2097,21 +2111,21 @@ angular.module("App.controllers", [])
         };
 
         $scope.abrirHitoriocoMaterial = function (material) {
-           /* var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: './view/historico-material.html',
-                controller: 'ModalHistoricoMaterialCtrl',
-                backdrop: 'static',
-                size: 'lg',
+            /* var modalInstance = $uibModal.open({
+             animation: true,
+             templateUrl: './view/historico-material.html',
+             controller: 'ModalHistoricoMaterialCtrl',
+             backdrop: 'static',
+             size: 'lg',
 
-                resolve: {
-                    material: function () {
-                        return MaterialService.consultaMaterialCompleto(material.id);
-                    }
-                }
+             resolve: {
+             material: function () {
+             return MaterialService.consultaMaterialCompleto(material.id);
+             }
+             }
 
-            });*/
-            $location.path("/historico/"+material.id);
+             });*/
+            $location.path("/historico/" + material.id);
 
         };
 
@@ -2125,7 +2139,7 @@ angular.module("App.controllers", [])
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
             enableGridMenu: true,
-            rowHeight:20,
+            rowHeight: 20,
             data: 'listaMateriais',
             columnDefs: [
                 {
@@ -2464,33 +2478,33 @@ angular.module("App.controllers", [])
 
         //caso insistam na edição dos dados de entrega na tela
         /*
-        $scope.editarDadosEntrega = function () {
-           $scope.dadosEntregaEditavel = !$scope.dadosEntregaEditavel
-        };
+         $scope.editarDadosEntrega = function () {
+         $scope.dadosEntregaEditavel = !$scope.dadosEntregaEditavel
+         };
 
-        $scope.formato = 'dd-MM-yyyy';
+         $scope.formato = 'dd-MM-yyyy';
 
-        $scope.popupDataEntrega = {
-            opened: false
-        };
+         $scope.popupDataEntrega = {
+         opened: false
+         };
 
-        $scope.openDataEntrega = function () {
-            $scope.popupDataEntrega.opened = true;
-        };
+         $scope.openDataEntrega = function () {
+         $scope.popupDataEntrega.opened = true;
+         };
 
-        $scope.popupDataRemessa = {
-            opened: false
-        };
+         $scope.popupDataRemessa = {
+         opened: false
+         };
 
-        $scope.openDataRemessa = function () {
-            $scope.popupDataRemessa.opened = true;
-        };
+         $scope.openDataRemessa = function () {
+         $scope.popupDataRemessa.opened = true;
+         };
 
-        $scope.salvarDadosEntrega = function () {
-            $rootScope.selectedClient.simulacao.dadosEntrega = $scope.dadosEntrega;
-            $uibModalInstance.close()
-        }
-        */
+         $scope.salvarDadosEntrega = function () {
+         $rootScope.selectedClient.simulacao.dadosEntrega = $scope.dadosEntrega;
+         $uibModalInstance.close()
+         }
+         */
 
         $scope.bonificacao = function () {
             var modalInstance = $uibModal.open({
@@ -2584,7 +2598,7 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("MainController", function ($scope, $rootScope, $filter, $uibModal, $document, $location, UsuarioService, AcaoPromocionalService) {
+    .controller("MainController", function ($scope, $rootScope, $filter, $uibModal, $document, $location, UsuarioService, AcaoPromocionalService, uiGridConstants) {
         "use strict";
         $rootScope.gotoCliente = function () {
             $rootScope.selectedClient = null;
@@ -2758,64 +2772,6 @@ angular.module("App.controllers", [])
         $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
             $rootScope.currentRoute = $location.path();
         });
-
-        $rootScope.creditos = [
-            {
-                id: 1,
-                emissor: 445646546,
-                limiteTotal: 110000.00,
-                limiteWhp: 85000.00,
-                exposicaoWRP: 25000.00,
-                emAbertoWRP: 50000.00
-            },
-            {
-                id: 2,
-                emissor: 98794656,
-                limiteTotal: 60000.00,
-                limiteWhp: 45000.00,
-                exposicaoWRP: 150000.00,
-                emAbertoWRP: 20000.00
-            },
-            {
-                id: 3,
-                emissor: 654654646,
-                limiteTotal: 160000.00,
-                limiteWhp: 145000.00,
-                exposicaoWRP: 115000.00,
-                emAbertoWRP: 90000.00
-            }
-        ];
-
-        $rootScope.gridCredito = {
-            data: 'creditos',
-            enableGridMenu: true,
-            columnDefs: [
-                {
-                    field: 'id',
-                    displayName: '#'
-                },
-                {
-                    field: 'emissor',
-                    displayName: 'Emissor'
-                },
-                {
-                    field: 'limiteTotal',
-                    displayName: 'Limite Total'
-                },
-                {
-                    field: 'limiteWhp',
-                    displayName: 'Limite WHP'
-                },
-                {
-                    field: 'exposicaoWRP',
-                    displayName: 'Exposição WRP'
-                },
-                {
-                    field: 'emAbertoWRP',
-                    displayName: 'Em Aberto WRP.'
-                }
-            ]
-        };
 
         $rootScope.currentRoute = "/home";
 
@@ -5084,7 +5040,8 @@ angular.module("App.controllers", [])
         $scope.acoesPromocionais = AcaoPromocionalService.getAcoesPromocionais();
 
         $rootScope.status = {
-            isOpen: false
+            isOpenAcoes: false,
+            isOpenCreditos: false
         };
 
         $rootScope.gridAcoesPromocionais = {
@@ -5130,6 +5087,72 @@ angular.module("App.controllers", [])
                     field: 'validoAte',
                     width: '100',
                     displayName: 'Válido Até'
+                }
+            ]
+        };
+
+        $rootScope.creditos = [
+            {
+                id: 1,
+                emissor: 445646546,
+                limiteTotal: 110000.00,
+                limiteWhp: 85000.00,
+                exposicaoWRP: 25000.00,
+                emAbertoWRP: 50000.00
+            },
+            {
+                id: 2,
+                emissor: 98794656,
+                limiteTotal: 60000.00,
+                limiteWhp: 45000.00,
+                exposicaoWRP: 150000.00,
+                emAbertoWRP: 20000.00
+            },
+            {
+                id: 3,
+                emissor: 654654646,
+                limiteTotal: 160000.00,
+                limiteWhp: 145000.00,
+                exposicaoWRP: 115000.00,
+                emAbertoWRP: 90000.00
+            }
+        ];
+
+        $rootScope.gridCredito = {
+            data: 'creditos',
+            showColumnFooter: true,
+            columnDefs: [
+                {
+                    field: 'emissor',
+                    displayName: 'Emissor'
+                },
+                {
+                    field: 'limiteTotal',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    displayName: 'Limite Total',
+                    cellTemplate: '<div class="ui-grid-cell-contents" >{{COL_FIELD | currency:"R$ ":0 }}</div>',
+                    footerCellTemplate: '<div class="ui-grid-cell-contents" >Total: {{col.getAggregationValue() | currency:"R$ ":0 }}</div>'
+                },
+                {
+                    field: 'limiteWhp',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    displayName: 'Limite WHP',
+                    cellTemplate: '<div class="ui-grid-cell-contents" >{{COL_FIELD | currency:"R$ ":0 }}</div>',
+                    footerCellTemplate: '<div class="ui-grid-cell-contents" >Total: {{col.getAggregationValue() | currency:"R$ ":0 }}</div>'
+                },
+                {
+                    field: 'exposicaoWRP',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    cellTemplate: '<div class="ui-grid-cell-contents" >{{COL_FIELD | currency:"R$ ":0 }}</div>',
+                    displayName: 'Exposição WRP',
+                    footerCellTemplate: '<div class="ui-grid-cell-contents" >Total: {{col.getAggregationValue() | currency:"R$ ":0 }}</div>'
+                },
+                {
+                    field: 'emAbertoWRP',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    cellTemplate: '<div class="ui-grid-cell-contents" >{{COL_FIELD | currency:"R$ ":0 }}</div>',
+                    footerCellTemplate: '<div class="ui-grid-cell-contents" >Total: {{col.getAggregationValue() | currency:"R$ ":0 }}</div>',
+                    displayName: 'Em Aberto WRP.'
                 }
             ]
         };

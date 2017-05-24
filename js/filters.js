@@ -27,4 +27,10 @@ angular.module("App.filters", [])
             }
             return null;
         }
+    })
+    .filter('currencyFilter', function () {
+
+        return function (value, scope) {
+            return 'R$' + value.toFixed(2);
+        };
     });

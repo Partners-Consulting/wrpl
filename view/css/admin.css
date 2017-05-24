@@ -888,3 +888,7 @@ span.glyphicon.glyphicon-chevron-left:hover {
 .grid-busca-material {
     height: 300px;
 }
+
+.carousel-indicators{
+    display: none;
+}
