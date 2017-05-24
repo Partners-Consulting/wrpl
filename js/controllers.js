@@ -2273,7 +2273,7 @@ angular.module("App.controllers", [])
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
-                closeOnConfirm: false,
+                closeOnConfirm: true,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
             };
