@@ -2284,11 +2284,6 @@ angular.module("App.controllers", [])
                         angular.forEach($scope.gridApiMateriais.selection.getSelectedRows(), function (data, index) {
                             $scope.listaMateriais.splice($scope.listaMateriais.lastIndexOf(data), 1);
                         });
-                        SweetAlert.swal({
-                            title: "Sucesso",
-                            text: "Itens de simulação excluídos com sucesso",
-                            customClass: 'sweetalert-sm'
-                        });
 
                     } else {
                         return;
