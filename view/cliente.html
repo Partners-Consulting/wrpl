@@ -1,5 +1,5 @@
 <div class="row">
-    <panel title="Dados Revenda" icon="fa-user" height="37" col="6">
+    <panel title="Dados Revenda" icon="fa-user" height="39" col="6">
         <panel-actions>
             <button type="button" class="btn btn-blue btn-xs" ng-click="editarDadosCliente()">
                 <i class="fa fa-arrows-alt" aria-hidden="true"></i></button>
@@ -36,7 +36,7 @@
         </div>
     </panel>
 
-    <panel title="{{painelTabela.tituloTabelaAtual}}" icon="fa-bookmark" height="37" col="6">
+    <panel title="{{painelTabela.tituloTabelaAtual}}" icon="fa-bookmark" height="39" col="6">
         <panel-actions ng-if="painelTabela.tabelaAtual == 1">
             <input class="input-xs" type="text" ng-model="gridApiProcessos.grid.columns[3].filters[0].term"
                    placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome">
@@ -92,7 +92,7 @@
     </panel>
 </div>
 <div class="row">
-    <panel id="perfil" title="Perfil da Revenda" icon="fa-shopping-cart" height="63" col="6">
+    <panel id="perfil" title="Perfil da Revenda" icon="fa-shopping-cart" height="65" col="6">
         <panel-actions>
             <button type="button" class="btn btn-blue btn-xs" ng-show="isBlocked" ng-click="editarPerfilDeRevenda()"><i
                     class="fa fa-pencil" aria-hidden="true"></i></button>
@@ -212,7 +212,7 @@
             </div>
         </div>
     </panel>
-    <panel title="Notas" icon="fa-comments" height="63" col="6">
+    <panel title="Notas" icon="fa-comments" height="65" col="6">
         <div class="row">
             <div class="col-md-6">
                 <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
