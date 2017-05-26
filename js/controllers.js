@@ -33,6 +33,7 @@ angular.module("App.controllers", [])
     .controller("ClienteController", function ($scope, $rootScope, $location, $uibModal, SweetAlert, moment) {
         "use strict";
 
+
         $scope.selectedClientB = {};
         $scope.filtro2 = "";
         $scope.filtro3 = "";
@@ -47,15 +48,25 @@ angular.module("App.controllers", [])
         $scope.perfilLoja4 = 0;
         $scope.titulo = 'Últimos Processos';
         $scope.painelTabela = {
-            quantidadeDeTabela: 4,
+            quantidadeDeTabela: 3,
             tabelaAtual: 1,
             tituloTabelaAtual: 'Últimos Processos'
         }
         $scope.processos = [
             {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
+            {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
+            {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
             {data: "20.04.17", cliente: "Carrefour", processo: 564654, status: "Pendente"}
         ];
         $scope.contatos = [
+            {
+
+                data: "14.04.17",
+                descricao: "0000456456",
+                emissor: 423476,
+                statusTitulo: "Aguardando retorno",
+                statusCorpo: "Atualização: 03.05.2017 - PHERMANN\n\nAguardando retorno do cliente"
+            },
             {
 
                 data: "14.04.17",
@@ -131,31 +142,35 @@ angular.module("App.controllers", [])
 
         $scope.gridProcessos = {
             enableGridMenu: true,
+            rowHeight: 20,
             enableFiltering: true,
             enableHorizontalScrollbar: 0,
             data: 'processos',
             columnDefs: [
                 {
                     field: 'data',
+                    width: '100',
                     headerCellClass: 'background-color:gray',
                     displayName: 'Data'
                 },
                 {
                     field: 'cliente',
+                    width: '120',
                     displayName: 'Cliente'
                 },
                 {
                     field: 'processo',
+                    width: '150',
                     displayName: 'Processo'
                 },
                 {
                     field: 'status',
+                    width: '150',
                     displayName: 'Status'
                 }
 
             ]
         };
-
         $scope.gridApiProcessos = {};
         $scope.gridProcessos.onRegisterApi = function (gridApi) {
             $scope.gridApiProcessos = gridApi;
@@ -163,6 +178,7 @@ angular.module("App.controllers", [])
 
         $scope.gridContatos = {
             enableGridMenu: true,
+            rowHeight: 20,
             enableHorizontalScrollbar: 0,
             data: 'contatos',
             columnDefs: [{
@@ -186,6 +202,7 @@ angular.module("App.controllers", [])
         $scope.gridLinhaBranca = {
             enableHorizontalScrollbar: 0,
             enableGridMenu: true,
+            rowHeight: 20,
             enableFiltering: true,
             data: 'linhaBranca',
             columnDefs: [{
@@ -197,7 +214,9 @@ angular.module("App.controllers", [])
                 enableFiltering: false
             }, {
                 field: 'acao',
-                displayName: 'Ação',
+                width: '10',
+                enableColumnMenu: false,
+                displayName: '',
                 enableFiltering: false,
                 cellTemplate: '  <div class="action-buttons"> ' +
                 ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarLinhaBranca(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
@@ -213,6 +232,8 @@ angular.module("App.controllers", [])
 
         $scope.gridConcorrentes = {
             enableHorizontalScrollbar: 0,
+            enableColumnMenus: false,
+            rowHeight: 20,
             enableGridMenu: true,
             data: 'concorrentesRevenda',
             columnDefs: [{
@@ -220,7 +241,8 @@ angular.module("App.controllers", [])
                 displayName: 'Nome'
             }, {
                 field: 'acao',
-                displayName: 'Ação',
+                displayName: '',
+                enableColumnMenu: false,
                 cellTemplate: '  <div class="action-buttons"> ' +
                 ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarConcorrenteRevenda(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
                 ' </div>'
@@ -249,9 +271,9 @@ angular.module("App.controllers", [])
                     }
                 });
 
+            } else {
+                $scope.selectedClientB = angular.copy($rootScope.selectedClient);
             }
-
-            $scope.selectedClientB = angular.copy($rootScope.selectedClient);
             $scope.geraisB = angular.copy($scope.gerais);
         }
 
@@ -291,9 +313,7 @@ angular.module("App.controllers", [])
             } else if ($scope.painelTabela.tabelaAtual == 2) {
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
             } else if ($scope.painelTabela.tabelaAtual == 3) {
-                $scope.painelTabela.tituloTabelaAtual = 'Concorrentes Linha Branca';
-            } else if ($scope.painelTabela.tabelaAtual == 4) {
-                $scope.painelTabela.tituloTabelaAtual = 'Concorrentes Revenda';
+                $scope.painelTabela.tituloTabelaAtual = 'Concorrentes';
             }
         };
 
@@ -562,7 +582,50 @@ angular.module("App.controllers", [])
         $scope.cancelarNotas = function () {
             $scope.gerais = angular.copy($scope.geraisB);
             $scope.mostra = !$scope.mostra;
-        }
+        };
+
+        $rootScope.dadosGraficos = [
+            {
+                "x": "Fogão",
+                "voltyd16": 1,
+                "voltyd17": 0
+            }, {
+                "x": "Forno Microondas",
+                "voltyd16": 0,
+                "voltyd17": 6
+            }, {
+                "x": "Freezer Horizontal",
+                "voltyd16": 0,
+                "voltyd17": 3
+            }, {
+                "x": "Freezer Vertical",
+                "voltyd16": 0,
+                "voltyd17": 2
+            }, {
+                "x": "Lavadora Roupas",
+                "voltyd16": 1,
+                "voltyd17": 8
+            }, {
+                "x": "Refrigerador Elétrico",
+                "voltyd16": 12,
+                "voltyd17": 11
+            }];
+
+        $rootScope.dadosGraficosColunas = [
+            {
+                "id": "voltyd16",
+                "type": "bar",
+                "name": "voltyd16"
+            },
+            {
+                "id": "voltyd17",
+                "type": "bar",
+                "name": "voltyd17"
+            }];
+
+        $rootScope.datax = {
+            "id": "x"
+        };
 
     })
     .controller("ModalSelecionarClienteCtrl", function ($scope, $rootScope, $location, $uibModalInstance, _, url, ClienteService) {
@@ -573,6 +636,7 @@ angular.module("App.controllers", [])
         $scope.bloqueiaCNPJ = false;
         $scope.bloqueiaEmail = false;
         $scope.bloqueiaId = false;
+        $scope.filtroCliente = true;
         $scope.busca = {
             cnpj: "",
             id: "",
@@ -594,16 +658,28 @@ angular.module("App.controllers", [])
             }
         };
 
-        $scope.todosClientes = function (){
+        $scope.todosClientes = function () {
+            $scope.filtroCliente = false;
             $scope.listaClientes = ClienteService.buscaTodosClientes();
         };
 
-        $scope.selectClient = function (client) {
-            //console.log("selectClient() " + client);
-            $uibModalInstance.dismiss('cancel');
+        $scope.buscaClienteFiltrado = function () {
+            $scope.filtroCliente = true;
+            $scope.listaClientes = ClienteService.buscaClientesPorIdDoVendedor(1);
+        };
 
-            $rootScope.selectedClient = client;
-            $location.path($scope.url);
+        $scope.selectClient = function (cliente) {
+            //console.log("selectClient() " + client);
+
+            if (!!$rootScope.selectedClient && cliente.clienteEmissorId == $rootScope.selectedClient.clienteEmissorId) {
+                $uibModalInstance.dismiss('cancel');
+            } else {
+                $uibModalInstance.dismiss('cancel');
+
+                $rootScope.selectedClient = cliente;
+                $location.path($scope.url);
+            }
+
         };
 
         $scope.bloqueiaBusca = function () {
@@ -802,10 +878,10 @@ angular.module("App.controllers", [])
 
         $scope.agrupadoresClientes = [
             {
-                clienteEmissorId: 974651321318,
+                clienteEmissorId: 9746513213,
                 agrupador: 123456789,
                 razao: "CARREFOUR",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -817,10 +893,10 @@ angular.module("App.controllers", [])
                 status: "EM PROCESSAMENTO"
             },
             {
-                clienteEmissorId: 974651321318,
+                clienteEmissorId: 9746513213,
                 agrupador: 123456789,
                 razao: "CARREFOUR",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -830,7 +906,7 @@ angular.module("App.controllers", [])
                 cep: "88410-000",
                 inscricaoEstadual: "255155603",
                 status: "EM PROCESSAMENTO"
-            },
+            }
         ];
 
         $scope.gridAgrupadorXCliente = {
@@ -839,13 +915,13 @@ angular.module("App.controllers", [])
             data: 'agrupadoresClientes',
             columnDefs: [
                 {field: 'agrupador', width: '150', displayName: 'Cliente agrupador'},
-                {field: 'clienteEmissorId', width: '150', displayName: 'Cliente Emissor'},
+                {field: 'clienteEmissorId', width: '110', displayName: 'Cliente Emissor'},
                 {field: 'razao', width: '100', displayName: 'Nome'},
                 {field: 'cidade', width: '100', displayName: 'CIDADE'},
                 {field: 'uf', width: '70', displayName: 'ESTADO'},
-                {field: 'cnpj', width: '200', displayName: 'CNPJ'},
+                {field: 'cnpj', width: '110', displayName: 'CNPJ'},
                 {field: 'endereco', width: '200', displayName: 'ENDEREÇO'},
-                {field: 'cep', width: '100', displayName: 'CEP'},
+                {field: 'cep', width: '70', displayName: 'CEP'},
                 {field: 'telefone', width: '100', displayName: 'TELEFONE'},
                 {field: 'email', width: '250', displayName: 'EMAIL'},
                 {field: 'inscricaoEstadual', width: '200', displayName: 'INSCRIÇÃO ESTADUAL'},
@@ -957,17 +1033,17 @@ angular.module("App.controllers", [])
 
                 }
             );
-        }
+        };
 
         $scope.removerContato = function (contato) {
             $rootScope.tabelaDesnormalizada = _.without($rootScope.tabelaDesnormalizada, _.findWhere($rootScope.tabelaDesnormalizada, {id: contato.id}));
-        }
+        };
 
         $scope.deleteSelected = function () {
             angular.forEach($scope.gridApi.selection.getSelectedRows(), function (data, index) {
                 $scope.gridTabelaDesnormalizada.data.splice($scope.gridTabelaDesnormalizada.data.lastIndexOf(data), 1);
             });
-        }
+        };
 
         $scope.adicionarTelefone = function (telefone) {
             var modalInstance = $uibModal.open({
@@ -1073,7 +1149,7 @@ angular.module("App.controllers", [])
 
                 }
             );
-        }
+        };
 
         $scope.editarContato = function (contato) {
             var modalInstance = $uibModal.open({
@@ -1337,10 +1413,9 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, lista, $uibModal, $timeout) {
+    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, lista, $uibModal, $location, $timeout) {
 
         $scope.showDetalhe = false;
-        $scope.listaMateriais = lista;
 
         $scope.gridSimulacao = {
             enableRowSelection: true,
@@ -1352,25 +1427,25 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'codigo',
-                    width: '250',
+                    width: '150',
                     displayName: 'Material',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'modelo',
-                    width: '260',
+                    width: '150',
                     displayName: 'Modelo',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'cor',
-                    width: '200',
+                    width: '150',
                     displayName: 'Cor',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'voltagem',
-                    width: '70',
+                    width: '80',
                     displayName: 'Voltagem',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
@@ -1450,7 +1525,7 @@ angular.module("App.controllers", [])
                     $scope.showDetalhe = true;
                 }
             }, 0)
-        }
+        };
 
         $scope.programarEntrega = function () {
             var modalInstance = $uibModal.open({
@@ -1459,17 +1534,18 @@ angular.module("App.controllers", [])
                 controller: 'ModalProgramarEntregaCtrl',
                 size: 'md'
             });
-        }
+        };
 
         $scope.efetivarOvStep2 = function () {
-            var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: './view/efetivar-ov2.html',
-                controller: 'ModalEfetivarOv2Ctrl',
-                backdrop: 'static',
-                size: 'lg'
-            });
-        }
+            /*var modalInstance = $uibModal.open({
+             animation: true,
+             templateUrl: './view/efetivar-ov2.html',
+             controller: 'ModalEfetivarOv2Ctrl',
+             backdrop: 'static',
+             size: 'lg'
+             });*/
+            $location.path("/efetivarOv2")
+        };
 
         $scope.close = function () {
             $uibModalInstance.close();
@@ -1477,6 +1553,10 @@ angular.module("App.controllers", [])
 
         $scope.replicar = function () {
             $uibModalInstance.close();
+        };
+
+        $scope.goBackSimulacao = function () {
+            $location.path("/simulacoes");
         }
 
     })
@@ -1541,11 +1621,11 @@ angular.module("App.controllers", [])
 
         $scope.materiais = {
             codigos: ""
-        }
+        };
 
         $scope.abriDetalhe = function (materiais) {
             $scope.showDetalhe = !$scope.showDetalhe;
-        }
+        };
 
         $scope.materiaisAchados = [];
 
@@ -1609,7 +1689,7 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, $uibModalInstance, _) {
+    .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, _, $location) {
 
         $scope.showDetalhe = false;
 
@@ -1618,7 +1698,7 @@ angular.module("App.controllers", [])
             "TRUCK BAU",
             "TOCO ABERTO",
             "TOCO BAU"
-        ]
+        ];
 
         $scope.listaOrdenASeremEfetivadas = [
             {
@@ -1661,7 +1741,11 @@ angular.module("App.controllers", [])
                 ordem: "",
                 imprimir: ""
             }
-        ]
+        ];
+
+        $scope.goBackOv = function () {
+            $location.path("/efetivarOv")
+        };
 
         $scope.textoOv = [
             {
@@ -1681,7 +1765,7 @@ angular.module("App.controllers", [])
                     abreviado: "PHERMANN"
                 }
             }
-        ]
+        ];
 
         $scope.textoSimulacao = [
             {
@@ -1701,11 +1785,11 @@ angular.module("App.controllers", [])
                     abreviado: "PHERMANN"
                 }
             }
-        ]
+        ];
 
         $scope.abriDetalhe = function (materiais) {
             $scope.showDetalhe = !$scope.showDetalhe;
-        }
+        };
 
         $scope.brindesEBonificacoes = function () {
             var modalInstance = $uibModal.open({
@@ -1715,7 +1799,7 @@ angular.module("App.controllers", [])
                 backdrop: 'static',
                 size: 'lg'
             });
-        }
+        };
 
         $scope.gridOrdenASeremEfetivadas = {
             data: 'listaOrdenASeremEfetivadas',
@@ -1817,7 +1901,7 @@ angular.module("App.controllers", [])
 
         $scope.alterarSituacaoCarga = function (item) {
             item.situacaoCarga = !item.situacaoCarga;
-        }
+        };
 
         $scope.gridDetalhe = {
             data: 'listaMateriais',
@@ -1880,15 +1964,15 @@ angular.module("App.controllers", [])
                 controller: 'ModalProgramarEntregaCtrl',
                 size: 'md'
             });
-        }
+        };
 
         $scope.removeTextoOv = function (texto) {
             $scope.textoOv = _.without($scope.textoOv, _.findWhere($scope.textoOv, {id: texto.id}));
-        }
+        };
 
         $scope.removeTextoSimulacao = function (texto) {
             $scope.textoSimulacao = _.without($scope.textoSimulacao, _.findWhere($scope.textoSimulacao, {id: texto.id}));
-        }
+        };
 
         $scope.adicionarTextoOv = function () {
             var modalInstance = $uibModal.open({
@@ -1908,7 +1992,7 @@ angular.module("App.controllers", [])
 
         $scope.efetivarOrdensDeVenda = function () {
             $scope.listaOrdenASeremEfetivadas[0].ordem = 123123213;
-        }
+        };
 
         $scope.close = function () {
             $uibModalInstance.close();
@@ -1916,7 +2000,7 @@ angular.module("App.controllers", [])
 
         $scope.replicar = function () {
             $uibModalInstance.close();
-        }
+        };
 
     })
     .controller("ModalMaterialCompletoCtrl", function ($scope, $rootScope, $uibModalInstance, material, CentroService, LocalExpedicaoService, IncotermsService) {
@@ -2027,16 +2111,20 @@ angular.module("App.controllers", [])
         };
 
     })
-    .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService, CentroService, LocalExpedicaoService, IncotermsService, SweetAlert) {
+    .controller("SimulacoesController", function ($scope, $rootScope, $location, _, $uibModal, MaterialService, CentroService, LocalExpedicaoService, IncotermsService, SweetAlert, uiGridConstants) {
         "use strict";
         $scope.gotoDev = function () {
             $location.path("/dev");
         };
 
-        $scope.listaMateriais = [];
+        $rootScope.listaMateriais = [];
+        $scope.filtro={
+            filtroUltimasSimulacoes : ""
+        };
         $scope.listaDeCentros = [];
         $scope.listaDeLocaisExpedicao = [];
         $scope.listaDeIncoterms = [];
+        $scope.replicas = [];
 
         function init() {
             if ($rootScope.selectedClient == null) {
@@ -2055,10 +2143,11 @@ angular.module("App.controllers", [])
 
             }
             //todo fazer padrão promessa
-            $scope.listaMateriais = MaterialService.consultaMaterial();
+            $rootScope.listaMateriais = MaterialService.consultaMaterial();
             $scope.listaDeCentros = CentroService.consultaCentroPorMaterial(1);
             $scope.listaDeLocaisExpedicao = LocalExpedicaoService.consultaLocalExpedicaoPorMaterial(1);
             $scope.listaDeIncoterms = IncotermsService.consultaIncotermsPorMaterial(1);
+            $scope.replicas = MaterialService.consultaReplicas();
         }
 
         init();
@@ -2087,12 +2176,12 @@ angular.module("App.controllers", [])
              backdrop: 'static',
              resolve: {
              materiais: function () {
-             return $scope.listaMateriais;
+             return $rootScope.listaMateriais;
              }
              }
              });*/
 
-            $location.path("/efetivarOv").search({params: $scope.listaMateriais})
+            $location.path("/efetivarOv");
         };
 
         $scope.consultarMaterialCompleto = function (id) {
@@ -2134,52 +2223,147 @@ angular.module("App.controllers", [])
             {sppi: 17, denominacao: "TRUCK BAU"},
             {sppi: 18, denominacao: "TOCO ABERTO"},
             {sppi: 19, denominacao: "TOCO BAU"}
-        ]
+        ];
+
+        $scope.gridReplicas = {
+            enableHorizontalScrollbar: 0,
+            enableGridMenu: true,
+            data: 'replicas',
+            columnDefs: [
+                {
+                    field: 'orgVendas',
+                    width: '40',
+                    displayName: 'OV'
+                },
+                {
+                    field: 'canal',
+                    width: '40',
+                    displayName: 'CD'
+                },
+                {
+                    field: 'setor',
+                    width: '40',
+                    displayName: 'SA'
+                },
+                {
+                    displayName: 'Cond.Pgto',
+                    width: '80',
+                    field: 'condPagtos',
+                    enableCellEdit: false,
+                    cellTemplate: '<select ng-model="condPagtos" ng-options="pgto for pgto in COL_FIELD"></select>'
+                },
+                {
+                    field: 'incoterms',
+                    width: '60',
+                    displayName: 'Inc',
+                    enableCellEdit: false,
+                    cellTemplate: '<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
+                },
+                {
+                    displayName: 'Cond.Frete',
+                    width: '100',
+                    field: 'condFrete',
+                    enableCellEdit: false,
+                    cellTemplate: '<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
+                }
+            ]
+        };
+
+        $scope.gridApiReplicas = {};
+        $scope.gridReplicas.onRegisterApi = function (gridApi) {
+            $scope.gridApiReplicas = gridApi;
+        };
+
+        $scope.excluirReplicasSelecionadas = function () {
+            if ($scope.replicas.length <= 0 || $scope.gridApiReplicas.selection.getSelectedRows().length <= 0) {
+                return;
+            }
+            var alertExclusao = {
+                title: "Exclusão de replicas",
+                text: "Tem certeza que gostaria de excluir as replicas selecionadas?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Sim, excluir!",
+                closeOnConfirm: false,
+                closeOnCancel: true,
+                showLoaderOnConfirm: true
+            };
+            SweetAlert.swal(
+                alertExclusao, function (isConfirm) {
+                    if (isConfirm) {
+
+                        angular.forEach($scope.gridApiReplicas.selection.getSelectedRows(), function (data, index) {
+                            $scope.replicas.splice($scope.replicas.lastIndexOf(data), 1);
+                        });
+                        SweetAlert.swal({
+                            title: "Sucesso",
+                            text: "Replicas excluídas com sucesso",
+                            customClass: 'sweetalert-sm'
+                        });
+
+                    } else {
+                        return;
+                    }
+
+                }
+            );
+        };
+
+        $scope.replicar = function () {
+            $uibModalInstance.close();
+        };
 
         $scope.gridMateriais = {
             enableHorizontalScrollbar: true,
+            showColumnFooter: true,
             enableGridMenu: true,
-            rowHeight: 20,
+            rowHeight: 19,
             data: 'listaMateriais',
             columnDefs: [
                 {
                     field: 'acao',
+                    enableColumnMenu: false,
                     enableCellEdit: false,
-                    width: '70',
-                    displayName: 'Ação',
+                    width: '20',
+                    displayName: '',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="black" style="color: black"  ng-click="grid.appScope.abrirHitoriocoMaterial(row.entity)" href=""><i class="fa fa-book bigger-130"></i></a>' +
                     ' </div>'
                 },
                 {
                     field: 'codigo',
-                    width: '150',
+                    width: '100',
+                    pinnedLeft:true,
                     displayName: 'Material',
                     cellTemplate: '  <a href="" ng-click="grid.appScope.consultarMaterialCompleto(COL_FIELD)">{{COL_FIELD}}</a>'
                 },
                 {
                     field: 'cor',
-                    width: '150',
+                    width: '80',
+                    pinnedLeft:true,
                     displayName: 'Cor'
                 },
                 {
                     field: 'voltagem',
-                    width: '150',
+                    width: '80',
+                    pinnedLeft:true,
                     displayName: 'Voltagem'
                 },
                 {
                     field: 'condPagto',
-                    width: '150',
-                    displayName: 'Cond. Pagamento'
+                    width: '100',
+                    displayName: 'Cond. Pgto'
                 },
                 {
                     field: 'quantidade',
-                    width: '150',
+                    width: '90',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
                     displayName: 'Quantidade'
                 },
                 {
                     field: 'situacaoCarga',
-                    width: '150',
+                    width: '80',
                     displayName: 'Sit. Carga',
                     cellTemplate: ' <div ng-click="grid.appScope.alterarSituacaoCarga(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
@@ -2189,83 +2373,85 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'precFlexibilidade',
-                    width: '150',
+                    width: '80',
                     displayName: '%Flexib'
                 },
                 {
                     field: 'percRedutorDesconto',
-                    width: '150',
+                    width: '80',
                     displayName: '%Redut.'
                 },
                 {
                     field: 'pvl',
-                    width: '150',
+                    width: '80',
                     displayName: 'PVL'
                 },
                 {
                     field: 'condPagtoFrete',
-                    width: '150',
+                    width: '80',
                     displayName: 'Cond. Frete',
                     enableCellEdit: false,
                     cellTemplate: '<select ng-model="condPagtoFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     field: 'valorFrete',
-                    width: '150',
-                    displayName: 'VL. Frete'
+                    width: '80',
+                    displayName: 'VL.Frete'
                 },
                 {
                     field: 'valorFreteMlog',
-                    width: '150',
-                    displayName: 'VL. Frete MLOG'
+                    width: '80',
+                    displayName: 'VL.Frete MLOG'
                 },
                 {
                     field: 'valorNotaFiscalUnitario',
-                    width: '150',
+                    width: '100',
                     displayName: 'Valor NF Unit.'
                 },
                 {
                     field: 'valorNotaFiscalTotal',
-                    width: '150',
+                    width: '100',
+                    aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellTemplate: '<div class="ui-grid-cell-contents" >Total: {{col.getAggregationValue() | currency:"R$ ":2 }}</div>',
                     displayName: 'Valor NF Total'
                 },
                 {
                     field: 'valorComIcms',
-                    width: '150',
-                    displayName: 'VL. C/ ICMS'
+                    width: '100',
+                    displayName: 'VL.C/ ICMS'
                 },
                 {
                     field: 'valorComIpi',
-                    width: '150',
-                    displayName: 'VL. C/ IPI'
+                    width: '100',
+                    displayName: 'VL.C/ IPI'
                 },
                 {
                     field: 'valorComIcmsSt',
-                    width: '150',
-                    displayName: 'VL. C/ ICMS ST'
+                    width: '100',
+                    displayName: 'VL.C/ ICMS ST'
                 },
                 {
                     displayName: 'Centro',
-                    width: '150',
+                    width: '80',
                     enableCellEdit: false,
                     field: 'centro',
                     cellTemplate: '<select ng-model="centro" ng-options="centro for centro in COL_FIELD"></select>'
                 },
                 {
                     displayName: 'Local Expedicao',
-                    width: '150',
+                    width: '110',
                     field: 'localExpedicao',
                     enableCellEdit: false,
                     cellTemplate: '<select ng-model="localExpedicao" ng-options="local for local in COL_FIELD"></select>'
                 },
                 {
                     field: 'juros',
-                    width: '150',
+                    width: '80',
                     displayName: '%Juros'
                 },
                 {
                     field: 'descricao',
-                    width: '150',
+                    width: '80',
                     displayName: 'Descricao'
                 }
             ]
@@ -2277,7 +2463,7 @@ angular.module("App.controllers", [])
         };
 
         $scope.deletarMateriaisSelecionados = function () {
-            if ($scope.listaMateriais.length <= 0 || $scope.gridApiMateriais.selection.getSelectedRows().length <= 0) {
+            if ($rootScope.listaMateriais.length <= 0 || $scope.gridApiMateriais.selection.getSelectedRows().length <= 0) {
                 return;
             }
             var alertExclusao = {
@@ -2296,7 +2482,7 @@ angular.module("App.controllers", [])
                     if (isConfirm) {
 
                         angular.forEach($scope.gridApiMateriais.selection.getSelectedRows(), function (data, index) {
-                            $scope.listaMateriais.splice($scope.listaMateriais.lastIndexOf(data), 1);
+                            $rootScope.listaMateriais.splice($rootScope.listaMateriais.lastIndexOf(data), 1);
                         });
 
                     } else {
@@ -2312,7 +2498,7 @@ angular.module("App.controllers", [])
                 id: 1,
                 data: '15.04.2017',
                 descricao: '',
-                emissor: '',
+                emissor: '1234567890',
                 valor: 'R$ 76.000,00',
                 status: 'GRAVADA'
             },
@@ -2320,7 +2506,7 @@ angular.module("App.controllers", [])
                 id: 2,
                 data: '05.04.2017',
                 descricao: '',
-                emissor: '',
+                emissor: '1234567890',
                 valor: 'R$ 44.000,00',
                 status: 'EFETUADA'
             },
@@ -2328,7 +2514,7 @@ angular.module("App.controllers", [])
                 id: 3,
                 data: '25.03.2017',
                 descricao: '',
-                emissor: '',
+                emissor: '1234567890',
                 valor: 'R$ 150.000,00',
                 status: 'GRAVADA'
             },
@@ -2336,7 +2522,7 @@ angular.module("App.controllers", [])
                 id: 4,
                 data: '10.02.2017',
                 descricao: '',
-                emissor: '',
+                emissor: '1234567890',
                 valor: 'R$ 99.000,00',
                 status: 'CANCELADA'
             }
@@ -2360,7 +2546,7 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'emissor',
-                    width: '200',
+                    width: '100',
                     displayName: 'Emissor'
                 },
                 {
@@ -2374,6 +2560,7 @@ angular.module("App.controllers", [])
         $scope.gridApiUltimasSimulacoes = {};
         $scope.gridUltimasSimulacoes.onRegisterApi = function (gridApi) {
             $scope.gridApiUltimasSimulacoes = gridApi;
+            $scope.gridApiUltimasSimulacoes.grid.registerRowsProcessor( $scope.filtraUltimasSimulacoesApi, 200 );
         };
 
         $rootScope.simulacaoPontuais = [
@@ -2419,7 +2606,7 @@ angular.module("App.controllers", [])
 
             modalInstance.result.then(function (listaMateriais) {
                 angular.forEach(listaMateriais, function (data, index) {
-                    $scope.listaMateriais.push(data);
+                    $rootScope.listaMateriais.push(data);
                 });
 
             });
@@ -2544,7 +2731,28 @@ angular.module("App.controllers", [])
 
                 }
             );
-        }
+        };
+
+        $scope.filtraUltimasSimulacoes = function(){
+            $scope.gridApiUltimasSimulacoes.grid.refresh();
+        };
+
+        $scope.filtraUltimasSimulacoesApi = function (renderableRows) {
+            var matcher = new RegExp($scope.filtro.filtroUltimasSimulacoes.toLowerCase());
+            renderableRows.forEach(function (row) {
+                var match = false;
+                ['data', 'status'].forEach(function (field) {
+                    var temp = row.entity[field].toLowerCase();
+                    if (temp.match(matcher)) {
+                        match = true;
+                    }
+                });
+                if (!match) {
+                    row.visible = false;
+                }
+            });
+            return renderableRows;
+        };
 
     })
     .controller("GraficosController", function ($scope, $rootScope) {
@@ -2594,15 +2802,20 @@ angular.module("App.controllers", [])
         };
 
     })
-    .controller("ClientesController", function ($scope, $rootScope) {
-
-
-    })
     .controller("MainController", function ($scope, $rootScope, $filter, $uibModal, $document, $location, UsuarioService, AcaoPromocionalService, uiGridConstants) {
         "use strict";
         $rootScope.gotoCliente = function () {
-            $rootScope.selectedClient = null;
-            $location.path("/selecionarCliente");
+            var modalInstance = $uibModal.open({
+                animation: true,
+                templateUrl: './view/selecionar-cliente.html',
+                controller: 'ModalSelecionarClienteCtrl',
+                size: "lg",
+                resolve: {
+                    url: function () {
+                        return "/cliente";
+                    }
+                }
+            });
         };
         $rootScope.numeroSimulacao = "";
         $rootScope.sapLink = function () {
@@ -2779,7 +2992,7 @@ angular.module("App.controllers", [])
             {
                 clienteEmissorId: 974651321318,
                 razao: "CARREFOUR",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -2933,7 +3146,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente1",
                 email: "cliente1@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3024,7 +3237,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente2",
                 email: "cliente2@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3115,7 +3328,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente3",
                 email: "cliente3@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3206,7 +3419,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente4",
                 email: "cliente4@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3297,7 +3510,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente5",
                 email: "cliente5@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3388,7 +3601,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente6",
                 email: "cliente6@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3479,7 +3692,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente7",
                 email: "cliente7@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3570,7 +3783,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente8",
                 email: "cliente8@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3661,7 +3874,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente9",
                 email: "cliente9@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3752,7 +3965,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente10",
                 email: "cliente10@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3843,7 +4056,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente11",
                 email: "cliente11@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -3934,7 +4147,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente12",
                 email: "cliente12@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -4025,7 +4238,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente13",
                 email: "cliente13@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -4116,7 +4329,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente14",
                 email: "cliente14@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -4207,7 +4420,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente15",
                 email: "cliente15@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -4298,7 +4511,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente16",
                 email: "cliente16@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -4389,7 +4602,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente17",
                 email: "cliente17@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -4480,7 +4693,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente18",
                 email: "cliente18@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -4571,7 +4784,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente19",
                 email: "cliente19@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -4662,7 +4875,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente20",
                 email: "cliente20@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -4753,7 +4966,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente21",
                 email: "cliente21@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",
@@ -4844,7 +5057,7 @@ angular.module("App.controllers", [])
                 clienteEmissorId: 974651321318,
                 razao: "Cliente22",
                 email: "cliente22@carrefour.com",
-                cnpj: "08.675.549/0001-56",
+                cnpj: "08675549000156",
                 cidade: "SÃO PAULO",
                 endereco: "RUA PROCOPIO LOHN",
                 uf: "SP",

@@ -25,7 +25,7 @@ angular.module("App.services", [])
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
-                        quantidade: "5PC",
+                        quantidade: 5,
                         situacaoCarga: false,
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
@@ -41,8 +41,8 @@ angular.module("App.services", [])
                         ],
                         valorFrete: "",
                         valorFreteMlog: "",
-                        valorNotaFiscalUnitario: "521.33",
-                        valorNotaFiscalTotal: "521.33",
+                        valorNotaFiscalUnitario: 521.33,
+                        valorNotaFiscalTotal: 521.33,
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
@@ -69,7 +69,7 @@ angular.module("App.services", [])
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
-                        quantidade: "5PC",
+                        quantidade: 5,
                         situacaoCarga: false,
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
@@ -85,8 +85,8 @@ angular.module("App.services", [])
                         ],
                         valorFrete: "",
                         valorFreteMlog: "",
-                        valorNotaFiscalUnitario: "521.33",
-                        valorNotaFiscalTotal: "521.33",
+                        valorNotaFiscalUnitario: 521.33,
+                        valorNotaFiscalTotal: 521.33,
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
@@ -113,7 +113,7 @@ angular.module("App.services", [])
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
-                        quantidade: "5PC",
+                        quantidade: 5,
                         situacaoCarga: false,
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
@@ -129,8 +129,8 @@ angular.module("App.services", [])
                         ],
                         valorFrete: "",
                         valorFreteMlog: "",
-                        valorNotaFiscalUnitario: "521.33",
-                        valorNotaFiscalTotal: "521.33",
+                        valorNotaFiscalUnitario: 521.33,
+                        valorNotaFiscalTotal: 521.33,
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
@@ -157,7 +157,7 @@ angular.module("App.services", [])
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
-                        quantidade: "5PC",
+                        quantidade: 5,
                         situacaoCarga: false,
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
@@ -173,8 +173,8 @@ angular.module("App.services", [])
                         ],
                         valorFrete: "",
                         valorFreteMlog: "",
-                        valorNotaFiscalUnitario: "521.33",
-                        valorNotaFiscalTotal: "521.33",
+                        valorNotaFiscalUnitario: 521.33,
+                        valorNotaFiscalTotal: 521.33,
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
@@ -201,7 +201,7 @@ angular.module("App.services", [])
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
-                        quantidade: "5PC",
+                        quantidade: 5,
                         situacaoCarga: false,
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
@@ -217,8 +217,8 @@ angular.module("App.services", [])
                         ],
                         valorFrete: "",
                         valorFreteMlog: "",
-                        valorNotaFiscalUnitario: "521.33",
-                        valorNotaFiscalTotal: "521.33",
+                        valorNotaFiscalUnitario: 521.33,
+                        valorNotaFiscalTotal: 521.33,
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
@@ -245,7 +245,7 @@ angular.module("App.services", [])
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
-                        quantidade: "5PC",
+                        quantidade: 5,
                         situacaoCarga: false,
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
@@ -261,8 +261,8 @@ angular.module("App.services", [])
                         ],
                         valorFrete: "",
                         valorFreteMlog: "",
-                        valorNotaFiscalUnitario: "521.33",
-                        valorNotaFiscalTotal: "521.33",
+                        valorNotaFiscalUnitario: 521.33,
+                        valorNotaFiscalTotal: 521.33,
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
@@ -289,7 +289,7 @@ angular.module("App.services", [])
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
-                        quantidade: "5PC",
+                        quantidade: 5,
                         situacaoCarga: false,
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
@@ -305,8 +305,8 @@ angular.module("App.services", [])
                         ],
                         valorFrete: "",
                         valorFreteMlog: "",
-                        valorNotaFiscalUnitario: "521.33",
-                        valorNotaFiscalTotal: "521.33",
+                        valorNotaFiscalUnitario: 521.33,
+                        valorNotaFiscalTotal: 521.33,
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
@@ -333,7 +333,7 @@ angular.module("App.services", [])
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
-                        quantidade: "5PC",
+                        quantidade: 5,
                         situacaoCarga: false,
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
@@ -349,8 +349,8 @@ angular.module("App.services", [])
                         ],
                         valorFrete: "",
                         valorFreteMlog: "",
-                        valorNotaFiscalUnitario: "521.33",
-                        valorNotaFiscalTotal: "521.33",
+                        valorNotaFiscalUnitario: 521.33,
+                        valorNotaFiscalTotal: 521.33,
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
@@ -377,7 +377,7 @@ angular.module("App.services", [])
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
-                        quantidade: "5PC",
+                        quantidade: 5,
                         situacaoCarga: false,
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
@@ -393,8 +393,8 @@ angular.module("App.services", [])
                         ],
                         valorFrete: "",
                         valorFreteMlog: "",
-                        valorNotaFiscalUnitario: "521.33",
-                        valorNotaFiscalTotal: "521.33",
+                        valorNotaFiscalUnitario: 521.33,
+                        valorNotaFiscalTotal: 521.33,
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
@@ -421,7 +421,7 @@ angular.module("App.services", [])
                         cor: "Branca",
                         voltagem: "220V",
                         condPagto: "5020",
-                        quantidade: "5PC",
+                        quantidade: 5,
                         situacaoCarga: false,
                         precFlexibilidade: "",
                         percRedutorDesconto: "",
@@ -437,8 +437,8 @@ angular.module("App.services", [])
                         ],
                         valorFrete: "",
                         valorFreteMlog: "",
-                        valorNotaFiscalUnitario: "521.33",
-                        valorNotaFiscalTotal: "521.33",
+                        valorNotaFiscalUnitario: 521.33,
+                        valorNotaFiscalTotal: 521.33,
                         valorComIcms: "472.20",
                         valorComIpi: "491.09",
                         valorComIcmsSt: "0.00",
@@ -654,8 +654,8 @@ angular.module("App.services", [])
                     valorDeIcmsSt: "0.00",
                     valorFreteMlog: "30.24",
                     valorFreteMlogTotal: "30.24",
-                    valorNotaFiscalUnitario: "521.33",
-                    valorNotaFiscalTotal: "521.33"
+                    valorNotaFiscalUnitario: 521.33,
+                    valorNotaFiscalTotal: 521.33
                 }
             },
             consultaHistoricoDeVenda: function (id) {
@@ -710,8 +710,8 @@ angular.module("App.services", [])
                     valorDeIcmsSt: "0.00",
                     valorFreteMlog: "30.24",
                     valorFreteMlogTotal: "30.24",
-                    valorNotaFiscalUnitario: "521.33",
-                    valorNotaFiscalTotal: "521.33"
+                    valorNotaFiscalUnitario: 521.33,
+                    valorNotaFiscalTotal: 521.33
                 }]
             }
         }
@@ -956,9 +956,9 @@ angular.module("App.services", [])
                 return [
 
                         {
-                            clienteEmissorId: 974651321318,
+                            clienteEmissorId: 974651321311,
                             razao: "CARREFOUR",
-                            cnpj: "08.675.549/0001-56",
+                            cnpj: "08675549000156",
                             cidade: "SÃO PAULO",
                             endereco: "RUA PROCOPIO LOHN",
                             uf: "SP",
@@ -1109,10 +1109,10 @@ angular.module("App.services", [])
                             }
                         },
                         {
-                            clienteEmissorId: 974651321318,
+                            clienteEmissorId: 974651321312,
                             razao: "Cliente1",
                             email: "cliente1@carrefour.com",
-                            cnpj: "08.675.549/0001-56",
+                            cnpj: "08675549000156",
                             cidade: "SÃO PAULO",
                             endereco: "RUA PROCOPIO LOHN",
                             uf: "SP",
@@ -1200,10 +1200,10 @@ angular.module("App.services", [])
                             ]
                         },
                         {
-                            clienteEmissorId: 974651321318,
+                            clienteEmissorId: 974651321313,
                             razao: "Cliente2",
                             email: "cliente2@carrefour.com",
-                            cnpj: "08.675.549/0001-56",
+                            cnpj: "08675549000156",
                             cidade: "SÃO PAULO",
                             endereco: "RUA PROCOPIO LOHN",
                             uf: "SP",
@@ -1291,10 +1291,10 @@ angular.module("App.services", [])
                             ]
                         },
                         {
-                            clienteEmissorId: 974651321318,
+                            clienteEmissorId: 974651321314,
                             razao: "Cliente3",
                             email: "cliente3@carrefour.com",
-                            cnpj: "08.675.549/0001-56",
+                            cnpj: "08675549000156",
                             cidade: "SÃO PAULO",
                             endereco: "RUA PROCOPIO LOHN",
                             uf: "SP",
@@ -1382,10 +1382,10 @@ angular.module("App.services", [])
                             ]
                         },
                         {
-                            clienteEmissorId: 974651321318,
+                            clienteEmissorId: 974651321315,
                             razao: "Cliente4",
                             email: "cliente4@carrefour.com",
-                            cnpj: "08.675.549/0001-56",
+                            cnpj: "08675549000156",
                             cidade: "SÃO PAULO",
                             endereco: "RUA PROCOPIO LOHN",
                             uf: "SP",
@@ -1473,10 +1473,10 @@ angular.module("App.services", [])
                             ]
                         },
                         {
-                            clienteEmissorId: 974651321318,
+                            clienteEmissorId: 974651321316,
                             razao: "Cliente5",
                             email: "cliente5@carrefour.com",
-                            cnpj: "08.675.549/0001-56",
+                            cnpj: "08675549000156",
                             cidade: "SÃO PAULO",
                             endereco: "RUA PROCOPIO LOHN",
                             uf: "SP",
@@ -1564,10 +1564,10 @@ angular.module("App.services", [])
                             ]
                         },
                         {
-                            clienteEmissorId: 974651321318,
+                            clienteEmissorId: 974651321317,
                             razao: "Cliente6",
                             email: "cliente6@carrefour.com",
-                            cnpj: "08.675.549/0001-56",
+                            cnpj: "08675549000156",
                             cidade: "SÃO PAULO",
                             endereco: "RUA PROCOPIO LOHN",
                             uf: "SP",
@@ -1658,7 +1658,7 @@ angular.module("App.services", [])
                             clienteEmissorId: 974651321318,
                             razao: "Cliente7",
                             email: "cliente7@carrefour.com",
-                            cnpj: "08.675.549/0001-56",
+                            cnpj: "08675549000156",
                             cidade: "SÃO PAULO",
                             endereco: "RUA PROCOPIO LOHN",
                             uf: "SP",
@@ -1746,10 +1746,10 @@ angular.module("App.services", [])
                             ]
                         },
                         {
-                            clienteEmissorId: 974651321318,
+                            clienteEmissorId: 974651321319,
                             razao: "Cliente8",
                             email: "cliente8@carrefour.com",
-                            cnpj: "08.675.549/0001-56",
+                            cnpj: "08675549000156",
                             cidade: "SÃO PAULO",
                             endereco: "RUA PROCOPIO LOHN",
                             uf: "SP",
@@ -1837,10 +1837,10 @@ angular.module("App.services", [])
                             ]
                         },
                         {
-                            clienteEmissorId: 974651321318,
+                            clienteEmissorId: 974651321310,
                             razao: "Cliente9",
                             email: "cliente9@carrefour.com",
-                            cnpj: "08.675.549/0001-56",
+                            cnpj: "08675549000156",
                             cidade: "SÃO PAULO",
                             endereco: "RUA PROCOPIO LOHN",
                             uf: "SP",
@@ -1933,9 +1933,9 @@ angular.module("App.services", [])
             buscaTodosClientes : function(){
                 return [
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321311,
                         razao: "CARREFOUR",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2086,10 +2086,10 @@ angular.module("App.services", [])
                         }
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321312,
                         razao: "Cliente1",
                         email: "cliente1@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2177,10 +2177,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321313,
                         razao: "Cliente2",
                         email: "cliente2@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2268,10 +2268,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321314,
                         razao: "Cliente3",
                         email: "cliente3@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2359,10 +2359,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321315,
                         razao: "Cliente4",
                         email: "cliente4@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2450,10 +2450,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321316,
                         razao: "Cliente5",
                         email: "cliente5@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2541,10 +2541,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321317,
                         razao: "Cliente6",
                         email: "cliente6@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2635,7 +2635,7 @@ angular.module("App.services", [])
                         clienteEmissorId: 974651321318,
                         razao: "Cliente7",
                         email: "cliente7@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2723,10 +2723,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321319,
                         razao: "Cliente8",
                         email: "cliente8@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2814,10 +2814,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321310,
                         razao: "Cliente9",
                         email: "cliente9@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2905,10 +2905,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321321,
                         razao: "Cliente10",
                         email: "cliente10@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -2996,10 +2996,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321322,
                         razao: "Cliente11",
                         email: "cliente11@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3087,10 +3087,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321323,
                         razao: "Cliente12",
                         email: "cliente12@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3178,10 +3178,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321324,
                         razao: "Cliente13",
                         email: "cliente13@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3269,10 +3269,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321325,
                         razao: "Cliente14",
                         email: "cliente14@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3360,10 +3360,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321326,
                         razao: "Cliente15",
                         email: "cliente15@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3451,10 +3451,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321327,
                         razao: "Cliente16",
                         email: "cliente16@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3542,10 +3542,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321328,
                         razao: "Cliente17",
                         email: "cliente17@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3633,10 +3633,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321329,
                         razao: "Cliente18",
                         email: "cliente18@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3724,10 +3724,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321320,
                         razao: "Cliente19",
                         email: "cliente19@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3815,10 +3815,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321331,
                         razao: "Cliente20",
                         email: "cliente20@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3906,10 +3906,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321332,
                         razao: "Cliente21",
                         email: "cliente21@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
@@ -3997,10 +3997,10 @@ angular.module("App.services", [])
                         ]
                     },
                     {
-                        clienteEmissorId: 974651321318,
+                        clienteEmissorId: 974651321333,
                         razao: "Cliente22",
                         email: "cliente22@carrefour.com",
-                        cnpj: "08.675.549/0001-56",
+                        cnpj: "08675549000156",
                         cidade: "SÃO PAULO",
                         endereco: "RUA PROCOPIO LOHN",
                         uf: "SP",
