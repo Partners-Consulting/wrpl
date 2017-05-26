@@ -722,9 +722,31 @@ angular.module("App.controllers", [])
         "use strict";
         $scope.produto = produto;
 
+        function init() {
+            if($scope.produto != null){
+                angular.forEach($scope.listaLinhaBranca, function (value, key) {
+                    if(value.nome.toLowerCase() == produto.nome){
+                        $scope.produto = value.nome;
+                    }
+                });
+            }
+        }
+
+        init()
+
         $scope.close = function () {
             $uibModalInstance.close();
         };
+
+        $scope.listaLinhaBranca = [
+            {id:1,nome:'Electrolux'},
+            {id:2,nome:'Panasonic'},
+            {id:3,nome:'Atlas'},
+            {id:4,nome:'Esmaltec'},
+            {id:5,nome:'Colormaq'},
+            {id:6,nome:'Mueller'},
+            {id:7,nome:'Fischer'}
+        ];
 
         $scope.adicionarConcorrente = function (contato) {
             if (contato.id != null && contato.id != undefined) {
@@ -1232,10 +1254,6 @@ angular.module("App.controllers", [])
         };
 
         $scope.popup = {
-            opened: false
-        };
-
-        $scope.popupDataRemessa = {
             opened: false
         };
 
@@ -2026,11 +2044,19 @@ angular.module("App.controllers", [])
 
         $scope.transferirMaterial = function (material) {
             $uibModalInstance.close();
-        }
+        };
 
         $scope.salvarMaterial = function () {
             $uibModalInstance.close();
-        }
+        };
+
+        $scope.popup = {
+            opened: false
+        };
+
+        $scope.open = function () {
+            $scope.popup.opened = true;
+        };
 
     })
     .controller("HistoricoController", function ($scope, $rootScope, historico, MaterialService) {
@@ -2325,6 +2351,7 @@ angular.module("App.controllers", [])
                     field: 'acao',
                     enableColumnMenu: false,
                     enableCellEdit: false,
+                    pinnedLeft:true,
                     width: '20',
                     displayName: '',
                     cellTemplate: '  <div class="action-buttons"> ' +
