@@ -2,6 +2,10 @@
     margin-bottom: 2px;
 }
 
+.form-group label {
+    padding-top: 10px;
+}
+
 .col-md-12.custom {
     padding-right: 1px;
     padding-left: 1px;
@@ -16,4 +20,8 @@
     padding-left: 10px;
     padding-right: 0px;
     width: 40px;
+}
+
+.navbar-nav>li>a{
+ padding-bottom: 0px;
 }

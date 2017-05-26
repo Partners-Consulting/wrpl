@@ -586,6 +586,7 @@ input[type=checkbox]:checked + label:before {
 
 .slide .text {
     padding: 5px;
+    white-space: pre-wrap;
     margin-top: 10px;
     display: block;
     font-size: 12px;
@@ -727,7 +728,13 @@ i.minus-all{
 
 .grid-manutencao-contatos {
     width: 870px;
-    height: 250px;
+    height: 200px;
+    text-align:center;
+}
+
+.grid-agrupador-x-cliente {
+    width: auto;
+    height: 150px;
     text-align:center;
 }
 
@@ -756,11 +763,19 @@ i.minus-all{
     margin-left: 800%;
     height: 27px;
 }
+
 .box-drop-links {
     overflow: hidden;
 }
+
 .links {
     color: black;
+}
+
+.links .box{
+    padding-left: 0px;!important;
+    padiing-right : 0px;
+    width: 300px;
 }
 
 .links p {
@@ -776,7 +791,7 @@ i.minus-all{
 
 .links p > i{
     font-size: 40px;
-    padding-left: 25%;
+    padding-left: 50px;
 }
 .links p.titulo {
     font-size: 15px;

@@ -47,7 +47,7 @@ angular.module("App.controllers", [])
         $scope.perfilLoja4 = 0;
         $scope.titulo = 'Últimos Processos';
         $scope.painelTabela = {
-            quantidadeDeTabela: 4,
+            quantidadeDeTabela: 3,
             tabelaAtual: 1,
             tituloTabelaAtual: 'Últimos Processos'
         }
@@ -138,23 +138,23 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'data',
-                    width:'100',
+                    width: '100',
                     headerCellClass: 'background-color:gray',
                     displayName: 'Data'
                 },
                 {
                     field: 'cliente',
-                    width:'120',
+                    width: '120',
                     displayName: 'Cliente'
                 },
                 {
                     field: 'processo',
-                    width:'150',
+                    width: '150',
                     displayName: 'Processo'
                 },
                 {
                     field: 'status',
-                    width:'150',
+                    width: '150',
                     displayName: 'Status'
                 }
 
@@ -203,8 +203,8 @@ angular.module("App.controllers", [])
                 enableFiltering: false
             }, {
                 field: 'acao',
-                width:'10',
-                enableColumnMenu:false,
+                width: '10',
+                enableColumnMenu: false,
                 displayName: '',
                 enableFiltering: false,
                 cellTemplate: '  <div class="action-buttons"> ' +
@@ -221,7 +221,7 @@ angular.module("App.controllers", [])
 
         $scope.gridConcorrentes = {
             enableHorizontalScrollbar: 0,
-            enableColumnMenus:false,
+            enableColumnMenus: false,
             rowHeight: 20,
             enableGridMenu: true,
             data: 'concorrentesRevenda',
@@ -231,7 +231,7 @@ angular.module("App.controllers", [])
             }, {
                 field: 'acao',
                 displayName: '',
-                enableColumnMenu:false,
+                enableColumnMenu: false,
                 cellTemplate: '  <div class="action-buttons"> ' +
                 ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarConcorrenteRevenda(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
                 ' </div>'
@@ -261,9 +261,10 @@ angular.module("App.controllers", [])
                 });
 
             }
-
-            $scope.selectedClientB = angular.copy($rootScope.selectedClient);
-            $scope.geraisB = angular.copy($scope.gerais);
+            else {
+                $scope.selectedClientB = angular.copy($rootScope.selectedClient);
+            }
+                $scope.geraisB = angular.copy($scope.gerais);
         }
 
         init();
@@ -302,9 +303,7 @@ angular.module("App.controllers", [])
             } else if ($scope.painelTabela.tabelaAtual == 2) {
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
             } else if ($scope.painelTabela.tabelaAtual == 3) {
-                $scope.painelTabela.tituloTabelaAtual = 'Concorrentes Linha Branca';
-            } else if ($scope.painelTabela.tabelaAtual == 4) {
-                $scope.painelTabela.tituloTabelaAtual = 'Concorrentes Revenda';
+                $scope.painelTabela.tituloTabelaAtual = 'Concorrentes';
             }
         };
 
@@ -648,7 +647,7 @@ angular.module("App.controllers", [])
             }
         };
 
-        $scope.todosClientes = function (){
+        $scope.todosClientes = function () {
             $scope.listaClientes = ClienteService.buscaTodosClientes();
         };
 
@@ -856,7 +855,7 @@ angular.module("App.controllers", [])
 
         $scope.agrupadoresClientes = [
             {
-                clienteEmissorId: 974651321318,
+                clienteEmissorId: 9746513213,
                 agrupador: 123456789,
                 razao: "CARREFOUR",
                 cnpj: "08.675.549/0001-56",
@@ -871,7 +870,7 @@ angular.module("App.controllers", [])
                 status: "EM PROCESSAMENTO"
             },
             {
-                clienteEmissorId: 974651321318,
+                clienteEmissorId: 9746513213,
                 agrupador: 123456789,
                 razao: "CARREFOUR",
                 cnpj: "08.675.549/0001-56",
@@ -884,7 +883,7 @@ angular.module("App.controllers", [])
                 cep: "88410-000",
                 inscricaoEstadual: "255155603",
                 status: "EM PROCESSAMENTO"
-            },
+            }
         ];
 
         $scope.gridAgrupadorXCliente = {
@@ -1391,7 +1390,7 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, lista, $uibModal,$location, $timeout) {
+    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, lista, $uibModal, $location, $timeout) {
 
         $scope.showDetalhe = false;
 
@@ -1503,7 +1502,7 @@ angular.module("App.controllers", [])
                     $scope.showDetalhe = true;
                 }
             }, 0)
-        }
+        };
 
         $scope.programarEntrega = function () {
             var modalInstance = $uibModal.open({
@@ -1512,18 +1511,18 @@ angular.module("App.controllers", [])
                 controller: 'ModalProgramarEntregaCtrl',
                 size: 'md'
             });
-        }
+        };
 
         $scope.efetivarOvStep2 = function () {
             /*var modalInstance = $uibModal.open({
-                animation: true,
-                templateUrl: './view/efetivar-ov2.html',
-                controller: 'ModalEfetivarOv2Ctrl',
-                backdrop: 'static',
-                size: 'lg'
-            });*/
+             animation: true,
+             templateUrl: './view/efetivar-ov2.html',
+             controller: 'ModalEfetivarOv2Ctrl',
+             backdrop: 'static',
+             size: 'lg'
+             });*/
             $location.path("/efetivarOv2")
-        }
+        };
 
         $scope.close = function () {
             $uibModalInstance.close();
@@ -1531,6 +1530,10 @@ angular.module("App.controllers", [])
 
         $scope.replicar = function () {
             $uibModalInstance.close();
+        };
+
+        $scope.goBackSimulacao = function () {
+            $location.path("/simulacoes");
         }
 
     })
@@ -1663,7 +1666,7 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, _) {
+    .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, _, $location) {
 
         $scope.showDetalhe = false;
 
@@ -1672,7 +1675,7 @@ angular.module("App.controllers", [])
             "TRUCK BAU",
             "TOCO ABERTO",
             "TOCO BAU"
-        ]
+        ];
 
         $scope.listaOrdenASeremEfetivadas = [
             {
@@ -1715,7 +1718,11 @@ angular.module("App.controllers", [])
                 ordem: "",
                 imprimir: ""
             }
-        ]
+        ];
+
+        $scope.goBackOv = function () {
+            $location.path("/efetivarOv")
+        };
 
         $scope.textoOv = [
             {
@@ -1735,7 +1742,7 @@ angular.module("App.controllers", [])
                     abreviado: "PHERMANN"
                 }
             }
-        ]
+        ];
 
         $scope.textoSimulacao = [
             {
@@ -1755,11 +1762,11 @@ angular.module("App.controllers", [])
                     abreviado: "PHERMANN"
                 }
             }
-        ]
+        ];
 
         $scope.abriDetalhe = function (materiais) {
             $scope.showDetalhe = !$scope.showDetalhe;
-        }
+        };
 
         $scope.brindesEBonificacoes = function () {
             var modalInstance = $uibModal.open({
@@ -1769,7 +1776,7 @@ angular.module("App.controllers", [])
                 backdrop: 'static',
                 size: 'lg'
             });
-        }
+        };
 
         $scope.gridOrdenASeremEfetivadas = {
             data: 'listaOrdenASeremEfetivadas',
@@ -1871,7 +1878,7 @@ angular.module("App.controllers", [])
 
         $scope.alterarSituacaoCarga = function (item) {
             item.situacaoCarga = !item.situacaoCarga;
-        }
+        };
 
         $scope.gridDetalhe = {
             data: 'listaMateriais',
@@ -1934,15 +1941,15 @@ angular.module("App.controllers", [])
                 controller: 'ModalProgramarEntregaCtrl',
                 size: 'md'
             });
-        }
+        };
 
         $scope.removeTextoOv = function (texto) {
             $scope.textoOv = _.without($scope.textoOv, _.findWhere($scope.textoOv, {id: texto.id}));
-        }
+        };
 
         $scope.removeTextoSimulacao = function (texto) {
             $scope.textoSimulacao = _.without($scope.textoSimulacao, _.findWhere($scope.textoSimulacao, {id: texto.id}));
-        }
+        };
 
         $scope.adicionarTextoOv = function () {
             var modalInstance = $uibModal.open({
@@ -1962,7 +1969,7 @@ angular.module("App.controllers", [])
 
         $scope.efetivarOrdensDeVenda = function () {
             $scope.listaOrdenASeremEfetivadas[0].ordem = 123123213;
-        }
+        };
 
         $scope.close = function () {
             $uibModalInstance.close();
@@ -1970,7 +1977,7 @@ angular.module("App.controllers", [])
 
         $scope.replicar = function () {
             $uibModalInstance.close();
-        }
+        };
 
     })
     .controller("ModalMaterialCompletoCtrl", function ($scope, $rootScope, $uibModalInstance, material, CentroService, LocalExpedicaoService, IncotermsService) {
@@ -2198,7 +2205,7 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'acao',
-                    enableColumnMenu:false,
+                    enableColumnMenu: false,
                     enableCellEdit: false,
                     width: '70',
                     displayName: '',
