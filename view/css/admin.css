@@ -177,7 +177,7 @@ p {
 .panel-project {
     border-radius: 10px;
     box-shadow: 0 0px 15px rgba(0, 0, 0, .1);
-    margin-bottom: 14px;
+    margin-bottom: 1px;
 }
 
 .panel-project .panel-heading {
@@ -912,7 +912,7 @@ span.glyphicon.glyphicon-chevron-left:hover {
 }
 
 .grid-materias {
-    height: 250px;
+    height: 270px;
 }
 
 .my-datepicker .form-control {
@@ -949,4 +949,8 @@ span.glyphicon.glyphicon-chevron-left:hover {
 #painelOv .panel-body {
     overflow-y: hidden;
     overflow-x: hidden;
+}
+
+.grid-replica {
+    height: 150px;
 }

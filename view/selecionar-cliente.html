@@ -17,7 +17,10 @@
             </div>
         </div>
         <div class="col-sm-1">
-            <button type="button" class="btn btn-primary btn-lg" ng-click="todosClientes()">
+            <button ng-if="filtroCliente" type="button" class="btn btn-primary btn-lg" ng-click="todosClientes()">
+                <i class="fa fa-filter" aria-hidden="true"></i>
+            </button>
+            <button ng-if="!filtroCliente" type="button" class="btn btn-default btn-lg" ng-click="buscaClienteFiltrado()">
                 <i class="fa fa-filter" aria-hidden="true"></i>
             </button>
         </div>
