@@ -1235,10 +1235,6 @@ angular.module("App.controllers", [])
             opened: false
         };
 
-        $scope.popupDataRemessa = {
-            opened: false
-        };
-
         $scope.open = function () {
             $scope.popup.opened = true;
         };
@@ -2026,11 +2022,19 @@ angular.module("App.controllers", [])
 
         $scope.transferirMaterial = function (material) {
             $uibModalInstance.close();
-        }
+        };
 
         $scope.salvarMaterial = function () {
             $uibModalInstance.close();
-        }
+        };
+
+        $scope.popup = {
+            opened: false
+        };
+
+        $scope.open = function () {
+            $scope.popup.opened = true;
+        };
 
     })
     .controller("HistoricoController", function ($scope, $rootScope, historico, MaterialService) {
@@ -2325,6 +2329,7 @@ angular.module("App.controllers", [])
                     field: 'acao',
                     enableColumnMenu: false,
                     enableCellEdit: false,
+                    pinnedLeft:true,
                     width: '20',
                     displayName: '',
                     cellTemplate: '  <div class="action-buttons"> ' +

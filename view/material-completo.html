@@ -138,6 +138,21 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Data Desej.Entrega</label>
+                            <div class="col-sm-3">
+                                <p class="input-group">
+                                    <input type="text" class="form-control" uib-datepicker-popup="{{formato}}" ng-model="dadosEntrega.dataEntrega" is-open="popup.opened"/>
+                                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                             </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </uib-tab>
