@@ -2,3 +2,18 @@
     margin-bottom: 2px;
 }
 
+.col-md-12.custom {
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+.input-xs-custom {
+    height: 20px;
+    padding-left: 0px;
+}
+
+#tos3 {
+    padding-left: 10px;
+    padding-right: 0px;
+    width: 40px;
+}

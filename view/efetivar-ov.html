@@ -1,110 +1,119 @@
-<div class="modal-header bg-primary" style="background-color:#333">
-    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
-            style="margin-top: -10px;" ng-click="close()">×
-    </button>
-    <h4>Efetivar O.V</h4>
-
-</div>
-<div class="modal-body">
-    <form class="form-horizontal">
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-2">Nº Simulação</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Nº Simulação"
-                               ng-model="simulacao.numero">
-                    </div>
-                    <label class="col-sm-2">Status</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Status"
-                               ng-model="simulacao.status">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-2">Data simulação</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Data Simulação"
-                               ng-model="simulacao.data">
-                    </div>
-                    <label class="col-sm-2">Hora Simulação</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Hora Simulação"
-                               ng-model="simulacao.hora">
+<div class="row">
+    <panel id="painelOv" title="Efetivar O.V" icon="fa-book" height="100" col="12">
+        <painel-actions>
+            <a href><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+            <a href><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        </painel-actions>
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-2">Nº Simulação</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="true" type="text" class="form-control input-sm"
+                                   placeholder="Nº Simulação"
+                                   ng-model="simulacao.numero">
+                        </div>
+                        <label class="col-sm-2">Status</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Status"
+                                   ng-model="simulacao.status">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-2">Usuário</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Codigo"
-                               ng-model="simulacao.usuario">
-                    </div>
-                    <label class="col-sm-2">Validade</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Validade"
-                               ng-model="material.canal">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-2">Cliente</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Cliente"
-                               ng-model="material.quantidade">
-                    </div>
-                    <label class="col-sm-2">Cliente Agrupador</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Cliente Agrupador"
-                               ng-model="material.quantidade">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-2">Data simulação</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="true" type="text" class="form-control input-sm"
+                                   placeholder="Data Simulação"
+                                   ng-model="simulacao.data">
+                        </div>
+                        <label class="col-sm-2">Hora Simulação</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="true" type="text" class="form-control input-sm"
+                                   placeholder="Hora Simulação"
+                                   ng-model="simulacao.hora">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-12">
-                    <label class="col-sm-2">Atividade</label>
-                    <div class="col-sm-6">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Atividade"
-                               ng-model="material.quantidade">
-                    </div>
-                    <label class="col-sm-2">Licitação</label>
-                    <div class="col-sm-2">
-                        <input ng-disabled="true" type="checkbox" placeholder="Licitação"
-                               ng-model="material.situacaoCarga">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-2">Usuário</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Codigo"
+                                   ng-model="simulacao.usuario">
+                        </div>
+                        <label class="col-sm-2">Validade</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Validade"
+                                   ng-model="material.canal">
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-2">Cliente</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Cliente"
+                                   ng-model="material.quantidade">
+                        </div>
+                        <label class="col-sm-2">Cliente Agrupador</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="true" type="text" class="form-control input-sm"
+                                   placeholder="Cliente Agrupador"
+                                   ng-model="material.quantidade">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-2">Atividade</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Atividade"
+                                   ng-model="material.quantidade">
+                        </div>
+                        <label class="col-sm-2">Licitação</label>
+                        <div class="col-sm-4">
+                            <input ng-disabled="true" type="checkbox" placeholder="Licitação"
+                                   ng-model="material.situacaoCarga">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="col-sm-offset-3 col-sm-6">
+                <div style="height: 150px" ui-grid="gridSimulacao" ui-grid-resize-columns ui-grid-move-columns
+                     ui-grid-selection></div>
+            </div>
         </div>
-    </form>
-    <div class="row">
-        <div class="col-sm-12">
-            <div style="height: 150px" ui-grid="gridSimulacao" ui-grid-resize-columns ui-grid-move-columns ui-grid-selection></div>
+        </br>
+        <div class="row">
+            <div class="col-sm-12">
+                <div style="height: 150px" ng-if="showDetalhe" ui-grid="gridDetalhe" ui-grid-edit ui-grid-resize-columns
+                     ui-grid-move-columns></div>
+            </div>
         </div>
-    </div>
-    </br>
-    <div class="row">
-        <div class="col-sm-12">
-            <div style="height: 150px" ng-if="showDetalhe" ui-grid="gridDetalhe" ui-grid-edit  ui-grid-resize-columns ui-grid-move-columns></div>
+        <div class="row">
+            <div class="col-lg-offset-8 col-sm-4">
+                <button data-bb-handler="confirm" type="button" class="btn btn-primary"
+                        ng-click="transferirMaterial(simulacao)">
+                    Salvar Divisão
+                </button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-primary"
+                        ng-click="efetivarOvStep2(simulacao)">
+                    Efetivar Ordens de Venda
+                </button>
+            </div>
         </div>
-    </div>
-</div>
-<div class="modal-footer">
-    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="transferirMaterial(simulacao)">
-        Salvar Divisão
-    </button>
-    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="efetivarOvStep2(simulacao)">
-        Efetivar Ordens de Venda
-    </button>
+    </panel>
 </div>

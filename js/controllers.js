@@ -131,31 +131,35 @@ angular.module("App.controllers", [])
 
         $scope.gridProcessos = {
             enableGridMenu: true,
+            rowHeight: 20,
             enableFiltering: true,
             enableHorizontalScrollbar: 0,
             data: 'processos',
             columnDefs: [
                 {
                     field: 'data',
+                    width:'100',
                     headerCellClass: 'background-color:gray',
                     displayName: 'Data'
                 },
                 {
                     field: 'cliente',
+                    width:'120',
                     displayName: 'Cliente'
                 },
                 {
                     field: 'processo',
+                    width:'150',
                     displayName: 'Processo'
                 },
                 {
                     field: 'status',
+                    width:'150',
                     displayName: 'Status'
                 }
 
             ]
         };
-
         $scope.gridApiProcessos = {};
         $scope.gridProcessos.onRegisterApi = function (gridApi) {
             $scope.gridApiProcessos = gridApi;
@@ -163,6 +167,7 @@ angular.module("App.controllers", [])
 
         $scope.gridContatos = {
             enableGridMenu: true,
+            rowHeight: 20,
             enableHorizontalScrollbar: 0,
             data: 'contatos',
             columnDefs: [{
@@ -186,6 +191,7 @@ angular.module("App.controllers", [])
         $scope.gridLinhaBranca = {
             enableHorizontalScrollbar: 0,
             enableGridMenu: true,
+            rowHeight: 20,
             enableFiltering: true,
             data: 'linhaBranca',
             columnDefs: [{
@@ -197,7 +203,9 @@ angular.module("App.controllers", [])
                 enableFiltering: false
             }, {
                 field: 'acao',
-                displayName: 'Ação',
+                width:'10',
+                enableColumnMenu:false,
+                displayName: '',
                 enableFiltering: false,
                 cellTemplate: '  <div class="action-buttons"> ' +
                 ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarLinhaBranca(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
@@ -213,6 +221,8 @@ angular.module("App.controllers", [])
 
         $scope.gridConcorrentes = {
             enableHorizontalScrollbar: 0,
+            enableColumnMenus:false,
+            rowHeight: 20,
             enableGridMenu: true,
             data: 'concorrentesRevenda',
             columnDefs: [{
@@ -220,7 +230,8 @@ angular.module("App.controllers", [])
                 displayName: 'Nome'
             }, {
                 field: 'acao',
-                displayName: 'Ação',
+                displayName: '',
+                enableColumnMenu:false,
                 cellTemplate: '  <div class="action-buttons"> ' +
                 ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarConcorrenteRevenda(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
                 ' </div>'
@@ -562,7 +573,50 @@ angular.module("App.controllers", [])
         $scope.cancelarNotas = function () {
             $scope.gerais = angular.copy($scope.geraisB);
             $scope.mostra = !$scope.mostra;
-        }
+        };
+
+        $rootScope.dadosGraficos = [
+            {
+                "x": "Fogão",
+                "voltyd16": 1,
+                "voltyd17": 0
+            }, {
+                "x": "Forno Microondas",
+                "voltyd16": 0,
+                "voltyd17": 6
+            }, {
+                "x": "Freezer Horizontal",
+                "voltyd16": 0,
+                "voltyd17": 3
+            }, {
+                "x": "Freezer Vertical",
+                "voltyd16": 0,
+                "voltyd17": 2
+            }, {
+                "x": "Lavadora Roupas",
+                "voltyd16": 1,
+                "voltyd17": 8
+            }, {
+                "x": "Refrigerador Elétrico",
+                "voltyd16": 12,
+                "voltyd17": 11
+            }];
+
+        $rootScope.dadosGraficosColunas = [
+            {
+                "id": "voltyd16",
+                "type": "bar",
+                "name": "voltyd16"
+            },
+            {
+                "id": "voltyd17",
+                "type": "bar",
+                "name": "voltyd17"
+            }];
+
+        $rootScope.datax = {
+            "id": "x"
+        };
 
     })
     .controller("ModalSelecionarClienteCtrl", function ($scope, $rootScope, $location, $uibModalInstance, _, url, ClienteService) {
@@ -1337,10 +1391,9 @@ angular.module("App.controllers", [])
         }
 
     })
-    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, lista, $uibModal, $timeout) {
+    .controller("ModalEfetivarOvCtrl", function ($scope, $rootScope, lista, $uibModal,$location, $timeout) {
 
         $scope.showDetalhe = false;
-        $scope.listaMateriais = lista;
 
         $scope.gridSimulacao = {
             enableRowSelection: true,
@@ -1352,25 +1405,25 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'codigo',
-                    width: '250',
+                    width: '150',
                     displayName: 'Material',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'modelo',
-                    width: '260',
+                    width: '150',
                     displayName: 'Modelo',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'cor',
-                    width: '200',
+                    width: '150',
                     displayName: 'Cor',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
                 {
                     field: 'voltagem',
-                    width: '70',
+                    width: '80',
                     displayName: 'Voltagem',
                     cellTemplate: '<div ng-click="grid.appScope.abriDetalhe(row.entity);">{{COL_FIELD}}</div>'
                 },
@@ -1462,13 +1515,14 @@ angular.module("App.controllers", [])
         }
 
         $scope.efetivarOvStep2 = function () {
-            var modalInstance = $uibModal.open({
+            /*var modalInstance = $uibModal.open({
                 animation: true,
                 templateUrl: './view/efetivar-ov2.html',
                 controller: 'ModalEfetivarOv2Ctrl',
                 backdrop: 'static',
                 size: 'lg'
-            });
+            });*/
+            $location.path("/efetivarOv2")
         }
 
         $scope.close = function () {
@@ -1541,11 +1595,11 @@ angular.module("App.controllers", [])
 
         $scope.materiais = {
             codigos: ""
-        }
+        };
 
         $scope.abriDetalhe = function (materiais) {
             $scope.showDetalhe = !$scope.showDetalhe;
-        }
+        };
 
         $scope.materiaisAchados = [];
 
@@ -1609,7 +1663,7 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, $uibModalInstance, _) {
+    .controller("ModalEfetivarOv2Ctrl", function ($scope, $rootScope, $uibModal, _) {
 
         $scope.showDetalhe = false;
 
@@ -2033,7 +2087,7 @@ angular.module("App.controllers", [])
             $location.path("/dev");
         };
 
-        $scope.listaMateriais = [];
+        $rootScope.listaMateriais = [];
         $scope.listaDeCentros = [];
         $scope.listaDeLocaisExpedicao = [];
         $scope.listaDeIncoterms = [];
@@ -2055,7 +2109,7 @@ angular.module("App.controllers", [])
 
             }
             //todo fazer padrão promessa
-            $scope.listaMateriais = MaterialService.consultaMaterial();
+            $rootScope.listaMateriais = MaterialService.consultaMaterial();
             $scope.listaDeCentros = CentroService.consultaCentroPorMaterial(1);
             $scope.listaDeLocaisExpedicao = LocalExpedicaoService.consultaLocalExpedicaoPorMaterial(1);
             $scope.listaDeIncoterms = IncotermsService.consultaIncotermsPorMaterial(1);
@@ -2087,12 +2141,12 @@ angular.module("App.controllers", [])
              backdrop: 'static',
              resolve: {
              materiais: function () {
-             return $scope.listaMateriais;
+             return $rootScope.listaMateriais;
              }
              }
              });*/
 
-            $location.path("/efetivarOv").search({params: $scope.listaMateriais})
+            $location.path("/efetivarOv");
         };
 
         $scope.consultarMaterialCompleto = function (id) {
@@ -2144,9 +2198,10 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'acao',
+                    enableColumnMenu:false,
                     enableCellEdit: false,
                     width: '70',
-                    displayName: 'Ação',
+                    displayName: '',
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="black" style="color: black"  ng-click="grid.appScope.abrirHitoriocoMaterial(row.entity)" href=""><i class="fa fa-book bigger-130"></i></a>' +
                     ' </div>'
@@ -2277,7 +2332,7 @@ angular.module("App.controllers", [])
         };
 
         $scope.deletarMateriaisSelecionados = function () {
-            if ($scope.listaMateriais.length <= 0 || $scope.gridApiMateriais.selection.getSelectedRows().length <= 0) {
+            if ($rootScope.listaMateriais.length <= 0 || $scope.gridApiMateriais.selection.getSelectedRows().length <= 0) {
                 return;
             }
             var alertExclusao = {
@@ -2296,7 +2351,7 @@ angular.module("App.controllers", [])
                     if (isConfirm) {
 
                         angular.forEach($scope.gridApiMateriais.selection.getSelectedRows(), function (data, index) {
-                            $scope.listaMateriais.splice($scope.listaMateriais.lastIndexOf(data), 1);
+                            $rootScope.listaMateriais.splice($rootScope.listaMateriais.lastIndexOf(data), 1);
                         });
 
                     } else {
@@ -2419,7 +2474,7 @@ angular.module("App.controllers", [])
 
             modalInstance.result.then(function (listaMateriais) {
                 angular.forEach(listaMateriais, function (data, index) {
-                    $scope.listaMateriais.push(data);
+                    $rootScope.listaMateriais.push(data);
                 });
 
             });

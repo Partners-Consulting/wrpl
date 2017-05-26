@@ -1,11 +1,11 @@
-angular.module('App', ["App.controllers", 
-    "App.services", 
-    "App.directives", 
-    "App.filters",  
-    "ngRoute", 
-    "ngResource", 
-    'ui.bootstrap', 
-    'ngCsv', 
+angular.module('App', ["App.controllers",
+    "App.services",
+    "App.directives",
+    "App.filters",
+    "ngRoute",
+    "ngResource",
+    'ui.bootstrap',
+    'ngCsv',
     'ngAnimate',
     'ngSanitize',
     'gridshore.c3js.chart',
@@ -20,11 +20,10 @@ angular.module('App', ["App.controllers",
     'ui.grid.cellNav'
 
 
+])
+    .config(function ($routeProvider, $animateProvider) {
 
-    ])
-    .config(function($routeProvider, $animateProvider) {
-
-        $animateProvider.classNameFilter( /\banimated\b/ );
+        $animateProvider.classNameFilter(/\banimated\b/);
 
         $routeProvider
             .when('/home', {
@@ -86,6 +85,10 @@ angular.module('App', ["App.controllers",
                     }
                 }
             })
-            .otherwise({ redirectTo: 'cliente' });
+            .when('/efetivarOv2/', {
+                templateUrl: 'view/efetivar-ov2.html',
+                controller: 'ModalEfetivarOv2Ctrl'
+            })
+            .otherwise({redirectTo: 'cliente'});
 
     });
