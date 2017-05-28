@@ -69,12 +69,12 @@
                         <div class="col-sm-12">
                             <label class="col-sm-2">Centro</label>
                             <div class="col-sm-2">
-                                <select ng-model="material.centro"
+                                <select class="form-control" ng-model="material.centro"
                                         ng-options="centro.parcNeg for centro in listaDeCentros"></select>
                             </div>
                             <label class="col-sm-2">Local Expedição</label>
                             <div class="col-sm-2">
-                                <select ng-model="material.localExpedicao"
+                                <select class="form-control" ng-model="material.localExpedicao"
                                         ng-options="local.parcNeg for local in listaDeLocaisExpedicao"></select>
                             </div>
                         </div>
@@ -271,7 +271,7 @@
                             <label class="col-sm-2">% Ipi</label>
                             <div class="col-sm-2">
                                 <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="% Ipi"
-                                       ng-model="material.precIpi">
+                                       ng-model="material.percIpi">
                             </div>
                         </div>
                     </div>
@@ -279,6 +279,11 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-12">
+                            <label class="col-sm-2">% Ipi Valor Frete</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="% MVA"
+                                       ng-model="material.precIpiValorFrete">
+                            </div>
                             <label class="col-sm-2">% MVA</label>
                             <div class="col-sm-2">
                                 <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="% MVA"
@@ -290,18 +295,17 @@
                                        placeholder="% Icms ST"
                                        ng-model="material.percIcmsSt">
                             </div>
-                            <label class="col-sm-2">Juros</label>
-                            <div class="col-sm-2">
-                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Juros"
-                                       ng-model="material.juros">
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-12">
-
+                            <label class="col-sm-2">Juros</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Juros"
+                                       ng-model="material.juros">
+                            </div>
                             <label class="col-sm-2">Valor c/Icms</label>
                             <div class="col-sm-2">
                                 <input ng-disabled="true" type="text" class="form-control input-sm"
@@ -314,18 +318,18 @@
                                        placeholder="Valor do Icms"
                                        ng-model="material.valorDoIcms">
                             </div>
-                            <label class="col-sm-2">Valor do Icms Total</label>
-                            <div class="col-sm-2">
-                                <input ng-disabled="true" type="text" class="form-control input-sm"
-                                       placeholder="Valor do Icms Total"
-                                       ng-model="material.valorDoIcmsTotal">
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-sm-12">
+                            <label class="col-sm-2">Valor com Icms Total</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor do Icms Total"
+                                       ng-model="material.valorComIcmsTotal">
+                            </div>
                             <label class="col-sm-2">Valor c/Ipi</label>
                             <div class="col-sm-2">
                                 <input ng-disabled="true" type="text" class="form-control input-sm"
@@ -337,6 +341,90 @@
                                 <input ng-disabled="true" type="text" class="form-control input-sm"
                                        placeholder="Valor do Ipi"
                                        ng-model="material.valorDoIpi">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Valor c/Ipi Total</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor do Icms Total"
+                                       ng-model="material.valorComIpiTotal">
+                            </div>
+                            <label class="col-sm-2">Valor Frete</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor c/Ipi"
+                                       ng-model="material.valorFrete">
+                            </div>
+                            <label class="col-sm-2">Valor Frete Total</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor do Ipi"
+                                       ng-model="material.valorFreteTotal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Base ICMS ST</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor do Icms Total"
+                                       ng-model="material.baseIcmsSt">
+                            </div>
+                            <label class="col-sm-2">Valor c/Icms ST</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor c/Ipi"
+                                       ng-model="material.valorComIcmsSt">
+                            </div>
+                            <label class="col-sm-2">Valor de Icms ST</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor do Ipi"
+                                       ng-model="material.valorDeIcmsSt">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Valor Frete MLOG</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor do Icms Total"
+                                       ng-model="material.valorFreteMlog">
+                            </div>
+                            <label class="col-sm-2">Valor Frete MLOG Tot</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor c/Ipi"
+                                       ng-model="material.valorFreteMlogTotal">
+                            </div>
+                            <label class="col-sm-2">Valor NF Unit</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor do Ipi"
+                                       ng-model="material.valorNotaFiscalUnitario">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Valor Total NF</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Valor do Icms Total"
+                                       ng-model="material.valorTotalVotaFiscal">
                             </div>
                         </div>
                     </div>

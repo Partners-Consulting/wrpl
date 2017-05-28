@@ -366,14 +366,8 @@
                                                ng-model="selectedClient.revenda.tos.total">
                                     </div>
                                     <div ng-if="true" class="col-sm-2">
-                                        <button type="button" class="btn btn-blue btn-sm" ng-show="!isBlockedTos"
-                                                ng-click="editarTos()"><i class="fa fa-pencil" aria-hidden="true"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-green btn-sm" ng-hide="!isBlockedTos"
-                                                ng-click="editarTos()"><i class="fa fa-floppy-o" aria-hidden="true"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-red btn-sm" ng-hide="!isBlockedTos"
-                                                ng-click="editarTos()"><i class="fa fa-times" aria-hidden="true"></i>
+                                        <button type="button" class="btn btn-blue btn-sm" ng-disabled="isBlocked"
+                                                ng-click="editarTos()"><i class="fa fa-expand" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                     <label class="col-sm-3">Data de atualização</label>
@@ -448,11 +442,7 @@
                         <button type="button" class="btn btn-default btn-xs" ng-click="excelContatos()"><i
                                 class="fa fa-file-excel-o" aria-hidden="true"></i></button>
                     </panel-actions>
-                    <panel-actions ng-if="painelTabela.tabelaAtual == 3">
-                        <input class="input-xs" type="text"
-                               ng-model="gridApiLinhaBranca.grid.columns[1].filters[0].term"
-                               placeholder="&#xf002;" style="font-size:15px;font-family:Arial, FontAwesome">
-                    </panel-actions>
+                    <panel-actions ng-if="painelTabela.tabelaAtual == 3"></panel-actions>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="painel-slide-left" ng-click="tabelaAnterior()">

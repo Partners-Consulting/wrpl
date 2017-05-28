@@ -1,7 +1,7 @@
 angular.module("App.controllers", [])
     .constant('_', _)
     .constant('moment', moment)
-    .controller("HomeController", function ($scope, $rootScope, $location, $uibModal) {
+    .controller("HomeController", function ($scope) {
         "use strict";
 
 
@@ -51,7 +51,7 @@ angular.module("App.controllers", [])
             quantidadeDeTabela: 3,
             tabelaAtual: 1,
             tituloTabelaAtual: 'Últimos Processos'
-        }
+        };
         $scope.processos = [
             {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
             {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
@@ -271,6 +271,10 @@ angular.module("App.controllers", [])
                     }
                 });
 
+                modalInstance.result.then(function (cliente) {
+                    $scope.selectedClientB = angular.copy(cliente);
+                });
+
             } else {
                 $scope.selectedClientB = angular.copy($rootScope.selectedClient);
             }
@@ -282,6 +286,7 @@ angular.module("App.controllers", [])
         $scope.adicionarContatos = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/editar-contato.html',
                 controller: 'ModalUltimosContatosCtrl',
                 resolve: {
@@ -320,6 +325,7 @@ angular.module("App.controllers", [])
         $scope.adicionarPontual = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/adicionar-pontual.html',
                 controller: 'ModalCriarPontualCtrl'
             });
@@ -328,6 +334,7 @@ angular.module("App.controllers", [])
         $scope.editarContatos = function (contato) {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/editar-contato.html',
                 controller: 'ModalUltimosContatosCtrl',
                 resolve: {
@@ -344,7 +351,7 @@ angular.module("App.controllers", [])
                 templateUrl: './view/expandir-contato.html',
                 controller: 'ModalManutencaoContatoCtrl',
                 backdrop: 'static',
-                size: "lg",
+                size: "lg"
             });
         };
 
@@ -431,6 +438,7 @@ angular.module("App.controllers", [])
         $scope.editarLinhaBranca = function (produto) {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/editar-linhaBranca.html',
                 controller: 'ModalProdutoCtrl',
                 resolve: {
@@ -478,6 +486,7 @@ angular.module("App.controllers", [])
         $scope.adicionarLinhaBranca = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/editar-linhaBranca.html',
                 controller: 'ModalProdutoCtrl',
                 resolve: {
@@ -491,6 +500,7 @@ angular.module("App.controllers", [])
         $scope.editarConcorrenteRevenda = function (produto) {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/editar-concorrente.html',
                 controller: 'ModalProdutoCtrl',
                 resolve: {
@@ -538,6 +548,7 @@ angular.module("App.controllers", [])
         $scope.adicionarConcorrenteRevenda = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/editar-concorrente.html',
                 controller: 'ModalProdutoCtrl',
                 resolve: {
@@ -549,7 +560,10 @@ angular.module("App.controllers", [])
         };
 
         $scope.editarPerfilDeRevenda = function () {
-            $scope.isBlocked = !$scope.isBlocked
+            $scope.isBlocked = !$scope.isBlocked;
+           if(!$scope.isBlockedTos){
+               $scope.isBlockedTos = !$scope.isBlockedTos;
+           }
         };
 
         $scope.salvarEdicaoRevenda = function () {
@@ -559,6 +573,9 @@ angular.module("App.controllers", [])
                 $rootScope.selectedClient.revenda.data = moment().format("DD.MM.YYYY")
                 $scope.isBlocked = !$scope.isBlocked
             }
+            if($scope.isBlockedTos){
+                $scope.isBlockedTos = !$scope.isBlockedTos;
+            }
         };
 
         $scope.cancelarEdicaoRevenda = function () {
@@ -567,6 +584,9 @@ angular.module("App.controllers", [])
             } else {
                 $rootScope.selectedClient.revenda = angular.copy($scope.selectedClientB.revenda);
                 $scope.isBlocked = !$scope.isBlocked
+            }
+            if($scope.isBlockedTos){
+                $scope.isBlockedTos = !$scope.isBlockedTos;
             }
         };
 
@@ -674,9 +694,9 @@ angular.module("App.controllers", [])
             if (!!$rootScope.selectedClient && cliente.clienteEmissorId == $rootScope.selectedClient.clienteEmissorId) {
                 $uibModalInstance.dismiss('cancel');
             } else {
-                $uibModalInstance.dismiss('cancel');
 
                 $rootScope.selectedClient = cliente;
+                $uibModalInstance.close($rootScope.selectedClient);
                 $location.path($scope.url);
             }
 
@@ -722,11 +742,22 @@ angular.module("App.controllers", [])
         "use strict";
         $scope.produto = produto;
 
+        $scope.listaLinhaBranca = [
+            {id:1,nome:'Electrolux'},
+            {id:2,nome:'Panasonic'},
+            {id:3,nome:'Atlas'},
+            {id:4,nome:'Esmaltec'},
+            {id:5,nome:'Colormaq'},
+            {id:6,nome:'Mueller'},
+            {id:7,nome:'Fischer'}
+        ];
+
+
         function init() {
             if($scope.produto != null){
                 angular.forEach($scope.listaLinhaBranca, function (value, key) {
-                    if(value.nome.toLowerCase() == produto.nome){
-                        $scope.produto = value.nome;
+                    if(value.nome.toLowerCase() == produto.nome.toLowerCase()){
+                        $scope.produto.nome = value.nome.toUpperCase();
                     }
                 });
             }
@@ -737,16 +768,6 @@ angular.module("App.controllers", [])
         $scope.close = function () {
             $uibModalInstance.close();
         };
-
-        $scope.listaLinhaBranca = [
-            {id:1,nome:'Electrolux'},
-            {id:2,nome:'Panasonic'},
-            {id:3,nome:'Atlas'},
-            {id:4,nome:'Esmaltec'},
-            {id:5,nome:'Colormaq'},
-            {id:6,nome:'Mueller'},
-            {id:7,nome:'Fischer'}
-        ];
 
         $scope.adicionarConcorrente = function (contato) {
             if (contato.id != null && contato.id != undefined) {
@@ -774,8 +795,12 @@ angular.module("App.controllers", [])
         };
 
     })
-    .controller("ModalEmailCtrl", function ($scope, $rootScope, $uibModalInstance) {
+    .controller("ModalEmailCtrl", function ($scope, $rootScope, $uibModalInstance, contato) {
         "use strict";
+        //como vem de uma funcao do ui-grid ele pode retornar mais de 1 logo um array
+        //porém estou bloqueando a adição de email e telefone quando o usuario selecionar mais de um
+        //todo seria legal colocar algum tipo de alerta
+        $scope.contato = angular.copy(contato[0]);
         $scope.email = {};
 
         $scope.close = function () {
@@ -783,39 +808,33 @@ angular.module("App.controllers", [])
         };
 
         $scope.adicionarEmail = function (email) {
-
-            var contato = {
-                contato: "Ricardo",
-                cargo: "Comprador",
-                prioritario: false,
-                telefone: "",
-                telefonePrioritario: "",
-                email: email.email,
-                emailPrioritario: email.prioritario
-            };
-            $rootScope.tabelaDesnormalizada.push(contato);
+            $scope.contato.id = null;
+            $scope.contato.prioritario = false;
+            $scope.contato.email = email.email;
+            $scope.contato.emailPrioritario = email.prioritario;
+            //todo substitiur $rootscope e retornar objeto pleso close do modal
+            // e no Controller do manutenção adicionar na lista ou chamar o service
+            $rootScope.tabelaDesnormalizada.push( $scope.contato);
             $uibModalInstance.close();
         };
 
     })
-    .controller("ModalTelefoneCtrl", function ($scope, $rootScope, $uibModalInstance) {
+    .controller("ModalTelefoneCtrl", function ($scope, $rootScope, $uibModalInstance, contato) {
         "use strict";
+        $scope.contato = angular.copy(contato[0]);
         $scope.telefone = {};
 
         $scope.close = function () {
             $uibModalInstance.close();
         };
         $scope.adicionarTelefone = function (telefone) {
-            var contato = {
-                contato: "Ricardo",
-                cargo: "Comprador",
-                prioritario: false,
-                telefone: telefone.numero,
-                telefonePrioritario: telefone.prioritario,
-                email: "",
-                emailPrioritario: ""
-            };
-            $rootScope.tabelaDesnormalizada.push(contato);
+            $scope.contato.id = null;
+            $scope.contato.prioritario = false;
+            $scope.contato.telefone = telefone.numero;
+            $scope.contato.telefonePrioritario = telefone.prioritario;
+            //todo substitiur $rootscope e retornar objeto pleso close do modal
+            // e no Controller do manutenção adicionar na lista ou chamar o service
+            $rootScope.tabelaDesnormalizada.push( $scope.contato);
 
             $uibModalInstance.close();
         };
@@ -1068,18 +1087,36 @@ angular.module("App.controllers", [])
         };
 
         $scope.adicionarTelefone = function (telefone) {
+            if ($scope.tabelaDesnormalizada.length <= 0 || $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows().length <= 0 || $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows().length > 1) {
+                return;
+            }
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/adicionar-telefone.html',
-                controller: 'ModalTelefoneCtrl'
+                controller: 'ModalTelefoneCtrl',
+                resolve : {
+                    contato : function (){
+                        return  $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows();
+                    }
+                }
             });
         };
 
         $scope.adicionarEmail = function (email) {
+            if ($scope.tabelaDesnormalizada.length <= 0 || $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows().length <= 0 || $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows().length > 1) {
+                return;
+            }
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/adicionar-email.html',
-                controller: 'ModalEmailCtrl'
+                controller: 'ModalEmailCtrl',
+                resolve : {
+                    contato : function (){
+                        return  $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows();
+                    }
+                }
             });
         };
 
@@ -1131,6 +1168,7 @@ angular.module("App.controllers", [])
         $scope.criarContato = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/novo-contato.html',
                 controller: 'ModalNovoContatoCtrl',
                 resolve: {
@@ -1176,6 +1214,7 @@ angular.module("App.controllers", [])
         $scope.editarContato = function (contato) {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/novo-contato.html',
                 controller: 'ModalNovoContatoCtrl',
                 resolve: {
@@ -1366,7 +1405,7 @@ angular.module("App.controllers", [])
 
                 }
             );
-        }
+        };
 
         $scope.close = function () {
             $uibModalInstance.close();
@@ -1374,7 +1413,7 @@ angular.module("App.controllers", [])
 
         $scope.replicar = function () {
             $uibModalInstance.close();
-        }
+        };
 
     })
     .controller("ModalProgramarEntregaCtrl", function ($scope, $rootScope, $uibModalInstance) {
@@ -1542,12 +1581,13 @@ angular.module("App.controllers", [])
                 } else {
                     $scope.showDetalhe = true;
                 }
-            }, 0)
+            }, 0);
         };
 
         $scope.programarEntrega = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/programar-entrega.html',
                 controller: 'ModalProgramarEntregaCtrl',
                 size: 'md'
@@ -1978,6 +2018,7 @@ angular.module("App.controllers", [])
         $scope.programarEntrega = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/programar-entrega.html',
                 controller: 'ModalProgramarEntregaCtrl',
                 size: 'md'
@@ -1995,6 +2036,7 @@ angular.module("App.controllers", [])
         $scope.adicionarTextoOv = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/adicionar-texto-ov.html',
                 controller: 'ModalTextoOvCtrl'
             });
@@ -2003,6 +2045,7 @@ angular.module("App.controllers", [])
         $scope.adicionarTextoSimulacao = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/adicionar-texto-simulacao.html',
                 controller: 'ModalTextoOvCtrl'
             });
@@ -2157,6 +2200,7 @@ angular.module("App.controllers", [])
 
                 var modalInstance = $uibModal.open({
                     animation: true,
+                    backdrop:'static',
                     templateUrl: './view/selecionar-cliente.html',
                     controller: 'ModalSelecionarClienteCtrl',
                     size: "lg",
@@ -2216,6 +2260,7 @@ angular.module("App.controllers", [])
                 templateUrl: './view/material-completo.html',
                 controller: 'ModalMaterialCompletoCtrl',
                 size: 'lg',
+                backdrop:'static',
                 resolve: {
                     material: function () {
                         return MaterialService.consultaMaterialCompleto(id);
@@ -2672,6 +2717,7 @@ angular.module("App.controllers", [])
         $scope.adicionarPontual = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/adicionar-pontual.html',
                 controller: 'ModalCriarPontualSimulacoesCtrl'
             });
@@ -2680,6 +2726,7 @@ angular.module("App.controllers", [])
         $scope.editarDadosEntrega = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/editar-dadosEntrega.html',
                 controller: 'ModalDadosEntregaCtrl',
                 resolve: {
@@ -2834,6 +2881,7 @@ angular.module("App.controllers", [])
         $rootScope.gotoCliente = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/selecionar-cliente.html',
                 controller: 'ModalSelecionarClienteCtrl',
                 size: "lg",
@@ -2863,20 +2911,16 @@ angular.module("App.controllers", [])
                 link: '/simulacoes',
                 icon: 'fa-usd'
 
-            }, {
-                nome: 'Gráficos',
-                link: '/graficos',
-                icon: 'fa-bar-chart'
-
             }];
 
         $rootScope.divLink = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
+                backdrop:'static',
                 templateUrl: './view/sap-links.html',
                 controller: ''
             });
-        }
+        };
 
         $rootScope.linhaBranca = [
             {id: 0, nome: "ELECTROLUX", quantidade: "45%"},
