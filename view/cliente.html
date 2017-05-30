@@ -360,14 +360,14 @@
                                 <div class="form-group">
                                     <label class="col-sm-3">% TOS T3</label>
                                     <div class="col-sm-1">
-                                        <input id="tos3" ng-disabled="!isBlockedTos" type="text"
+                                        <input id="tos3" ng-disabled="isBlocked" type="text"
                                                class="form-control input-sm"
                                                placeholder="%TOS T3"
                                                ng-model="selectedClient.revenda.tos.total">
                                     </div>
                                     <div ng-if="true" class="col-sm-2">
-                                        <button type="button" class="btn btn-blue btn-sm" ng-disabled="isBlocked"
-                                                ng-click="editarTos()"><i class="fa fa-expand" aria-hidden="true"></i>
+                                        <button type="button" class="btn btn-blue btn-sm"
+                                                ng-click="editarTos()"><i class="fa fa-arrows-alt" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                     <label class="col-sm-3">Data de atualização</label>
@@ -380,17 +380,17 @@
                                 <div ng-if="isBlockedTos" class="form-group">
                                     <label class="col-sm-2">Refrigerador</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control input-sm" placeholder="% TOS 3"
+                                        <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="% TOS 3"
                                                ng-model="selectedClient.revenda.tos.refrigerador">
                                     </div>
                                     <label class="col-sm-2">Lavadora</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control input-sm" placeholder="% TOS 3"
+                                        <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="% TOS 3"
                                                ng-model="selectedClient.revenda.tos.lavadora">
                                     </div>
                                     <label class="col-sm-2">Fogão</label>
                                     <div class="col-sm-2">
-                                        <input type="text" class="form-control input-sm" placeholder="% TOS 3"
+                                        <input ng-disabled="isBlocked" type="text" class="form-control input-sm" placeholder="% TOS 3"
                                                ng-model="selectedClient.revenda.tos.fogao">
                                     </div>
                                 </div>

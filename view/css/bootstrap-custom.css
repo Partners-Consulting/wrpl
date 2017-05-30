@@ -43,3 +43,18 @@
 .navbar-brand {
     padding-top: 4px;
 }
+
+/*modal*/
+.modal-custom > .modal-content{
+    width: 1363px;
+    height: 625px;
+    margin-top: 0px;
+}
+
+@media (min-width: 992px) {
+   .modal-custom {
+        width: 1435px;
+       height: 500px;
+       margin-top: 0px;
+    }
+}

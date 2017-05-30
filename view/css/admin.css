@@ -348,7 +348,7 @@ dd p.input-group button i{
     display: inline;
     float: left;
     width: 50%;
-    background-color: #5bc0de;
+    background-color: #72bacc;
     padding: 2px 5px;
     font-size: 12px;
     color: #fff;
@@ -368,12 +368,12 @@ dd p.input-group button i{
 
 .notes li button {
     -webkit-appearance: none;
-    /* padding: 0; */
+    padding-top: 10px;
     cursor: pointer;
     background: 0 0;
     border: 0;
     position: relative;
-    top: 10px;
+   /* top: 10px;*/
     color: red;
 }
 
@@ -520,7 +520,7 @@ dd p.input-group button i{
 }
 
 input[type=checkbox]:checked + label {
-    color: #5bc0de;
+    color: #72bacc;
     user-select: none;
 }
 
@@ -781,7 +781,7 @@ i.minus-all{
 }
 
 .btn-blue{
-    background-color: #5bc0de;
+    background-color: #72bacc;
     color: white;
 }
 
@@ -799,6 +799,19 @@ i.minus-all{
     width: auto;
 }
 
+.direcionais {
+    position: relative;
+    background: white
+}
+
+.conteudo {
+    width: auto;
+    height: auto;
+    color:black;
+    white-space: pre-line;
+    font-size: 12px;
+}
+
 /*Painel com carousel*/
 .painel-slide{
     height: 150px;
@@ -809,6 +822,12 @@ i.minus-all{
     float: left;
     height:110px;
     width: 89%;
+}
+
+.painel-slide-content-simulacoes {
+    float: left;
+    height:110px;
+    width: 80%;
 }
 
 .painel-slide-left {
@@ -830,7 +849,7 @@ i.minus-all{
 
 .painel-slide-left i{
     margin-top: 75px;
-    color: #5bc0de;
+    color: #72bacc;
 }
 
 .painel-slide-right{
@@ -852,15 +871,15 @@ i.minus-all{
 .painel-slide-right i{
     float: right;
     margin-top: 75px;
-    color: #5bc0de;
+    color: #72bacc;
 }
 
 span.glyphicon.glyphicon-chevron-right:before {
-    color: #5bc0de;
+    color: #72bacc;
 }
 
 span.glyphicon.glyphicon-chevron-left:before {
-    color: #5bc0de;
+    color: #72bacc;
 }
 
 span.glyphicon.glyphicon-chevron-right:hover {
@@ -905,19 +924,19 @@ span.glyphicon.glyphicon-chevron-left:hover {
 }
 
 .grid-manutencao-contatos {
-    width: 870px;
-    height: 200px;
+    width: 880px;
+    height: 350px;
     text-align:center;
 }
 
 .grid-agrupador-x-cliente {
     width: auto;
-    height: 150px;
+    height: 300px;
     text-align:center;
 }
 
 .grid-painel {
-    height: 110px;
+    height: 150px;
     width: auto;
 }
 
@@ -934,7 +953,7 @@ span.glyphicon.glyphicon-chevron-left:hover {
 }
 
 .grid-materias {
-    height: 270px;
+    height: 350px;
 }
 
 .grid-busca-material {
@@ -942,5 +961,6 @@ span.glyphicon.glyphicon-chevron-left:hover {
 }
 
 .grid-replica {
+    width: 330px;
     height: 150px;
 }

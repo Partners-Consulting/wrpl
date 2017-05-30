@@ -7,84 +7,88 @@
 <uib-tabset active="active">
     <uib-tab index="0" heading="Detalhe Cliente">
         <div class="modal-body">
-            <form class="form-horizontal">
-                <div class="form-group">
-                    <label class="col-sm-2">Cliente Emissor</label>
-                    <div class="col-sm-10">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Codigo"
-                                       ng-model="selectedClient.contatos[0].numero">
-                            </div>
-                            <div class="col-sm-9">
-                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Nome"
-                                       ng-model="selectedClient.contatos[0].nome">
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-2">Cliente Emissor</label>
+                            <div class="col-sm-10">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Codigo"
+                                               ng-model="selectedClient.contatos[0].numero">
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Nome"
+                                               ng-model="selectedClient.contatos[0].nome">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label class="col-sm-2">Endereço</label>
+                            <div class="col-sm-10">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Endereço"
+                                       ng-model="selectedClient.endereco">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2">Cidade</label>
+                            <div class="col-sm-10">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Cidade"
+                                       ng-model="selectedClient.cidade">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2">Estado</label>
+                            <div class="col-sm-1">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="UF"
+                                       ng-model="selectedClient.uf">
+                            </div>
+                            <label class="col-sm-1">País</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Pais"
+                                       ng-model="selectedClient.pais">
+                            </div>
+                            <label class="col-sm-1">Dom.Fiscal</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm"
+                                       placeholder="Domicilio Fiscal"
+                                       ng-model="selectedClient.domicilioFiscal">
+                            </div>
+                            <label class="col-sm-1">Cep</label>
+                            <div class="col-sm-2">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Cep"
+                                       ng-model="selectedClient.cep">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2">Telefone</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Numero"
+                                       ng-model="selectedClient.contatos[0].telefones[0].numero">
+                            </div>
+                            <label class="col-sm-1">Email</label>
+                            <div class="col-sm-5">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Nome"
+                                       ng-model="selectedClient.contatos[0].emails[0].email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2">CNPJ</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Numero"
+                                       ng-model="selectedClient.cnpj">
+                            </div>
+                            <label class="col-sm-1">Inscrição Estadual</label>
+                            <div class="col-sm-5">
+                                <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Nome"
+                                       ng-model="selectedClient.inscricaoEstadual">
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2">Endereço</label>
-                    <div class="col-sm-10">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Endereço"
-                               ng-model="selectedClient.endereco">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2">Cidade</label>
-                    <div class="col-sm-10">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Cidade"
-                               ng-model="selectedClient.cidade">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2">Estado</label>
-                    <div class="col-sm-1">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="UF"
-                               ng-model="selectedClient.uf">
-                    </div>
-                    <label class="col-sm-1">País</label>
-                    <div class="col-sm-2">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Pais"
-                               ng-model="selectedClient.pais">
-                    </div>
-                    <label class="col-sm-1">Dom.Fiscal</label>
-                    <div class="col-sm-2">
-                        <input ng-disabled="true" type="text" class="form-control input-sm"
-                               placeholder="Domicilio Fiscal"
-                               ng-model="selectedClient.domicilioFiscal">
-                    </div>
-                    <label class="col-sm-1">Cep</label>
-                    <div class="col-sm-2">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Cep"
-                               ng-model="selectedClient.cep">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2">Telefone</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Numero"
-                               ng-model="selectedClient.contatos[0].telefones[0].numero">
-                    </div>
-                    <label class="col-sm-2">Email</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Nome"
-                               ng-model="selectedClient.contatos[0].emails[0].email">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2">CNPJ</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Numero"
-                               ng-model="selectedClient.cnpj">
-                    </div>
-                    <label class="col-sm-2">Inscrição Estadual</label>
-                    <div class="col-sm-4">
-                        <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Nome"
-                               ng-model="selectedClient.inscricaoEstadual">
-                    </div>
-                </div>
-            </form>
+            </div>
             <div class="row">
                 <div class="col-sm-12">
                     <div ng-if="active == 0" ui-grid="gridAgrupadorXCliente" class="grid-agrupador-x-cliente" ui-grid-resize-columns ui-grid-move-columns></div>
@@ -95,7 +99,7 @@
     <uib-tab index="1" heading="Manutenção Contato">
         <div class="modal-body">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-offset-2 col-sm-6">
                     <form class="form-horizontal">
                         <div class="form-group">
                             <label class="col-sm-3">Emissor</label>
@@ -147,54 +151,43 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-offset-2 col-sm-6">
                     <!--<button type="button" ng-click="criarContato()" class="btn btn-primary btn-sm">
                         <span class="fa-stack fa-lg">
                              <i class="fa fa-user fa-stack-2x"></i>
                              <i class="fa fa-plus fa-stack-1x plus-phone"></i>
                         </span>
                     </button>-->
-                        <img  class="btn-primary" style="height: 30px;width: 30px"  ng-click="criarContato()" src="view/images/add_contact.png" alt="">
+                        <img class="btn-primary" style="height: 30px;width: 30px" ng-click="criarContato()" src="view/images/add_contact_white_min.png" alt="">
                     <!--<button type="button" ng-click="adicionarTelefone()" class="btn btn-primary btn-sm">
                         <span class="fa-stack fa-lg">
                              <i class="fa fa-phone fa-stack-2x"></i>
                              <i class="fa fa-plus fa-stack-1x plus-phone"></i>
                         </span>
                     </button>-->
-                        <img class="btn-primary" style="height: 30px;width: 30px" ng-click="adicionarTelefone()" src="view/images/add_phone.png" alt="">
+                        <img class="btn-primary" style="height: 30px;width: 30px" ng-click="adicionarTelefone()" src="view/images/add_phone_white_min.png" alt="">
                         <!--<button type="button" ng-click="adicionarEmail()" class="btn btn-primary btn-sm">
                             <span class="fa-stack fa-lg">
                                  <i class="fa fa-envelope fa-stack-2x"></i>
                                  <i class="fa fa-plus fa-stack-1x plus-mail"></i>
                             </span>
                         </button>-->
-                        <img  class="btn-primary" style="height: 30px;width: 30px" ng-click="adicionarEmail()" src="view/images/add_mail.png" alt="">
+                        <img  class="btn-primary" style="height: 30px;width: 30px" ng-click="adicionarEmail()" src="view/images/add_mail_white_min.png" alt="">
                     <!--<button type="button" ng-click="excluirContatos()" class="btn btn-danger btn-sm">
                         <span class="fa-stack fa-lg">
                              <i class="fa fa-trash fa-stack-2x"></i>
                              <i class="fa fa-minus fa-stack-1x minus-all"></i>
                         </span>
                     </button>-->
-                        <img class="btn-danger" style="height: 30px;width: 30px" ng-click="excluirContatos()" src="view/images/trash.png" alt="">
+                        <img class="btn-danger" style="height: 30px;width: 30px" ng-click="excluirContatos()" src="view/images/trash_white_min.png" alt="">
                 </div>
             </div>
             </br>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-offset-2 col-sm-6">
                     <div ng-if="active == 1" ui-grid="gridTabelaDesnormalizada" class="grid-manutencao-contatos" ui-grid-selection ui-grid-resize-columns></div>
-                </div>
-            </div>
-            </br>
-            <div class="row">
-                <div class="col-sm-offset-10 col-sm-2">
-
                 </div>
             </div>
         </div>
     </uib-tab>
 </uib-tabset>
-<div class="modal-footer">
-    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="salvarAlteracaoContato()">
-       Salvar
-    </button>
-</div>

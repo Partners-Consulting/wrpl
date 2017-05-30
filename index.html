@@ -98,7 +98,8 @@
                             class="fa fa-bullhorn" aria-hidden="true"></i></span></a>
                     <ul uib-dropdown-menu class="box-drop">
                         <h3>Ações Promocionais</h3>
-                        <div ng-if="status.isOpenAcoes" ui-grid="gridAcoesPromocionais" ui-grid-resize-columns ui-grid-move-columns></div>
+                        <div ng-if="status.isOpenAcoes" ui-grid="gridAcoesPromocionais" ui-grid-resize-columns
+                             ui-grid-move-columns></div>
                     </ul>
                 </li>
                 <!--  <li><a href="#" class="icon-badge green-badge" data-line="1"><i class="fa fa-credit-card" aria-hidden="true"></i></a></li> -->
@@ -106,16 +107,15 @@
                     <a href uib-dropdown-toggle><span class="icon-badge red-badge" data-line="2"><i
                             class="fa fa-map-marker" aria-hidden="true"></i></span></a>
                     <ul uib-dropdown-menu class="box-drop">
-                        <table class="table table-hover table-box-drop">
-                            <h3>Direcionais</h3>
-                            <thead class="thead-bold">
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <h3>Direcionais</h3>
+                        <div class="direcionais">
+                              <span class="conteudo">Dif pol Zero em FH e FV!
+                                  Dif pol Zero em FV e FH!
+                            </span>
+                        </div>
                     </ul>
                 </li>
-                <li uib-dropdown class="dropdown" auto-close="outsideClick" is-open="status.isOpenCreditos" >
+                <li uib-dropdown class="dropdown" auto-close="outsideClick" is-open="status.isOpenCreditos">
                     <a href uib-dropdown-toggle><span class="icon-badge green-badge" data-line="1"><i
                             class="fa fa-credit-card" aria-hidden="true"></i></span></a>
                     <ul uib-dropdown-menu class="box-drop">
@@ -153,11 +153,13 @@
                             </tfoot>
                         </table>-->
                         <h3>Crédito</h3>
-                        <div ng-if="status.isOpenCreditos" ui-grid="gridCredito" ui-grid-resize-columns ui-grid-move-columns></div>
+                        <div ng-if="status.isOpenCreditos" ui-grid="gridCredito" ui-grid-resize-columns
+                             ui-grid-move-columns></div>
                     </ul>
                 </li>
                 <li uib-dropdown class="dropdown">
-                    <a id="sapIcone" ng-click="sapLink()" href="" uib-dropdown-toggle><img src="view/images/sap_logon.png" alt=""></a>
+                    <a id="sapIcone" ng-click="sapLink()" href="" uib-dropdown-toggle><img
+                            src="view/images/sap_logon.png" alt=""></a>
                 </li>
             </ul>
         </div>

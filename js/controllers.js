@@ -351,7 +351,7 @@ angular.module("App.controllers", [])
                 templateUrl: './view/expandir-contato.html',
                 controller: 'ModalManutencaoContatoCtrl',
                 backdrop: 'static',
-                size: "lg"
+                size: "custom"
             });
         };
 
@@ -401,6 +401,7 @@ angular.module("App.controllers", [])
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
+                cancelButtonText:"Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -458,6 +459,7 @@ angular.module("App.controllers", [])
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Sim, excluir!",
+                    cancelButtonText:"Cancelar",
                     closeOnConfirm: false,
                     closeOnCancel: true,
                     showLoaderOnConfirm: true
@@ -520,6 +522,7 @@ angular.module("App.controllers", [])
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Sim, excluir!",
+                    cancelButtonText:"Cancelar",
                     closeOnConfirm: false,
                     closeOnCancel: true,
                     showLoaderOnConfirm: true
@@ -892,7 +895,7 @@ angular.module("App.controllers", [])
 
         $scope.adicionarPontualNaLista = function (pontual) {
             $uibModalInstance.close();
-            pontual.id = $rootScope.simulacaoPontuais.length + 1;
+            pontual.id = $rootScope.simulacaoPontuais.length;
             pontual.user = $rootScope.user;
             $rootScope.simulacaoPontuais.unshift(pontual);
         };
@@ -928,10 +931,11 @@ angular.module("App.controllers", [])
                 uf: "SP",
                 telefone: "11 1234-4321",
                 pais: "BRASIL",
+                email: "carrefour@carrefour.com.br",
                 domicilioFiscal: "SC 0015",
                 cep: "88410-000",
-                inscricaoEstadual: "255155603",
-                status: "EM PROCESSAMENTO"
+                inscricaoEstadual: "255155603123",
+                status: "Em Processamento"
             },
             {
                 clienteEmissorId: 9746513213,
@@ -943,10 +947,11 @@ angular.module("App.controllers", [])
                 uf: "SP",
                 telefone: "11 1234-4321",
                 pais: "BRASIL",
+                email: "testeasd.carrefour@carrefour.com.br",
                 domicilioFiscal: "SC 0015",
                 cep: "88410-000",
-                inscricaoEstadual: "255155603",
-                status: "EM PROCESSAMENTO"
+                inscricaoEstadual: "255155603123",
+                status: "Em Processamento"
             }
         ];
 
@@ -955,18 +960,18 @@ angular.module("App.controllers", [])
             enableHorizontalScrollbar: false,
             data: 'agrupadoresClientes',
             columnDefs: [
-                {field: 'agrupador', width: '150', displayName: 'Cliente agrupador'},
-                {field: 'clienteEmissorId', width: '110', displayName: 'Cliente Emissor'},
+                {field: 'agrupador', width: '80', displayName: 'Agrupador'},
+                {field: 'clienteEmissorId', width: '80', displayName: 'Emissor'},
                 {field: 'razao', width: '100', displayName: 'Nome'},
-                {field: 'cidade', width: '100', displayName: 'CIDADE'},
-                {field: 'uf', width: '70', displayName: 'ESTADO'},
-                {field: 'cnpj', width: '110', displayName: 'CNPJ'},
-                {field: 'endereco', width: '200', displayName: 'ENDEREÇO'},
-                {field: 'cep', width: '70', displayName: 'CEP'},
-                {field: 'telefone', width: '100', displayName: 'TELEFONE'},
-                {field: 'email', width: '250', displayName: 'EMAIL'},
-                {field: 'inscricaoEstadual', width: '200', displayName: 'INSCRIÇÃO ESTADUAL'},
-                {field: 'status', width: '150', displayName: 'STATUS'}
+                {field: 'cidade', width: '100', displayName: 'Cidade'},
+                {field: 'uf', width: '40', displayName: 'UF'},
+                {field: 'cnpj', width: '110', displayName: 'Cnpj'},
+                {field: 'endereco', width: '200', displayName: 'Endereço'},
+                {field: 'cep', width: '70', displayName: 'Cep'},
+                {field: 'telefone', width: '90', displayName: 'Telefone'},
+                {field: 'email', width: '190', displayName: 'Email'},
+                {field: 'inscricaoEstadual', width: '100', displayName: 'I.E'},
+                {field: 'status', width: '150', displayName: 'Status'}
             ]
         };
 
@@ -984,16 +989,6 @@ angular.module("App.controllers", [])
                     displayName: 'Contato'
                 },
                 {
-                    field: 'prioritario',
-                    width: '60',
-                    displayName: 'Priori.',
-                    cellTemplate: ' <div ng-click="grid.appScope.alterarPrioridadeContato(row.entity)">' +
-                    '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
-                    '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
-                    '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
-                    '<a class="green" style="color: green" href=""><i class="fa fa-check-circle-o bigger-130"></i></a></div></div>'
-                },
-                {
                     field: 'cargo',
                     width: '80',
                     displayName: 'Cargo'
@@ -1005,8 +1000,8 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'telefonePrioritario',
-                    displayName: 'Priori.',
-                    width: '60',
+                    displayName: 'Prioritário',
+                    width: '80',
                     cellTemplate: ' <div ng-click="grid.appScope.alterarPrioridadeTelefone(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
@@ -1015,13 +1010,13 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'email',
-                    width: '250',
+                    width: '200',
                     displayName: 'Email'
                 },
                 {
                     field: 'emailPrioritario',
-                    displayName: 'Priori.',
-                    width: '58',
+                    displayName: 'Prioritário',
+                    width: '80',
                     cellTemplate: ' <div ng-click="grid.appScope.alterarPrioridadeEmail(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
@@ -1051,6 +1046,7 @@ angular.module("App.controllers", [])
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
+                cancelButtonText:"Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -1143,6 +1139,7 @@ angular.module("App.controllers", [])
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
+                cancelButtonText:"Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -1188,6 +1185,7 @@ angular.module("App.controllers", [])
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
+                cancelButtonText:"Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -1255,6 +1253,17 @@ angular.module("App.controllers", [])
     .controller("ModalUltimosContatosCtrl", function ($scope, $rootScope, $uibModalInstance, contato) {
         "use strict";
         $scope.contato = contato;
+        $scope.titulo = null;
+
+        function init(){
+            if (!!contato.id){
+                $scope.titulo = "Editar Contato"
+            }else {
+                $scope.titulo = "Criar Contato"
+            }
+        }
+
+        init();
 
         $scope.isAnitgo = true;
 
@@ -1266,9 +1275,11 @@ angular.module("App.controllers", [])
             if (!!contato.id) {
                 $uibModalInstance.close();
             } else {
-                contato.data = "17.05.2017"
+                contato.data = "17.05.2017";
+                //todo chamar serviço retornar id
                 contato.id = $rootScope.contatos.length + 1;
                 $rootScope.contatos.push(contato);
+
                 $uibModalInstance.close();
             }
 
@@ -1382,6 +1393,7 @@ angular.module("App.controllers", [])
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
+                cancelButtonText:"Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -1703,6 +1715,7 @@ angular.module("App.controllers", [])
             columnDefs: [
                 {
                     field: 'codigo',
+                    width:'130',
                     displayName: 'Código do Material'
                 },
                 {
@@ -2194,6 +2207,11 @@ angular.module("App.controllers", [])
         $scope.listaDeLocaisExpedicao = [];
         $scope.listaDeIncoterms = [];
         $scope.replicas = [];
+        $scope.painelTabela = {
+            quantidadeDeTabela: 2,
+            tabelaAtual: 1,
+            tituloTabelaAtual: 'Condições de Pagamento'
+        };
 
         function init() {
             if ($rootScope.selectedClient == null) {
@@ -2221,6 +2239,28 @@ angular.module("App.controllers", [])
         }
 
         init();
+
+        $scope.proximaTabela = function () {
+            if ($scope.painelTabela.tabelaAtual + 1 <= $scope.painelTabela.quantidadeDeTabela) {
+                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual + 1;
+            }
+            $scope.changeHeaderTitle();
+        };
+
+        $scope.tabelaAnterior = function () {
+            if ($scope.painelTabela.tabelaAtual - 1 > 0) {
+                $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual - 1;
+            }
+            $scope.changeHeaderTitle();
+        };
+
+        $scope.changeHeaderTitle = function () {
+            if ($scope.painelTabela.tabelaAtual == 1) {
+                $scope.painelTabela.tituloTabelaAtual = 'Condições de Pagamento';
+            } else if ($scope.painelTabela.tabelaAtual == 2) {
+                $scope.painelTabela.tituloTabelaAtual = 'Histórico';
+            }
+        };
 
         $scope.replicar = function () {
             var modalInstance = $uibModal.open({
@@ -2308,31 +2348,31 @@ angular.module("App.controllers", [])
                 },
                 {
                     field: 'canal',
-                    width: '40',
+                    width: '35',
                     displayName: 'CD'
                 },
                 {
                     field: 'setor',
-                    width: '40',
+                    width: '35',
                     displayName: 'SA'
                 },
                 {
                     displayName: 'Cond.Pgto',
-                    width: '80',
+                    width: '75',
                     field: 'condPagtos',
                     enableCellEdit: false,
                     cellTemplate: '<select ng-model="condPagtos" ng-options="pgto for pgto in COL_FIELD"></select>'
                 },
                 {
                     field: 'incoterms',
-                    width: '60',
+                    width: '55',
                     displayName: 'Inc',
                     enableCellEdit: false,
                     cellTemplate: '<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
                 },
                 {
                     displayName: 'Cond.Frete',
-                    width: '100',
+                    width: '80',
                     field: 'condFrete',
                     enableCellEdit: false,
                     cellTemplate: '<select ng-model="condFrete" ng-options="frete for frete in COL_FIELD"></select>'
@@ -2346,39 +2386,9 @@ angular.module("App.controllers", [])
         };
 
         $scope.excluirReplicasSelecionadas = function () {
-            if ($scope.replicas.length <= 0 || $scope.gridApiReplicas.selection.getSelectedRows().length <= 0) {
-                return;
-            }
-            var alertExclusao = {
-                title: "Exclusão de replicas",
-                text: "Tem certeza que gostaria de excluir as replicas selecionadas?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sim, excluir!",
-                closeOnConfirm: false,
-                closeOnCancel: true,
-                showLoaderOnConfirm: true
-            };
-            SweetAlert.swal(
-                alertExclusao, function (isConfirm) {
-                    if (isConfirm) {
-
-                        angular.forEach($scope.gridApiReplicas.selection.getSelectedRows(), function (data, index) {
-                            $scope.replicas.splice($scope.replicas.lastIndexOf(data), 1);
-                        });
-                        SweetAlert.swal({
-                            title: "Sucesso",
-                            text: "Replicas excluídas com sucesso",
-                            customClass: 'sweetalert-sm'
-                        });
-
-                    } else {
-                        return;
-                    }
-
-                }
-            );
+            $scope.temp = angular.copy($scope.replicas);
+            $scope.replica = [];
+            $scope.replicas = angular.copy($scope.temp);
         };
 
         $scope.replicar = function () {
@@ -2408,6 +2418,7 @@ angular.module("App.controllers", [])
                     width: '100',
                     pinnedLeft:true,
                     displayName: 'Material',
+                    footerCellTemplate: '<div class="ui-grid-cell-contents" >Total:</div>',
                     cellTemplate: '  <a href="" ng-click="grid.appScope.consultarMaterialCompleto(COL_FIELD)">{{COL_FIELD}}</a>'
                 },
                 {
@@ -2431,6 +2442,7 @@ angular.module("App.controllers", [])
                     field: 'quantidade',
                     width: '90',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
+                    footerCellTemplate: '<div class="ui-grid-cell-contents" >{{col.getAggregationValue()}}</div>',
                     displayName: 'Quantidade'
                 },
                 {
@@ -2484,7 +2496,7 @@ angular.module("App.controllers", [])
                     field: 'valorNotaFiscalTotal',
                     width: '100',
                     aggregationType: uiGridConstants.aggregationTypes.sum,
-                    footerCellTemplate: '<div class="ui-grid-cell-contents" >Total: {{col.getAggregationValue() | currency:"R$ ":2 }}</div>',
+                    footerCellTemplate: '<div class="ui-grid-cell-contents" >{{col.getAggregationValue() | currency:"R$ ":2 }}</div>',
                     displayName: 'Valor NF Total'
                 },
                 {
@@ -2545,6 +2557,7 @@ angular.module("App.controllers", [])
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
+                cancelButtonText:"Cancelar",
                 closeOnConfirm: true,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -2692,6 +2705,7 @@ angular.module("App.controllers", [])
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
+                cancelButtonText:"Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -2785,6 +2799,7 @@ angular.module("App.controllers", [])
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, salvar!",
+                cancelButtonText:"Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true

@@ -164,7 +164,7 @@
     <div class="col-md-3" style="height:50%">
         <div class="row" style="height:50%;">
             <div class="col-md-12 custom">
-                <panel title="Dados Entrega" icon="fa-truck" height="36" col="12">
+                <panel title="Dados Entrega" icon="fa-truck" height="42" col="12">
                     <panel-actions>
                         <button type="button" class="btn btn-blue btn-xs" ng-click="editarDadosEntrega()"><i
                                 class="fa fa-pencil"
@@ -235,10 +235,18 @@
                 </panel>
             </div>
         </div>
+    </div>
+    <div class="col-md-4" style="height:50%">
         <div class="row" style="height:50%;">
             <div class="col-md-12 custom">
-                <panel title="Histórico" icon="fa-history" height="28" col="12">
-                    <panel-actions>
+                <panel title="{{painelTabela.tituloTabelaAtual}}" icon="fa-reply" height="42" col="12">
+                <panel-actions ng-if="painelTabela.tabelaAtual == 1">
+                    <button type="button" class="btn btn-success btn-xs" ng-click="replicar()"><i
+                            class="fa fa-reply-all" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-danger btn-xs" ng-click="excluirReplicasSelecionadas()"><i
+                            class="fa fa-trash" aria-hidden="true"></i></button>
+                </panel-actions>
+                    <panel-actions ng-if="painelTabela.tabelaAtual == 2" >
                         <div class="row">
                             <div class="col-sm-12">
                                 <button type="button" class="btn btn-success btn-xs" ng-click="adicionarPontual()"><i
@@ -246,33 +254,27 @@
                             </div>
                         </div>
                     </panel-actions>
-                    <ul class="notes" ng-repeat="pontual in simulacaoPontuais">
-                        <li ng-if="$index == 1">
-                            <button type="button" class="bootbox-close-button close white" data-dismiss="modal"
-                                    aria-hidden="true"
-                                    style="margin-top: -10px;" ng-click="removePontual(pontual)">×
-                            </button>
-                            <span class="text">{{pontual.texto}}</span>
-                            <div class="date">{{pontual.data | date:'dd.MM.yyyy'}}</div>
-                            <div class="noteuser">{{pontual.user.abreviado}}</div>
-                        </li>
-                    </ul>
-                </panel>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4" style="height:50%">
-
-        <div class="row" style="height:50%;">
-            <div class="col-md-12 custom">
-                <panel title="Replicar" icon="fa-reply" height="54" col="12">
-                <panel-actions>
-                    <button type="button" class="btn btn-success btn-xs" ng-click="replicar()"><i
-                            class="fa fa-reply-all" aria-hidden="true"></i></button>
-                    <button type="button" class="btn btn-danger btn-xs" ng-click="excluirReplicasSelecionadas()"><i
-                            class="fa fa-trash" aria-hidden="true"></i></button>
-                </panel-actions>
-                    <div ui-grid="gridReplicas" class="grid-replica" ui-grid-edit ui-grid-resize-columns ui-grid-selection ui-grid-move-columns></div>
+                    <!--<div ui-grid="gridReplicas" class="grid-replica" ui-grid-edit ui-grid-resize-columns ui-grid-selection ui-grid-move-columns></div>-->
+                    <div class="painel-slide-left" ng-click="tabelaAnterior()">
+                        <i class="fa fa-chevron-left fa-1x" aria-hidden="true"></i>
+                    </div>
+                    <div class="painel-slide painel-slide-content-simulacoes">
+                        <div ng-if="painelTabela.tabelaAtual == 1" ui-grid="gridReplicas" class="grid-replica" ui-grid-edit ui-grid-resize-columns ui-grid-move-columns></div>
+                        <ul ng-if="painelTabela.tabelaAtual == 2" class="notes" ng-repeat="pontual in simulacaoPontuais">
+                            <li>
+                                <button type="button" class="bootbox-close-button close white" data-dismiss="modal"
+                                        aria-hidden="true"
+                                        style="margin-top: -10px;" ng-click="removePontual(pontual)">×
+                                </button>
+                                <span class="text">{{pontual.texto}}</span>
+                                <div class="date">{{pontual.data | date:'dd.MM.yyyy'}}</div>
+                                <div class="noteuser">{{pontual.user.abreviado}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="painel-slide-right" ng-click="proximaTabela()">
+                        <i class="fa fa-chevron-right fa-1x" aria-hidden="true"></i>
+                    </div>
                 </panel>
             </div>
         </div>
@@ -280,7 +282,7 @@
     <div class="col-md-5" style="height:50%">
         <div class="row" style="height:50%;">
             <div class="col-md-12 custom">
-                <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="54" col="12">
+                <panel title="Últimas Simulações" icon="fa-sort-amount-asc" height="42" col="12">
                     <panel-actions>
                         <input class="input-xs" type="text"
                                ng-change="filtraUltimasSimulacoes()"
@@ -301,7 +303,7 @@
 <div class="row">
     <div class="col-md-12 custom" style="height:50%;">
         <div class="col-md-12 custom">
-            <panel title="Itens da Simulação" icon="fa-table" height="60" col="12">
+            <panel title="Itens da Simulação" icon="fa-table" height="72" col="12">
                 <panel-actions>
                     <div class="row">
                         <div class="col-sm-12">
