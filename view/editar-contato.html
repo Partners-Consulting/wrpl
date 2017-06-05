@@ -25,6 +25,7 @@
             <label class="col-sm-3">Nome</label>
             <div class="col-sm-9">
                 <input ng-disabled="editable" type="text" class="form-control" placeholder="Nome" ng-model="contato.nome">
+
             </div>
         </div>
         <div class="form-group">
@@ -36,9 +37,9 @@
     <button type="button" class="btn btn-default" ng-click="setEditable()"><i
                                 class="fa fa-pencil"
                                 aria-hidden="true"></i></button>
+
 </div>
 <div class="modal-footer">
     <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="adicionarUltimosContatos(contato)">Salvar
     </button>
-    
 </div>

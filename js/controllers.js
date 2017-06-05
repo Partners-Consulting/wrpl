@@ -991,6 +991,7 @@ angular.module("App.controllers", [])
                 {
                     field: 'cargo',
                     width: '90',
+
                     displayName: 'Cargo'
                 },
                 {
@@ -1011,6 +1012,7 @@ angular.module("App.controllers", [])
                 {
                     field: 'email',
                     width: '260',
+
                     displayName: 'Email'
                 },
                 {
@@ -1031,11 +1033,13 @@ angular.module("App.controllers", [])
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarContato(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.aumentarPosContato(row.entity)" href=""><i class="fa fa-sort-desc" aria-hidden="true"></i></a>' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.diminuirPosContato(row.entity)" href=""><i class="fa fa-sort-asc" aria-hidden="true"></i></a>' +
+
                     ' </div>'
                 }
 
             ]
         };
+
         $scope.aumentarPosContato = function(contato){
             var next = _.findWhere($scope.tabelaDesnormalizada,{order: (contato.order+1)});
             if(next != undefined){
@@ -1278,6 +1282,7 @@ angular.module("App.controllers", [])
         $scope.contato = contato;
         $scope.titulo = null;
         $scope.editable = false;
+
         function init(){
             if (!!contato.id){
                 $scope.titulo = "Editar Contato"
@@ -1310,6 +1315,7 @@ angular.module("App.controllers", [])
         $scope.setEditable = function(){
             editable = !editable;
         }
+
         $scope.criarUltimosContatos = function (contato) {
             $scope.isAntigo = false;
             $scope.contato = {};
@@ -1778,13 +1784,13 @@ angular.module("App.controllers", [])
 
             $uibModalInstance.close($scope.listaMateriais);
         };
+
         $scope.deletarMateriaisSelecionados = function(){
             angular.forEach($scope.gridApiBuscaMaterial.selection.getSelectedRows(), function(data, index){
                 $scope.listaMateriais = _.without($scope.listaMateriais, data);
             });
             $uibModalInstance.close($scope.listaMateriais);
         };
-
         $scope.close = function () {
             $uibModalInstance.close();
         };
@@ -1920,16 +1926,19 @@ angular.module("App.controllers", [])
                 {
                     field: 'canal',
                     width: '50',
+
                     displayName: 'Canal'
                 },
                 {
                     field: 'setor',
                     width: '50',
+
                     displayName: 'Setor'
                 },
                 {
                     field: 'situacaoCarga',
                     width: '70',
+
                     displayName: 'Sit. Carga',
                     cellTemplate: ' <div ng-click="grid.appScope.alterarSituacaoCarga(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
@@ -1957,6 +1966,7 @@ angular.module("App.controllers", [])
                 {
                     field: 'tipo',
                     width: '50',
+
                     displayName: 'Tipo'
                 },
                 {
@@ -2110,6 +2120,7 @@ angular.module("App.controllers", [])
     })
     .controller("ModalMaterialCompletoCtrl", function ($scope, $rootScope, $uibModalInstance, material, CentroService, LocalExpedicaoService, IncotermsService, CondicaoPagamentoService) {
 
+
         $scope.material = material;
         $scope.listaDeCentros = [];
         $scope.listaDeLocaisExpedicao = [];
@@ -2122,6 +2133,7 @@ angular.module("App.controllers", [])
             $scope.listaDeLocaisExpedicao = LocalExpedicaoService.consultaLocalExpedicaoPorMaterial(material.id);
             $scope.listaDeIncoterms = IncotermsService.consultaIncotermsPorMaterial(material.id);
             $scope.listaCondPgto = CondicaoPagamentoService.consultaPagamentoPorMaterial(material.id);
+
         }
 
         init();
@@ -2246,6 +2258,7 @@ angular.module("App.controllers", [])
         };
         $scope.editable = false;
 
+
         function init() {
             if ($rootScope.selectedClient == null) {
 
@@ -2272,6 +2285,7 @@ angular.module("App.controllers", [])
         }
 
         init();
+
         $scope.setEditable = function () {
             $scope.editable = !$scope.editable
         };
@@ -2373,10 +2387,13 @@ angular.module("App.controllers", [])
 
         $scope.gridReplicas = {
             enableHorizontalScrollbar: 0,
+
             enableVerticalScrollbar: 0,
             enableGridMenu: true,
             data: 'replicas',
             
+            enableGridMenu: true,
+            data: 'replicas',
             columnDefs: [
                 {
                     field: 'orgVendas',
@@ -2817,6 +2834,30 @@ angular.module("App.controllers", [])
             $uibModalInstance.close()
          }
          
+
+         $scope.formato = 'dd-MM-yyyy';
+
+         $scope.popupDataEntrega = {
+         opened: false
+         };
+
+         $scope.openDataEntrega = function () {
+         $scope.popupDataEntrega.opened = true;
+         };
+
+         $scope.popupDataRemessa = {
+         opened: false
+         };
+
+         $scope.openDataRemessa = function () {
+         $scope.popupDataRemessa.opened = true;
+         };
+
+         $scope.salvarDadosEntrega = function () {
+         $rootScope.selectedClient.simulacao.dadosEntrega = $scope.dadosEntrega;
+         $uibModalInstance.close()
+         }
+
 
         $scope.bonificacao = function () {
             var modalInstance = $uibModal.open({
@@ -5277,6 +5318,7 @@ angular.module("App.controllers", [])
             {
                 id: 1,
                 order: 1,
+
                 contato: "Ricardo",
                 cargo: "Comprador",
                 prioritario: true,
@@ -5298,6 +5340,7 @@ angular.module("App.controllers", [])
             },
             {
                 id: 3,
+
                 order: 3,
                 contato: "Ricardo",
                 cargo: "Comprador",
@@ -5342,6 +5385,7 @@ angular.module("App.controllers", [])
             },
             {
                 id: 7,
+
                 order: 7,
                 contato: "Keli",
                 cargo: "Gerente",
@@ -5476,6 +5520,7 @@ angular.module("App.controllers", [])
                     displayName: 'Limite Total',
                     cellTemplate: '<div class="ui-grid-cell-contents" >{{COL_FIELD | currency:"R$ ":0 }}</div>',
                     footerCellTemplate: '<div class="ui-grid-cell-contents" >{{col.getAggregationValue() | currency:"R$ ":0 }}</div>'
+
                 },
                 {
                     field: 'limiteWhp',
@@ -5490,6 +5535,7 @@ angular.module("App.controllers", [])
                     cellTemplate: '<div class="ui-grid-cell-contents" >{{COL_FIELD | currency:"R$ ":0 }}</div>',
                     displayName: 'Exposição WRP',
                     footerCellTemplate: '<div class="ui-grid-cell-contents" >{{col.getAggregationValue() | currency:"R$ ":0 }}</div>'
+
                 },
                 {
                     field: 'emAbertoWRP',
