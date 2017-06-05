@@ -1,0 +1,31 @@
+<div class="modal-header bg-primary" style="background-color:#333">
+    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
+            style="margin-top: -10px;" ng-click="close()">×
+    </button>
+    <h4>Histórico de Venda</h4>
+
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div ui-grid="gridHistoricoVenda" ui-grid-resize-columns ui-grid-move-columns>
+                <div class="grid-msg-overlay" ng-hide="!loading">
+                    <div class="msg">
+            <span>
+              Carregando Lista...
+              <i class="fa fa-spinner fa-spin"></i>
+            </span>
+                    </div>
+                </div>
+                <div class="grid-msg-overlay" ng-show="listaHistoricoVenda.length == 0">
+                    <div class="msg">
+                        <span>Lista não contém dados</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+
+</div>

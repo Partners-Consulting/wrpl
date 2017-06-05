@@ -1,0 +1,49 @@
+<div class="modal-header bg-primary" style="background-color:#333">
+    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
+            style="margin-top: -10px;" ng-click="close()">×
+    </button>
+    <h4>Selecionar Cliente</h4>
+
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-11">
+            <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="sizing-addon1"><i class="fa fa-search"
+                                                                          aria-hidden="true"></i></span>
+                <input type="text" class="form-control" placeholder="busca cliente" aria-describedby="sizing-addon1"
+                       ng-model="filtro">
+            </div>
+        </div>
+        <div class="col-sm-1">
+            <button ng-if="filtroCliente" type="button" class="btn btn-primary btn-lg" ng-click="todosClientes()">
+                <i class="fa fa-filter" aria-hidden="true"></i>
+            </button>
+            <button ng-if="!filtroCliente" type="button" class="btn btn-default btn-lg" ng-click="buscaClienteFiltrado()">
+                <i class="fa fa-filter" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <table class="table table-hover table-responsive">
+        <thead>
+        <th>Código do Cliente</th>
+        <th>Razao</th>
+        <th>CNPJ</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="cliente in listaClientes | filter:filtro" ng-click="selectClient(cliente)">
+            <td>{{cliente.clienteEmissorId}}</td>
+            <td>{{cliente.razao}}</td>
+            <td scope="row">{{cliente.cnpj}}</td>
+            <td>{{cliente.contatos[0].telefones[0].numero}}</td>
+            <td>{{cliente.email}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="modal-footer">
+
+</div>

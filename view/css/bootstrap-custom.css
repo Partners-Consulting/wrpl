@@ -1,0 +1,60 @@
+.form-group {
+    margin-bottom: 2px;
+}
+
+.form-group label {
+    padding-top: 10px;
+}
+
+.col-md-12.custom {
+    padding-right: 1px;
+    padding-left: 1px;
+}
+
+.input-xs-custom {
+    height: 20px;
+    padding-left: 0px;
+}
+
+#tos3 {
+    padding-left: 10px;
+    padding-right: 0px;
+    width: 40px;
+}
+
+.navbar-nav>li>a{
+ padding-bottom: 0px;
+}
+
+.carousel-indicators{
+    display: none;
+}
+
+.navbar-inverse{
+    min-height: 40px;
+    max-height: 40px;
+    height: 40px;
+}
+
+.nav>li>a {
+    padding-top: 5px;
+}
+
+.navbar-brand {
+    padding-top: 4px;
+}
+
+/*modal*/
+.modal-custom > .modal-content{
+    width: 1363px;
+    height: 625px;
+    margin-top: 0px;
+}
+
+@media (min-width: 992px) {
+   .modal-custom {
+        width: 1435px;
+       height: 500px;
+       margin-top: 0px;
+    }
+}

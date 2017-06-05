@@ -1,0 +1,101 @@
+<div class="row">
+    <panel id="painelOv" title="Efetivar O.V" icon="fa-book" height="100" col="12">
+        <panel-actions>
+            <a href ng-click="goBackOv()"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+        </panel-actions>
+        <div class="row">
+            <div class="col-sm-12">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label class="col-sm-2">Nº Simulação</label>
+                                <div class="col-sm-4">
+                                    <input ng-disabled="true" type="text" class="form-control"
+                                           placeholder="Nº Simulação"
+                                           ng-model="simulacao.numero">
+                                </div>
+                                <label class="col-sm-2">Status</label>
+                                <div class="col-sm-4">
+                                    <input ng-disabled="true" type="text" class="form-control" placeholder="Status"
+                                           ng-model="simulacao.status">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label class="col-sm-2">Data simulação</label>
+                                <div class="col-sm-4">
+                                    <input ng-disabled="true" type="text" class="form-control"
+                                           placeholder="Data Simulação"
+                                           ng-model="simulacao.data">
+                                </div>
+                                <label class="col-sm-2">Hora Simulação</label>
+                                <div class="col-sm-4">
+                                    <input ng-disabled="true" type="text" class="form-control"
+                                           placeholder="Hora Simulação"
+                                           ng-model="simulacao.hora">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label class="col-sm-2">Usuário</label>
+                                <div class="col-sm-4">
+                                    <input ng-disabled="true" type="text" class="form-control" placeholder="Codigo"
+                                           ng-model="simulacao.usuario">
+                                </div>
+                                <label class="col-sm-2">Validade</label>
+                                <div class="col-sm-4">
+                                    <input ng-disabled="true" type="text" class="form-control" placeholder="Validade"
+                                           ng-model="material.canal">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label class="col-sm-2">Atividade</label>
+                                <div class="col-sm-4">
+                                    <input ng-disabled="true" type="text" class="form-control" placeholder="Atividade"
+                                           ng-model="material.quantidade">
+                                </div>
+                                <label class="col-sm-2">Licitação</label>
+                                <div class="col-sm-4">
+                                    <input ng-disabled="true" type="checkbox" placeholder="Licitação"
+                                           ng-model="material.situacaoCarga">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </br>
+        <div class="row">
+            <div class="col-sm-12">
+                <div style="height: 300px" ui-grid="gridOrdenASeremEfetivadas" ui-grid-resize-columns
+                     ui-grid-move-columns></div>
+            </div>
+        </div>
+        </br>
+
+        <div class="row">]
+            <div class="col-lg-offset-8 col-sm-4">
+                <button data-bb-handler="confirm" type="button" class="btn btn-primary"
+                        ng-click="brindesEBonificacoes(simulacao)">
+                    Brindes e Bonificações
+                </button>
+                <button data-bb-handler="confirm" type="button" class="btn btn-primary"
+                        ng-click="efetivarOrdensDeVenda(simulacao)">
+                    Efetivação da Ordem
+                </button>
+            </div>
+        </div>
+    </panel>
+</div>

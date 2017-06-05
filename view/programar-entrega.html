@@ -1,0 +1,20 @@
+<div class="modal-header bg-primary" style="background-color:#333">
+    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
+            style="margin-top: -10px;" ng-click="close()">×
+    </button>
+    <h4>Programar Entrega</h4>
+
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div ui-grid="gridProgramaEntrega" ui-grid-selection ui-grid-edit ui-grid-resize-columns ui-grid-move-columns></div>
+        </div>
+    </div>
+    <div></div>
+</div>
+<div class="modal-footer">
+    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="adicionarProgramaEntrega()">+</button>
+    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="excluirProgramaEntrega()">Excluir</button>
+    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="criarProgramaEntrega()">Salvar</button>
+</div>

@@ -1,0 +1,70 @@
+<div class="modal-header bg-primary" style="background-color:#333">
+    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
+            style="margin-top: -10px;" ng-click="close()">×
+    </button>
+    <h4>Bonificação</h4>
+
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Bonificação</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Nº Bonificação"
+                                       ng-model="bonificacao.numero">
+                            </div>
+                            <label class="col-sm-2">Status</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Status"
+                                       ng-model="bonificacao.status">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Ordem de Venda</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Ordem de Venda"
+                                       ng-model="bonificacao.ordemVenda">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <label class="col-sm-2">Cliente</label>
+                            <div class="col-sm-4">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder="Cliente"
+                                       ng-model="bonificacao.cliente">
+                            </div>
+                            <div class="col-sm-6">
+                                <input ng-disabled="true" type="text" class="form-control" placeholder=""
+                                       ng-model="bonificacao.idontknow">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    </br>
+    <div class="row">
+        <div class="col-sm-12">
+            <div style="height: 150px" ui-grid="gridBonificacoes" ui-grid-resize-columns ui-grid-move-columns></div>
+        </div>
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="inserirBonificacao(bonificacao)">
+        Inserir
+    </button>
+</div>
