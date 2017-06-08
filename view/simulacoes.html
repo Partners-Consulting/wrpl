@@ -175,6 +175,21 @@
                         <dt>Data Entrega</dt>
                         <dd><p class="input-group ">
                                  <input type="text" class="form-control input-sm"
+                                        ng-model="selectedClient.simulacao.dadosEntrega.dataEntrega" is-open="popupDataEntrega.opened"/>
+                                 
+                             </p>
+                        </dd>
+                        <dt>Data Remessa</dt>
+                        <dd><p class="input-group ">
+                                 <input type="text" class="form-control input-sm" 
+                                        ng-model="selectedClient.simulacao.dadosEntrega.dataRemessa" is-open="popupDataRemessa.opened"/>
+                                 
+                             </p>
+                        </dd>
+<!-- 
+                        <dt>Data Entrega</dt>
+                        <dd><p class="input-group ">
+                                 <input type="text" class="form-control input-sm"
                                         uib-datepicker-popup="{{formato}}"
                                         ng-model="selectedClient.simulacao.dadosEntrega.dataEntrega" is-open="popupDataEntrega.opened"/>
                                  <span class="input-group-btn">
@@ -196,6 +211,8 @@
                                  </span>
                              </p>
                         </dd>
+ -->
+
                         <dt>Dias Conc.</dt>
                         <dd>
                              <p class="input-group">
@@ -300,6 +317,7 @@
                         <i class="fa fa-chevron-left fa-1x" aria-hidden="true"></i>
                     </div>
                     <div class="painel-slide painel-slide-content-simulacoes">
+                    
                         <div ng-if="painelTabela.tabelaAtual == 1" ui-grid="gridReplicas" class="grid-replica" ui-grid-edit ui-grid-resize-columns ui-grid-move-columns></div>
                         <ul ng-if="painelTabela.tabelaAtual == 2" class="notes" ng-repeat="pontual in simulacaoPontuais">
                             <li>

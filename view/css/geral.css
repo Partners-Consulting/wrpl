@@ -695,15 +695,14 @@ table tbody {
 
 /***********************************/
 
-
 .dl-flex {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .dl-flex dt {
-flex: 0 0 70%;
+    flex: 0 0 70%;
     overflow: hidden;
     margin-top: 6px;
     border-bottom: 1px solid #ddd;
@@ -717,3 +716,4 @@ flex: 0 0 70%;
     font-weight: 600;
     margin-top: 3px;
 }
+

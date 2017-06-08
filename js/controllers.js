@@ -1,6 +1,28 @@
 angular.module("App.controllers", [])
     .constant('_', _)
     .constant('moment', moment)
+    .controller("LoginController", function ($scope, $location, $uibModal) {
+
+        
+
+                 var modalInstance = $uibModal.open({
+                    animation: true,
+                    templateUrl: './view/modal/login.html',
+                    controller: 'LoginModalController',
+                    backdrop: 'static',
+                    size: "md"
+                    
+                });
+
+
+    })
+     .controller("LoginModalController", function ($scope, $location, $uibModalInstance) {
+
+        $scope.login = function (){
+            $uibModalInstance.close();
+             $location.path("/cliente");
+        }
+    })
     .controller("HomeController", function ($scope) {
         "use strict";
 
@@ -30,9 +52,71 @@ angular.module("App.controllers", [])
 
 
     })
-    .controller("ClienteController", function ($scope, $rootScope, $location, $uibModal, SweetAlert, moment) {
+    .controller("ClienteController", function ($http, $scope, $rootScope, $location, $uibModal, SweetAlert, moment, Base64) {
         "use strict";
 
+
+/* INICIO TESTES*/
+/*
+    $http.defaults.headers.common = {
+                                        "Accept"                            : "application/json",
+                                        "Access-Control-Request-Headers"    : "accept, origin, authorization",
+                                        "Access-Control-Allow-Methods"      : "GET, PUT, POST, OPTIONS, DELETE",
+                                        "Access-Control-Allow-Origin"       : "*",
+                                        "Authorization"                     : "Basic cXFtaWFvcjpWU0YzenJtaQ=="
+
+                                    }; 
+    $http({method: 'GET', url: 'http://10.17.237.22:8000/sap/opu/odata/sap/ZBRLAR_B2BONDEMAND_SRV/GetCustomerListSet'}).
+            success(function(data, status, headers, config) {
+                console.log("### Success");
+                $rootScope.retornoServico = "deu certo!!!";
+                console.log(data);
+            }).
+            error(function(data, status, headers, config) {
+                console.log("### Error");
+                $rootScope.retornoServico = "deu erro!!!";
+                console.log(data);
+            });
+
+GET Example
+--------------------------------------------------------------------------------------------------------
+var url = "<<your gateway service base url>>";
+            
+$http({
+  method: 'GET',
+  url:url+"<<your entity set>>?$format=json",
+  headers: { 
+   'x-csrf-token': 'Fetch',
+   'Authorization': 'Basic <<base64 encoded username:pass>>'
+  }
+}).then(function(response){
+ $scope.token = response.headers('x-csrf-token');
+});
+--------------------------------------------------------------------------------------------------------
+
+To do an insert/update, the code becomes a bit more complicated. Since SAP uses the x-csrf-token http header for cross site request forgery protection, we first need to fetch the token using a get request (as shown above). Using the x-csrf-token from the response we can then send a POST/PUT/DELETE request to the OData service.
+
+POST Example
+--------------------------------------------------------------------------------------------------------
+var url = "<<your gateway service base url>>";
+var entity = {};
+
+entity.attribute1 = "Hello";
+entity.attribute2 = "World";
+
+$http({
+  method: 'POST',
+  url:url+"<<your entity set>>",
+  data: JSON.stringify(entity),
+  headers: { 
+   'x-csrf-token': $scope.token,
+   'Authorization': 'Basic <<base64 encoded username:pass>>'
+  }
+}).then(function(response){
+
+});*/
+
+/*FIM TESTES*/
 
         $scope.selectedClientB = {};
         $scope.filtro2 = "";
@@ -376,7 +460,7 @@ angular.module("App.controllers", [])
 
         };
 
-        $scope.atualizarContatoss = function () {
+        $scope.atualizarContatos = function () {
             $scope.filtro3 = "";
             switch ($scope.lastContato) {
                 case 0:
@@ -983,11 +1067,13 @@ angular.module("App.controllers", [])
             },
             data: 'tabelaDesnormalizada',
             columnDefs: [
+                
                 {
                     field: 'contato',
                     width: '140',
                     displayName: 'Contato'
                 },
+
                 {
                     field: 'cargo',
                     width: '90',
@@ -1305,6 +1391,9 @@ angular.module("App.controllers", [])
             } else {
                 contato.data = "17.05.2017";
                 //todo chamar serviço retornar id
+                if ($rootScope.contatos == undefined){
+                    $rootScope.contatos = [];
+                }
                 contato.id = $rootScope.contatos.length + 1;
                 $rootScope.contatos.push(contato);
 
@@ -1313,8 +1402,11 @@ angular.module("App.controllers", [])
 
         };
         $scope.setEditable = function(){
-            editable = !editable;
+            console.log("setEditable()");
+            $scope.editable = !$scope.editable;
         }
+
+
 
         $scope.criarUltimosContatos = function (contato) {
             $scope.isAntigo = false;
@@ -1787,9 +1879,23 @@ angular.module("App.controllers", [])
 
         $scope.deletarMateriaisSelecionados = function(){
             angular.forEach($scope.gridApiBuscaMaterial.selection.getSelectedRows(), function(data, index){
-                $scope.listaMateriais = _.without($scope.listaMateriais, data);
+                //console.log("data.codigo | " + data.codigo);  
+
+                angular.forEach($rootScope.listaMateriais, function(value, key){
+                    
+                      if(value.codigo == data.codigo){
+                         $rootScope.listaMateriais.splice(key, 1);
+                      }
+                   });
+
+                //$rootScope.listaMateriais = _.without($rootScope.listaMateriais, data);
             });
-            $uibModalInstance.close($scope.listaMateriais);
+
+           // $scope.gridBuscaMaterial.data = $rootScope.listaMateriais;
+
+           // console.log(">> " + $rootScope.listaMateriais.length);
+
+            //$uibModalInstance.close($scope.listaMateriais);
         };
         $scope.close = function () {
             $uibModalInstance.close();
@@ -2280,7 +2386,7 @@ angular.module("App.controllers", [])
             $rootScope.listaMateriais = MaterialService.consultaMaterial();
             $scope.listaDeCentros = CentroService.consultaCentroPorMaterial(1);
             $scope.listaDeLocaisExpedicao = LocalExpedicaoService.consultaLocalExpedicaoPorMaterial(1);
-            $scope.listaDeIncoterms = IncotermsService.consultaIncotermsPorMaterial(1);
+            $scope.listaDeIncoterms  = IncotermsService.consultaIncotermsPorMaterial(1);
             $scope.replicas = MaterialService.consultaReplicas();
         }
 
@@ -2442,7 +2548,11 @@ angular.module("App.controllers", [])
         $scope.excluirReplicasSelecionadas = function () {
             $scope.temp = angular.copy($scope.replicas);
             $scope.replica = [];
+
             $scope.replicas = angular.copy($scope.temp);
+
+           // $scope.gridReplicas.data = $scope.replicas;
+
         };
 
         $scope.replicar = function () {
@@ -5318,7 +5428,7 @@ angular.module("App.controllers", [])
             {
                 id: 1,
                 order: 1,
-
+                cod:'0001', 
                 contato: "Ricardo",
                 cargo: "Comprador",
                 prioritario: true,
@@ -5330,6 +5440,7 @@ angular.module("App.controllers", [])
             {
                 id: 2,
                 order: 2,
+                cod:'0001',
                 contato: "Ricardo",
                 cargo: "Comprador",
                 prioritario: false,
@@ -5340,8 +5451,8 @@ angular.module("App.controllers", [])
             },
             {
                 id: 3,
-
                 order: 3,
+                cod:'0001',
                 contato: "Ricardo",
                 cargo: "Comprador",
                 prioritario: false,
@@ -5353,6 +5464,7 @@ angular.module("App.controllers", [])
             {
                 id: 4,
                 order: 4,
+                cod:'0002',
                 contato: "Keli",
                 cargo: "Gerente",
                 prioritario: false,
@@ -5364,6 +5476,7 @@ angular.module("App.controllers", [])
             {
                 id: 5,
                 order: 5,
+                cod:'0002',
                 contato: "Keli",
                 cargo: "Gerente",
                 prioritario: false,
@@ -5375,6 +5488,7 @@ angular.module("App.controllers", [])
             {
                 id: 6,
                 order: 6,
+                cod:'0002',
                 contato: "Keli",
                 cargo: "Gerente",
                 prioritario: false,
@@ -5385,8 +5499,8 @@ angular.module("App.controllers", [])
             },
             {
                 id: 7,
-
                 order: 7,
+                cod:'0002',
                 contato: "Keli",
                 cargo: "Gerente",
                 prioritario: false,

@@ -458,7 +458,11 @@ angular.module("App.services", [])
                         ],
                         juros: "0.000",
                         descricao: "Descrição do material"
-                    }
+                    },
+                    {},
+                    {},
+                    {},
+                    {}
                 ];
             },
             consultaReplicas: function () {

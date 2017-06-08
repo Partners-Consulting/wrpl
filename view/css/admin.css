@@ -964,3 +964,21 @@ span.glyphicon.glyphicon-chevron-left:hover {
     width: 330px;
     height: 150px;
 }
+
+.modal-custom > .modal-content {
+    height: 765px !important;
+}
+
+textarea {
+    max-width: 100%;
+}
+
+
+.grid-replica .ui-grid-menu-button {
+display: none;
+}
+
+.bigger-130{
+        padding: 6px 2px;
+    display: inline-block;
+}

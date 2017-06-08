@@ -13,13 +13,13 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="col-sm-2">Material</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <input ng-disabled="true" type="text" class="form-control input-sm"
                                        placeholder="Material"
                                        ng-model="material.codigo">
                             </div>
                             <label class="col-sm-2">Modelo</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Modelo"
                                        ng-model="material.modelo">
                             </div>
@@ -30,13 +30,13 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="col-sm-2">Cor</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
 
                                 <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Cor"
                                        ng-model="material.cor">
                             </div>
                             <label class="col-sm-2">Voltagem</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <input ng-disabled="true" type="text" class="form-control input-sm"
                                        placeholder="Voltagem"
                                        ng-model="material.voltagem">
@@ -48,18 +48,18 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="col-sm-2">Organiz</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
 
                                 <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Codigo"
                                        ng-model="material.organiz">
                             </div>
                             <label class="col-sm-2">Canal</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Canal"
                                        ng-model="material.canal">
                             </div>
                             <label class="col-sm-1">Setor</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-1">
                                 <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Setor"
                                        ng-model="material.setor">
                             </div>
@@ -70,12 +70,12 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="col-sm-2">Centro</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <select class="form-control" ng-model="material.centro"
                                         ng-options="centro.parcNeg for centro in listaDeCentros"></select>
                             </div>
                             <label class="col-sm-2">Local Expedição</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <select class="form-control" ng-model="material.localExpedicao"
                                         ng-options="local.parcNeg for local in listaDeLocaisExpedicao"></select>
                             </div>
@@ -86,14 +86,14 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="col-sm-2">Quantidade</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
 
                                 <input ng-disabled="false" type="text" class="form-control input-sm"
                                        placeholder="Quantidade"
                                        ng-model="material.quantidade">
                             </div>
                             <label class="col-sm-2">Um</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <input ng-disabled="true" type="text" class="form-control input-sm" placeholder="Um"
                                        ng-model="material.um">
                             </div>
@@ -104,12 +104,12 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="col-sm-2">Cond. Pagto</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <select class="form-control" ng-model="material.condPagto"
                                         ng-options="condPagto.copg for condPagto in listaCondPgto"></select>
                             </div>
                             <label class="col-sm-2">Incoterms</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <input ng-disabled="true" type="text" class="form-control input-sm"
                                        placeholder="Incoterms"
                                        ng-model="material.incoterms">
@@ -121,19 +121,19 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <label class="col-sm-2">Cond. Pagto Frete</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
 
                                 <input ng-disabled="true" type="text" class="form-control input-sm"
                                        placeholder="Cond. Pagto Frete"
                                        ng-model="material.condPagtoFrete">
                             </div>
                             <label class="col-sm-2">Dias Concessão</label>
-                            <div class="col-sm-2">
+                            <div class="col-sm-3">
                                 <input ng-disabled="true" type="text" class="form-control input-sm"
                                        placeholder=""
                                        ng-model="material.diasConcessao">
                             </div>
-                            <label class="col-sm-2">Situação Carga</label>
+                            <label class="col-sm-1">Situação Carga</label>
                             <div class="col-sm-1">
                                 <input ng-disabled="true" type="checkbox" placeholder="Situação Carga"
                                        ng-model="material.situacaoCarga">

@@ -1,45 +1,38 @@
 <div class="modal-header bg-primary" style="background-color:#333">
-    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true"
-            style="margin-top: -10px;" ng-click="close()">×
+    <button type="button" class="bootbox-close-button close white" data-dismiss="modal" aria-hidden="true" style="margin-top: -10px;" ng-click="close()">×
     </button>
-
     <h4>{{titulo}}</h4>
-
 </div>
 <div class="modal-body">
     <form class="form-horizontal">
         <div class="form-group">
             <label class="col-sm-3">Descricao</label>
             <div class="col-sm-9">
-                <input type="text" class="form-control" placeholder="Descrição"
-                       ng-model="contato.descricao">
+                <input ng-disabled="true" type="text" class="form-control" placeholder="Descrição" ng-model="contato.descricao">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3">Parceiro de Contato</label>
             <div class="col-sm-9">
-                <input ng-disabled="editable" type="text" class="form-control" placeholder="Parceiro" ng-model="contato.emissor">
+                <input ng-disabled="true" type="text" class="form-control" placeholder="Parceiro" ng-model="contato.emissor">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3">Nome</label>
             <div class="col-sm-9">
-                <input ng-disabled="editable" type="text" class="form-control" placeholder="Nome" ng-model="contato.nome">
-
+                <input ng-disabled="!editable" type="text" class="form-control" placeholder="Nome" ng-model="contato.nome">
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9">
-                <textarea ng-model="contato.statusCorpo" cols="66" rows="10">{{contato.statusCorpo}}</textarea>
+                <textarea ng-disabled="!editable" ng-model="contato.statusCorpo" cols="66" rows="10">{{contato.statusCorpo}}</textarea>
             </div>
         </div>
     </form>
-    <button type="button" class="btn btn-default" ng-click="setEditable()"><i
-                                class="fa fa-pencil"
-                                aria-hidden="true"></i></button>
-
 </div>
 <div class="modal-footer">
-    <button data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="adicionarUltimosContatos(contato)">Salvar
-    </button>
+    <button ng-hide="editable" type="button" class="btn btn-warning" ng-click="setEditable()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+    <button ng-show="editable" type="button" class="btn btn-danger" ng-click="setEditable()">Cancelar</button>
+    <!-- <button ng-show="editable" data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="adicionarUltimosContatos(contato)">Salvar</button> -->
+    <button ng-show="editable" data-bb-handler="confirm" type="button" class="btn btn-primary" ng-click="adicionarUltimosContatos(contato)">Salvar</button>
 </div>
