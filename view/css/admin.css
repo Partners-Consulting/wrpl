@@ -244,6 +244,10 @@ form {
     padding: 0 5px;
 }
 
+.lapis-espaco {
+    padding-right: 15px;
+}
+
 /***********************************/
 
 /***********************************/
@@ -924,7 +928,7 @@ span.glyphicon.glyphicon-chevron-left:hover {
 }
 
 .grid-manutencao-contatos {
-    width: 880px;
+    width: 928px;
     height: 350px;
     text-align:center;
 }

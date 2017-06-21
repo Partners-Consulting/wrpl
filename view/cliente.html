@@ -436,15 +436,15 @@
                         <button type="button" class="btn btn-default btn-xs" ng-click="excelProcessos()"><i
                                 class="fa fa-file-excel-o" aria-hidden="true"></i></button>
                     </panel-actions>
-                    <panel-actions ng-if="painelTabela.tabelaAtual == 2">
+                    <!--<panel-actions ng-if="painelTabela.tabelaAtual == 2">
                         <button type="button" class="btn btn-success btn-xs" ng-click="adicionarContatos()"><i
                                 class="fa fa-plus-circle" aria-hidden="true"></i></button>
                         <button type="button" class="btn btn-default btn-xs" ng-click="atualizarContatoss()"><i
                                 class="fa fa-refresh" aria-hidden="true"></i></button>
                         <button type="button" class="btn btn-default btn-xs" ng-click="excelContatos()"><i
                                 class="fa fa-file-excel-o" aria-hidden="true"></i></button>
-                    </panel-actions>
-                    <panel-actions ng-if="painelTabela.tabelaAtual == 3"></panel-actions>
+                    </panel-actions>-->
+                    <panel-actions ng-if="painelTabela.tabelaAtual == 2"></panel-actions>
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="painel-slide-left" ng-click="tabelaAnterior()">
@@ -453,14 +453,14 @@
                             <div class="painel-slide painel-slide-content">
                                 <div ng-if="painelTabela.tabelaAtual == 1" ui-grid="gridProcessos" class="grid-painel"
                                      ui-grid-resize-columns ui-grid-move-columns></div>
-                                <div ng-if="painelTabela.tabelaAtual == 2" ui-grid="gridContatos" class="grid-painel"
-                                     ui-grid-resize-columns ui-grid-move-columns></div>
+                                <!--<div ng-if="painelTabela.tabelaAtual == 2" ui-grid="gridContatos" class="grid-painel"
+                                     ui-grid-resize-columns ui-grid-move-columns></div>-->
                                 <!--<div ng-if="painelTabela.tabelaAtual == 3" ui-grid="gridLinhaBranca" class="grid-painel"
                                      ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
                                 <div ng-if="painelTabela.tabelaAtual == 4" ui-grid="gridConcorrentes" class="grid-painel"
                                      ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>-->
-                                <div ng-if="painelTabela.tabelaAtual == 3" class="title-gray-block-ladoalado">
-                                    <h3 ng-if="painelTabela.tabelaAtual == 3" class="">
+                                <div ng-if="painelTabela.tabelaAtual == 2" class="title-gray-block-ladoalado">
+                                    <h3 ng-if="painelTabela.tabelaAtual == 2" class="">
                                         Linha Branca
                                         <button type="button" class="btn btn-success btn-xs note-plus"
                                                 ng-click="adicionarLinhaBranca()"><i
@@ -470,7 +470,7 @@
                                                 class="fa fa-trash" aria-hidden="true"></i></button>
                                     </h3>
                                 </div>
-                                <div ng-if="painelTabela.tabelaAtual == 3" class="title-gray-block-ladoalado">
+                                <div ng-if="painelTabela.tabelaAtual == 2" class="title-gray-block-ladoalado">
                                     <h3 class="">
                                         Revenda
                                         <button type="button" class="btn btn-success btn-xs note-plus"
@@ -481,10 +481,10 @@
                                                 class="fa fa-trash" aria-hidden="true"></i></button>
                                     </h3>
                                 </div>
-                                <div ng-if="painelTabela.tabelaAtual == 3" ui-grid="gridLinhaBranca"
+                                <div ng-if="painelTabela.tabelaAtual == 2" ui-grid="gridLinhaBranca"
                                      class="grid-painel-ladoalado"
                                      ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
-                                <div ng-if="painelTabela.tabelaAtual == 3" ui-grid="gridConcorrentes"
+                                <div ng-if="painelTabela.tabelaAtual == 2" ui-grid="gridConcorrentes"
                                      class="grid-painel-ladoalado"
                                      ui-grid-selection ui-grid-resize-columns ui-grid-move-columns></div>
                             </div>

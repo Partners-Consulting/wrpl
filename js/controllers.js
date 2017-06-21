@@ -132,7 +132,7 @@ $http({
         $scope.perfilLoja4 = 0;
         $scope.titulo = 'Últimos Processos';
         $scope.painelTabela = {
-            quantidadeDeTabela: 3,
+            quantidadeDeTabela: 2,
             tabelaAtual: 1,
             tituloTabelaAtual: 'Últimos Processos'
         };
@@ -298,12 +298,11 @@ $http({
                 enableFiltering: false
             }, {
                 field: 'acao',
-                width: '10',
                 enableColumnMenu: false,
                 displayName: '',
                 enableFiltering: false,
                 cellTemplate: '  <div class="action-buttons"> ' +
-                ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarLinhaBranca(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
+                ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarLinhaBranca(row.entity)" href=""><i class="fa fa-pencil bigger-130 "></i></a>' +
                 ' </div>'
             }
 
@@ -384,7 +383,7 @@ $http({
         $scope.proximaTabela = function () {
             if ($scope.painelTabela.tabelaAtual + 1 <= $scope.painelTabela.quantidadeDeTabela) {
                 $scope.painelTabela.tabelaAtual = $scope.painelTabela.tabelaAtual + 1;
-                $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
+                // $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
             }
             $scope.changeHeaderTitle();
         };
@@ -399,9 +398,11 @@ $http({
         $scope.changeHeaderTitle = function () {
             if ($scope.painelTabela.tabelaAtual == 1) {
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Processos';
-            } else if ($scope.painelTabela.tabelaAtual == 2) {
-                $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
-            } else if ($scope.painelTabela.tabelaAtual == 3) {
+            } 
+            // else if ($scope.painelTabela.tabelaAtual == 2) {
+            //     $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
+                
+             else if ($scope.painelTabela.tabelaAtual == 2) {
                 $scope.painelTabela.tituloTabelaAtual = 'Concorrentes';
             }
         };
@@ -984,13 +985,15 @@ $http({
             $rootScope.simulacaoPontuais.unshift(pontual);
         };
     })
-    .controller("ModalManutencaoContatoCtrl", function ($scope, $rootScope, $uibModalInstance, $uibModal, SweetAlert, _) {
+    .controller("ModalManutencaoContatoCtrl", function ($scope, $rootScope, $uibModalInstance, $uibModal, SweetAlert, $interval, uiGridGroupingConstants, _) {
         "use strict";
         $scope.close = function () {
             $uibModalInstance.close();
         };
 
-        var gridOptions = {};
+        var gridOptions = {
+
+        };
         gridOptions.columnDefs = [
             {field: 'Contato', displayName: 'ID'},
             {field: 'Cargo'},
@@ -1041,7 +1044,8 @@ $http({
 
         $scope.gridAgrupadorXCliente = {
             enableGridMenu: true,
-            enableHorizontalScrollbar: false,
+            enableHorizontalScrollbar: 1, 
+            enableVerticalScrollbar: 1,
             data: 'agrupadoresClientes',
             columnDefs: [
                 {field: 'agrupador', width: '80', displayName: 'Agrupador'},
@@ -1061,6 +1065,7 @@ $http({
 
         $scope.gridTabelaDesnormalizada = {
             enableHorizontalScrollbar: 0,
+            multiSelect: false,
             enableGridMenu: true,
             onRegisterApi: function (gridApi) {
                 $scope.gridApiTabelaDesnormalizada = gridApi;
@@ -1071,7 +1076,9 @@ $http({
                 {
                     field: 'contato',
                     width: '140',
-                    displayName: 'Contato'
+                    displayName: 'Contato',
+                    grouping: { groupPriority: 0 }, 
+                    sort: { priority: 0, direction: 'desc' }
                 },
 
                 {
@@ -2412,9 +2419,10 @@ $http({
         $scope.changeHeaderTitle = function () {
             if ($scope.painelTabela.tabelaAtual == 1) {
                 $scope.painelTabela.tituloTabelaAtual = 'Condições de Pagamento';
-            } else if ($scope.painelTabela.tabelaAtual == 2) {
-                $scope.painelTabela.tituloTabelaAtual = 'Histórico';
-            }
+            } 
+            // else if ($scope.painelTabela.tabelaAtual == 2) {
+            //     $scope.painelTabela.tituloTabelaAtual = 'Histórico';
+            // }
         };
 
         $scope.replicar = function () {
