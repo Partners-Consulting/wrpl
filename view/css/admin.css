@@ -249,7 +249,15 @@ form {
 }
 
 /***********************************/
-
+.minwidth-select-fret {
+    min-width: 52px;
+}
+.minwidth-select-centro {
+    min-width: 66px;
+}
+.minwidth-select-expedicao {
+    min-width: 73px;
+}
 /***********************************/
 
 .dl-flex {

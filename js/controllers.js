@@ -2648,7 +2648,7 @@ $http({
                     width: '80',
                     displayName: 'Cond. Frete',
                     enableCellEdit: false,
-                    cellTemplate: '<select ng-model="condPagtoFrete" ng-options="frete for frete in COL_FIELD"></select>'
+                    cellTemplate: '<select ng-model="condPagtoFrete" ng-options="frete for frete in COL_FIELD" class="minwidth-select-fret"></select>'
                 },
                 {
                     field: 'valorFrete',
@@ -2692,14 +2692,14 @@ $http({
                     width: '80',
                     enableCellEdit: false,
                     field: 'centro',
-                    cellTemplate: '<select ng-model="centro" ng-options="centro for centro in COL_FIELD"></select>'
+                    cellTemplate: '<select ng-model="centro" ng-options="centro for centro in COL_FIELD" class="minwidth-select-centro"></select>'
                 },
                 {
                     displayName: 'Local Expedicao',
                     width: '110',
                     field: 'localExpedicao',
                     enableCellEdit: false,
-                    cellTemplate: '<select ng-model="localExpedicao" ng-options="local for local in COL_FIELD"></select>'
+                    cellTemplate: '<select ng-model="localExpedicao" ng-options="local for local in COL_FIELD" class="minwidth-select-expedicao"></select>'
                 },
                 {
                     field: 'juros',
@@ -5444,7 +5444,8 @@ $http({
                 telefone: "4932330591",
                 telefonePrioritario: false,
                 email: "compras@lamarsupercenter.com.br",
-                emailPrioritario: true
+                emailPrioritario: true,
+                prio: 1
             },
             {
                 id: 2,
@@ -5456,7 +5457,8 @@ $http({
                 telefone: "4932331883",
                 telefonePrioritario: false,
                 email: "",
-                emailPrioritario: false
+                emailPrioritario: false,
+                prio: 1
             },
             {
                 id: 3,
@@ -5468,7 +5470,8 @@ $http({
                 telefone: "4932331807",
                 telefonePrioritario: false,
                 email: "",
-                emailPrioritario: false
+                emailPrioritario: false,
+                prio: 1
             },
             {
                 id: 4,
@@ -5480,7 +5483,8 @@ $http({
                 telefone: "4932331884",
                 telefonePrioritario: false,
                 email: "keli@lamarsupercenter.com.br",
-                emailPrioritario: false
+                emailPrioritario: false,
+                prio: 2
             },
             {
                 id: 5,
@@ -5492,7 +5496,8 @@ $http({
                 telefone: "4932331806",
                 telefonePrioritario: false,
                 email: "gerente@lamarsupercenter.com.br",
-                emailPrioritario: true
+                emailPrioritario: true,
+                prio: 2
             },
             {
                 id: 6,
@@ -5504,7 +5509,8 @@ $http({
                 telefone: "",
                 telefonePrioritario: false,
                 email: "kelicompras@lamarsupercenter.com.br",
-                emailPrioritario: false
+                emailPrioritario: false,
+                prio: 2
             },
             {
                 id: 7,
@@ -5516,7 +5522,8 @@ $http({
                 telefone: "",
                 telefonePrioritario: false,
                 email: "keligerente@lamarsupercenter.com.br",
-                emailPrioritario: false
+                emailPrioritario: false,
+                prio: 2
             }
         ];
 
