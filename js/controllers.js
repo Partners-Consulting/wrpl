@@ -1101,6 +1101,7 @@ $http({
                     '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
                     '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="green" style="color: green" href=""><i class="fa fa-check-circle-o bigger-130"></i></a></div></div>'
+                    
                 },
                 {
                     field: 'email',
@@ -1112,7 +1113,7 @@ $http({
                     field: 'emailPrioritario',
                     displayName: 'Prioritário',
                     width: '80',
-                    cellTemplate: ' <div ng-click="grid.appScope.alterarPrioridadeEmail(row.entity)">' +
+                    cellTemplate: ' <div ng-if="row.entity.cod" ng-click="grid.appScope.alterarPrioridadeEmail(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
                     '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
@@ -1123,7 +1124,7 @@ $http({
                     width: '100',
                     displayName: 'Ação',
                     cellTemplate: '  <div class="action-buttons"> ' +
-                    ' <a class="blue" style="color: blue"  ng-click="grid.appScope.editarContato(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
+                    ' <a ng-if="row.entity.cod" class="blue" style="color: blue"  ng-click="grid.appScope.editarContato(row.entity)" href=""><i class="fa fa-pencil bigger-130"></i></a>' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.aumentarPosContato(row.entity)" href=""><i class="fa fa-sort-desc" aria-hidden="true"></i></a>' +
                     ' <a class="blue" style="color: blue"  ng-click="grid.appScope.diminuirPosContato(row.entity)" href=""><i class="fa fa-sort-asc" aria-hidden="true"></i></a>' +
 
