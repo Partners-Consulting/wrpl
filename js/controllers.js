@@ -3,24 +3,24 @@ angular.module("App.controllers", [])
     .constant('moment', moment)
     .controller("LoginController", function ($scope, $location, $uibModal) {
 
-        
 
-                 var modalInstance = $uibModal.open({
-                    animation: true,
-                    templateUrl: './view/modal/login.html',
-                    controller: 'LoginModalController',
-                    backdrop: 'static',
-                    size: "md"
-                    
-                });
+
+        var modalInstance = $uibModal.open({
+            animation: true,
+            templateUrl: './view/modal/login.html',
+            controller: 'LoginModalController',
+            backdrop: 'static',
+            size: "md"
+
+        });
 
 
     })
-     .controller("LoginModalController", function ($scope, $location, $uibModalInstance) {
+    .controller("LoginModalController", function ($scope, $location, $uibModalInstance) {
 
-        $scope.login = function (){
+        $scope.login = function () {
             $uibModalInstance.close();
-             $location.path("/cliente");
+            $location.path("/cliente");
         }
     })
     .controller("HomeController", function ($scope) {
@@ -28,9 +28,9 @@ angular.module("App.controllers", [])
 
 
         $scope.items = [
-            {href: "#/cliente", label: 'cliente!'},
-            {href: "#/tela3", label: 'tela3.'},
-            {href: "#/simulacoes", label: 'termometro'}
+            { href: "#/cliente", label: 'cliente!' },
+            { href: "#/tela3", label: 'tela3.' },
+            { href: "#/simulacoes", label: 'termometro' }
         ];
 
         $scope.status = {
@@ -56,67 +56,67 @@ angular.module("App.controllers", [])
         "use strict";
 
 
-/* INICIO TESTES*/
-/*
-    $http.defaults.headers.common = {
-                                        "Accept"                            : "application/json",
-                                        "Access-Control-Request-Headers"    : "accept, origin, authorization",
-                                        "Access-Control-Allow-Methods"      : "GET, PUT, POST, OPTIONS, DELETE",
-                                        "Access-Control-Allow-Origin"       : "*",
-                                        "Authorization"                     : "Basic cXFtaWFvcjpWU0YzenJtaQ=="
+        /* INICIO TESTES*/
+        /*
+            $http.defaults.headers.common = {
+                                                "Accept"                            : "application/json",
+                                                "Access-Control-Request-Headers"    : "accept, origin, authorization",
+                                                "Access-Control-Allow-Methods"      : "GET, PUT, POST, OPTIONS, DELETE",
+                                                "Access-Control-Allow-Origin"       : "*",
+                                                "Authorization"                     : "Basic cXFtaWFvcjpWU0YzenJtaQ=="
+        
+                                            }; 
+            $http({method: 'GET', url: 'http://10.17.237.22:8000/sap/opu/odata/sap/ZBRLAR_B2BONDEMAND_SRV/GetCustomerListSet'}).
+                    success(function(data, status, headers, config) {
+                        console.log("### Success");
+                        $rootScope.retornoServico = "deu certo!!!";
+                        console.log(data);
+                    }).
+                    error(function(data, status, headers, config) {
+                        console.log("### Error");
+                        $rootScope.retornoServico = "deu erro!!!";
+                        console.log(data);
+                    });
+        
+        GET Example
+        --------------------------------------------------------------------------------------------------------
+        var url = "<<your gateway service base url>>";
+                    
+        $http({
+          method: 'GET',
+          url:url+"<<your entity set>>?$format=json",
+          headers: { 
+           'x-csrf-token': 'Fetch',
+           'Authorization': 'Basic <<base64 encoded username:pass>>'
+          }
+        }).then(function(response){
+         $scope.token = response.headers('x-csrf-token');
+        });
+        --------------------------------------------------------------------------------------------------------
+        
+        To do an insert/update, the code becomes a bit more complicated. Since SAP uses the x-csrf-token http header for cross site request forgery protection, we first need to fetch the token using a get request (as shown above). Using the x-csrf-token from the response we can then send a POST/PUT/DELETE request to the OData service.
+        
+        POST Example
+        --------------------------------------------------------------------------------------------------------
+        var url = "<<your gateway service base url>>";
+        var entity = {};
+        
+        entity.attribute1 = "Hello";
+        entity.attribute2 = "World";
+        
+        $http({
+          method: 'POST',
+          url:url+"<<your entity set>>",
+          data: JSON.stringify(entity),
+          headers: { 
+           'x-csrf-token': $scope.token,
+           'Authorization': 'Basic <<base64 encoded username:pass>>'
+          }
+        }).then(function(response){
+        
+        });*/
 
-                                    }; 
-    $http({method: 'GET', url: 'http://10.17.237.22:8000/sap/opu/odata/sap/ZBRLAR_B2BONDEMAND_SRV/GetCustomerListSet'}).
-            success(function(data, status, headers, config) {
-                console.log("### Success");
-                $rootScope.retornoServico = "deu certo!!!";
-                console.log(data);
-            }).
-            error(function(data, status, headers, config) {
-                console.log("### Error");
-                $rootScope.retornoServico = "deu erro!!!";
-                console.log(data);
-            });
-
-GET Example
---------------------------------------------------------------------------------------------------------
-var url = "<<your gateway service base url>>";
-            
-$http({
-  method: 'GET',
-  url:url+"<<your entity set>>?$format=json",
-  headers: { 
-   'x-csrf-token': 'Fetch',
-   'Authorization': 'Basic <<base64 encoded username:pass>>'
-  }
-}).then(function(response){
- $scope.token = response.headers('x-csrf-token');
-});
---------------------------------------------------------------------------------------------------------
-
-To do an insert/update, the code becomes a bit more complicated. Since SAP uses the x-csrf-token http header for cross site request forgery protection, we first need to fetch the token using a get request (as shown above). Using the x-csrf-token from the response we can then send a POST/PUT/DELETE request to the OData service.
-
-POST Example
---------------------------------------------------------------------------------------------------------
-var url = "<<your gateway service base url>>";
-var entity = {};
-
-entity.attribute1 = "Hello";
-entity.attribute2 = "World";
-
-$http({
-  method: 'POST',
-  url:url+"<<your entity set>>",
-  data: JSON.stringify(entity),
-  headers: { 
-   'x-csrf-token': $scope.token,
-   'Authorization': 'Basic <<base64 encoded username:pass>>'
-  }
-}).then(function(response){
-
-});*/
-
-/*FIM TESTES*/
+        /*FIM TESTES*/
 
         $scope.selectedClientB = {};
         $scope.filtro2 = "";
@@ -137,10 +137,10 @@ $http({
             tituloTabelaAtual: 'Últimos Processos'
         };
         $scope.processos = [
-            {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
-            {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
-            {data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente"},
-            {data: "20.04.17", cliente: "Carrefour", processo: 564654, status: "Pendente"}
+            { data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente" },
+            { data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente" },
+            { data: "14.04.17", cliente: "Carrefour", processo: 423476, status: "Pendente" },
+            { data: "20.04.17", cliente: "Carrefour", processo: 564654, status: "Pendente" }
         ];
         $scope.contatos = [
             {
@@ -369,7 +369,7 @@ $http({
         $scope.adicionarContatos = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/editar-contato.html',
                 controller: 'ModalUltimosContatosCtrl',
                 resolve: {
@@ -398,11 +398,11 @@ $http({
         $scope.changeHeaderTitle = function () {
             if ($scope.painelTabela.tabelaAtual == 1) {
                 $scope.painelTabela.tituloTabelaAtual = 'Últimos Processos';
-            } 
+            }
             // else if ($scope.painelTabela.tabelaAtual == 2) {
             //     $scope.painelTabela.tituloTabelaAtual = 'Últimos Contatos';
-                
-             else if ($scope.painelTabela.tabelaAtual == 2) {
+
+            else if ($scope.painelTabela.tabelaAtual == 2) {
                 $scope.painelTabela.tituloTabelaAtual = 'Concorrentes';
             }
         };
@@ -410,7 +410,7 @@ $http({
         $scope.adicionarPontual = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/adicionar-pontual.html',
                 controller: 'ModalCriarPontualCtrl'
             });
@@ -419,7 +419,7 @@ $http({
         $scope.editarContatos = function (contato) {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/editar-contato.html',
                 controller: 'ModalUltimosContatosCtrl',
                 resolve: {
@@ -486,7 +486,7 @@ $http({
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
-                cancelButtonText:"Cancelar",
+                cancelButtonText: "Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -494,7 +494,7 @@ $http({
             SweetAlert.swal(
                 alertExclusao, function (isConfirm) {
                     if (isConfirm) {
-                        $rootScope.pontuais = _.without($rootScope.pontuais, _.findWhere($rootScope.pontuais, {id: pontual.id}));
+                        $rootScope.pontuais = _.without($rootScope.pontuais, _.findWhere($rootScope.pontuais, { id: pontual.id }));
                         SweetAlert.swal({
                             title: "Sucesso",
                             text: "Nota excluída com sucesso",
@@ -524,7 +524,7 @@ $http({
         $scope.editarLinhaBranca = function (produto) {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/editar-linhaBranca.html',
                 controller: 'ModalProdutoCtrl',
                 resolve: {
@@ -544,7 +544,7 @@ $http({
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Sim, excluir!",
-                    cancelButtonText:"Cancelar",
+                    cancelButtonText: "Cancelar",
                     closeOnConfirm: false,
                     closeOnCancel: true,
                     showLoaderOnConfirm: true
@@ -573,7 +573,7 @@ $http({
         $scope.adicionarLinhaBranca = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/editar-linhaBranca.html',
                 controller: 'ModalProdutoCtrl',
                 resolve: {
@@ -587,7 +587,7 @@ $http({
         $scope.editarConcorrenteRevenda = function (produto) {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/editar-concorrente.html',
                 controller: 'ModalProdutoCtrl',
                 resolve: {
@@ -607,7 +607,7 @@ $http({
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
                     confirmButtonText: "Sim, excluir!",
-                    cancelButtonText:"Cancelar",
+                    cancelButtonText: "Cancelar",
                     closeOnConfirm: false,
                     closeOnCancel: true,
                     showLoaderOnConfirm: true
@@ -636,7 +636,7 @@ $http({
         $scope.adicionarConcorrenteRevenda = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/editar-concorrente.html',
                 controller: 'ModalProdutoCtrl',
                 resolve: {
@@ -649,9 +649,9 @@ $http({
 
         $scope.editarPerfilDeRevenda = function () {
             $scope.isBlocked = !$scope.isBlocked;
-           if(!$scope.isBlockedTos){
-               $scope.isBlockedTos = !$scope.isBlockedTos;
-           }
+            if (!$scope.isBlockedTos) {
+                $scope.isBlockedTos = !$scope.isBlockedTos;
+            }
         };
 
         $scope.salvarEdicaoRevenda = function () {
@@ -661,7 +661,7 @@ $http({
                 $rootScope.selectedClient.revenda.data = moment().format("DD.MM.YYYY")
                 $scope.isBlocked = !$scope.isBlocked
             }
-            if($scope.isBlockedTos){
+            if ($scope.isBlockedTos) {
                 $scope.isBlockedTos = !$scope.isBlockedTos;
             }
         };
@@ -673,7 +673,7 @@ $http({
                 $rootScope.selectedClient.revenda = angular.copy($scope.selectedClientB.revenda);
                 $scope.isBlocked = !$scope.isBlocked
             }
-            if($scope.isBlockedTos){
+            if ($scope.isBlockedTos) {
                 $scope.isBlockedTos = !$scope.isBlockedTos;
             }
         };
@@ -813,11 +813,11 @@ $http({
 
         $scope.buscarCliente = function () {
             if ($scope.busca.email != "") {
-                $rootScope.clientesBuscados = _.where($rootScope.clientes, {email: $scope.busca.email});
+                $rootScope.clientesBuscados = _.where($rootScope.clientes, { email: $scope.busca.email });
             } else if ($scope.busca.cnpj != "") {
-                $rootScope.clientesBuscados = _.where($rootScope.clientes, {cnpj: $scope.busca.cnpj});
+                $rootScope.clientesBuscados = _.where($rootScope.clientes, { cnpj: $scope.busca.cnpj });
             } else if ($scope.busca.id != "") {
-                $rootScope.clientesBuscados = _.where($rootScope.clientes, {clienteEmissorId: $scope.busca.id});
+                $rootScope.clientesBuscados = _.where($rootScope.clientes, { clienteEmissorId: $scope.busca.id });
             } else {
                 $rootScope.clientesBuscados = [];
             }
@@ -831,20 +831,20 @@ $http({
         $scope.produto = produto;
 
         $scope.listaLinhaBranca = [
-            {id:1,nome:'Electrolux'},
-            {id:2,nome:'Panasonic'},
-            {id:3,nome:'Atlas'},
-            {id:4,nome:'Esmaltec'},
-            {id:5,nome:'Colormaq'},
-            {id:6,nome:'Mueller'},
-            {id:7,nome:'Fischer'}
+            { id: 1, nome: 'Electrolux' },
+            { id: 2, nome: 'Panasonic' },
+            { id: 3, nome: 'Atlas' },
+            { id: 4, nome: 'Esmaltec' },
+            { id: 5, nome: 'Colormaq' },
+            { id: 6, nome: 'Mueller' },
+            { id: 7, nome: 'Fischer' }
         ];
 
 
         function init() {
-            if($scope.produto != null){
+            if ($scope.produto != null) {
                 angular.forEach($scope.listaLinhaBranca, function (value, key) {
-                    if(value.nome.toLowerCase() == produto.nome.toLowerCase()){
+                    if (value.nome.toLowerCase() == produto.nome.toLowerCase()) {
                         $scope.produto.nome = value.nome.toUpperCase();
                     }
                 });
@@ -902,7 +902,7 @@ $http({
             $scope.contato.emailPrioritario = email.prioritario;
             //todo substitiur $rootscope e retornar objeto pleso close do modal
             // e no Controller do manutenção adicionar na lista ou chamar o service
-            $rootScope.tabelaDesnormalizada.push( $scope.contato);
+            $rootScope.tabelaDesnormalizada.push($scope.contato);
             $uibModalInstance.close();
         };
 
@@ -922,7 +922,7 @@ $http({
             $scope.contato.telefonePrioritario = telefone.prioritario;
             //todo substitiur $rootscope e retornar objeto pleso close do modal
             // e no Controller do manutenção adicionar na lista ou chamar o service
-            $rootScope.tabelaDesnormalizada.push( $scope.contato);
+            $rootScope.tabelaDesnormalizada.push($scope.contato);
 
             $uibModalInstance.close();
         };
@@ -995,16 +995,16 @@ $http({
 
         };
         gridOptions.columnDefs = [
-            {field: 'Contato', displayName: 'ID'},
-            {field: 'Cargo'},
-            {field: 'Telefone', enableSorting: true},
+            { field: 'Contato', displayName: 'ID' },
+            { field: 'Cargo' },
+            { field: 'Telefone', enableSorting: true },
             {
                 field: 'Prioritário',
                 cellTemplate: '<div ng-if="{{row.value}}" class="ui-grid-cell-contents tooltip-uigrid" title="{{COL_FIELD}}">' +
                 '<a ng-if="" ui-sref="main.placeDetail{{placeId: {{row.entity.id}} }}">{{COL_FIELD CUSTOM_FILTERS}}</a></div>'
             },
-            {field: 'Email', enableSorting: true},
-            {field: 'Prioritário'}
+            { field: 'Email', enableSorting: true },
+            { field: 'Prioritário' }
         ];
 
         $scope.agrupadoresClientes = [
@@ -1044,25 +1044,29 @@ $http({
 
         $scope.gridAgrupadorXCliente = {
             enableGridMenu: true,
-            enableHorizontalScrollbar: 1, 
+            enableHorizontalScrollbar: 1,
             enableVerticalScrollbar: 1,
             data: 'agrupadoresClientes',
             columnDefs: [
-                {field: 'agrupador', width: '80', displayName: 'Agrupador'},
-                {field: 'clienteEmissorId', width: '80', displayName: 'Emissor'},
-                {field: 'razao', width: '100', displayName: 'Nome'},
-                {field: 'cidade', width: '100', displayName: 'Cidade'},
-                {field: 'uf', width: '40', displayName: 'UF'},
-                {field: 'cnpj', width: '110', displayName: 'Cnpj'},
-                {field: 'endereco', width: '200', displayName: 'Endereço'},
-                {field: 'cep', width: '70', displayName: 'Cep'},
-                {field: 'telefone', width: '90', displayName: 'Telefone'},
-                {field: 'email', width: '190', displayName: 'Email'},
-                {field: 'inscricaoEstadual', width: '100', displayName: 'I.E'},
-                {field: 'status', width: '150', displayName: 'Status'}
+                { field: 'agrupador', width: '80', displayName: 'Agrupador' },
+                { field: 'clienteEmissorId', width: '80', displayName: 'Emissor' },
+                { field: 'razao', width: '100', displayName: 'Nome' },
+                { field: 'cidade', width: '100', displayName: 'Cidade' },
+                { field: 'uf', width: '40', displayName: 'UF' },
+                { field: 'cnpj', width: '110', displayName: 'Cnpj' },
+                { field: 'endereco', width: '200', displayName: 'Endereço' },
+                { field: 'cep', width: '70', displayName: 'Cep' },
+                { field: 'telefone', width: '90', displayName: 'Telefone' },
+                { field: 'email', width: '190', displayName: 'Email' },
+                { field: 'inscricaoEstadual', width: '100', displayName: 'I.E' },
+                { field: 'status', width: '150', displayName: 'Status' }
             ]
         };
-
+        // $scope.updateSortInfo = function () {
+        //     $scope.gridOptions.sortInfo = { fields: ['age'], directions: ['asc'] };
+        //     $scope.gridData = myData2;
+            //$scope.$apply(); // Doesn't make a difference
+        // }
         $scope.gridTabelaDesnormalizada = {
             enableHorizontalScrollbar: 0,
             multiSelect: false,
@@ -1072,13 +1076,13 @@ $http({
             },
             data: 'tabelaDesnormalizada',
             columnDefs: [
-                
+
                 {
                     field: 'contato',
                     width: '140',
                     displayName: 'Contato',
-                    grouping: { groupPriority: 0 }, 
-                    sort: { priority: 0, direction: 'desc' }
+                    grouping: { groupPriority: 0 },
+                    
                 },
 
                 {
@@ -1098,10 +1102,10 @@ $http({
                     width: '80',
                     cellTemplate: ' <div ng-click="grid.appScope.alterarPrioridadeTelefone(row.entity)">' +
                     '<div ng-if="!COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
-                    '<a class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
+                    '<a ng-if="row.entity.cod" class="red" style="color: red" href=""><i class="fa fa-times-circle-o bigger-130"></i></a></div>' +
                     '<div ng-if="COL_FIELD" class="hidden-sm hidden-xs action-buttons">' +
                     '<a class="green" style="color: green" href=""><i class="fa fa-check-circle-o bigger-130"></i></a></div></div>'
-                    
+
                 },
                 {
                     field: 'email',
@@ -1134,24 +1138,24 @@ $http({
             ]
         };
 
-        $scope.aumentarPosContato = function(contato){
-            var next = _.findWhere($scope.tabelaDesnormalizada,{order: (contato.order+1)});
-            if(next != undefined){
+        $scope.aumentarPosContato = function (contato) {
+            var next = _.findWhere($scope.tabelaDesnormalizada, { order: (contato.order + 1) });
+            if (next != undefined) {
                 var temp = next.order;
                 next.order = contato.order;
                 contato.order = temp;
-                $scope.tabelaDesnormalizada.sort(function(a,b){
+                $scope.tabelaDesnormalizada.sort(function (a, b) {
                     return a.order - b.order;
                 });
             }
         };
-        $scope.diminuirPosContato = function(contato){
-            var previous = _.findWhere($scope.tabelaDesnormalizada, {order: (contato.order-1)});
-            if(previous != undefined){
+        $scope.diminuirPosContato = function (contato) {
+            var previous = _.findWhere($scope.tabelaDesnormalizada, { order: (contato.order - 1) });
+            if (previous != undefined) {
                 var temp = previous.order;
                 previous.order = contato.order;
                 contato.order = temp;
-                $scope.tabelaDesnormalizada.sort(function(a,b){
+                $scope.tabelaDesnormalizada.sort(function (a, b) {
                     return a.order - b.order;
                 });
             }
@@ -1167,7 +1171,7 @@ $http({
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
-                cancelButtonText:"Cancelar",
+                cancelButtonText: "Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -1194,7 +1198,7 @@ $http({
         };
 
         $scope.removerContato = function (contato) {
-            $rootScope.tabelaDesnormalizada = _.without($rootScope.tabelaDesnormalizada, _.findWhere($rootScope.tabelaDesnormalizada, {id: contato.id}));
+            $rootScope.tabelaDesnormalizada = _.without($rootScope.tabelaDesnormalizada, _.findWhere($rootScope.tabelaDesnormalizada, { id: contato.id }));
         };
 
         $scope.deleteSelected = function () {
@@ -1209,12 +1213,12 @@ $http({
             }
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/adicionar-telefone.html',
                 controller: 'ModalTelefoneCtrl',
-                resolve : {
-                    contato : function (){
-                        return  $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows();
+                resolve: {
+                    contato: function () {
+                        return $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows();
                     }
                 }
             });
@@ -1226,12 +1230,12 @@ $http({
             }
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/adicionar-email.html',
                 controller: 'ModalEmailCtrl',
-                resolve : {
-                    contato : function (){
-                        return  $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows();
+                resolve: {
+                    contato: function () {
+                        return $scope.gridApiTabelaDesnormalizada.selection.getSelectedRows();
                     }
                 }
             });
@@ -1260,7 +1264,7 @@ $http({
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
-                cancelButtonText:"Cancelar",
+                cancelButtonText: "Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -1268,7 +1272,7 @@ $http({
             SweetAlert.swal(
                 alertExclusao, function (isConfirm) {
                     if (isConfirm) {
-                        $rootScope.selectedClient.contatos[0].emails = _.without($rootScope.selectedClient.contatos[0].emails, _.findWhere($rootScope.selectedClient.contatos[0].emails, {id: email.id}));
+                        $rootScope.selectedClient.contatos[0].emails = _.without($rootScope.selectedClient.contatos[0].emails, _.findWhere($rootScope.selectedClient.contatos[0].emails, { id: email.id }));
                         SweetAlert.swal('Email excluído com sucesso.');
 
                     } else {
@@ -1280,13 +1284,13 @@ $http({
         };
 
         $scope.removerTelefone = function (telefone) {
-            $rootScope.selectedClient.contatos[0].telefones = _.without($rootScope.selectedClient.contatos[0].telefones, _.findWhere($rootScope.selectedClient.contatos[0].telefones, {id: telefone.id}));
+            $rootScope.selectedClient.contatos[0].telefones = _.without($rootScope.selectedClient.contatos[0].telefones, _.findWhere($rootScope.selectedClient.contatos[0].telefones, { id: telefone.id }));
         };
 
         $scope.criarContato = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/novo-contato.html',
                 controller: 'ModalNovoContatoCtrl',
                 resolve: {
@@ -1306,7 +1310,7 @@ $http({
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
-                cancelButtonText:"Cancelar",
+                cancelButtonText: "Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -1333,7 +1337,7 @@ $http({
         $scope.editarContato = function (contato) {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/novo-contato.html',
                 controller: 'ModalNovoContatoCtrl',
                 resolve: {
@@ -1377,10 +1381,10 @@ $http({
         $scope.titulo = null;
         $scope.editable = false;
 
-        function init(){
-            if (!!contato.id){
+        function init() {
+            if (!!contato.id) {
                 $scope.titulo = "Editar Contato"
-            }else {
+            } else {
                 $scope.titulo = "Criar Contato"
             }
         }
@@ -1399,7 +1403,7 @@ $http({
             } else {
                 contato.data = "17.05.2017";
                 //todo chamar serviço retornar id
-                if ($rootScope.contatos == undefined){
+                if ($rootScope.contatos == undefined) {
                     $rootScope.contatos = [];
                 }
                 contato.id = $rootScope.contatos.length + 1;
@@ -1409,7 +1413,7 @@ $http({
             }
 
         };
-        $scope.setEditable = function(){
+        $scope.setEditable = function () {
             console.log("setEditable()");
             $scope.editable = !$scope.editable;
         }
@@ -1524,7 +1528,7 @@ $http({
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
-                cancelButtonText:"Cancelar",
+                cancelButtonText: "Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -1597,7 +1601,7 @@ $http({
         }
 
         $scope.adicionarProgramaEntrega = function () {
-            $scope.datasProgramadas.push({agendaEntrega: 'Editar', quatidadeDistribuicao: 0})
+            $scope.datasProgramadas.push({ agendaEntrega: 'Editar', quatidadeDistribuicao: 0 })
         }
 
         $scope.criarProgramaEntrega = function () {
@@ -1730,7 +1734,7 @@ $http({
         $scope.programarEntrega = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/programar-entrega.html',
                 controller: 'ModalProgramarEntregaCtrl',
                 size: 'md'
@@ -1846,7 +1850,7 @@ $http({
             columnDefs: [
                 {
                     field: 'codigo',
-                    width:'130',
+                    width: '130',
                     displayName: 'Código do Material'
                 },
                 {
@@ -1885,23 +1889,23 @@ $http({
             $uibModalInstance.close($scope.listaMateriais);
         };
 
-        $scope.deletarMateriaisSelecionados = function(){
-            angular.forEach($scope.gridApiBuscaMaterial.selection.getSelectedRows(), function(data, index){
+        $scope.deletarMateriaisSelecionados = function () {
+            angular.forEach($scope.gridApiBuscaMaterial.selection.getSelectedRows(), function (data, index) {
                 //console.log("data.codigo | " + data.codigo);  
 
-                angular.forEach($rootScope.listaMateriais, function(value, key){
-                    
-                      if(value.codigo == data.codigo){
-                         $rootScope.listaMateriais.splice(key, 1);
-                      }
-                   });
+                angular.forEach($rootScope.listaMateriais, function (value, key) {
+
+                    if (value.codigo == data.codigo) {
+                        $rootScope.listaMateriais.splice(key, 1);
+                    }
+                });
 
                 //$rootScope.listaMateriais = _.without($rootScope.listaMateriais, data);
             });
 
-           // $scope.gridBuscaMaterial.data = $rootScope.listaMateriais;
+            // $scope.gridBuscaMaterial.data = $rootScope.listaMateriais;
 
-           // console.log(">> " + $rootScope.listaMateriais.length);
+            // console.log(">> " + $rootScope.listaMateriais.length);
 
             //$uibModalInstance.close($scope.listaMateriais);
         };
@@ -2186,7 +2190,7 @@ $http({
         $scope.programarEntrega = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/programar-entrega.html',
                 controller: 'ModalProgramarEntregaCtrl',
                 size: 'md'
@@ -2194,17 +2198,17 @@ $http({
         };
 
         $scope.removeTextoOv = function (texto) {
-            $scope.textoOv = _.without($scope.textoOv, _.findWhere($scope.textoOv, {id: texto.id}));
+            $scope.textoOv = _.without($scope.textoOv, _.findWhere($scope.textoOv, { id: texto.id }));
         };
 
         $scope.removeTextoSimulacao = function (texto) {
-            $scope.textoSimulacao = _.without($scope.textoSimulacao, _.findWhere($scope.textoSimulacao, {id: texto.id}));
+            $scope.textoSimulacao = _.without($scope.textoSimulacao, _.findWhere($scope.textoSimulacao, { id: texto.id }));
         };
 
         $scope.adicionarTextoOv = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/adicionar-texto-ov.html',
                 controller: 'ModalTextoOvCtrl'
             });
@@ -2213,7 +2217,7 @@ $http({
         $scope.adicionarTextoSimulacao = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/adicionar-texto-simulacao.html',
                 controller: 'ModalTextoOvCtrl'
             });
@@ -2358,8 +2362,8 @@ $http({
         };
 
         $rootScope.listaMateriais = [];
-        $scope.filtro={
-            filtroUltimasSimulacoes : ""
+        $scope.filtro = {
+            filtroUltimasSimulacoes: ""
         };
         $scope.listaDeCentros = [];
         $scope.listaDeLocaisExpedicao = [];
@@ -2378,7 +2382,7 @@ $http({
 
                 var modalInstance = $uibModal.open({
                     animation: true,
-                    backdrop:'static',
+                    backdrop: 'static',
                     templateUrl: './view/selecionar-cliente.html',
                     controller: 'ModalSelecionarClienteCtrl',
                     size: "lg",
@@ -2394,7 +2398,7 @@ $http({
             $rootScope.listaMateriais = MaterialService.consultaMaterial();
             $scope.listaDeCentros = CentroService.consultaCentroPorMaterial(1);
             $scope.listaDeLocaisExpedicao = LocalExpedicaoService.consultaLocalExpedicaoPorMaterial(1);
-            $scope.listaDeIncoterms  = IncotermsService.consultaIncotermsPorMaterial(1);
+            $scope.listaDeIncoterms = IncotermsService.consultaIncotermsPorMaterial(1);
             $scope.replicas = MaterialService.consultaReplicas();
         }
 
@@ -2420,7 +2424,7 @@ $http({
         $scope.changeHeaderTitle = function () {
             if ($scope.painelTabela.tabelaAtual == 1) {
                 $scope.painelTabela.tituloTabelaAtual = 'Condições de Pagamento';
-            } 
+            }
             // else if ($scope.painelTabela.tabelaAtual == 2) {
             //     $scope.painelTabela.tituloTabelaAtual = 'Histórico';
             // }
@@ -2464,7 +2468,7 @@ $http({
                 templateUrl: './view/material-completo.html',
                 controller: 'ModalMaterialCompletoCtrl',
                 size: 'lg',
-                backdrop:'static',
+                backdrop: 'static',
                 resolve: {
                     material: function () {
                         return MaterialService.consultaMaterialCompleto(id);
@@ -2494,19 +2498,16 @@ $http({
         };
 
         $scope.codProcEsp = [
-            {sppi: 16, denominacao: "TRUCK ABERTO"},
-            {sppi: 17, denominacao: "TRUCK BAU"},
-            {sppi: 18, denominacao: "TOCO ABERTO"},
-            {sppi: 19, denominacao: "TOCO BAU"}
+            { sppi: 16, denominacao: "TRUCK ABERTO" },
+            { sppi: 17, denominacao: "TRUCK BAU" },
+            { sppi: 18, denominacao: "TOCO ABERTO" },
+            { sppi: 19, denominacao: "TOCO BAU" }
         ];
 
         $scope.gridReplicas = {
             enableHorizontalScrollbar: 0,
 
             enableVerticalScrollbar: 0,
-            enableGridMenu: true,
-            data: 'replicas',
-            
             enableGridMenu: true,
             data: 'replicas',
             columnDefs: [
@@ -2560,7 +2561,7 @@ $http({
 
             $scope.replicas = angular.copy($scope.temp);
 
-           // $scope.gridReplicas.data = $scope.replicas;
+            // $scope.gridReplicas.data = $scope.replicas;
 
         };
 
@@ -2579,7 +2580,7 @@ $http({
                     field: 'acao',
                     enableColumnMenu: false,
                     enableCellEdit: false,
-                    pinnedLeft:true,
+                    pinnedLeft: true,
                     width: '20',
                     displayName: '',
                     cellTemplate: '  <div class="action-buttons"> ' +
@@ -2589,7 +2590,7 @@ $http({
                 {
                     field: 'codigo',
                     width: '100',
-                    pinnedLeft:true,
+                    pinnedLeft: true,
                     displayName: 'Material',
                     footerCellTemplate: '<div class="ui-grid-cell-contents" >Total:</div>',
                     cellTemplate: '  <a href="" ng-click="grid.appScope.consultarMaterialCompleto(COL_FIELD)">{{COL_FIELD}}</a>'
@@ -2597,13 +2598,13 @@ $http({
                 {
                     field: 'cor',
                     width: '80',
-                    pinnedLeft:true,
+                    pinnedLeft: true,
                     displayName: 'Cor'
                 },
                 {
                     field: 'voltagem',
                     width: '80',
-                    pinnedLeft:true,
+                    pinnedLeft: true,
                     displayName: 'Voltagem'
                 },
                 {
@@ -2730,7 +2731,7 @@ $http({
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
-                cancelButtonText:"Cancelar",
+                cancelButtonText: "Cancelar",
                 closeOnConfirm: true,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -2818,7 +2819,7 @@ $http({
         $scope.gridApiUltimasSimulacoes = {};
         $scope.gridUltimasSimulacoes.onRegisterApi = function (gridApi) {
             $scope.gridApiUltimasSimulacoes = gridApi;
-            $scope.gridApiUltimasSimulacoes.grid.registerRowsProcessor( $scope.filtraUltimasSimulacoesApi, 200 );
+            $scope.gridApiUltimasSimulacoes.grid.registerRowsProcessor($scope.filtraUltimasSimulacoesApi, 200);
         };
 
         $rootScope.simulacaoPontuais = [
@@ -2878,7 +2879,7 @@ $http({
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, excluir!",
-                cancelButtonText:"Cancelar",
+                cancelButtonText: "Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -2886,7 +2887,7 @@ $http({
             SweetAlert.swal(
                 alertExclusao, function (isConfirm) {
                     if (isConfirm) {
-                        $rootScope.simulacaoPontuais = _.without($rootScope.simulacaoPontuais, _.findWhere($rootScope.simulacaoPontuais, {id: pontual.id}));
+                        $rootScope.simulacaoPontuais = _.without($rootScope.simulacaoPontuais, _.findWhere($rootScope.simulacaoPontuais, { id: pontual.id }));
                         SweetAlert.swal({
                             title: "Sucesso",
                             text: "Nota excluída com sucesso",
@@ -2904,7 +2905,7 @@ $http({
         $scope.adicionarPontual = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/adicionar-pontual.html',
                 controller: 'ModalCriarPontualSimulacoesCtrl'
             });
@@ -2913,7 +2914,7 @@ $http({
         $scope.editarDadosEntrega = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/editar-dadosEntrega.html',
                 controller: 'ModalDadosEntregaCtrl',
                 resolve: {
@@ -2930,52 +2931,52 @@ $http({
             $scope.dadosEntregaEditavel = !$scope.dadosEntregaEditavel
          };
          */
-         $scope.formato = 'dd-MM-yyyy';
+        $scope.formato = 'dd-MM-yyyy';
 
-         $scope.popupDataEntrega = {
+        $scope.popupDataEntrega = {
             opened: false
-         };
+        };
 
-         $scope.openDataEntrega = function () {
+        $scope.openDataEntrega = function () {
             $scope.popupDataEntrega.opened = true;
-         };
+        };
 
-         $scope.popupDataRemessa = {
+        $scope.popupDataRemessa = {
             opened: false
-         };
+        };
 
-         $scope.openDataRemessa = function () {
+        $scope.openDataRemessa = function () {
             $scope.popupDataRemessa.opened = true;
-         };
+        };
 
-         $scope.salvarDadosEntrega = function () {
+        $scope.salvarDadosEntrega = function () {
             $rootScope.selectedClient.simulacao.dadosEntrega = $scope.dadosEntrega;
             $uibModalInstance.close()
-         }
-         
+        }
 
-         $scope.formato = 'dd-MM-yyyy';
 
-         $scope.popupDataEntrega = {
-         opened: false
-         };
+        $scope.formato = 'dd-MM-yyyy';
 
-         $scope.openDataEntrega = function () {
-         $scope.popupDataEntrega.opened = true;
-         };
+        $scope.popupDataEntrega = {
+            opened: false
+        };
 
-         $scope.popupDataRemessa = {
-         opened: false
-         };
+        $scope.openDataEntrega = function () {
+            $scope.popupDataEntrega.opened = true;
+        };
 
-         $scope.openDataRemessa = function () {
-         $scope.popupDataRemessa.opened = true;
-         };
+        $scope.popupDataRemessa = {
+            opened: false
+        };
 
-         $scope.salvarDadosEntrega = function () {
-         $rootScope.selectedClient.simulacao.dadosEntrega = $scope.dadosEntrega;
-         $uibModalInstance.close()
-         }
+        $scope.openDataRemessa = function () {
+            $scope.popupDataRemessa.opened = true;
+        };
+
+        $scope.salvarDadosEntrega = function () {
+            $rootScope.selectedClient.simulacao.dadosEntrega = $scope.dadosEntrega;
+            $uibModalInstance.close()
+        }
 
 
         $scope.bonificacao = function () {
@@ -2996,7 +2997,7 @@ $http({
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
                 confirmButtonText: "Sim, salvar!",
-                cancelButtonText:"Cancelar",
+                cancelButtonText: "Cancelar",
                 closeOnConfirm: false,
                 closeOnCancel: true,
                 showLoaderOnConfirm: true
@@ -3019,7 +3020,7 @@ $http({
             );
         };
 
-        $scope.filtraUltimasSimulacoes = function(){
+        $scope.filtraUltimasSimulacoes = function () {
             $scope.gridApiUltimasSimulacoes.grid.refresh();
         };
 
@@ -3093,7 +3094,7 @@ $http({
         $rootScope.gotoCliente = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/selecionar-cliente.html',
                 controller: 'ModalSelecionarClienteCtrl',
                 size: "lg",
@@ -3128,25 +3129,25 @@ $http({
         $rootScope.divLink = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
-                backdrop:'static',
+                backdrop: 'static',
                 templateUrl: './view/sap-links.html',
                 controller: ''
             });
         };
 
         $rootScope.linhaBranca = [
-            {id: 0, nome: "ELECTROLUX", quantidade: "45%"},
-            {id: 1, nome: "PANASONIC", quantidade: "25%"},
-            {id: 2, nome: "SAMSUNG", quantidade: "30%"},
-            {id: 3, nome: "ATLAS", quantidade: "5%"}
+            { id: 0, nome: "ELECTROLUX", quantidade: "45%" },
+            { id: 1, nome: "PANASONIC", quantidade: "25%" },
+            { id: 2, nome: "SAMSUNG", quantidade: "30%" },
+            { id: 3, nome: "ATLAS", quantidade: "5%" }
 
         ];
 
         $rootScope.concorrentesRevenda = [
-            {id: 0, nome: "ELECTROLUX", quantidade: "45%"},
-            {id: 1, nome: "PANASONIC", quantidade: "25%"},
-            {id: 2, nome: "SAMSUNG", quantidade: "30%"},
-            {id: 3, nome: "ATLAS", quantidade: "5%"}
+            { id: 0, nome: "ELECTROLUX", quantidade: "45%" },
+            { id: 1, nome: "PANASONIC", quantidade: "25%" },
+            { id: 2, nome: "SAMSUNG", quantidade: "30%" },
+            { id: 3, nome: "ATLAS", quantidade: "5%" }
 
         ];
 
@@ -3171,7 +3172,7 @@ $http({
                         titulo: "ZTLV15 - Texos Fixos - Simulação e OV",
                         url: ""
                     },
-                    {titulo: "ZTLV20 - TAB PRE Atribuir Marca e Categoria", url: ""},
+                    { titulo: "ZTLV20 - TAB PRE Atribuir Marca e Categoria", url: "" },
                     {
                         titulo: "ZTLV11 - ZROUTE",
                         url: ""
@@ -3180,7 +3181,7 @@ $http({
                         titulo: "ZTABP - Gerar de tabela de Preço",
                         url: ""
                     },
-                    {titulo: "ZEXEC - Exceção de materiais - TAB preço", url: ""}]
+                    { titulo: "ZEXEC - Exceção de materiais - TAB preço", url: "" }]
             },
             {
                 nome: "Cliente",
@@ -3198,15 +3199,15 @@ $http({
             {
                 nome: "Atividades",
                 icone: "fa fa-newspaper-o",
-                links: [{titulo: "ZTLV22 - Criar Providência", url: ""}, {
+                links: [{ titulo: "ZTLV22 - Criar Providência", url: "" }, {
                     titulo: "ZC10 - Relatório de atividades",
                     url: ""
-                }, {titulo: "MM03 - Cadastro de Produto", url: ""}]
+                }, { titulo: "MM03 - Cadastro de Produto", url: "" }]
             },
             {
                 nome: "Estoque",
                 icone: "fa fa-inbox",
-                links: [{titulo: "ZVSCE17 - Sintese de Estoque", url: ""}, {
+                links: [{ titulo: "ZVSCE17 - Sintese de Estoque", url: "" }, {
                     titulo: "ZMBE - Consulta Estoque",
                     url: ""
                 }]
@@ -3214,24 +3215,24 @@ $http({
             {
                 nome: "Ordem/NF",
                 icone: "fa fa-shopping-basket",
-                links: [{titulo: "ZV20 - Lista Ordem", url: ""}, {
+                links: [{ titulo: "ZV20 - Lista Ordem", url: "" }, {
                     titulo: "ZV40 - Lista Ordem Orig.",
                     url: ""
-                }, {titulo: "VA01 - Criar Ordem R3", url: ""}, {
+                }, { titulo: "VA01 - Criar Ordem R3", url: "" }, {
                     titulo: "VA02 - Alterar Ordem R3",
                     url: ""
-                }, {titulo: "ZVC16 - Ordens Faturadas", url: ""}, {
+                }, { titulo: "ZVC16 - Ordens Faturadas", url: "" }, {
                     titulo: "ZSTR14 - Posição de Entrega",
                     url: ""
-                }, {titulo: "J1B3N - Exibir NF", url: ""}, {
+                }, { titulo: "J1B3N - Exibir NF", url: "" }, {
                     titulo: "ZSTR52 - Rel de ocorrências",
                     url: ""
-                }, {titulo: "ZSER - Consulta nº série do Produto", url: ""}]
+                }, { titulo: "ZSER - Consulta nº série do Produto", url: "" }]
             },
             {
                 nome: "Meta/Var",
                 icone: "fa fa-signal",
-                links: [{titulo: "ZV57 - Informações Gerenciais", url: ""}]
+                links: [{ titulo: "ZV57 - Informações Gerenciais", url: "" }]
             },
             {
                 nome: "Cred/Cob",
@@ -3239,26 +3240,26 @@ $http({
                 links: [{
                     titulo: "FBL6N - Partidas Individuais",
                     url: ""
-                }, {titulo: "ZFI46 - Crédito do Cliente - Média ", url: ""}, {
+                }, { titulo: "ZFI46 - Crédito do Cliente - Média ", url: "" }, {
                     titulo: "FD33 - Crédito do Cliente",
                     url: ""
-                }, {titulo: "ZFE15 - Rel. Fretes Contas RE", url: ""}]
+                }, { titulo: "ZFE15 - Rel. Fretes Contas RE", url: "" }]
             },
             {
                 nome: "Preço",
                 icone: "fa fa-money",
-                links: [{titulo: "ZTLV21 – Solicitações de Lista de Preços", url: ""}]
+                links: [{ titulo: "ZTLV21 – Solicitações de Lista de Preços", url: "" }]
             },
             {
                 nome: "Verbas",
                 icone: "fa fa-usd",
-                links: [{titulo: "CJ37 - Empenho da verbas", url: ""}, {
+                links: [{ titulo: "CJ37 - Empenho da verbas", url: "" }, {
                     titulo: "CJ30 - 1º Empenho na Campanha",
                     url: ""
-                }, {titulo: "CJ31 - Consulta de verbas", url: ""}, {
+                }, { titulo: "CJ31 - Consulta de verbas", url: "" }, {
                     titulo: "CJ20N - Criar Campanha",
                     url: ""
-                }, {titulo: "ZPSR1 - Extrato Detalhado PEP", url: ""}, {
+                }, { titulo: "ZPSR1 - Extrato Detalhado PEP", url: "" }, {
                     titulo: "ZTLV10G - Consulta Bonificação",
                     url: ""
                 }]
@@ -5437,7 +5438,7 @@ $http({
             {
                 id: 1,
                 order: 1,
-                cod:'0001', 
+                cod: '0001',
                 contato: "Ricardo",
                 cargo: "Comprador",
                 prioritario: true,
@@ -5445,12 +5446,12 @@ $http({
                 telefonePrioritario: false,
                 email: "compras@lamarsupercenter.com.br",
                 emailPrioritario: true,
-                prio: 1
+                prio: 3
             },
             {
                 id: 2,
                 order: 2,
-                cod:'0001',
+                cod: '0001',
                 contato: "Ricardo",
                 cargo: "Comprador",
                 prioritario: false,
@@ -5458,12 +5459,12 @@ $http({
                 telefonePrioritario: false,
                 email: "",
                 emailPrioritario: false,
-                prio: 1
+                prio: 3
             },
             {
                 id: 3,
                 order: 3,
-                cod:'0001',
+                cod: '0001',
                 contato: "Ricardo",
                 cargo: "Comprador",
                 prioritario: false,
@@ -5471,12 +5472,12 @@ $http({
                 telefonePrioritario: false,
                 email: "",
                 emailPrioritario: false,
-                prio: 1
+                prio: 3
             },
             {
                 id: 4,
                 order: 4,
-                cod:'0002',
+                cod: '0002',
                 contato: "Keli",
                 cargo: "Gerente",
                 prioritario: false,
@@ -5489,7 +5490,7 @@ $http({
             {
                 id: 5,
                 order: 5,
-                cod:'0002',
+                cod: '0002',
                 contato: "Keli",
                 cargo: "Gerente",
                 prioritario: false,
@@ -5502,7 +5503,7 @@ $http({
             {
                 id: 6,
                 order: 6,
-                cod:'0002',
+                cod: '0002',
                 contato: "Keli",
                 cargo: "Gerente",
                 prioritario: false,
@@ -5515,7 +5516,7 @@ $http({
             {
                 id: 7,
                 order: 7,
-                cod:'0002',
+                cod: '0002',
                 contato: "Keli",
                 cargo: "Gerente",
                 prioritario: false,
