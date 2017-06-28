@@ -55,7 +55,6 @@ angular.module("App.controllers", [])
     .controller("ClienteController", function ($http, $scope, $rootScope, $location, $uibModal, SweetAlert, moment, Base64) {
         "use strict";
 
-
         /* INICIO TESTES*/
         /*
             $http.defaults.headers.common = {
@@ -126,6 +125,7 @@ angular.module("App.controllers", [])
         $scope.isBlocked = true;
         $scope.mostra = true;
         $scope.isBlockedTos = false;
+        $scope.isBlockedCateg = false;
         $scope.perfilLoja1 = 0;
         $scope.perfilLoja2 = 1;
         $scope.perfilLoja3 = 1;
@@ -517,6 +517,10 @@ angular.module("App.controllers", [])
             $scope.isBlockedTos = !$scope.isBlockedTos;
         };
 
+        $scope.mostrarCateg = function () {
+            $scope.isBlockedCateg = !$scope.isBlockedCateg;
+        };
+
         $scope.calculaTos = function () {
             $rootScope.selectedClient.revenda.tos.total = parseInt($rootScope.selectedClient.revenda.tos.refrigerador) + parseInt($rootScope.selectedClient.revenda.tos.lavadora) + parseInt($rootScope.selectedClient.revenda.tos.fogao);
         };
@@ -692,43 +696,92 @@ angular.module("App.controllers", [])
             $scope.mostra = !$scope.mostra;
         };
 
+ var chart = c3.generate({
+    bindto: '#mixed-chart',
+    data: {
+      columns: [
+        ['data1', 30, 200, 100, 400, 150, 250],
+        ['data2', 50, 20, 10, 40, 15, 25]
+      ]
+    }
+});
+
         $rootScope.dadosGraficos = [
             {
-                "x": "Fogão",
-                "voltyd16": 1,
-                "voltyd17": 0
-            }, {
                 "x": "Forno Microondas",
-                "voltyd16": 0,
-                "voltyd17": 6
-            }, {
-                "x": "Freezer Horizontal",
-                "voltyd16": 0,
-                "voltyd17": 3
+                "mmap": 4,
+                "mt" : 2,
+                "co": 6,
+                "ma": 3,
+                "%YTD": 40
             }, {
                 "x": "Freezer Vertical",
-                "voltyd16": 0,
-                "voltyd17": 2
+                "mmap": 8,
+                "mt" : 5,
+                "co": 6,
+                "ma": 3,
+                "%YTD": 90
             }, {
-                "x": "Lavadora Roupas",
-                "voltyd16": 1,
-                "voltyd17": 8
+                "x": "Freezer Horizontal",
+                "mmap": 3,
+                "mt" : 0,
+                "co": 6,
+                "ma": 3,
+                "%YTD": 56
             }, {
                 "x": "Refrigerador Elétrico",
-                "voltyd16": 12,
-                "voltyd17": 11
-            }];
+                "mmap": 1,
+                "mt" : 9,
+                "co": 6,
+                "ma": 3,
+                "%YTD": 65
+            },{
+                "x": "Total",
+                "tmap": 90,
+                "tmt" : 30,
+                "tco": 20,
+                "tma": 67,
+                "%YTD": 79
+            }
+            ];
 
         $rootScope.dadosGraficosColunas = [
             {
-                "id": "voltyd16",
+                "id": "mmap",
                 "type": "bar",
-                "name": "voltyd16"
+                "name": "Mesmo mês ano passado"
             },
             {
-                "id": "voltyd17",
+                "id": "mt",
                 "type": "bar",
-                "name": "voltyd17"
+                "name": "Média Trimestre"
+            },
+            {
+                "id": "co",
+                "type": "bar",
+                "name": "Carry Over"
+            },
+            {
+                "id": "ma",
+                "type": "bar",
+                "name": "Mês Atual"
+            },
+            {
+                "id": "%YTD",
+                "type": "line",
+                "name": "%YTD"
+            }, {
+                "id": "tmap",
+                "type": "bar"
+            }, {
+                "id": "tmt",
+                "type": "bar"
+            }, {
+                "id": "tco",
+                "type": "bar"
+            }, {
+                "id": "tma",
+                "type": "bar"
             }];
 
         $rootScope.datax = {
@@ -1044,7 +1097,7 @@ angular.module("App.controllers", [])
 
         $scope.gridAgrupadorXCliente = {
             enableGridMenu: true,
-            enableHorizontalScrollbar: 1,
+            enableHorizontalScrollbar: 0,
             enableVerticalScrollbar: 1,
             data: 'agrupadoresClientes',
             columnDefs: [
@@ -1065,7 +1118,7 @@ angular.module("App.controllers", [])
         // $scope.updateSortInfo = function () {
         //     $scope.gridOptions.sortInfo = { fields: ['age'], directions: ['asc'] };
         //     $scope.gridData = myData2;
-            //$scope.$apply(); // Doesn't make a difference
+        //$scope.$apply(); // Doesn't make a difference
         // }
         $scope.gridTabelaDesnormalizada = {
             enableHorizontalScrollbar: 0,
@@ -1082,7 +1135,7 @@ angular.module("App.controllers", [])
                     width: '140',
                     displayName: 'Contato',
                     grouping: { groupPriority: 0 },
-                    
+
                 },
 
                 {
@@ -1890,18 +1943,23 @@ angular.module("App.controllers", [])
         };
 
         $scope.deletarMateriaisSelecionados = function () {
+            //Mudanças: 26/06/2017
+
             angular.forEach($scope.gridApiBuscaMaterial.selection.getSelectedRows(), function (data, index) {
-                //console.log("data.codigo | " + data.codigo);  
-
-                angular.forEach($rootScope.listaMateriais, function (value, key) {
-
-                    if (value.codigo == data.codigo) {
-                        $rootScope.listaMateriais.splice(key, 1);
-                    }
-                });
-
-                //$rootScope.listaMateriais = _.without($rootScope.listaMateriais, data);
+                $scope.materiaisAchados.splice($scope.materiaisAchados.lastIndexOf(data), 1);
             });
+            // angular.forEach($scope.gridApiBuscaMaterial.selection.getSelectedRows(), function (data, index) {
+            //     //console.log("data.codigo | " + data.codigo);  
+
+            //     angular.forEach($rootScope.listaMateriais, function (value, key) {
+
+            //         if (value.codigo == data.codigo) {
+            //             $rootScope.listaMateriais.splice(key, 1);
+            //         }
+            //     });
+
+            //$rootScope.listaMateriais = _.without($rootScope.listaMateriais, data);
+            //});
 
             // $scope.gridBuscaMaterial.data = $rootScope.listaMateriais;
 
@@ -2467,7 +2525,7 @@ angular.module("App.controllers", [])
                 animation: true,
                 templateUrl: './view/material-completo.html',
                 controller: 'ModalMaterialCompletoCtrl',
-                size: 'lg',
+                windowClass: 'app-modal-window',
                 backdrop: 'static',
                 resolve: {
                     material: function () {
@@ -3047,42 +3105,51 @@ angular.module("App.controllers", [])
         $rootScope.dadosGraficos = [
             {
                 "x": "Fogão",
-                "voltyd16": 1,
-                "voltyd17": 0
+                "mmap": 1,
+                "voltyd17": 0,
+                "%YTD": 5
             }, {
                 "x": "Forno Microondas",
-                "voltyd16": 0,
-                "voltyd17": 6
+                "mmap": 0,
+                "voltyd17": 6,
+                "%YTD": 2
             }, {
                 "x": "Freezer Horizontal",
-                "voltyd16": 0,
-                "voltyd17": 3
+                "mmap": 0,
+                "voltyd17": 3,
+                "%YTD": 5
             }, {
                 "x": "Freezer Vertical",
-                "voltyd16": 0,
-                "voltyd17": 2
+                "mmap": 0,
+                "voltyd17": 2,
+                "%YTD": 7
             }, {
                 "x": "Lavadora Roupas",
-                "voltyd16": 1,
-                "voltyd17": 8
+                "mmap": 1,
+                "voltyd17": 8,
+                "%YTD": 5
             }, {
                 "x": "Refrigerador Elétrico",
-                "voltyd16": 12,
-                "voltyd17": 11
+                "mmap": 12,
+                "voltyd17": 11,
+                "%YTD": 4
             }];
 
 
         $rootScope.dadosGraficosColunas = [
             {
-                "id": "voltyd16",
-                "type": "bar",
-                "name": "voltyd16"
+                "id": "mmap",
+                "type": "bar"
             },
             {
                 "id": "voltyd17",
-                "type": "bar",
-                "name": "voltyd17"
-            }];
+                "type": "bar"
+            },
+            {
+                "id": "%YTD",
+                "type": "line"
+            }
+        ];
 
         $rootScope.datax = {
             "id": "x"

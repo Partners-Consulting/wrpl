@@ -766,8 +766,8 @@ i.minus-all{
 }
 
 .links .box{
-    padding-left: 0px;!important;
-    padiing-right : 0px;
+    padding-left: 0px !important;
+    padding-right : 0px;
     width: 300px;
 }
 
@@ -965,7 +965,7 @@ span.glyphicon.glyphicon-chevron-left:hover {
 }
 
 .grid-materias {
-    height: 350px;
+    height: 390px;
 }
 
 .grid-busca-material {
@@ -978,14 +978,16 @@ span.glyphicon.glyphicon-chevron-left:hover {
 }
 
 .modal-custom > .modal-content {
-    height: 765px !important;
+    height: 662px !important;
 }
 
 textarea {
     max-width: 100%;
 }
 
-
+.app-modal-window .modal-dialog {
+  width: 90%;
+}
 .grid-replica .ui-grid-menu-button {
 display: none;
 }
@@ -993,4 +995,22 @@ display: none;
 .bigger-130{
         padding: 6px 2px;
     display: inline-block;
+}
+
+.grid-simu-height{
+    min-height: 2000px;
+}
+
+.small-input{
+    width: 60px;
+}
+
+.small-label{
+    width: 110px;
+    padding-left: 5px;
+}
+
+.small-padding-right{
+    padding-right: 10px
+    
 }

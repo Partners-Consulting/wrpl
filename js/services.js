@@ -462,7 +462,9 @@ angular.module("App.services", [])
                     {},
                     {},
                     {},
-                    {}
+                    {},
+                    {},
+                    {},
                 ];
             },
             consultaReplicas: function () {

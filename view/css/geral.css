@@ -173,6 +173,10 @@ select.form-control {
     padding: 15px;
 }
 
+.font-peq{
+    font-size: 0.875rem;
+}
+
 .form-group label {
     font-size: 0.875rem;
     opacity: .8;
