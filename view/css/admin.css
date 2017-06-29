@@ -260,6 +260,32 @@ form {
 }
 /***********************************/
 
+.dl-flex-entrega {
+    font-size: 12px;
+    line-height: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 154px;
+}
+
+.dl-flex-entrega dt {
+    flex: 0 0 40%;
+    font-size: 11px;
+    margin-top: 2px;
+    border-bottom: 1px solid #eee;
+}
+
+.dl-flex-entrega dd {
+    flex: 60% 0 0;
+    font-size: 10.5px;
+    padding-left: 20px;
+    padding: 2px 4px;
+    background: #eee;
+    font-weight: 600;
+    margin-top: 1px;
+}
+
+
 .dl-flex {
     font-size: 12px;
     line-height: 16px;

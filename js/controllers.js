@@ -2175,14 +2175,6 @@ angular.module("App.controllers", [])
                     cellTemplate: '  <div class="action-buttons"> ' +
                     ' <a class="black" style="color: black"  ng-click="grid.appScope.adicionarTextoSimulacao(row.entity)" href=""><i class="fa fa-file-text bigger-130"></i></a>' +
                     ' </div>'
-                },
-                {
-                    field: 'imprimir',
-                    width: '100',
-                    displayName: 'Imprimir',
-                    cellTemplate: '  <div class="action-buttons"> ' +
-                    ' <a class="black" style="color: black"  ng-click="grid.appScope.imprimir(row.entity)" href=""><i class="fa fa-print bigger-130"></i></a>' +
-                    ' </div>'
                 }
             ]
         };
@@ -2891,14 +2883,6 @@ angular.module("App.controllers", [])
                 }
             }, {
                 id: 1,
-                data: '03.04.2017',
-                texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
-                user: {
-                    nome: "PAULA HERMANN",
-                    abreviado: "PHERMANN"
-                }
-            }, {
-                id: 2,
                 data: '03.04.2017',
                 texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes',
                 user: {
