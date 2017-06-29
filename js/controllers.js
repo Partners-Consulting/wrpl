@@ -2483,9 +2483,9 @@ angular.module("App.controllers", [])
             if ($scope.painelTabela.tabelaAtual == 1) {
                 $scope.painelTabela.tituloTabelaAtual = 'Condições de Pagamento';
             }
-            // else if ($scope.painelTabela.tabelaAtual == 2) {
-            //     $scope.painelTabela.tituloTabelaAtual = 'Histórico';
-            // }
+             else if ($scope.painelTabela.tabelaAtual == 2) {
+                 $scope.painelTabela.tituloTabelaAtual = 'Histórico';
+             }
         };
 
         $scope.replicar = function () {
