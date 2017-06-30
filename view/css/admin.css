@@ -1028,7 +1028,8 @@ display: none;
 }
 
 .small-input{
-    width: 60px;
+    width: 40px;
+    line-height: 2em
 }
 
 .small-label{
