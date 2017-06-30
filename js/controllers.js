@@ -192,6 +192,10 @@ angular.module("App.controllers", [])
                 id: 2,
                 titulo: 'Concorrência',
                 texto: 'Feito contato com o cliente que comentou sobre promoções de outros concorrentes'
+            }, {
+                id: 3,
+                titulo: 'Histórico',
+                texto: ''
             }
         ];
         $scope.geraisB = [];
@@ -3142,6 +3146,14 @@ angular.module("App.controllers", [])
     })
     .controller("MainController", function ($scope, $rootScope, $filter, $uibModal, $document, $location, UsuarioService, AcaoPromocionalService, uiGridConstants) {
         "use strict";
+
+        $scope.selected = false;
+
+        $rootScope.highlight = function () {
+            $scope.selected = !$scope.selected;
+        }
+
+        
         $rootScope.gotoCliente = function () {
             var modalInstance = $uibModal.open({
                 animation: true,
@@ -3201,7 +3213,7 @@ angular.module("App.controllers", [])
             { id: 3, nome: "ATLAS", quantidade: "5%" }
 
         ];
-
+        
         $rootScope.categoriaLinks = [
             {
                 nome: "Acesso Restrito",

@@ -116,8 +116,9 @@
                     </ul>
                 </li>
                 <li uib-dropdown class="dropdown" auto-close="outsideClick" is-open="status.isOpenCreditos">
-                    <a href uib-dropdown-toggle><span class="icon-badge green-badge" data-line="1"><i
-                            class="fa fa-credit-card" aria-hidden="true"></i></span></a>
+                    <a href uib-dropdown-toggle>
+                        <span class="icon-badge green-badge" data-line="1">
+                            <i class="fa fa-credit-card" aria-hidden="true"></i></span></a>
                     <ul uib-dropdown-menu class="box-drop">
                         <!--<table class="table table-hover table-box-drop">
                             <caption>Crédito</caption>
@@ -157,10 +158,16 @@
                              ui-grid-move-columns></div>
                     </ul>
                 </li>
-                <li uib-dropdown class="dropdown">
+                <li uib-dropdown ng-if="!selected" class="dropdown">
                     <a id="sapIcone" ng-click="sapLink()"  href="" uib-dropdown-toggle>
-                   <!--  <img src="view/images/sap_logon.png" alt=""> -->
-                   <i class="fa fa-reply-all fa-flip-vertical" aria-hidden="true" style="font-size: 26px"></i>
+                     <img  src="view/images/SapGuiLogo.png" alt="" width="30" >
+                   <!--<i class="fa fa-reply-all fa-flip-vertical" aria-hidden="true" style="font-size: 26px"></i>-->
+                            </a>
+                </li>
+                <!--<li uib-dropdown ng-if="selected" class="dropdown" ng-mouseover="highlight()">
+                    <a id="sapIcone" ng-click="sapLink()"  href="" uib-dropdown-toggle>
+                     <img  src="view/images/SapGuiLogoW.png" alt="" width="30" >
+                   <i class="fa fa-reply-all fa-flip-vertical" aria-hidden="true" style="font-size: 26px"></i>-->
                             </a>
                 </li>
             </ul>
